@@ -45,7 +45,7 @@ button{
   margin-bottom:16px;
   box-shadow:0 5px 20px rgba(0,0,0,.04);
 }
-.hidden{display:none}
+.hidden{display:none!important}
 input{
   width:100%;
   border:1px solid #eadde2;
@@ -112,6 +112,7 @@ label{
 .payment-row{
   display:flex;
   justify-content:space-between;
+  gap:10px;
   padding:10px 0;
   border-bottom:1px solid #eee;
 }
@@ -133,11 +134,10 @@ label{
   padding:18px;
   z-index:999;
 }
-.picker.hidden{display:none}
 .picker-box{
   background:white;
-  width:min(620px,100%);
-  max-height:80vh;
+  width:min(650px,100%);
+  max-height:85vh;
   overflow:auto;
   border-radius:20px;
   padding:18px;
@@ -150,7 +150,26 @@ label{
   padding:12px;
   border-bottom:1px solid #eee;
 }
-.pro-choice:hover{background:#fff7f9}
+.manual-box{
+  margin-top:18px;
+  padding:15px;
+  background:#fff8fa;
+  border-radius:16px;
+}
+.manual-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:8px;
+}
+.checkbox-row{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-top:10px;
+}
+.checkbox-row input{
+  width:auto;
+}
 @media(max-width:700px){
   .pro-form,.pro-row{grid-template-columns:1fr}
   .staff{
@@ -162,6 +181,7 @@ label{
   .staff .wide{grid-column:1/-1}
   .summary{grid-template-columns:1fr}
   .saved-item{flex-direction:column;align-items:flex-start}
+  .manual-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -265,8 +285,9 @@ label{
 
 <div id="picker" class="picker hidden">
   <div class="picker-box">
+
     <div style="display:flex;justify-content:space-between;gap:10px;align-items:center">
-      <h2>Ընտրել մասնագետ</h2>
+      <h2>Ավելացնել մասնագետ</h2>
       <button class="danger" onclick="closeProfessionalPicker()">Փակել</button>
     </div>
 
@@ -277,12 +298,45 @@ label{
     >
 
     <div id="professionalChoices" style="margin-top:12px"></div>
+
+    <div class="manual-box">
+      <h3>✍️ Ավելացնել ձեռքով</h3>
+
+      <div class="manual-grid">
+        <div>
+          <label>Անուն / ծառայություն</label>
+          <input id="manualName" placeholder="Օր․ DJ կամ Արամ">
+        </div>
+
+        <div>
+          <label>Մասնագիտություն</label>
+          <input id="manualType" placeholder="Օր․ DJ">
+        </div>
+
+        <div>
+          <label>Իր արժեքը</label>
+          <input id="manualCost" type="number" min="0" placeholder="70000">
+        </div>
+      </div>
+
+      <div class="checkbox-row">
+        <input type="checkbox" id="saveManualToBase">
+        <label for="saveManualToBase" style="margin:0">
+          Պահպանել նաև մասնագետների բազայում
+        </label>
+      </div>
+
+      <button class="primary" style="margin-top:12px" onclick="addManualStaff()">
+        + Ավելացնել փաթեթին
+      </button>
+    </div>
+
   </div>
 </div>
 
 <script>
-const PRO_KEY="momentoo_pros_v2";
-const PACK_KEY="momentoo_packs_v5";
+const PRO_KEY="momentoo_pros_v3";
+const PACK_KEY="momentoo_packs_v6";
 
 let professionals=[];
 let savedPackages=[];
@@ -307,6 +361,7 @@ function esc(t){
 function load(){
   try{professionals=JSON.parse(localStorage.getItem(PRO_KEY))||[]}catch{professionals=[]}
   try{savedPackages=JSON.parse(localStorage.getItem(PACK_KEY))||[]}catch{savedPackages=[]}
+
   renderProfessionals();
   renderSaved();
   newPackage();
@@ -350,6 +405,7 @@ function addProfessional(){
 
 function deleteProfessional(proId){
   if(!confirm("Ջնջե՞լ մասնագետին")) return;
+
   professionals=professionals.filter(p=>p.id!==proId);
   savePros();
   renderProfessionals();
@@ -382,9 +438,14 @@ function renderProfessionals(){
 
 function openProfessionalPicker(){
   document.getElementById("picker").classList.remove("hidden");
+
   document.getElementById("proSearch").value="";
+  document.getElementById("manualName").value="";
+  document.getElementById("manualType").value="";
+  document.getElementById("manualCost").value="";
+  document.getElementById("saveManualToBase").checked=false;
+
   renderProfessionalChoices();
-  setTimeout(()=>document.getElementById("proSearch").focus(),100);
 }
 
 function closeProfessionalPicker(){
@@ -401,7 +462,7 @@ function renderProfessionalChoices(){
   });
 
   if(results.length===0){
-    list.innerHTML="Համապատասխան մասնագետ չկա։";
+    list.innerHTML="Պահված համապատասխան մասնագետ չկա։ Կարող ես ներքևից ձեռքով ավելացնել։";
     return;
   }
 
@@ -416,7 +477,10 @@ function renderProfessionalChoices(){
         <strong>${esc(p.name)}</strong><br>
         <small>${esc(p.type)} — ${money(p.price)}</small>
       </div>
-      <button class="primary" onclick="chooseProfessional('${p.id}')">Ընտրել</button>
+
+      <button class="primary" onclick="chooseProfessional('${p.id}')">
+        Ընտրել
+      </button>
     `;
 
     list.appendChild(row);
@@ -433,6 +497,48 @@ function chooseProfessional(proId){
     name:p.name,
     type:p.type,
     cost:p.price,
+    profit:0
+  });
+
+  closeProfessionalPicker();
+  renderStaff();
+  updateTotals();
+}
+
+function addManualStaff(){
+  const name=document.getElementById("manualName").value.trim();
+  const type=document.getElementById("manualType").value.trim();
+  const cost=Number(document.getElementById("manualCost").value)||0;
+  const saveToBase=document.getElementById("saveManualToBase").checked;
+
+  if(!name){
+    alert("Գրիր անունը կամ ծառայությունը");
+    return;
+  }
+
+  let professionalId="";
+
+  if(saveToBase){
+    const newPro={
+      id:id(),
+      name:name,
+      type:type || name,
+      price:cost
+    };
+
+    professionals.push(newPro);
+    professionalId=newPro.id;
+
+    savePros();
+    renderProfessionals();
+  }
+
+  currentPackage.staff.push({
+    id:id(),
+    professionalId:professionalId,
+    name:name,
+    type:type || "",
+    cost:cost,
     profit:0
   });
 
@@ -477,18 +583,28 @@ function renderStaff(){
 
     row.innerHTML=`
       <div class="wide">
-        <label>Մասնագետ</label>
-        <input readonly value="${esc(s.name)} — ${esc(s.type)}">
+        <label>Մասնագետ / ծառայություն</label>
+        <input readonly value="${esc(s.name)}${s.type ? " — "+esc(s.type) : ""}">
       </div>
 
       <div>
         <label>Իր արժեքը</label>
-        <input type="number" min="0" value="${s.cost}" oninput="updateStaff('${s.id}','cost',this.value)">
+        <input
+          type="number"
+          min="0"
+          value="${s.cost}"
+          oninput="updateStaff('${s.id}','cost',this.value)"
+        >
       </div>
 
       <div>
         <label>Իմ գումարը</label>
-        <input type="number" min="0" value="${s.profit||""}" oninput="updateStaff('${s.id}','profit',this.value)">
+        <input
+          type="number"
+          min="0"
+          value="${s.profit||""}"
+          oninput="updateStaff('${s.id}','profit',this.value)"
+        >
       </div>
 
       <div>
@@ -546,7 +662,11 @@ function renderPayments(){
     row.className="payment-row";
 
     row.innerHTML=`
-      <span><strong>${esc(s.name)}</strong> — ${esc(s.type)}</span>
+      <span>
+        <strong>${esc(s.name)}</strong>
+        ${s.type ? " — "+esc(s.type) : ""}
+      </span>
+
       <strong>${money(s.cost)}</strong>
     `;
 
@@ -567,11 +687,17 @@ function saveCurrentPackage(){
     savedPackages.push(JSON.parse(JSON.stringify(currentPackage)));
   }else{
     const i=savedPackages.findIndex(p=>p.id===currentPackage.id);
-    if(i>=0)savedPackages[i]=JSON.parse(JSON.stringify(currentPackage));
+
+    if(i>=0){
+      savedPackages[i]=JSON.parse(JSON.stringify(currentPackage));
+    }else{
+      savedPackages.push(JSON.parse(JSON.stringify(currentPackage)));
+    }
   }
 
   savePacks();
   renderSaved();
+
   alert("Փաթեթը պահպանված է ✅");
 }
 
@@ -591,6 +717,7 @@ function renderSaved(){
 
     row.innerHTML=`
       <strong>${esc(p.name)}</strong>
+
       <div>
         <button class="primary" onclick="openSaved('${p.id}')">Բացել</button>
         <button class="danger" onclick="deleteSaved('${p.id}')">Ջնջել</button>
@@ -610,11 +737,13 @@ function openSaved(packId){
 
   renderStaff();
   updateTotals();
+
   document.getElementById("savedPanel").classList.add("hidden");
 }
 
 function deleteSaved(packId){
   if(!confirm("Ջնջե՞լ փաթեթը"))return;
+
   savedPackages=savedPackages.filter(p=>p.id!==packId);
   savePacks();
   renderSaved();
@@ -624,5 +753,6 @@ document.getElementById("packageName").addEventListener("input",updateTotals);
 
 load();
 </script>
+
 </body>
 </html>

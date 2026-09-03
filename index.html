@@ -16,7 +16,7 @@ body{
 }
 
 .container{
-  max-width:1000px;
+  max-width:1050px;
   margin:auto;
   padding:18px;
 }
@@ -69,7 +69,7 @@ button{
   margin-bottom:16px;
 }
 
-input{
+input,select{
   width:100%;
   padding:11px;
   border:1px solid #eadde2;
@@ -85,9 +85,26 @@ label{
   margin-bottom:5px;
 }
 
-.package-title{
-  font-size:20px;
-  font-weight:800;
+.hidden{display:none}
+
+.database-form{
+  display:grid;
+  grid-template-columns:2fr 1fr auto;
+  gap:8px;
+  align-items:end;
+}
+
+.pro-item{
+  display:grid;
+  grid-template-columns:2fr 1fr auto;
+  gap:10px;
+  align-items:center;
+  padding:11px 0;
+  border-bottom:1px solid #eee;
+}
+
+.pro-item:last-child{
+  border-bottom:0;
 }
 
 .staff{
@@ -159,22 +176,13 @@ label{
   border-bottom:0;
 }
 
-.saved-panel{
-  display:none;
-  margin-bottom:18px;
-}
-
 .saved-item{
   display:flex;
   justify-content:space-between;
-  align-items:center;
   gap:10px;
-  padding:12px;
+  align-items:center;
+  padding:12px 0;
   border-bottom:1px solid #eee;
-}
-
-.saved-item:last-child{
-  border-bottom:0;
 }
 
 .saved-actions{
@@ -189,6 +197,15 @@ label{
 }
 
 @media(max-width:700px){
+
+  .database-form{
+    grid-template-columns:1fr;
+  }
+
+  .pro-item{
+    grid-template-columns:1fr;
+  }
+
   .staff{
     grid-template-columns:1fr 1fr;
     background:#fffafd;
@@ -222,15 +239,40 @@ label{
 
   <div class="top-buttons">
     <button class="primary" onclick="newPackage()">+ Նոր փաթեթ</button>
-    <button class="secondary" onclick="toggleSavedPackages()">📁 Պահված փաթեթներ</button>
+    <button class="secondary" onclick="toggleSaved()">📁 Պահված փաթեթներ</button>
+    <button class="secondary" onclick="toggleProfessionals()">👥 Մասնագետներ</button>
     <button class="secondary" onclick="saveCurrentPackage()">💾 Պահպանել փաթեթը</button>
   </div>
 
   <div class="notice" id="saveStatus"></div>
 </header>
 
-<div id="savedPanel" class="card saved-panel">
-  <h3>Պահված փաթեթներ</h3>
+<div id="professionalsPanel" class="card hidden">
+
+  <h2>👥 Մասնագետներ</h2>
+
+  <div class="database-form">
+
+    <div>
+      <label>Մասնագետի անուն / ծառայություն</label>
+      <input id="newProName" placeholder="Օր․ DJ">
+    </div>
+
+    <div>
+      <label>Իր արժեքը</label>
+      <input id="newProPrice" type="number" min="0" placeholder="70000">
+    </div>
+
+    <button class="primary" onclick="addProfessional()">+ Ավելացնել</button>
+
+  </div>
+
+  <div id="professionalsList" style="margin-top:15px"></div>
+
+</div>
+
+<div id="savedPanel" class="card hidden">
+  <h2>📁 Պահված փաթեթներ</h2>
   <div id="savedList"></div>
 </div>
 
@@ -238,13 +280,13 @@ label{
 
   <div>
     <label>Փաթեթի անուն</label>
-    <input id="packageName" class="package-title" placeholder="Օր․ Wedding Premium">
+    <input id="packageName" placeholder="Օր․ Birthday Premium">
   </div>
 
   <div id="staffList"></div>
 
   <div style="margin-top:14px">
-    <button class="primary" onclick="addStaff()">+ Ավելացնել մասնագետ</button>
+    <button class="primary" onclick="addEmptyStaff()">+ Ավելացնել մասնագետ</button>
   </div>
 
   <div class="summary">
@@ -302,13 +344,16 @@ label{
 
 <script>
 
-const STORAGE_KEY = "momentoo_saved_packages_v3";
+const PRO_STORAGE = "momentoo_professionals_v1";
+const PACK_STORAGE = "momentoo_packages_v4";
 
+let professionals = [];
 let savedPackages = [];
+
 let currentPackage = {
-  id: null,
-  name: "",
-  staff: []
+  id:null,
+  name:"",
+  staff:[]
 };
 
 function makeID(){
@@ -316,117 +361,289 @@ function makeID(){
     Math.random().toString(36).slice(2);
 }
 
-function money(value){
-  return (Number(value)||0).toLocaleString("hy-AM") + " ֏";
+function money(v){
+  return (Number(v)||0).toLocaleString("hy-AM") + " ֏";
 }
 
-function escapeHTML(text){
-  return String(text||"")
+function esc(t){
+  return String(t||"")
     .replaceAll("&","&amp;")
     .replaceAll("<","&lt;")
     .replaceAll(">","&gt;")
     .replaceAll('"',"&quot;");
 }
 
-function loadSavedPackages(){
+function loadAll(){
+
   try{
-    savedPackages = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+    professionals =
+      JSON.parse(localStorage.getItem(PRO_STORAGE)) || [];
+  }catch{
+    professionals = [];
+  }
+
+  try{
+    savedPackages =
+      JSON.parse(localStorage.getItem(PACK_STORAGE)) || [];
   }catch{
     savedPackages = [];
   }
+
+  renderProfessionals();
+  renderSaved();
+  newPackage();
 }
 
-function saveStorage(){
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(savedPackages));
+function saveProfessionals(){
+  localStorage.setItem(PRO_STORAGE, JSON.stringify(professionals));
+}
+
+function savePackages(){
+  localStorage.setItem(PACK_STORAGE, JSON.stringify(savedPackages));
+}
+
+function toggleProfessionals(){
+  document.getElementById("professionalsPanel").classList.toggle("hidden");
+}
+
+function toggleSaved(){
+  document.getElementById("savedPanel").classList.toggle("hidden");
+}
+
+function addProfessional(){
+
+  const name = document.getElementById("newProName").value.trim();
+  const price = Number(document.getElementById("newProPrice").value)||0;
+
+  if(!name){
+    alert("Գրիր մասնագետի անունը");
+    return;
+  }
+
+  professionals.push({
+    id:makeID(),
+    name:name,
+    price:price
+  });
+
+  saveProfessionals();
+
+  document.getElementById("newProName").value="";
+  document.getElementById("newProPrice").value="";
+
+  renderProfessionals();
+  renderStaff();
+}
+
+function updateProfessional(id,field,value){
+
+  const p = professionals.find(x=>x.id===id);
+  if(!p)return;
+
+  if(field==="name"){
+    p.name=value;
+  }else{
+    p.price=Number(value)||0;
+  }
+
+  saveProfessionals();
+  renderStaff();
+}
+
+function deleteProfessional(id){
+
+  if(!confirm("Ջնջե՞լ մասնագետին")) return;
+
+  professionals = professionals.filter(p=>p.id!==id);
+
+  saveProfessionals();
+  renderProfessionals();
+  renderStaff();
+}
+
+function renderProfessionals(){
+
+  const list = document.getElementById("professionalsList");
+
+  if(professionals.length===0){
+    list.innerHTML="Դեռ մասնագետներ չկան։";
+    return;
+  }
+
+  list.innerHTML="";
+
+  professionals.forEach(p=>{
+
+    const div=document.createElement("div");
+    div.className="pro-item";
+
+    div.innerHTML=`
+
+      <input
+        value="${esc(p.name)}"
+        oninput="updateProfessional('${p.id}','name',this.value)"
+      >
+
+      <input
+        type="number"
+        min="0"
+        value="${p.price||""}"
+        oninput="updateProfessional('${p.id}','price',this.value)"
+      >
+
+      <button class="danger" onclick="deleteProfessional('${p.id}')">
+        Ջնջել
+      </button>
+
+    `;
+
+    list.appendChild(div);
+  });
 }
 
 function newPackage(){
-  currentPackage = {
-    id: null,
-    name: "",
-    staff: []
+
+  currentPackage={
+    id:null,
+    name:"",
+    staff:[]
   };
 
-  document.getElementById("packageName").value = "";
+  document.getElementById("packageName").value="";
+
   renderStaff();
   updateTotals();
+
   showStatus("Նոր փաթեթ է բացված");
 }
 
-function addStaff(){
+function addEmptyStaff(){
+
   currentPackage.staff.push({
-    id: makeID(),
-    name: "",
-    cost: 0,
-    profit: 0
+    id:makeID(),
+    professionalId:"",
+    name:"",
+    cost:0,
+    profit:0
   });
 
   renderStaff();
   updateTotals();
 }
 
-function removeStaff(id){
-  currentPackage.staff = currentPackage.staff.filter(s => s.id !== id);
+function selectProfessional(staffId,proId){
+
+  const staff=currentPackage.staff.find(s=>s.id===staffId);
+  if(!staff)return;
+
+  const pro=professionals.find(p=>p.id===proId);
+
+  if(pro){
+    staff.professionalId=pro.id;
+    staff.name=pro.name;
+    staff.cost=pro.price;
+  }else{
+    staff.professionalId="";
+  }
+
   renderStaff();
   updateTotals();
 }
 
-function updateStaff(id, field, value){
-  const staff = currentPackage.staff.find(s => s.id === id);
-  if(!staff) return;
+function updateStaff(id,field,value){
 
-  if(field === "name"){
-    staff[field] = value;
+  const staff=currentPackage.staff.find(s=>s.id===id);
+  if(!staff)return;
+
+  if(field==="name"){
+    staff.name=value;
+    staff.professionalId="";
   }else{
-    staff[field] = Number(value)||0;
+    staff[field]=Number(value)||0;
   }
 
   updateTotals();
 }
 
+function removeStaff(id){
+
+  currentPackage.staff=
+    currentPackage.staff.filter(s=>s.id!==id);
+
+  renderStaff();
+  updateTotals();
+}
+
 function renderStaff(){
 
-  const container = document.getElementById("staffList");
-  container.innerHTML = "";
+  const list=document.getElementById("staffList");
+
+  list.innerHTML="";
 
   currentPackage.staff.forEach(staff=>{
 
-    const row = document.createElement("div");
-    row.className = "staff";
+    let options=`<option value="">Ընտրել մասնագետ</option>`;
 
-    row.innerHTML = `
+    professionals.forEach(p=>{
+
+      options+=`
+        <option
+          value="${p.id}"
+          ${staff.professionalId===p.id ? "selected" : ""}
+        >
+          ${esc(p.name)} — ${money(p.price)}
+        </option>
+      `;
+    });
+
+    const row=document.createElement("div");
+    row.className="staff";
+
+    row.innerHTML=`
 
       <div class="staff-name">
-        <label>Մասնագետ / ծառայություն</label>
+
+        <label>Ընտրել պահված մասնագետ</label>
+
+        <select onchange="selectProfessional('${staff.id}',this.value)">
+          ${options}
+        </select>
+
+        <label style="margin-top:7px">Անուն / ծառայություն</label>
+
         <input
+          value="${esc(staff.name)}"
           placeholder="Օր․ DJ"
-          value="${escapeHTML(staff.name)}"
           oninput="updateStaff('${staff.id}','name',this.value)"
         >
+
       </div>
 
       <div>
         <label>Մասնագետին տալիս եմ</label>
+
         <input
           type="number"
           min="0"
-          value="${staff.cost || ""}"
+          value="${staff.cost||""}"
           oninput="updateStaff('${staff.id}','cost',this.value)"
         >
       </div>
 
       <div>
         <label>Իմ գումարը</label>
+
         <input
           type="number"
           min="0"
-          value="${staff.profit || ""}"
+          value="${staff.profit||""}"
           oninput="updateStaff('${staff.id}','profit',this.value)"
         >
       </div>
 
       <div>
         <label>Հաճախորդի գինը</label>
+
         <input
           class="final-input"
           id="final-${staff.id}"
@@ -434,74 +651,73 @@ function renderStaff(){
         >
       </div>
 
-      <button
-        class="danger"
-        onclick="removeStaff('${staff.id}')"
-      >
+      <button class="danger" onclick="removeStaff('${staff.id}')">
         ✕
       </button>
 
     `;
 
-    container.appendChild(row);
+    list.appendChild(row);
   });
 }
 
 function updateTotals(){
 
-  currentPackage.name = document.getElementById("packageName").value;
+  currentPackage.name =
+    document.getElementById("packageName").value;
 
-  let totalCost = 0;
-  let totalProfit = 0;
+  let totalCost=0;
+  let totalProfit=0;
 
   currentPackage.staff.forEach(staff=>{
 
-    const cost = Number(staff.cost)||0;
-    const profit = Number(staff.profit)||0;
+    const cost=Number(staff.cost)||0;
+    const profit=Number(staff.profit)||0;
 
-    totalCost += cost;
-    totalProfit += profit;
+    totalCost+=cost;
+    totalProfit+=profit;
 
-    const finalInput = document.getElementById("final-"+staff.id);
+    const finalInput=
+      document.getElementById("final-"+staff.id);
 
     if(finalInput){
-      finalInput.value = money(cost + profit);
+      finalInput.value=money(cost+profit);
     }
   });
 
-  document.getElementById("packageCost").textContent = money(totalCost);
-  document.getElementById("packageProfit").textContent = money(totalProfit);
-  document.getElementById("packageTotal").textContent = money(totalCost + totalProfit);
+  document.getElementById("packageCost").textContent=money(totalCost);
+  document.getElementById("packageProfit").textContent=money(totalProfit);
+  document.getElementById("packageTotal").textContent=money(totalCost+totalProfit);
 
-  document.getElementById("allCost").textContent = money(totalCost);
-  document.getElementById("allProfit").textContent = money(totalProfit);
-  document.getElementById("allTotal").textContent = money(totalCost + totalProfit);
+  document.getElementById("allCost").textContent=money(totalCost);
+  document.getElementById("allProfit").textContent=money(totalProfit);
+  document.getElementById("allTotal").textContent=money(totalCost+totalProfit);
 
   renderPaymentList();
 }
 
 function renderPaymentList(){
 
-  const list = document.getElementById("paymentList");
+  const list=document.getElementById("paymentList");
 
-  const validStaff = currentPackage.staff.filter(s =>
-    s.name.trim() !== "" || Number(s.cost) > 0
+  const valid=currentPackage.staff.filter(s=>
+    s.name.trim()!=="" || Number(s.cost)>0
   );
 
-  if(validStaff.length === 0){
-    list.innerHTML = "Դեռ մասնագետ չկա։";
+  if(valid.length===0){
+    list.innerHTML="Դեռ մասնագետ չկա։";
     return;
   }
 
-  list.innerHTML = "";
+  list.innerHTML="";
 
-  validStaff.forEach(staff=>{
+  valid.forEach(staff=>{
 
-    const row = document.createElement("div");
-    row.className = "payment-row";
+    const row=document.createElement("div");
+    row.className="payment-row";
 
-    row.innerHTML = `
-      <strong>${escapeHTML(staff.name || "Անանուն մասնագետ")}</strong>
+    row.innerHTML=`
+      <strong>${esc(staff.name || "Անանուն մասնագետ")}</strong>
       <strong>${money(staff.cost)}</strong>
     `;
 
@@ -511,7 +727,7 @@ function renderPaymentList(){
 
 function saveCurrentPackage(){
 
-  currentPackage.name =
+  currentPackage.name=
     document.getElementById("packageName").value.trim();
 
   if(!currentPackage.name){
@@ -520,120 +736,124 @@ function saveCurrentPackage(){
   }
 
   if(!currentPackage.id){
-    currentPackage.id = makeID();
-    savedPackages.push(JSON.parse(JSON.stringify(currentPackage)));
+
+    currentPackage.id=makeID();
+
+    savedPackages.push(
+      JSON.parse(JSON.stringify(currentPackage))
+    );
+
   }else{
 
-    const index = savedPackages.findIndex(p=>p.id===currentPackage.id);
+    const index=
+      savedPackages.findIndex(p=>p.id===currentPackage.id);
 
-    if(index >= 0){
-      savedPackages[index] = JSON.parse(JSON.stringify(currentPackage));
+    if(index>=0){
+      savedPackages[index]=
+        JSON.parse(JSON.stringify(currentPackage));
     }else{
-      savedPackages.push(JSON.parse(JSON.stringify(currentPackage)));
+      savedPackages.push(
+        JSON.parse(JSON.stringify(currentPackage))
+      );
     }
   }
 
-  saveStorage();
-  renderSavedPackages();
+  savePackages();
+  renderSaved();
+
   showStatus("Փաթեթը պահպանված է ✅");
 }
 
-function toggleSavedPackages(){
+function renderSaved(){
 
-  const panel = document.getElementById("savedPanel");
+  const list=document.getElementById("savedList");
 
-  panel.style.display =
-    panel.style.display === "block"
-    ? "none"
-    : "block";
-
-  renderSavedPackages();
-}
-
-function renderSavedPackages(){
-
-  const list = document.getElementById("savedList");
-  list.innerHTML = "";
-
-  if(savedPackages.length === 0){
-    list.innerHTML = "Դեռ պահված փաթեթ չկա։";
+  if(savedPackages.length===0){
+    list.innerHTML="Դեռ պահված փաթեթ չկա։";
     return;
   }
 
+  list.innerHTML="";
+
   savedPackages.forEach(pack=>{
 
-    const item = document.createElement("div");
-    item.className = "saved-item";
+    const item=document.createElement("div");
+    item.className="saved-item";
 
-    item.innerHTML = `
+    item.innerHTML=`
 
-      <strong>${escapeHTML(pack.name)}</strong>
+      <strong>${esc(pack.name)}</strong>
 
       <div class="saved-actions">
+
         <button
           class="primary"
-          onclick="openSavedPackage('${pack.id}')"
+          onclick="openPackage('${pack.id}')"
         >
           Բացել
         </button>
 
         <button
           class="danger"
-          onclick="deleteSavedPackage('${pack.id}')"
+          onclick="deletePackage('${pack.id}')"
         >
           Ջնջել
         </button>
-      </div>
 
+      </div>
     `;
 
     list.appendChild(item);
   });
 }
 
-function openSavedPackage(id){
+function openPackage(id){
 
-  const pack = savedPackages.find(p=>p.id===id);
+  const pack=savedPackages.find(p=>p.id===id);
 
-  if(!pack) return;
+  if(!pack)return;
 
-  currentPackage = JSON.parse(JSON.stringify(pack));
+  currentPackage=
+    JSON.parse(JSON.stringify(pack));
 
-  document.getElementById("packageName").value = currentPackage.name;
+  document.getElementById("packageName").value=
+    currentPackage.name;
 
   renderStaff();
   updateTotals();
 
-  document.getElementById("savedPanel").style.display = "none";
+  document.getElementById("savedPanel").classList.add("hidden");
 
-  showStatus("Բացված է՝ " + currentPackage.name);
+  showStatus("Բացված է՝ "+currentPackage.name);
 }
 
-function deleteSavedPackage(id){
+function deletePackage(id){
 
-  if(!confirm("Ջնջե՞լ այս փաթեթը")) return;
+  if(!confirm("Ջնջե՞լ փաթեթը"))return;
 
-  savedPackages = savedPackages.filter(p=>p.id!==id);
+  savedPackages=
+    savedPackages.filter(p=>p.id!==id);
 
-  saveStorage();
-  renderSavedPackages();
+  savePackages();
+  renderSaved();
 }
 
 function showStatus(text){
-  document.getElementById("saveStatus").textContent = text;
+
+  const el=document.getElementById("saveStatus");
+
+  el.textContent=text;
 
   setTimeout(()=>{
-    document.getElementById("saveStatus").textContent = "";
+    el.textContent="";
   },2500);
 }
 
 document
 .getElementById("packageName")
-.addEventListener("input", updateTotals);
+.addEventListener("input",updateTotals);
 
-loadSavedPackages();
-newPackage();
-renderSavedPackages();
+loadAll();
 
 </script>
 

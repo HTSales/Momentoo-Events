@@ -24,26 +24,18 @@ body{
 header{
   background:linear-gradient(135deg,#ffb6c9,#ffd8a8);
   border-radius:24px;
-  padding:25px;
+  padding:24px;
   margin-bottom:18px;
 }
 
 h1{margin:0;font-size:30px}
-.subtitle{margin-top:5px;opacity:.75}
+.subtitle{margin-top:6px;opacity:.75}
 
-.new-package{
-  margin-top:20px;
+.top-buttons{
   display:flex;
+  flex-wrap:wrap;
   gap:8px;
-}
-
-input{
-  width:100%;
-  border:1px solid #eadde2;
-  background:white;
-  padding:11px;
-  border-radius:12px;
-  font-size:15px;
+  margin-top:18px;
 }
 
 button{
@@ -54,27 +46,47 @@ button{
   cursor:pointer;
 }
 
-.add{background:#e986a5;color:white}
-.delete{background:#fff0f3;color:#b64868}
+.primary{
+  background:#e986a5;
+  color:white;
+}
 
-.package{
+.secondary{
   background:white;
-  padding:18px;
+  color:#5a4550;
+}
+
+.danger{
+  background:#fff0f3;
+  color:#b64868;
+}
+
+.card{
+  background:white;
   border-radius:20px;
-  margin-bottom:16px;
+  padding:18px;
   box-shadow:0 5px 20px rgba(0,0,0,.04);
+  margin-bottom:16px;
 }
 
-.package-header{
-  display:flex;
-  gap:10px;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:15px;
+input{
+  width:100%;
+  padding:11px;
+  border:1px solid #eadde2;
+  border-radius:12px;
+  font-size:15px;
+  background:white;
 }
 
-.package-name{
-  font-size:19px;
+label{
+  font-size:12px;
+  color:#84767d;
+  display:block;
+  margin-bottom:5px;
+}
+
+.package-title{
+  font-size:20px;
   font-weight:800;
 }
 
@@ -82,55 +94,50 @@ button{
   display:grid;
   grid-template-columns:2fr 1fr 1fr 1fr auto;
   gap:8px;
-  margin-bottom:9px;
+  margin-top:10px;
   align-items:end;
 }
 
-label{
-  font-size:11px;
-  color:#887a81;
-  display:block;
-  margin-bottom:4px;
+.final-input{
+  background:#fff6dd;
 }
-
-.final{background:#fff8df}
 
 .summary{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:10px;
-  margin-top:15px;
+  margin-top:18px;
 }
 
 .summary-box{
-  background:#faf6f8;
+  padding:14px;
   border-radius:14px;
-  padding:13px;
+  background:#faf6f8;
 }
-
-.summary-box.profit{background:#effaf3}
-.summary-box.total{background:#fff5d9}
 
 .summary-box small{
   display:block;
   color:#82757b;
 }
 
-.summary-box strong{font-size:19px}
+.summary-box strong{
+  font-size:20px;
+}
 
 .grand{
   background:#30262c;
   color:white;
   border-radius:22px;
   padding:20px;
-  margin-top:20px;
 }
 
 .grand .summary-box{
   background:rgba(255,255,255,.1);
 }
 
-.grand small{color:#eee}
+.grand .summary-box small{
+  color:#eee;
+}
 
 .payment-list{
   margin-top:18px;
@@ -140,7 +147,7 @@ label{
   padding:16px;
 }
 
-.payment-item{
+.payment-row{
   display:flex;
   justify-content:space-between;
   gap:10px;
@@ -148,29 +155,58 @@ label{
   border-bottom:1px solid #eee;
 }
 
-.payment-item:last-child{
+.payment-row:last-child{
   border-bottom:0;
 }
 
-.empty{
-  text-align:center;
-  padding:30px;
-  color:#9b8d93;
+.saved-panel{
+  display:none;
+  margin-bottom:18px;
+}
+
+.saved-item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  padding:12px;
+  border-bottom:1px solid #eee;
+}
+
+.saved-item:last-child{
+  border-bottom:0;
+}
+
+.saved-actions{
+  display:flex;
+  gap:7px;
+}
+
+.notice{
+  margin-top:10px;
+  font-size:13px;
+  color:#7e7077;
 }
 
 @media(max-width:700px){
-  .new-package{flex-direction:column}
   .staff{
     grid-template-columns:1fr 1fr;
     background:#fffafd;
     padding:12px;
     border-radius:15px;
   }
-  .staff .staff-name{grid-column:1/-1}
-  .summary{grid-template-columns:1fr}
-  .package-header{
-    align-items:flex-start;
+
+  .staff-name{
+    grid-column:1/-1;
+  }
+
+  .summary{
+    grid-template-columns:1fr;
+  }
+
+  .saved-item{
     flex-direction:column;
+    align-items:flex-start;
   }
 }
 </style>
@@ -184,13 +220,53 @@ label{
   <h1>MOMENTOO EVENTS ✨</h1>
   <div class="subtitle">Ստեղծում ենք ակնթարթներ...</div>
 
-  <div class="new-package">
-    <input id="packageName" placeholder="Փաթեթի անունը՝ օրինակ՝ Wedding Premium">
-    <button class="add" onclick="addPackage()">+ Ավելացնել փաթեթ</button>
+  <div class="top-buttons">
+    <button class="primary" onclick="newPackage()">+ Նոր փաթեթ</button>
+    <button class="secondary" onclick="toggleSavedPackages()">📁 Պահված փաթեթներ</button>
+    <button class="secondary" onclick="saveCurrentPackage()">💾 Պահպանել փաթեթը</button>
   </div>
+
+  <div class="notice" id="saveStatus"></div>
 </header>
 
-<div id="packages"></div>
+<div id="savedPanel" class="card saved-panel">
+  <h3>Պահված փաթեթներ</h3>
+  <div id="savedList"></div>
+</div>
+
+<div class="card">
+
+  <div>
+    <label>Փաթեթի անուն</label>
+    <input id="packageName" class="package-title" placeholder="Օր․ Wedding Premium">
+  </div>
+
+  <div id="staffList"></div>
+
+  <div style="margin-top:14px">
+    <button class="primary" onclick="addStaff()">+ Ավելացնել մասնագետ</button>
+  </div>
+
+  <div class="summary">
+
+    <div class="summary-box">
+      <small>Մասնագետներին վճարելու</small>
+      <strong id="packageCost">0 ֏</strong>
+    </div>
+
+    <div class="summary-box">
+      <small>Իմ շահույթը</small>
+      <strong id="packageProfit">0 ֏</strong>
+    </div>
+
+    <div class="summary-box">
+      <small>Հաճախորդի վերջնական գինը</small>
+      <strong id="packageTotal">0 ֏</strong>
+    </div>
+
+  </div>
+
+</div>
 
 <div class="grand">
 
@@ -199,27 +275,25 @@ label{
   <div class="summary">
 
     <div class="summary-box">
-      <small>Մասնագետներին վճարելու ընդհանուր</small>
+      <small>Մասնագետներին ընդհանուր</small>
       <strong id="allCost">0 ֏</strong>
     </div>
 
     <div class="summary-box">
-      <small>Իմ ընդհանուր շահույթը</small>
+      <small>Իմ շահույթը</small>
       <strong id="allProfit">0 ֏</strong>
     </div>
 
     <div class="summary-box">
-      <small>Հաճախորդից ստանալու ընդհանուր</small>
+      <small>Հաճախորդից ստանալու</small>
       <strong id="allTotal">0 ֏</strong>
     </div>
 
   </div>
 
   <div class="payment-list">
-    <h3>Մասնագետներին վճարումներ</h3>
-    <div id="paymentList">
-      Դեռ մասնագետ չկա։
-    </div>
+    <h3>Մասնագետներին հատկացվող գումարներ</h3>
+    <div id="paymentList">Դեռ մասնագետ չկա։</div>
   </div>
 
 </div>
@@ -228,537 +302,338 @@ label{
 
 <script>
 
-const STORAGE="momentoo_events_packages_v2";
+const STORAGE_KEY = "momentoo_saved_packages_v3";
 
-let packages=[];
+let savedPackages = [];
+let currentPackage = {
+  id: null,
+  name: "",
+  staff: []
+};
 
 function makeID(){
-  return Date.now().toString(36)
-  +Math.random().toString(36).substring(2);
-}
-
-function save(){
-  localStorage.setItem(
-    STORAGE,
-    JSON.stringify(packages)
-  );
-}
-
-function load(){
-  try{
-    packages=
-    JSON.parse(
-      localStorage.getItem(STORAGE)
-    )||[];
-  }catch{
-    packages=[];
-  }
-
-  render();
+  return Date.now().toString(36) +
+    Math.random().toString(36).slice(2);
 }
 
 function money(value){
-  return Number(value||0)
-  .toLocaleString("hy-AM")
-  +" ֏";
+  return (Number(value)||0).toLocaleString("hy-AM") + " ֏";
 }
 
-function addPackage(){
-
-  const input=
-  document.getElementById("packageName");
-
-  const name=input.value.trim();
-
-  if(!name){
-    input.focus();
-    return;
-  }
-
-  packages.push({
-    id:makeID(),
-    name:name,
-    staff:[]
-  });
-
-  input.value="";
-
-  save();
-  render();
+function escapeHTML(text){
+  return String(text||"")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;");
 }
 
-function deletePackage(id){
-
-  packages=
-  packages.filter(
-    p=>p.id!==id
-  );
-
-  save();
-  render();
-}
-
-function addStaff(packageID){
-
-  const pack=
-  packages.find(
-    p=>p.id===packageID
-  );
-
-  if(!pack)return;
-
-  pack.staff.push({
-    id:makeID(),
-    name:"",
-    cost:0,
-    profit:0
-  });
-
-  save();
-  render();
-}
-
-function deleteStaff(packageID,staffID){
-
-  const pack=
-  packages.find(
-    p=>p.id===packageID
-  );
-
-  if(!pack)return;
-
-  pack.staff=
-  pack.staff.filter(
-    s=>s.id!==staffID
-  );
-
-  save();
-  render();
-}
-
-function updatePackageName(id,value){
-
-  const pack=
-  packages.find(
-    p=>p.id===id
-  );
-
-  if(pack){
-    pack.name=value;
-    save();
+function loadSavedPackages(){
+  try{
+    savedPackages = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+  }catch{
+    savedPackages = [];
   }
 }
 
-function updateStaff(
-  packageID,
-  staffID,
-  field,
-  value
-){
-
-  const pack=
-  packages.find(
-    p=>p.id===packageID
-  );
-
-  if(!pack)return;
-
-  const staff=
-  pack.staff.find(
-    s=>s.id===staffID
-  );
-
-  if(!staff)return;
-
-  if(field==="name"){
-    staff[field]=value;
-  }else{
-    staff[field]=Number(value)||0;
-  }
-
-  save();
-  updateTotals();
+function saveStorage(){
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(savedPackages));
 }
 
-function packageTotal(pack){
-
-  let cost=0;
-  let profit=0;
-
-  pack.staff.forEach(s=>{
-
-    cost+=Number(s.cost)||0;
-    profit+=Number(s.profit)||0;
-
-  });
-
-  return{
-    cost,
-    profit,
-    total:cost+profit
+function newPackage(){
+  currentPackage = {
+    id: null,
+    name: "",
+    staff: []
   };
+
+  document.getElementById("packageName").value = "";
+  renderStaff();
+  updateTotals();
+  showStatus("Նոր փաթեթ է բացված");
 }
 
-function render(){
-
-  const container=
-  document.getElementById("packages");
-
-  container.innerHTML="";
-
-  if(packages.length===0){
-
-    container.innerHTML=`
-      <div class="empty">
-        Դեռ փաթեթ չկա։<br>
-        Վերևից ավելացրու առաջին փաթեթը ✨
-      </div>
-    `;
-
-  }
-
-  packages.forEach(pack=>{
-
-    const box=
-    document.createElement("div");
-
-    box.className="package";
-    box.id="package-"+pack.id;
-
-    box.innerHTML=`
-
-      <div class="package-header">
-
-        <input
-          class="package-name"
-          value="${escapeHTML(pack.name)}"
-          oninput="updatePackageName(
-            '${pack.id}',
-            this.value
-          )"
-        >
-
-        <div>
-
-          <button
-            class="add"
-            onclick="addStaff('${pack.id}')">
-            + Մասնագետ
-          </button>
-
-          <button
-            class="delete"
-            onclick="deletePackage('${pack.id}')">
-            Հեռացնել փաթեթը
-          </button>
-
-        </div>
-
-      </div>
-
-      <div id="staff-${pack.id}"></div>
-
-      <div class="summary">
-
-        <div class="summary-box">
-          <small>Մասնագետներին</small>
-          <strong id="cost-${pack.id}">
-            0 ֏
-          </strong>
-        </div>
-
-        <div class="summary-box profit">
-          <small>Իմ շահույթը</small>
-          <strong id="profit-${pack.id}">
-            0 ֏
-          </strong>
-        </div>
-
-        <div class="summary-box total">
-          <small>Փաթեթի գինը</small>
-          <strong id="total-${pack.id}">
-            0 ֏
-          </strong>
-        </div>
-
-      </div>
-
-    `;
-
-    container.appendChild(box);
-
-    const staffContainer=
-    document.getElementById(
-      "staff-"+pack.id
-    );
-
-    pack.staff.forEach(staff=>{
-
-      const row=
-      document.createElement("div");
-
-      row.className="staff";
-
-      row.innerHTML=`
-
-        <div class="staff-name">
-
-          <label>
-            Մասնագետ / ծառայություն
-          </label>
-
-          <input
-            placeholder="Օր․ DJ"
-            value="${escapeHTML(staff.name)}"
-            oninput="
-              updateStaff(
-                '${pack.id}',
-                '${staff.id}',
-                'name',
-                this.value
-              )
-            "
-          >
-
-        </div>
-
-        <div>
-
-          <label>
-            Մասնագետին տալիս եմ
-          </label>
-
-          <input
-            type="number"
-            min="0"
-            value="${staff.cost||""}"
-            oninput="
-              updateStaff(
-                '${pack.id}',
-                '${staff.id}',
-                'cost',
-                this.value
-              )
-            "
-          >
-
-        </div>
-
-        <div>
-
-          <label>
-            Իմ գումարը
-          </label>
-
-          <input
-            type="number"
-            min="0"
-            value="${staff.profit||""}"
-            oninput="
-              updateStaff(
-                '${pack.id}',
-                '${staff.id}',
-                'profit',
-                this.value
-              )
-            "
-          >
-
-        </div>
-
-        <div>
-
-          <label>
-            Հաճախորդի գինը
-          </label>
-
-          <input
-            class="final"
-            readonly
-            id="final-${staff.id}"
-          >
-
-        </div>
-
-        <button
-          class="delete"
-          onclick="
-            deleteStaff(
-              '${pack.id}',
-              '${staff.id}'
-            )
-          ">
-          ✕ Հանել
-        </button>
-
-      `;
-
-      staffContainer.appendChild(row);
-
-    });
-
+function addStaff(){
+  currentPackage.staff.push({
+    id: makeID(),
+    name: "",
+    cost: 0,
+    profit: 0
   });
 
+  renderStaff();
   updateTotals();
+}
+
+function removeStaff(id){
+  currentPackage.staff = currentPackage.staff.filter(s => s.id !== id);
+  renderStaff();
+  updateTotals();
+}
+
+function updateStaff(id, field, value){
+  const staff = currentPackage.staff.find(s => s.id === id);
+  if(!staff) return;
+
+  if(field === "name"){
+    staff[field] = value;
+  }else{
+    staff[field] = Number(value)||0;
+  }
+
+  updateTotals();
+}
+
+function renderStaff(){
+
+  const container = document.getElementById("staffList");
+  container.innerHTML = "";
+
+  currentPackage.staff.forEach(staff=>{
+
+    const row = document.createElement("div");
+    row.className = "staff";
+
+    row.innerHTML = `
+
+      <div class="staff-name">
+        <label>Մասնագետ / ծառայություն</label>
+        <input
+          placeholder="Օր․ DJ"
+          value="${escapeHTML(staff.name)}"
+          oninput="updateStaff('${staff.id}','name',this.value)"
+        >
+      </div>
+
+      <div>
+        <label>Մասնագետին տալիս եմ</label>
+        <input
+          type="number"
+          min="0"
+          value="${staff.cost || ""}"
+          oninput="updateStaff('${staff.id}','cost',this.value)"
+        >
+      </div>
+
+      <div>
+        <label>Իմ գումարը</label>
+        <input
+          type="number"
+          min="0"
+          value="${staff.profit || ""}"
+          oninput="updateStaff('${staff.id}','profit',this.value)"
+        >
+      </div>
+
+      <div>
+        <label>Հաճախորդի գինը</label>
+        <input
+          class="final-input"
+          id="final-${staff.id}"
+          readonly
+        >
+      </div>
+
+      <button
+        class="danger"
+        onclick="removeStaff('${staff.id}')"
+      >
+        ✕
+      </button>
+
+    `;
+
+    container.appendChild(row);
+  });
 }
 
 function updateTotals(){
 
-  let allCost=0;
-  let allProfit=0;
-  let payments=[];
+  currentPackage.name = document.getElementById("packageName").value;
 
-  packages.forEach(pack=>{
+  let totalCost = 0;
+  let totalProfit = 0;
 
-    const totals=
-    packageTotal(pack);
+  currentPackage.staff.forEach(staff=>{
 
-    allCost+=totals.cost;
-    allProfit+=totals.profit;
+    const cost = Number(staff.cost)||0;
+    const profit = Number(staff.profit)||0;
 
-    const cost=
-    document.getElementById(
-      "cost-"+pack.id
-    );
+    totalCost += cost;
+    totalProfit += profit;
 
-    const profit=
-    document.getElementById(
-      "profit-"+pack.id
-    );
+    const finalInput = document.getElementById("final-"+staff.id);
 
-    const total=
-    document.getElementById(
-      "total-"+pack.id
-    );
-
-    if(cost)
-      cost.textContent=
-      money(totals.cost);
-
-    if(profit)
-      profit.textContent=
-      money(totals.profit);
-
-    if(total)
-      total.textContent=
-      money(totals.total);
-
-    pack.staff.forEach(staff=>{
-
-      const final=
-      document.getElementById(
-        "final-"+staff.id
-      );
-
-      if(final){
-
-        final.value=
-        money(
-          (Number(staff.cost)||0)
-          +
-          (Number(staff.profit)||0)
-        );
-
-      }
-
-      if(
-        staff.name.trim()!=="" ||
-        Number(staff.cost)>0
-      ){
-
-        payments.push({
-          name:
-            staff.name.trim()
-            ||
-            "Անանուն մասնագետ",
-          cost:
-            Number(staff.cost)||0
-        });
-
-      }
-
-    });
-
+    if(finalInput){
+      finalInput.value = money(cost + profit);
+    }
   });
 
-  document.getElementById(
-    "allCost"
-  ).textContent=
-  money(allCost);
+  document.getElementById("packageCost").textContent = money(totalCost);
+  document.getElementById("packageProfit").textContent = money(totalProfit);
+  document.getElementById("packageTotal").textContent = money(totalCost + totalProfit);
 
-  document.getElementById(
-    "allProfit"
-  ).textContent=
-  money(allProfit);
+  document.getElementById("allCost").textContent = money(totalCost);
+  document.getElementById("allProfit").textContent = money(totalProfit);
+  document.getElementById("allTotal").textContent = money(totalCost + totalProfit);
 
-  document.getElementById(
-    "allTotal"
-  ).textContent=
-  money(
-    allCost+allProfit
-  );
-
-  const paymentList=
-  document.getElementById(
-    "paymentList"
-  );
-
-  if(payments.length===0){
-
-    paymentList.innerHTML=
-    "Դեռ մասնագետ չկա։";
-
-  }else{
-
-    paymentList.innerHTML="";
-
-    payments.forEach(item=>{
-
-      const div=
-      document.createElement("div");
-
-      div.className="payment-item";
-
-      div.innerHTML=`
-        <strong>
-          ${escapeHTML(item.name)}
-        </strong>
-
-        <strong>
-          ${money(item.cost)}
-        </strong>
-      `;
-
-      paymentList.appendChild(div);
-
-    });
-
-  }
+  renderPaymentList();
 }
 
-function escapeHTML(text){
+function renderPaymentList(){
 
-  return String(text||"")
-  .replaceAll("&","&amp;")
-  .replaceAll("<","&lt;")
-  .replaceAll(">","&gt;")
-  .replaceAll('"',"&quot;");
+  const list = document.getElementById("paymentList");
+
+  const validStaff = currentPackage.staff.filter(s =>
+    s.name.trim() !== "" || Number(s.cost) > 0
+  );
+
+  if(validStaff.length === 0){
+    list.innerHTML = "Դեռ մասնագետ չկա։";
+    return;
+  }
+
+  list.innerHTML = "";
+
+  validStaff.forEach(staff=>{
+
+    const row = document.createElement("div");
+    row.className = "payment-row";
+
+    row.innerHTML = `
+      <strong>${escapeHTML(staff.name || "Անանուն մասնագետ")}</strong>
+      <strong>${money(staff.cost)}</strong>
+    `;
+
+    list.appendChild(row);
+  });
+}
+
+function saveCurrentPackage(){
+
+  currentPackage.name =
+    document.getElementById("packageName").value.trim();
+
+  if(!currentPackage.name){
+    alert("Գրիր փաթեթի անունը");
+    return;
+  }
+
+  if(!currentPackage.id){
+    currentPackage.id = makeID();
+    savedPackages.push(JSON.parse(JSON.stringify(currentPackage)));
+  }else{
+
+    const index = savedPackages.findIndex(p=>p.id===currentPackage.id);
+
+    if(index >= 0){
+      savedPackages[index] = JSON.parse(JSON.stringify(currentPackage));
+    }else{
+      savedPackages.push(JSON.parse(JSON.stringify(currentPackage)));
+    }
+  }
+
+  saveStorage();
+  renderSavedPackages();
+  showStatus("Փաթեթը պահպանված է ✅");
+}
+
+function toggleSavedPackages(){
+
+  const panel = document.getElementById("savedPanel");
+
+  panel.style.display =
+    panel.style.display === "block"
+    ? "none"
+    : "block";
+
+  renderSavedPackages();
+}
+
+function renderSavedPackages(){
+
+  const list = document.getElementById("savedList");
+  list.innerHTML = "";
+
+  if(savedPackages.length === 0){
+    list.innerHTML = "Դեռ պահված փաթեթ չկա։";
+    return;
+  }
+
+  savedPackages.forEach(pack=>{
+
+    const item = document.createElement("div");
+    item.className = "saved-item";
+
+    item.innerHTML = `
+
+      <strong>${escapeHTML(pack.name)}</strong>
+
+      <div class="saved-actions">
+        <button
+          class="primary"
+          onclick="openSavedPackage('${pack.id}')"
+        >
+          Բացել
+        </button>
+
+        <button
+          class="danger"
+          onclick="deleteSavedPackage('${pack.id}')"
+        >
+          Ջնջել
+        </button>
+      </div>
+
+    `;
+
+    list.appendChild(item);
+  });
+}
+
+function openSavedPackage(id){
+
+  const pack = savedPackages.find(p=>p.id===id);
+
+  if(!pack) return;
+
+  currentPackage = JSON.parse(JSON.stringify(pack));
+
+  document.getElementById("packageName").value = currentPackage.name;
+
+  renderStaff();
+  updateTotals();
+
+  document.getElementById("savedPanel").style.display = "none";
+
+  showStatus("Բացված է՝ " + currentPackage.name);
+}
+
+function deleteSavedPackage(id){
+
+  if(!confirm("Ջնջե՞լ այս փաթեթը")) return;
+
+  savedPackages = savedPackages.filter(p=>p.id!==id);
+
+  saveStorage();
+  renderSavedPackages();
+}
+
+function showStatus(text){
+  document.getElementById("saveStatus").textContent = text;
+
+  setTimeout(()=>{
+    document.getElementById("saveStatus").textContent = "";
+  },2500);
 }
 
 document
 .getElementById("packageName")
-.addEventListener(
-  "keydown",
-  function(e){
+.addEventListener("input", updateTotals);
 
-    if(e.key==="Enter"){
-      addPackage();
-    }
-
-  }
-);
-
-load();
+loadSavedPackages();
+newPackage();
+renderSavedPackages();
 
 </script>
 

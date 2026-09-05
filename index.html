@@ -3,109 +3,186 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#fff7f9">
 <title>MOMENTOO EVENTS</title>
 
 <style>
 *{box-sizing:border-box}
-:root{
- --bg:#fff7f9;--card:#fff;--text:#44343c;--muted:#8b7781;
- --pink:#e986a5;--line:#efdee5;--gold:#fff1c8;--danger:#b24c69;
-}
 body{
- margin:0;background:var(--bg);color:var(--text);
- font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+margin:0;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+background:#fff7f9;
+color:#4b3942
 }
-.wrap{max-width:1050px;margin:auto;padding:14px}
+.wrap{max-width:1000px;margin:auto;padding:14px}
 header{
- background:linear-gradient(135deg,#ffc2d3,#ffe0b9);
- padding:20px;border-radius:22px;margin-bottom:14px;
+background:linear-gradient(135deg,#ffc7d6,#ffe6bd);
+padding:20px;
+border-radius:22px;
+margin-bottom:14px
 }
 h1,h2,h3{margin-top:0}
-.sub{opacity:.75;margin-top:5px}
-.menu{display:flex;gap:7px;flex-wrap:wrap;margin-top:16px}
+.menu{display:flex;gap:7px;flex-wrap:wrap;margin-top:15px}
+
 button{
- border:0;border-radius:12px;padding:11px 13px;
- font-size:14px;font-weight:700;cursor:pointer;
+border:0;
+border-radius:12px;
+padding:11px 13px;
+font-weight:700;
+font-size:14px;
+cursor:pointer
 }
-.primary{background:var(--pink);color:#fff}
-.light{background:#fff;color:#604b55}
-.danger{background:#fff0f4;color:var(--danger)}
-.gold{background:var(--gold);color:#755b18}
+
+.primary{background:#e986a5;color:white}
+.light{background:white;color:#5e4652}
+.danger{background:#fff0f4;color:#ae4764}
+.gold{background:#fff1c8;color:#745816}
+
 .card{
- background:#fff;border-radius:20px;padding:16px;
- margin-bottom:14px;box-shadow:0 6px 22px rgba(63,37,50,.06);
+background:white;
+padding:16px;
+border-radius:20px;
+margin-bottom:14px;
+box-shadow:0 5px 18px rgba(50,30,40,.06)
 }
+
 .hidden{display:none!important}
+
 input,select,textarea{
- width:100%;border:1px solid var(--line);border-radius:11px;
- padding:11px;font-size:16px;background:#fff;color:var(--text);
+width:100%;
+padding:11px;
+border:1px solid #efdce4;
+border-radius:11px;
+font-size:16px;
+background:white
 }
-textarea{min-height:260px}
-label{display:block;font-size:12px;color:var(--muted);margin-bottom:4px}
+
+textarea{min-height:250px}
+
+label{
+display:block;
+font-size:12px;
+color:#8a7680;
+margin-bottom:4px
+}
+
 .row{display:flex;gap:8px;align-items:end}
-.grid5{
- display:grid;grid-template-columns:1.1fr 1.5fr 1fr .8fr .8fr;
- gap:8px;align-items:end;
+
+.grid{
+display:grid;
+grid-template-columns:1.2fr 1.5fr 1fr .8fr .8fr;
+gap:8px
 }
+
 .categories{
- display:grid;grid-template-columns:repeat(3,1fr);
- gap:9px;margin-top:12px;
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:9px;
+margin-top:12px
 }
-.categoryCard{
- background:#fff7fa;border:1px solid var(--line);
- border-radius:16px;padding:14px;text-align:left;
- font-weight:800;color:#76515f;
+
+.category{
+background:#fff5f8;
+border:1px solid #efdee5;
+border-radius:15px;
+padding:14px;
+text-align:left;
+color:#6c4c59
 }
-.categoryCard small{
- display:block;margin-top:5px;color:var(--muted);font-weight:600;
+
+.category small{
+display:block;
+margin-top:5px;
+font-weight:500;
+color:#927c86
 }
-.manageTop{display:flex;gap:8px;align-items:center;margin-bottom:12px}
+
 .pro{
- display:grid;grid-template-columns:1.2fr 1.5fr 1fr .8fr .8fr auto auto;
- gap:7px;padding:12px 0;border-bottom:1px solid #f2e8ec;align-items:end;
+display:grid;
+grid-template-columns:1.2fr 1.4fr 1fr .7fr .7fr auto auto;
+gap:7px;
+padding:10px 0;
+border-bottom:1px solid #f1e6ea
 }
+
 .staff{
- display:grid;grid-template-columns:1.4fr .8fr .8fr .8fr 1fr auto;
- gap:8px;padding:12px;background:#fffafd;
- border-radius:15px;margin-top:10px;align-items:end;
+background:#fffafd;
+border-radius:15px;
+padding:12px;
+margin-top:10px;
+display:grid;
+grid-template-columns:1.4fr .8fr .8fr .8fr 1fr auto;
+gap:8px;
+align-items:end
 }
+
 .summary{
- display:grid;grid-template-columns:repeat(3,1fr);
- gap:8px;margin-top:14px;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:8px;
+margin-top:14px
 }
-.sum{background:#faf4f7;padding:14px;border-radius:14px}
-.sum small{display:block;color:var(--muted)}
-.sum strong{font-size:20px}
-.sum.final{background:var(--gold)}
+
+.sum{
+background:#faf2f6;
+padding:14px;
+border-radius:14px
+}
+
+.sum strong{
+display:block;
+font-size:20px;
+margin-top:4px
+}
+
+.final{background:#fff1c8}
+
 .saved{
- display:flex;justify-content:space-between;gap:10px;
- align-items:center;border-bottom:1px solid #f1e7eb;padding:12px 0;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:8px;
+border-bottom:1px solid #f1e6ea;
+padding:12px 0
 }
+
+.note{
+font-size:13px;
+color:#8d7882;
+line-height:1.4
+}
+
 .overlay{
- position:fixed;inset:0;background:rgba(48,33,41,.58);
- z-index:999;padding:14px;overflow:auto;
+position:fixed;
+inset:0;
+background:rgba(45,30,38,.58);
+z-index:999;
+overflow:auto;
+padding:14px
 }
+
 .modal{
- max-width:760px;margin:18px auto;background:#fff;
- border-radius:20px;padding:17px;
+background:white;
+max-width:760px;
+margin:20px auto;
+border-radius:20px;
+padding:16px
 }
+
 .choice{
- display:flex;justify-content:space-between;gap:10px;
- align-items:center;border-bottom:1px solid #f1e7eb;padding:12px 0;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:10px;
+padding:12px 0;
+border-bottom:1px solid #f1e6ea
 }
-.note{font-size:13px;color:var(--muted);line-height:1.4}
-.badge{
- display:inline-block;background:#fff0f5;border:1px solid var(--line);
- border-radius:999px;padding:5px 9px;font-size:12px;margin-top:4px;
-}
+
 @media(max-width:720px){
- .grid5,.pro{grid-template-columns:1fr}
- .staff{grid-template-columns:1fr 1fr}
- .staff .wide{grid-column:1/-1}
- .categories{grid-template-columns:1fr 1fr}
- .summary{grid-template-columns:1fr}
- .saved{align-items:flex-start;flex-direction:column}
+.grid,.pro{grid-template-columns:1fr}
+.staff{grid-template-columns:1fr 1fr}
+.staff .wide{grid-column:1/-1}
+.summary{grid-template-columns:1fr}
+.saved{align-items:flex-start;flex-direction:column}
 }
 </style>
 </head>
@@ -116,7 +193,7 @@ label{display:block;font-size:12px;color:var(--muted);margin-bottom:4px}
 
 <header>
 <h1>MOMENTOO EVENTS ✨</h1>
-<div class="sub">Ստեղծում ենք հիշվող ակնթարթներ...</div>
+<div>Ստեղծում ենք հիշվող ակնթարթներ...</div>
 
 <div class="menu">
 <button class="primary" onclick="newPackage()">＋ Նոր փաթեթ</button>
@@ -137,13 +214,13 @@ label{display:block;font-size:12px;color:var(--muted);margin-bottom:4px}
 <button class="primary" onclick="addCategory()">＋</button>
 </div>
 
-<div id="categoryManager" style="margin-top:12px"></div>
+<div id="catsList"></div>
 </div>
 
 <div id="prosPanel" class="card hidden">
 <h2>👥 Մասնագետներ</h2>
 
-<div class="grid5">
+<div class="grid">
 
 <div>
 <label>Անուն</label>
@@ -151,7 +228,7 @@ label{display:block;font-size:12px;color:var(--muted);margin-bottom:4px}
 </div>
 
 <div>
-<label>Ծառայություն / նկարագրություն</label>
+<label>Նկարագրություն</label>
 <input id="pType">
 </div>
 
@@ -159,17 +236,17 @@ label{display:block;font-size:12px;color:var(--muted);margin-bottom:4px}
 <label>Բաժին</label>
 <div class="row">
 <select id="pCat"></select>
-<button class="primary" onclick="quickCategory()">＋</button>
+<button class="primary" onclick="quickCat()">＋</button>
 </div>
 </div>
 
 <div>
-<label>Մին. գին</label>
+<label>Մին.</label>
 <input id="pMin" type="number" inputmode="numeric">
 </div>
 
 <div>
-<label>Մաքս. գին</label>
+<label>Մաքս.</label>
 <input id="pMax" type="number" inputmode="numeric">
 </div>
 
@@ -179,7 +256,7 @@ label{display:block;font-size:12px;color:var(--muted);margin-bottom:4px}
 ＋ Ավելացնել մասնագետ
 </button>
 
-<div id="proBrowser" style="margin-top:18px"></div>
+<div id="prosBrowser" style="margin-top:18px"></div>
 </div>
 
 <div id="savedPanel" class="card hidden">
@@ -190,7 +267,7 @@ label{display:block;font-size:12px;color:var(--muted);margin-bottom:4px}
 <div class="card">
 
 <label>Փաթեթի անուն</label>
-<input id="packName" placeholder="Օր․ Երեխայի ծնունդ">
+<input id="packName" placeholder="Փաթեթի անուն">
 
 <div id="staffList"></div>
 
@@ -217,6 +294,7 @@ label{display:block;font-size:12px;color:var(--muted);margin-bottom:4px}
 
 </div>
 </div>
+
 </div>
 
 <div id="picker" class="overlay hidden">
@@ -227,13 +305,14 @@ label{display:block;font-size:12px;color:var(--muted);margin-bottom:4px}
 <button class="danger" onclick="closePicker()">Փակել</button>
 </div>
 
-<div style="margin-top:12px">
-<input id="search"
-placeholder="🔎 Փնտրել մասնագետ..."
-oninput="pickerSearch()">
-</div>
+<input
+id="search"
+style="margin-top:12px"
+placeholder="🔎 Որոնել..."
+oninput="pickerSearch()"
+>
 
-<div id="pickerBody" style="margin-top:12px"></div>
+<div id="pickerBody"></div>
 
 </div>
 </div>
@@ -246,7 +325,7 @@ oninput="pickerSearch()">
 <textarea id="backupText" readonly></textarea>
 
 <div class="row">
-<button class="primary" onclick="copyBackup()">📋 Copy</button>
+<button class="primary" onclick="copyBackup()">Copy</button>
 <button class="danger" onclick="closeBackup()">Փակել</button>
 </div>
 
@@ -258,12 +337,7 @@ oninput="pickerSearch()">
 
 <h2>📥 Import Backup</h2>
 
-<p class="note">
-Paste արա ամբողջ Backup JSON-ը։
-</p>
-
-<textarea id="importText"
-placeholder="Այստեղ paste արա Backup JSON-ը"></textarea>
+<textarea id="importText" placeholder="Paste արա Backup JSON-ը"></textarea>
 
 <div class="row">
 <button class="primary" onclick="doImport()">Վերականգնել</button>
@@ -277,90 +351,14 @@ placeholder="Այստեղ paste արա Backup JSON-ը"></textarea>
 
 const PRO_KEY="momentoo_pros_v3";
 const PACK_KEY="momentoo_packs_v6";
-const CAT_KEY="momentoo_categories_v1";
-const INIT_KEY="momentoo_final_initialized_v2";
+const CAT_KEY="momentoo_categories_v2";
 
-const RECOVERED_PROS=[
-{"id":"mtmtembj1cvooecjjlo","name":"Սաքո Տերոյան","type":"DJ","minPrice":25000,"maxPrice":25000},
-{"id":"mtmttaji0r8sugd24zi","name":"Գոռ Շահինյան","type":"DJ+Ջութակ","minPrice":25000,"maxPrice":25000},
-{"id":"mtmx6r4xcfebc27w3g","name":"Արջուկների մուտք Hska Arjuk","type":"2 պարային շոու,մասնակղում են տորթի արարողությանը,լուսանկարում են և ավարտում","minPrice":28000,"maxPrice":28000},
-{"id":"mtmxrakk7wjy38hjvos","name":"Ռիլմեյքեր Maga Dallaqyan","type":"Նկարում է մոնտաժում և հանձնում","minPrice":15000,"maxPrice":15000},
-{"id":"mtmym7un5ykjwq1p2dn","name":"Air Magic Ֆոտո զոնա","type":"Ֆոտո զոնա","minPrice":25000,"maxPrice":25000},
-{"id":"mtn060a0otrqsqn9blc","name":"Հրեշտակներ պար (hreshtakneri vardzuyt) 077815527","type":"Պարում են 2 հրեշտակներ","minPrice":20000,"maxPrice":20000},
-{"id":"mtn08z3pofggfyjc90i","name":"Մայրիկի ծաղկեփունջ","type":"Ծաղիկ մայրիկիմ","minPrice":5000,"maxPrice":5000},
-{"id":"mtn0kkkak6yjkpj9kgb","name":"Գոռ Շահինյան","type":"Միայն Ջութակ","minPrice":15000,"maxPrice":15000},
-{"id":"mtn2zej7cy38tl9dhm6","name":"Դրոնով նկարահանում Mshoosh_ 077872907","type":"Գենդեր փարթիի համար: Հենց նույն օրը դուք կարող եք ստանալ նկարած կադրերը և առաջիկա մոտ օրերը, հնարավոր է հենց հաջորդ օրը մոնտաժված տարբերակը","minPrice":20000,"maxPrice":20000},
-{"id":"mtn3al2x7doc8kemllj","name":"Դրոն Mshosh","type":"Ցանակած նկարահանում մինչև 1 ժամ","minPrice":20000,"maxPrice":20000},
-{"id":"mtn3d8r07xhgg8t79p3","name":"Քանոնահարուհի","type":"Մտնում է ներկայանալի հագուստ,ծրագիր,աանոնի ստենդ","minPrice":25000,"maxPrice":25000},
-{"id":"mtn4y7p9l85340fanub","name":"Աշոտ Օհանյան","type":"Դրոնով նկարահանում 094177055","minPrice":15000,"maxPrice":15000},
-{"id":"mtn5n9v546ew1u7k6j","name":"Ֆոտո նկարահանում Հովհաննես","type":"Գալ նկարել մշակել անսահմանափակ 094555843","minPrice":23000,"maxPrice":23000},
-{"id":"mtmxpdzz2sfgucjqh3f","name":"Ֆոտո Զոնա (photo_zona_kar)","type":"Ֆոտո զոնան մնում է առավոտից գիշեր","minPrice":30000,"maxPrice":30000}
-];
-
-const RECOVERED_PACKS=[
-{
-"id":"mtmxu92ub7afxeutirp",
-"name":"Երեխայի ծնունդ",
-"staff":[
-{"id":"p11","professionalId":"mtmtembj1cvooecjjlo","name":"Սաքո Տերոյան","type":"DJ","minPrice":25000,"maxPrice":25000,"profit":0},
-{"id":"p12","professionalId":"mtmx6r4xcfebc27w3g","name":"Արջուկների մուտք Hska Arjuk","type":"Արջուկներ","minPrice":26000,"maxPrice":26000,"profit":0},
-{"id":"p13","professionalId":"mtmxpdzz2sfgucjqh3f","name":"Ֆոտո Զոնա (photo_zona_kar)","type":"Ֆոտո զոնա","minPrice":30000,"maxPrice":30000,"profit":0},
-{"id":"p14","professionalId":"mtmxrakk7wjy38hjvos","name":"Ռիլմեյքեր Maga Dallaqyan","type":"Ռիլմեյքեր","minPrice":10000,"maxPrice":10000,"profit":0}
-]
-},
-{
-"id":"mtn0msot5e1bvsj4wnd",
-"name":"Նորածնի դուրսգրում",
-"staff":[
-{"id":"p21","professionalId":"mtn060a0otrqsqn9blc","name":"Հրեշտակներ պար","type":"Պարում են 2 հրեշտակներ","minPrice":20000,"maxPrice":20000,"profit":0},
-{"id":"p22","professionalId":"mtmttaji0r8sugd24zi","name":"Գոռ Շահինյան","type":"DJ+Ջութակ","minPrice":0,"maxPrice":0,"profit":0},
-{"id":"p23","professionalId":"mtn08z3pofggfyjc90i","name":"Մայրիկի ծաղկեփունջ","type":"Ծաղիկ","minPrice":5000,"maxPrice":5000,"profit":0},
-{"id":"p24","professionalId":"mtmxrakk7wjy38hjvos","name":"Ռիլմեյքեր Maga Dallaqyan","type":"Ռիլմեյքեր","minPrice":10000,"maxPrice":10000,"profit":0},
-{"id":"p25","professionalId":"mtn0kkkak6yjkpj9kgb","name":"Գոռ Շահինյան","type":"Միայն Ջութակ","minPrice":15000,"maxPrice":15000,"profit":0}
-]
-},
-{
-"id":"mtne1lh48vvvyj6d675",
-"name":"Կնունքի փաթեթ",
-"staff":[
-{"id":"p31","professionalId":"mtmym7un5ykjwq1p2dn","name":"Air Magic Ֆոտո զոնա","type":"Ֆոտո զոնա","minPrice":25000,"maxPrice":25000,"profit":0},
-{"id":"p32","professionalId":"mtn5n9v546ew1u7k6j","name":"Ֆոտո նկարահանում Հովհաննես","type":"Ֆոտո","minPrice":23000,"maxPrice":23000,"profit":0},
-{"id":"p33","professionalId":"mtn060a0otrqsqn9blc","name":"Հրեշտակներ պար","type":"Պար","minPrice":20000,"maxPrice":20000,"profit":0},
-{"id":"p34","professionalId":"mtmxrakk7wjy38hjvos","name":"Ռիլմեյքեր Maga Dallaqyan","type":"Ռիլմեյքեր","minPrice":15000,"maxPrice":15000,"profit":0}
-]
-},
-{
-"id":"mtnh6l1lgebu4yccu95",
-"name":"Ատամհատիկ",
-"staff":[
-{"id":"p41","professionalId":"mtn5n9v546ew1u7k6j","name":"Ֆոտո նկարահանում Հովհաննես","type":"Ֆոտո","minPrice":23000,"maxPrice":23000,"profit":0},
-{"id":"p42","professionalId":"mtmym7un5ykjwq1p2dn","name":"Air Magic Ֆոտո զոնա","type":"Ֆոտո զոնա","minPrice":25000,"maxPrice":25000,"profit":0},
-{"id":"p43","professionalId":"mtmxrakk7wjy38hjvos","name":"Ռիլմեյքեր Maga Dallaqyan","type":"Ռիլմեյքեր","minPrice":15000,"maxPrice":15000,"profit":0},
-{"id":"p44","professionalId":"mtmx6r4xcfebc27w3g","name":"Արջուկների մուտք Hska Arjuk","type":"Արջուկներ","minPrice":28000,"maxPrice":28000,"profit":0}
-]
-},
-{
-"id":"mtnkyhdbzujotoomdlm",
-"name":"Մայրիկի համար",
-"staff":[
-{"id":"p51","professionalId":"mtn5n9v546ew1u7k6j","name":"Ֆոտո նկարահանում Հովհաննես","type":"Ֆոտո","minPrice":23000,"maxPrice":23000,"profit":0},
-{"id":"p52","professionalId":"mtn0kkkak6yjkpj9kgb","name":"Գոռ Շահինյան","type":"Միայն Ջութակ","minPrice":15000,"maxPrice":15000,"profit":0},
-{"id":"p53","professionalId":"mtmxrakk7wjy38hjvos","name":"Ռիլմեյքեր Maga Dallaqyan","type":"Ռիլմեյքեր","minPrice":15000,"maxPrice":15000,"profit":0},
-{"id":"p54","professionalId":"mtn08z3pofggfyjc90i","name":"Մայրիկի ծաղկեփունջ","type":"Ծաղիկ","minPrice":10000,"maxPrice":10000,"profit":0},
-{"id":"p55","professionalId":"mtmym7un5ykjwq1p2dn","name":"Air Magic Ֆոտո զոնա","type":"Ֆոտո զոնա","minPrice":25000,"maxPrice":25000,"profit":0}
-]
-},
-{
-"id":"mto5pu9a9y4q9tr0ghl",
-"name":"Ամուսնության առաջարկ Ասա այո",
-"staff":[
-{"id":"p61","professionalId":"mtmxrakk7wjy38hjvos","name":"Ռիլմեյքեր Maga Dallaqyan","type":"Ռիլմեյքեր","minPrice":15000,"maxPrice":15000,"profit":0},
-{"id":"p62","professionalId":"mtn0kkkak6yjkpj9kgb","name":"Գոռ Շահինյան","type":"Միայն Ջութակ","minPrice":15000,"maxPrice":15000,"profit":0},
-{"id":"p63","professionalId":"mtn060a0otrqsqn9blc","name":"Հրեշտակներ պար","type":"Պար","minPrice":20000,"maxPrice":20000,"profit":0},
-{"id":"p64","professionalId":"mtmym7un5ykjwq1p2dn","name":"Air Magic Ֆոտո զոնա","type":"Ֆոտո զոնա","minPrice":25000,"maxPrice":25000,"profit":0}
-]
-}
-];
+/*
+Սա նոր KEY է։
+Դրա շնորհիվ հին սխալ տարբերակի պատճառով
+վերականգնումը չի արգելափակվի։
+*/
+const SEED_KEY="momentoo_correct_seed_20260906_v1";
 
 const DEFAULT_CATS=[
 "DJ-ներ",
@@ -376,207 +374,613 @@ const DEFAULT_CATS=[
 "Այլ"
 ];
 
+const OLD_PROS=[
+
+{
+id:"mtmtembj1cvooecjjlo",
+name:"Սաքո Տերոյան",
+type:"DJ",
+category:"DJ-ներ",
+minPrice:25000,
+maxPrice:25000
+},
+
+{
+id:"mtmttaji0r8sugd24zi",
+name:"Գոռ Շահինյան",
+type:"DJ+Ջութակ",
+category:"DJ-ներ",
+minPrice:25000,
+maxPrice:25000
+},
+
+{
+id:"mtmx6r4xcfebc27w3g",
+name:"Արջուկների մուտք Hska Arjuk",
+type:"2 պարային շոու,մասնակղում են տորթի արարողությանը,լուսանկարում են և ավարտում",
+category:"Արջուկներ / կերպարներ",
+minPrice:28000,
+maxPrice:28000
+},
+
+{
+id:"mtmxrakk7wjy38hjvos",
+name:"Ռիլմեյքեր Maga Dallaqyan",
+type:"Նկարում է մոնտաժում և հանձնում",
+category:"Ռիլմեյքերներ",
+minPrice:15000,
+maxPrice:15000
+},
+
+{
+id:"mtmym7un5ykjwq1p2dn",
+name:"Air Magic Ֆոտո զոնա",
+type:"Ֆոտո զոնա",
+category:"Ֆոտոզոնա / Դեկոր",
+minPrice:25000,
+maxPrice:25000
+},
+
+{
+id:"mtn060a0otrqsqn9blc",
+name:"Հրեշտակներ պար (hreshtakneri vardzuyt) 077815527",
+type:"Պարում են 2 հրեշտակներ",
+category:"Պարային շոուներ",
+minPrice:20000,
+maxPrice:20000
+},
+
+{
+id:"mtn08z3pofggfyjc90i",
+name:"Մայրիկի ծաղկեփունջ",
+type:"Ծաղիկ մայրիկիմ",
+category:"Ծաղիկներ",
+minPrice:5000,
+maxPrice:5000
+},
+
+{
+id:"mtn0kkkak6yjkpj9kgb",
+name:"Գոռ Շահինյան",
+type:"Միայն Ջութակ",
+category:"Ջութակահարներ",
+minPrice:15000,
+maxPrice:15000
+},
+
+{
+id:"mtn2zej7cy38tl9dhm6",
+name:"Դրոնով նկարահանում Mshoosh_ 077872907",
+type:"Գենդեր փարթիի համար: Հենց նույն օրը դուք կարող եք ստանալ նկարած կադրերը և առաջիկա մոտ օրերը, հնարավոր է հենց հաջորդ օրը մոնտաժված տարբերակը",
+category:"Դրոն նկարահանում",
+minPrice:20000,
+maxPrice:20000
+},
+
+{
+id:"mtn3al2x7doc8kemllj",
+name:"Դրոն Mshosh",
+type:"Ցանակած նկարահանում մինչև 1 ժամ",
+category:"Դրոն նկարահանում",
+minPrice:20000,
+maxPrice:20000
+},
+
+{
+id:"mtn3d8r07xhgg8t79p3",
+name:"Քանոնահարուհի",
+type:"Մտնում է ներկայանալի հագուստ,ծրագիր,աանոնի ստենդ",
+category:"Երաժիշտներ",
+minPrice:25000,
+maxPrice:25000
+},
+
+{
+id:"mtn4y7p9l85340fanub",
+name:"Աշոտ Օհանյան",
+type:"Դրոնով նկարահանում 094177055",
+category:"Դրոն նկարահանում",
+minPrice:15000,
+maxPrice:15000
+},
+
+{
+id:"mtn5n9v546ew1u7k6j",
+name:"Ֆոտո նկարահանում Հովհաննես",
+type:"Գալ նկարել մշակել անսահմանափակ 094555843",
+category:"Լուսանկարիչներ",
+minPrice:23000,
+maxPrice:23000
+},
+
+{
+id:"mtmxpdzz2sfgucjqh3f",
+name:"Ֆոտո Զոնա (photo_zona_kar)",
+type:"Ֆոտո զոնան մնում է առավոտից գիշեր",
+category:"Ֆոտոզոնա / Դեկոր",
+minPrice:30000,
+maxPrice:30000
+}
+
+];
+
+const OLD_PACKS=[
+
+{
+id:"mtmxu92ub7afxeutirp",
+name:"Երեխայի ծնունդ",
+staff:[
+
+{
+id:"ep1",
+professionalId:"mtmtembj1cvooecjjlo",
+name:"Սաքո Տերոյան",
+type:"DJ",
+category:"DJ-ներ",
+minPrice:25000,
+maxPrice:25000,
+profit:0
+},
+
+{
+id:"ep2",
+professionalId:"mtmx6r4xcfebc27w3g",
+name:"Արջուկների մուտք Hska Arjuk",
+type:"2 պարային շոու,մասնակղում են տորթի արարողությանը,լուսանկարում են և ավարտում",
+category:"Արջուկներ / կերպարներ",
+minPrice:26000,
+maxPrice:26000,
+profit:0
+},
+
+{
+id:"ep3",
+professionalId:"mtmxpdzz2sfgucjqh3f",
+name:"Ֆոտո Զոնա (photo_zona_kar)",
+type:"Ֆոտո զոնան մնում է առավոտից գիշեր",
+category:"Ֆոտոզոնա / Դեկոր",
+minPrice:30000,
+maxPrice:30000,
+profit:0
+},
+
+{
+id:"ep4",
+professionalId:"mtmxrakk7wjy38hjvos",
+name:"Ռիլմեյքեր Maga Dallaqyan",
+type:"Նկարում է մոնտաժում և հանձնում",
+category:"Ռիլմեյքերներ",
+minPrice:10000,
+maxPrice:10000,
+profit:0
+}
+
+]
+},
+
+{
+id:"mtn0msot5e1bvsj4wnd",
+name:"Նորածնի դուրսգրում",
+staff:[
+
+{
+id:"nb1",
+professionalId:"mtn060a0otrqsqn9blc",
+name:"Հրեշտակներ պար (hreshtakneri vardzuyt) 077815527",
+type:"Պարում են 2 հրեշտակներ",
+category:"Պարային շոուներ",
+minPrice:20000,
+maxPrice:20000,
+profit:0
+},
+
+{
+id:"nb2",
+professionalId:"mtmttaji0r8sugd24zi",
+name:"Գոռ Շահինյան",
+type:"DJ+Ջութակ",
+category:"DJ-ներ",
+minPrice:0,
+maxPrice:0,
+profit:0
+},
+
+{
+id:"nb3",
+professionalId:"mtn08z3pofggfyjc90i",
+name:"Մայրիկի ծաղկեփունջ",
+type:"Ծաղիկ մայրիկիմ",
+category:"Ծաղիկներ",
+minPrice:5000,
+maxPrice:5000,
+profit:0
+},
+
+{
+id:"nb4",
+professionalId:"mtmxrakk7wjy38hjvos",
+name:"Ռիլմեյքեր Maga Dallaqyan",
+type:"Նկարում է մոնտաժում և հանձնում",
+category:"Ռիլմեյքերներ",
+minPrice:10000,
+maxPrice:10000,
+profit:0
+},
+
+{
+id:"nb5",
+professionalId:"mtn0kkkak6yjkpj9kgb",
+name:"Գոռ Շահինյան",
+type:"Միայն Ջութակ",
+category:"Ջութակահարներ",
+minPrice:15000,
+maxPrice:15000,
+profit:0
+}
+
+]
+},
+
+{
+id:"mtne1lh48vvvyj6d675",
+name:"Կնունքի փաթեթ",
+staff:[
+
+{
+id:"kn1",
+professionalId:"mtmym7un5ykjwq1p2dn",
+name:"Air Magic Ֆոտո զոնա",
+type:"Ֆոտո զոնա",
+category:"Ֆոտոզոնա / Դեկոր",
+minPrice:25000,
+maxPrice:25000,
+profit:0
+},
+
+{
+id:"kn2",
+professionalId:"mtn5n9v546ew1u7k6j",
+name:"Ֆոտո նկարահանում Հովհաննես",
+type:"Գալ նկարել մշակել անսահմանափակ 094555843",
+category:"Լուսանկարիչներ",
+minPrice:23000,
+maxPrice:23000,
+profit:0
+},
+
+{
+id:"kn3",
+professionalId:"mtn060a0otrqsqn9blc",
+name:"Հրեշտակներ պար (hreshtakneri vardzuyt) 077815527",
+type:"Պարում են 2 հրեշտակներ",
+category:"Պարային շոուներ",
+minPrice:20000,
+maxPrice:20000,
+profit:0
+},
+
+{
+id:"kn4",
+professionalId:"mtmxrakk7wjy38hjvos",
+name:"Ռիլմեյքեր Maga Dallaqyan",
+type:"Նկարում է մոնտաժում և հանձնում",
+category:"Ռիլմեյքերներ",
+minPrice:15000,
+maxPrice:15000,
+profit:0
+}
+
+]
+},
+
+{
+id:"mtnh6l1lgebu4yccu95",
+name:"Ատամհատիկ",
+staff:[
+
+{
+id:"at1",
+professionalId:"mtn5n9v546ew1u7k6j",
+name:"Ֆոտո նկարահանում Հովհաննես",
+type:"Գալ նկարել մշակել անսահմանափակ 094555843",
+category:"Լուսանկարիչներ",
+minPrice:23000,
+maxPrice:23000,
+profit:0
+},
+
+{
+id:"at2",
+professionalId:"mtmym7un5ykjwq1p2dn",
+name:"Air Magic Ֆոտո զոնա",
+type:"Ֆոտո զոնա",
+category:"Ֆոտոզոնա / Դեկոր",
+minPrice:25000,
+maxPrice:25000,
+profit:0
+},
+
+{
+id:"at3",
+professionalId:"mtmxrakk7wjy38hjvos",
+name:"Ռիլմեյքեր Maga Dallaqyan",
+type:"Նկարում է մոնտաժում և հանձնում",
+category:"Ռիլմեյքերներ",
+minPrice:15000,
+maxPrice:15000,
+profit:0
+},
+
+{
+id:"at4",
+professionalId:"mtmx6r4xcfebc27w3g",
+name:"Արջուկների մուտք Hska Arjuk",
+type:"2 պարային շոու,մասնակղում են տորթի արարողությանը,լուսանկարում են և ավարտում",
+category:"Արջուկներ / կերպարներ",
+minPrice:28000,
+maxPrice:28000,
+profit:0
+}
+
+]
+},
+
+{
+id:"mtnkyhdbzujotoomdlm",
+name:"Մայրիկի համար",
+staff:[
+
+{
+id:"ma1",
+professionalId:"mtn5n9v546ew1u7k6j",
+name:"Ֆոտո նկարահանում Հովհաննես",
+type:"Գալ նկարել մշակել անսահմանափակ 094555843",
+category:"Լուսանկարիչներ",
+minPrice:23000,
+maxPrice:23000,
+profit:0
+},
+
+{
+id:"ma2",
+professionalId:"mtn0kkkak6yjkpj9kgb",
+name:"Գոռ Շահինյան",
+type:"Միայն Ջութակ",
+category:"Ջութակահարներ",
+minPrice:15000,
+maxPrice:15000,
+profit:0
+},
+
+{
+id:"ma3",
+professionalId:"mtmxrakk7wjy38hjvos",
+name:"Ռիլմեյքեր Maga Dallaqyan",
+type:"Նկարում է մոնտաժում և հանձնում",
+category:"Ռիլմեյքերներ",
+minPrice:15000,
+maxPrice:15000,
+profit:0
+},
+
+{
+id:"ma4",
+professionalId:"mtn08z3pofggfyjc90i",
+name:"Մայրիկի ծաղկեփունջ",
+type:"Ծաղիկ մայրիկիմ",
+category:"Ծաղիկներ",
+minPrice:10000,
+maxPrice:10000,
+profit:0
+},
+
+{
+id:"ma5",
+professionalId:"mtmym7un5ykjwq1p2dn",
+name:"Air Magic Ֆոտո զոնա",
+type:"Ֆոտո զոնա",
+category:"Ֆոտոզոնա / Դեկոր",
+minPrice:25000,
+maxPrice:25000,
+profit:0
+}
+
+]
+},
+
+{
+id:"mto5pu9a9y4q9tr0ghl",
+name:"Ամուսնության առաջարկ Ասա այո",
+staff:[
+
+{
+id:"aa1",
+professionalId:"mtmxrakk7wjy38hjvos",
+name:"Ռիլմեյքեր Maga Dallaqyan",
+type:"Նկարում է մոնտաժում և հանձնում",
+category:"Ռիլմեյքերներ",
+minPrice:15000,
+maxPrice:15000,
+profit:0
+},
+
+{
+id:"aa2",
+professionalId:"mtn0kkkak6yjkpj9kgb",
+name:"Գոռ Շահինյան",
+type:"Միայն Ջութակ",
+category:"Ջութակահարներ",
+minPrice:15000,
+maxPrice:15000,
+profit:0
+},
+
+{
+id:"aa3",
+professionalId:"mtn060a0otrqsqn9blc",
+name:"Հրեշտակներ պար (hreshtakneri vardzuyt) 077815527",
+type:"Պարում են 2 հրեշտակներ",
+category:"Պարային շոուներ",
+minPrice:20000,
+maxPrice:20000,
+profit:0
+},
+
+{
+id:"aa4",
+professionalId:"mtmym7un5ykjwq1p2dn",
+name:"Air Magic Ֆոտո զոնա",
+type:"Ֆոտո զոնա",
+category:"Ֆոտոզոնա / Դեկոր",
+minPrice:25000,
+maxPrice:25000,
+profit:0
+}
+
+]
+}
+
+];
+
 let pros=[];
 let packs=[];
 let cats=[];
+
 let manageCat=null;
 let pickerCat=null;
 
 let current={
- id:null,
- name:"",
- staff:[]
+id:null,
+name:"",
+staff:[]
 };
 
-function uid(){
- return Date.now().toString(36)+Math.random().toString(36).slice(2);
+function clone(x){
+return JSON.parse(JSON.stringify(x));
 }
 
-function clone(x){
- return JSON.parse(JSON.stringify(x));
+function uid(){
+return Date.now().toString(36)+Math.random().toString(36).slice(2);
 }
 
 function money(v){
- return (Number(v)||0).toLocaleString("hy-AM")+" ֏";
+return (Number(v)||0).toLocaleString("hy-AM")+" ֏";
 }
 
 function esc(v){
- return String(v??"")
- .replace(/&/g,"&amp;")
- .replace(/</g,"&lt;")
- .replace(/>/g,"&gt;")
- .replace(/"/g,"&quot;");
+return String(v??"")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;");
 }
 
-function readArr(key){
- try{
-   const x=JSON.parse(localStorage.getItem(key)||"[]");
-   return Array.isArray(x)?x:[];
- }catch(e){
-   return [];
- }
+function getArray(key){
+try{
+const a=JSON.parse(localStorage.getItem(key)||"[]");
+return Array.isArray(a)?a:[];
+}catch(e){
+return [];
 }
-
-function guessCat(p){
-
- const t=((p.name||"")+" "+(p.type||"")).toLowerCase();
-
- if(t.includes("ջութակ")) return "Ջութակահարներ";
- if(t.includes("dj")||t.includes("դիջեյ")) return "DJ-ներ";
- if(t.includes("ռիլ")) return "Ռիլմեյքերներ";
- if(t.includes("ֆոտո նկար")||t.includes("լուսանկար")) return "Լուսանկարիչներ";
- if(t.includes("դրոն")) return "Դրոն նկարահանում";
- if(t.includes("ֆոտո զոն")||t.includes("ֆոտոզոն")||t.includes("դեկոր"))
-   return "Ֆոտոզոնա / Դեկոր";
- if(t.includes("հրեշտակ")||t.includes("պար")) return "Պարային շոուներ";
- if(t.includes("արջ")) return "Արջուկներ / կերպարներ";
- if(t.includes("քանոն")) return "Երաժիշտներ";
- if(t.includes("ծաղիկ")) return "Ծաղիկներ";
-
- return "Այլ";
-}
-
-function normalizePro(p){
-
- return {
-   ...p,
-   id:p.id||uid(),
-   minPrice:Number(p.minPrice??p.price??0),
-   maxPrice:Number(p.maxPrice??p.minPrice??p.price??0),
-   category:p.category||guessCat(p)
- };
-
-}
-
-function normalizeStaff(s){
-
- return {
-   ...s,
-   id:s.id||uid(),
-   minPrice:Number(s.minPrice??s.cost??0),
-   maxPrice:Number(s.maxPrice??s.minPrice??s.cost??0),
-   profit:Number(s.profit||0)
- };
-
 }
 
 function savePros(){
- localStorage.setItem(PRO_KEY,JSON.stringify(pros));
+localStorage.setItem(PRO_KEY,JSON.stringify(pros));
 }
 
 function savePacks(){
- localStorage.setItem(PACK_KEY,JSON.stringify(packs));
+localStorage.setItem(PACK_KEY,JSON.stringify(packs));
 }
 
 function saveCats(){
- localStorage.setItem(CAT_KEY,JSON.stringify(cats));
+localStorage.setItem(CAT_KEY,JSON.stringify(cats));
+}
+
+/*
+Առաջին անգամ այս նոր կոդով բացելիս
+մեկ անգամ վերադարձնում է հին 14 մասնագետը և 6 փաթեթը։
+Հետո այլևս ավտոմատ չի վերականգնում։
+*/
+function seedOldData(){
+
+if(localStorage.getItem(SEED_KEY)==="1"){
+return;
+}
+
+pros=clone(OLD_PROS);
+packs=clone(OLD_PACKS);
+cats=clone(DEFAULT_CATS);
+
+savePros();
+savePacks();
+saveCats();
+
+localStorage.setItem(SEED_KEY,"1");
+
 }
 
 function load(){
 
- pros=readArr(PRO_KEY);
- packs=readArr(PACK_KEY);
- cats=readArr(CAT_KEY);
+seedOldData();
 
- const initialized=
- localStorage.getItem(INIT_KEY)==="1";
+pros=getArray(PRO_KEY);
+packs=getArray(PACK_KEY);
+cats=getArray(CAT_KEY);
 
- if(!initialized){
+if(!cats.length){
+cats=clone(DEFAULT_CATS);
+saveCats();
+}
 
-   if(pros.length<14){
-     pros=clone(RECOVERED_PROS);
-   }
+renderAll();
 
-   if(packs.length<6){
-     packs=clone(RECOVERED_PACKS);
-   }
-
-   localStorage.setItem(INIT_KEY,"1");
- }
-
- pros=pros.map(normalizePro);
-
- packs=packs.map(p=>({
-   ...p,
-   staff:(p.staff||[]).map(normalizeStaff)
- }));
-
- if(!cats.length){
-   cats=[...DEFAULT_CATS];
- }
-
- pros.forEach(p=>{
-   if(p.category&&!cats.includes(p.category)){
-     cats.push(p.category);
-   }
- });
-
- savePros();
- savePacks();
- saveCats();
-
- renderAll();
 }
 
 function hidePanels(){
-
- ["catsPanel","prosPanel","savedPanel"]
- .forEach(id=>{
-   document.getElementById(id).classList.add("hidden");
- });
-
+document.getElementById("catsPanel").classList.add("hidden");
+document.getElementById("prosPanel").classList.add("hidden");
+document.getElementById("savedPanel").classList.add("hidden");
 }
 
 function openPros(){
 
- hidePanels();
+hidePanels();
 
- document
- .getElementById("prosPanel")
- .classList.remove("hidden");
+document.getElementById("prosPanel").classList.remove("hidden");
 
- manageCat=null;
+manageCat=null;
 
- renderProBrowser();
-
- window.scrollTo({
-   top:0,
-   behavior:"smooth"
- });
+renderProsBrowser();
 
 }
 
 function openCats(){
 
- hidePanels();
+hidePanels();
 
- document
- .getElementById("catsPanel")
- .classList.remove("hidden");
+document.getElementById("catsPanel").classList.remove("hidden");
 
- renderCats();
+renderCats();
 
 }
 
 function openSaved(){
 
- hidePanels();
+hidePanels();
 
- document
- .getElementById("savedPanel")
- .classList.remove("hidden");
+document.getElementById("savedPanel").classList.remove("hidden");
 
- renderSaved();
+renderSaved();
 
 }
 
 function renderAll(){
 
- renderCatSelect();
- renderCats();
- renderProBrowser();
- renderSaved();
- renderCurrent();
+renderCatSelect();
+renderCats();
+renderProsBrowser();
+renderSaved();
+renderCurrent();
 
 }
 
@@ -584,202 +988,150 @@ function renderAll(){
 
 function addCategory(){
 
- const el=
- document.getElementById("newCat");
+const input=document.getElementById("newCat");
 
- const name=
- el.value.trim();
+const name=input.value.trim();
 
- if(!name)return;
+if(!name)return;
 
- if(
-   cats.some(
-     x=>x.toLowerCase()===name.toLowerCase()
-   )
- ){
-   alert("Այս բաժինն արդեն կա։");
-   return;
- }
+if(cats.includes(name)){
+alert("Այս բաժինն արդեն կա");
+return;
+}
 
- cats.push(name);
+cats.push(name);
 
- saveCats();
+saveCats();
 
- el.value="";
+input.value="";
 
- renderAll();
+renderAll();
 
 }
 
-function quickCategory(){
+function quickCat(){
 
- const name=
- prompt("Գրիր նոր բաժնի անունը");
+const name=prompt("Նոր բաժնի անունը");
 
- if(!name||!name.trim())return;
+if(!name)return;
 
- const n=name.trim();
+const n=name.trim();
 
- if(!cats.includes(n)){
-   cats.push(n);
-   saveCats();
- }
+if(!n)return;
 
- renderCatSelect();
+if(!cats.includes(n)){
+cats.push(n);
+saveCats();
+}
 
- document
- .getElementById("pCat")
- .value=n;
+renderCatSelect();
+
+document.getElementById("pCat").value=n;
 
 }
 
-function renameCategory(oldName){
+function renameCat(oldName){
 
- const n=
- prompt(
-   "Բաժնի նոր անունը",
-   oldName
- );
+const n=prompt("Նոր անուն",oldName);
 
- if(!n||!n.trim())return;
+if(!n)return;
 
- const newName=n.trim();
+const newName=n.trim();
 
- if(
-   newName!==oldName &&
-   cats.includes(newName)
- ){
-   alert("Այս անունով բաժին արդեն կա։");
-   return;
- }
+if(!newName)return;
 
- cats=
- cats.map(
-   x=>x===oldName?newName:x
- );
+pros.forEach(p=>{
+if(p.category===oldName)p.category=newName;
+});
 
- pros.forEach(p=>{
-   if(p.category===oldName){
-     p.category=newName;
-   }
- });
+packs.forEach(p=>{
+(p.staff||[]).forEach(s=>{
+if(s.category===oldName)s.category=newName;
+});
+});
 
- packs.forEach(pack=>{
-   (pack.staff||[]).forEach(s=>{
-     if(s.category===oldName){
-       s.category=newName;
-     }
-   });
- });
+cats=cats.map(x=>x===oldName?newName:x);
 
- if(manageCat===oldName){
-   manageCat=newName;
- }
+if(manageCat===oldName)manageCat=newName;
+if(pickerCat===oldName)pickerCat=newName;
 
- if(pickerCat===oldName){
-   pickerCat=newName;
- }
+saveCats();
+savePros();
+savePacks();
 
- saveCats();
- savePros();
- savePacks();
-
- renderAll();
+renderAll();
 
 }
 
-function deleteCategory(name){
+function deleteCat(name){
 
- const count=
- pros.filter(
-   p=>p.category===name
- ).length;
+const count=pros.filter(p=>p.category===name).length;
 
- if(count){
+if(count>0){
+alert("Այս բաժնում մասնագետ կա։ Նախ տեղափոխիր մասնագետներին ուրիշ բաժին։");
+return;
+}
 
-   alert(
-     "Այս բաժնում կա "+
-     count+
-     " մասնագետ։ Նախ տեղափոխիր նրանց ուրիշ բաժին, հետո ջնջիր բաժինը։"
-   );
+if(!confirm("Ջնջե՞լ բաժինը"))return;
 
-   return;
- }
+cats=cats.filter(x=>x!==name);
 
- if(
-   !confirm(
-     "Ջնջե՞լ «"+
-     name+
-     "» բաժինը։"
-   )
- )return;
+saveCats();
 
- cats=
- cats.filter(
-   x=>x!==name
- );
-
- saveCats();
-
- renderAll();
+renderAll();
 
 }
 
 function renderCats(){
 
- const b=
- document.getElementById("categoryManager");
+const box=document.getElementById("catsList");
 
- b.innerHTML=
- cats.map(c=>`
+box.innerHTML=cats.map(c=>`
 
- <div class="saved">
+<div class="saved">
 
- <div>
- <strong>${esc(c)}</strong>
- <div class="note">
- ${pros.filter(p=>p.category===c).length}
- մասնագետ
- </div>
- </div>
+<div>
+<strong>${esc(c)}</strong>
+<div class="note">
+${pros.filter(p=>p.category===c).length} մասնագետ
+</div>
+</div>
 
- <div>
+<div>
 
- <button
- class="gold"
- onclick='renameCategory(${JSON.stringify(c)})'>
- ✏️
- </button>
+<button
+class="gold"
+onclick='renameCat(${JSON.stringify(c)})'>
+✏️
+</button>
 
- <button
- class="danger"
- onclick='deleteCategory(${JSON.stringify(c)})'>
- 🗑
- </button>
+<button
+class="danger"
+onclick='deleteCat(${JSON.stringify(c)})'>
+🗑
+</button>
 
- </div>
+</div>
 
- </div>
+</div>
 
- `).join("");
+`).join("");
 
 }
 
 function renderCatSelect(){
 
- const s=
- document.getElementById("pCat");
+const sel=document.getElementById("pCat");
 
- const old=s.value;
+const old=sel.value;
 
- s.innerHTML=
- cats.map(c=>
- `<option value="${esc(c)}">${esc(c)}</option>`
- ).join("");
+sel.innerHTML=cats.map(c=>
+`<option value="${esc(c)}">${esc(c)}</option>`
+).join("");
 
- if(cats.includes(old)){
-   s.value=old;
- }
+if(cats.includes(old)){
+sel.value=old;
+}
 
 }
 
@@ -787,592 +1139,452 @@ function renderCatSelect(){
 
 function addPro(){
 
- const name=
- document.getElementById("pName").value.trim();
+const name=document.getElementById("pName").value.trim();
+const type=document.getElementById("pType").value.trim();
+const category=document.getElementById("pCat").value;
 
- const type=
- document.getElementById("pType").value.trim();
+const min=Math.max(
+0,
+Number(document.getElementById("pMin").value)||0
+);
 
- const category=
- document.getElementById("pCat").value;
+let max=Math.max(
+0,
+Number(document.getElementById("pMax").value)||0
+);
 
- const min=
- Math.max(
-   0,
-   Number(
-     document.getElementById("pMin").value
-   )||0
- );
+if(!name){
+alert("Գրիր անունը");
+return;
+}
 
- let max=
- Math.max(
-   0,
-   Number(
-     document.getElementById("pMax").value
-   )||0
- );
+if(!max)max=min;
 
- if(!name){
+if(max<min){
+alert("Մաքսիմալ գինը չի կարող փոքր լինել մինիմալից");
+return;
+}
 
-   alert("Գրիր մասնագետի անունը։");
+pros.push({
+id:uid(),
+name,
+type,
+category,
+minPrice:min,
+maxPrice:max
+});
 
-   return;
- }
+savePros();
 
- if(!max){
-   max=min;
- }
+document.getElementById("pName").value="";
+document.getElementById("pType").value="";
+document.getElementById("pMin").value="";
+document.getElementById("pMax").value="";
 
- if(max<min){
+manageCat=category;
 
-   alert(
-     "Մաքսիմալ գինը չի կարող փոքր լինել մինիմալից։"
-   );
-
-   return;
- }
-
- pros.push({
-   id:uid(),
-   name,
-   type,
-   category,
-   minPrice:min,
-   maxPrice:max
- });
-
- savePros();
-
- ["pName","pType","pMin","pMax"]
- .forEach(id=>{
-   document.getElementById(id).value="";
- });
-
- manageCat=category;
-
- renderAll();
+renderAll();
 
 }
 
 function chooseManageCat(cat){
 
- manageCat=cat;
+manageCat=cat;
 
- renderProBrowser();
-
-}
-
-function backManageCats(){
-
- manageCat=null;
-
- renderProBrowser();
+renderProsBrowser();
 
 }
 
-function renderProBrowser(){
+function backManage(){
 
- const b=
- document.getElementById("proBrowser");
+manageCat=null;
 
- if(!manageCat){
+renderProsBrowser();
 
-   b.innerHTML=`
+}
 
-   <h3>Ընտրիր բաժինը</h3>
+function renderProsBrowser(){
 
-   <div class="categories">
+const box=document.getElementById("prosBrowser");
 
-   ${cats.map(c=>`
+if(!manageCat){
 
-   <button
-   class="categoryCard"
-   onclick='chooseManageCat(${JSON.stringify(c)})'>
+box.innerHTML=`
 
-   ${esc(c)}
+<h3>Ընտրիր բաժինը</h3>
 
-   <small>
-   ${pros.filter(p=>p.category===c).length}
-   մասնագետ
-   </small>
+<div class="categories">
 
-   </button>
+${cats.map(c=>`
 
-   `).join("")}
+<button
+class="category"
+onclick='chooseManageCat(${JSON.stringify(c)})'>
 
-   </div>
-   `;
+${esc(c)}
 
-   return;
- }
+<small>
+${pros.filter(p=>p.category===c).length} մասնագետ
+</small>
 
- const list=
- pros.filter(
-   p=>p.category===manageCat
- );
+</button>
 
- b.innerHTML=`
+`).join("")}
 
- <div class="manageTop">
+</div>
 
- <button
- class="light"
- onclick="backManageCats()">
- ← Բաժիններ
- </button>
+`;
 
- <strong>
- ${esc(manageCat)}
- </strong>
+return;
 
- </div>
+}
 
- ${
-   list.length
-   ?list.map(proRow).join("")
-   :"<p class='note'>Այս բաժնում մասնագետ դեռ չկա։</p>"
- }
+const list=pros.filter(p=>p.category===manageCat);
 
- `;
+box.innerHTML=`
+
+<div class="row" style="margin-bottom:10px">
+
+<button class="light" onclick="backManage()">
+← Բաժիններ
+</button>
+
+<strong>${esc(manageCat)}</strong>
+
+</div>
+
+${list.length
+?list.map(proRow).join("")
+:"<div class='note'>Այս բաժնում մասնագետ չկա</div>"
+}
+
+`;
 
 }
 
 function proRow(p){
 
- return `
+return `
 
- <div class="pro">
+<div class="pro">
 
- <div>
+<div>
+<label>Անուն</label>
+<input
+value="${esc(p.name)}"
+oninput="editPro('${p.id}','name',this.value)">
+</div>
 
- <label>Անուն</label>
+<div>
+<label>Նկարագրություն</label>
+<input
+value="${esc(p.type)}"
+oninput="editPro('${p.id}','type',this.value)">
+</div>
 
- <input
- value="${esc(p.name)}"
- oninput="editPro('${p.id}','name',this.value)">
+<div>
+<label>Բաժին</label>
 
- </div>
+<select onchange="editPro('${p.id}','category',this.value)">
 
- <div>
+${cats.map(c=>`
+<option
+value="${esc(c)}"
+${p.category===c?"selected":""}>
+${esc(c)}
+</option>
+`).join("")}
 
- <label>Նկարագրություն</label>
+</select>
 
- <input
- value="${esc(p.type)}"
- oninput="editPro('${p.id}','type',this.value)">
+</div>
 
- </div>
+<div>
+<label>Մին.</label>
+<input
+type="number"
+inputmode="numeric"
+value="${Number(p.minPrice)||0}"
+oninput="editPro('${p.id}','minPrice',this.value)">
+</div>
 
- <div>
+<div>
+<label>Մաքս.</label>
+<input
+type="number"
+inputmode="numeric"
+value="${Number(p.maxPrice)||0}"
+oninput="editPro('${p.id}','maxPrice',this.value)">
+</div>
 
- <label>Բաժին</label>
+<button
+class="primary"
+onclick="savePro('${p.id}')">
+Պահել
+</button>
 
- <select
- onchange="editPro('${p.id}','category',this.value)">
+<button
+class="danger"
+onclick="deletePro('${p.id}')">
+🗑
+</button>
 
- ${cats.map(c=>
- `<option
- value="${esc(c)}"
- ${p.category===c?"selected":""}>
- ${esc(c)}
- </option>`
- ).join("")}
+</div>
 
- </select>
-
- </div>
-
- <div>
-
- <label>Մին.</label>
-
- <input
- type="number"
- inputmode="numeric"
- value="${p.minPrice}"
- oninput="editPro('${p.id}','minPrice',this.value)">
-
- </div>
-
- <div>
-
- <label>Մաքս.</label>
-
- <input
- type="number"
- inputmode="numeric"
- value="${p.maxPrice}"
- oninput="editPro('${p.id}','maxPrice',this.value)">
-
- </div>
-
- <button
- class="primary"
- onclick="savePro('${p.id}')">
- Պահել
- </button>
-
- <button
- class="danger"
- onclick="deletePro('${p.id}')">
- 🗑
- </button>
-
- </div>
-
- `;
+`;
 
 }
 
-function editPro(id,f,v){
+function editPro(id,field,value){
 
- const p=
- pros.find(
-   x=>x.id===id
- );
+const p=pros.find(x=>x.id===id);
 
- if(!p)return;
+if(!p)return;
 
- if(
-   f==="minPrice" ||
-   f==="maxPrice"
- ){
+if(field==="minPrice"||field==="maxPrice"){
+value=Math.max(0,Number(value)||0);
+}
 
-   v=
-   Math.max(
-     0,
-     Number(v)||0
-   );
-
- }
-
- p[f]=v;
+p[field]=value;
 
 }
 
 function savePro(id){
 
- const p=
- pros.find(
-   x=>x.id===id
- );
+const p=pros.find(x=>x.id===id);
 
- if(!p)return;
+if(!p)return;
 
- if(p.maxPrice<p.minPrice){
-   p.maxPrice=p.minPrice;
- }
+if(Number(p.maxPrice)<Number(p.minPrice)){
+p.maxPrice=p.minPrice;
+}
 
- packs.forEach(pack=>{
+packs.forEach(pack=>{
 
-   (pack.staff||[])
-   .forEach(s=>{
+(pack.staff||[]).forEach(s=>{
 
-     if(s.professionalId===id){
+if(s.professionalId===id){
 
-       s.name=p.name;
-       s.type=p.type;
-       s.category=p.category;
+s.name=p.name;
+s.type=p.type;
+s.category=p.category;
 
-     }
+}
 
-   });
+});
 
- });
+});
 
- savePros();
- savePacks();
+savePros();
+savePacks();
 
- manageCat=p.category;
+manageCat=p.category;
 
- renderAll();
+renderAll();
 
- alert("Պահպանվեց ✅");
+alert("Պահպանվեց ✅");
 
 }
 
 function deletePro(id){
 
- const p=
- pros.find(
-   x=>x.id===id
- );
+const p=pros.find(x=>x.id===id);
 
- if(!p)return;
+if(!p)return;
 
- const used=
- packs.filter(
-   pack=>
-   (pack.staff||[])
-   .some(
-     s=>s.professionalId===id
-   )
- ).length;
+if(!confirm("Ջնջե՞լ "+p.name+" մասնագետին"))return;
 
- let msg=
- "Ջնջե՞լ «"+
- p.name+
- "» մասնագետին։";
+pros=pros.filter(x=>x.id!==id);
 
- if(used){
+savePros();
 
-   msg+=
-   "\n\nՆա օգտագործված է "+
-   used+
-   " փաթեթում։ Փաթեթներից ինքն իրեն չի ջնջվի։";
-
- }
-
- if(!confirm(msg))return;
-
- pros=
- pros.filter(
-   x=>x.id!==id
- );
-
- savePros();
-
- renderAll();
+renderAll();
 
 }
 
-/* ՓԱԹԵԹՈՒՄ ՄԱՍՆԱԳԵՏ ԸՆՏՐԵԼ */
+/* ՓԱԹԵԹԻ ՄԵՋ ԸՆՏՐՈՒԹՅՈՒՆ */
 
 function openPicker(){
 
- pickerCat=null;
+pickerCat=null;
 
- document
- .getElementById("search")
- .value="";
+document.getElementById("search").value="";
 
- document
- .getElementById("picker")
- .classList.remove("hidden");
+document.getElementById("picker").classList.remove("hidden");
 
- renderPicker();
+renderPicker();
 
 }
 
 function closePicker(){
 
- document
- .getElementById("picker")
- .classList.add("hidden");
+document.getElementById("picker").classList.add("hidden");
 
 }
 
 function choosePickerCat(cat){
 
- pickerCat=cat;
+pickerCat=cat;
 
- document
- .getElementById("search")
- .value="";
+document.getElementById("search").value="";
 
- renderPicker();
+renderPicker();
 
 }
 
-function backPickerCats(){
+function backPicker(){
 
- pickerCat=null;
+pickerCat=null;
 
- document
- .getElementById("search")
- .value="";
-
- renderPicker();
+renderPicker();
 
 }
 
 function pickerSearch(){
 
- const q=
- document
- .getElementById("search")
- .value
- .trim()
- .toLowerCase();
+const q=document.getElementById("search").value.trim().toLowerCase();
 
- if(q){
-   renderPickerSearch(q);
- }else{
-   renderPicker();
- }
+if(!q){
+renderPicker();
+return;
+}
+
+const list=pros.filter(p=>
+(
+(p.name||"")+" "+
+(p.type||"")+" "+
+(p.category||"")
+).toLowerCase().includes(q)
+);
+
+document.getElementById("pickerBody").innerHTML=
+
+list.length
+?list.map(choiceRow).join("")
+:"<div class='note'>Չգտնվեց</div>";
 
 }
 
 function renderPicker(){
 
- const b=
- document.getElementById("pickerBody");
+const box=document.getElementById("pickerBody");
 
- if(!pickerCat){
+if(!pickerCat){
 
-   b.innerHTML=`
+box.innerHTML=`
 
-   <h3>Ընտրիր բաժինը</h3>
+<h3 style="margin-top:16px">
+Ընտրիր բաժինը
+</h3>
 
-   <div class="categories">
+<div class="categories">
 
-   ${cats.map(c=>`
+${cats.map(c=>`
 
-   <button
-   class="categoryCard"
-   onclick='choosePickerCat(${JSON.stringify(c)})'>
+<button
+class="category"
+onclick='choosePickerCat(${JSON.stringify(c)})'>
 
-   ${esc(c)}
+${esc(c)}
 
-   <small>
-   ${pros.filter(p=>p.category===c).length}
-   մասնագետ
-   </small>
+<small>
+${pros.filter(p=>p.category===c).length} մասնագետ
+</small>
 
-   </button>
+</button>
 
-   `).join("")}
+`).join("")}
 
-   </div>
+</div>
 
-   `;
+`;
 
-   return;
-
- }
-
- const list=
- pros.filter(
-   p=>p.category===pickerCat
- );
-
- b.innerHTML=`
-
- <div class="manageTop">
-
- <button
- class="light"
- onclick="backPickerCats()">
- ← Բաժիններ
- </button>
-
- <strong>
- ${esc(pickerCat)}
- </strong>
-
- </div>
-
- ${
-   list.length
-   ?list.map(choiceRow).join("")
-   :"<p class='note'>Այս բաժնում մասնագետ չկա։</p>"
- }
-
- `;
+return;
 
 }
 
-function renderPickerSearch(q){
+const list=pros.filter(p=>p.category===pickerCat);
 
- const list=
- pros.filter(p=>
-   (
-     (p.name||"")+" "+
-     (p.type||"")+" "+
-     (p.category||"")
-   )
-   .toLowerCase()
-   .includes(q)
- );
+box.innerHTML=`
 
- document
- .getElementById("pickerBody")
- .innerHTML=`
+<div class="row" style="margin-top:14px">
 
- <div class="manageTop">
- <strong>Որոնման արդյունքներ</strong>
- </div>
+<button class="light" onclick="backPicker()">
+← Բաժիններ
+</button>
 
- ${
-   list.length
-   ?list.map(choiceRow).join("")
-   :"<p class='note'>Չգտնվեց։</p>"
- }
+<strong>${esc(pickerCat)}</strong>
 
- `;
+</div>
+
+${list.length
+?list.map(choiceRow).join("")
+:"<div class='note'>Այս բաժնում մասնագետ չկա</div>"
+}
+
+`;
 
 }
 
 function choiceRow(p){
 
- return `
+return `
 
- <div class="choice">
+<div class="choice">
 
- <div>
+<div>
 
- <strong>
- ${esc(p.name)}
- </strong>
+<strong>${esc(p.name)}</strong>
 
- <div class="note">
- ${esc(p.type)}
- </div>
+<div class="note">${esc(p.type)}</div>
 
- <span class="badge">
- ${esc(p.category)}
- •
- ${money(p.minPrice)}
- —
- ${money(p.maxPrice)}
- </span>
+<div class="note">
+${money(p.minPrice)} — ${money(p.maxPrice)}
+</div>
 
- </div>
+</div>
 
- <button
- class="primary"
- onclick="addToPack('${p.id}')">
- Ավելացնել
- </button>
+<button
+class="primary"
+onclick="addToPack('${p.id}')">
+Ավելացնել
+</button>
 
- </div>
+</div>
 
- `;
+`;
 
 }
 
 function addToPack(id){
 
- const p=
- pros.find(
-   x=>x.id===id
- );
+const p=pros.find(x=>x.id===id);
 
- if(!p)return;
+if(!p)return;
 
- current.staff.push({
+current.staff.push({
 
-   id:uid(),
+id:uid(),
 
-   professionalId:p.id,
+professionalId:p.id,
 
-   name:p.name,
+name:p.name,
 
-   type:p.type,
+type:p.type,
 
-   category:p.category,
+category:p.category,
 
-   minPrice:Number(p.minPrice),
+minPrice:Number(p.minPrice)||0,
 
-   maxPrice:Number(p.maxPrice),
+maxPrice:Number(p.maxPrice)||0,
 
-   profit:0
+profit:0
 
- });
+});
 
- closePicker();
+closePicker();
 
- renderCurrent();
+renderCurrent();
 
 }
 
@@ -1380,552 +1592,446 @@ function addToPack(id){
 
 function newPackage(){
 
- current={
-   id:null,
-   name:"",
-   staff:[]
- };
+current={
+id:null,
+name:"",
+staff:[]
+};
 
- renderCurrent();
+renderCurrent();
 
- window.scrollTo({
-   top:0,
-   behavior:"smooth"
- });
+hidePanels();
 
 }
 
 function renderCurrent(){
 
- document
- .getElementById("packName")
- .value=current.name||"";
+document.getElementById("packName").value=current.name||"";
 
- const b=
- document.getElementById("staffList");
+const box=document.getElementById("staffList");
 
- if(!current.staff.length){
+if(!current.staff.length){
 
-   b.innerHTML=
-   "<p class='note'>Դեռ մասնագետ չկա։</p>";
+box.innerHTML=
+"<div class='note' style='margin-top:12px'>Դեռ մասնագետ չկա</div>";
 
- }else{
+}else{
 
-   b.innerHTML=
-   current.staff.map(s=>`
+box.innerHTML=current.staff.map(s=>`
 
-   <div class="staff">
+<div class="staff">
 
-   <div class="wide">
+<div class="wide">
 
-   <label>Մասնագետ</label>
+<label>Մասնագետ</label>
 
-   <input
-   value="${esc(s.name)}"
-   oninput="staffName('${s.id}',this.value)">
+<input
+value="${esc(s.name)}"
+oninput="changeStaffName('${s.id}',this.value)">
 
-   <div class="note">
-   ${esc(s.type||"")}
-   </div>
+<div class="note">
+${esc(s.type||"")}
+</div>
 
-   </div>
+</div>
 
-   <div>
+<div>
 
-   <label>Մին. գին</label>
+<label>Մին. գին</label>
 
-   <input
-   id="min_${s.id}"
-   type="number"
-   inputmode="numeric"
-   value="${Number(s.minPrice)||0}"
-   oninput="staffMin('${s.id}',this.value)">
+<input
+id="min_${s.id}"
+type="number"
+inputmode="numeric"
+value="${Number(s.minPrice)||0}"
+oninput="staffMin('${s.id}',this.value)">
 
-   </div>
+</div>
 
-   <div>
+<div>
 
-   <label>Մաքս. գին</label>
+<label>Մաքս. գին</label>
 
-   <input
-   id="max_${s.id}"
-   type="number"
-   inputmode="numeric"
-   value="${Number(s.maxPrice)||0}"
-   oninput="staffMax('${s.id}',this.value)">
+<input
+id="max_${s.id}"
+type="number"
+inputmode="numeric"
+value="${Number(s.maxPrice)||0}"
+oninput="staffMax('${s.id}',this.value)">
 
-   </div>
+</div>
 
-   <div>
+<div>
 
-   <label>Իմ գումարը</label>
+<label>Իմ գումարը</label>
 
-   <input
-   id="pr_${s.id}"
-   type="number"
-   inputmode="numeric"
-   value="${Number(s.profit)||0}"
-   oninput="staffProfit('${s.id}',this.value)">
+<input
+id="profit_${s.id}"
+type="number"
+inputmode="numeric"
+value="${Number(s.profit)||0}"
+oninput="staffProfit('${s.id}',this.value)">
 
-   <div
-   id="lim_${s.id}"
-   class="note">
+<div
+id="limit_${s.id}"
+class="note">
 
-   Առավելագույնը՝
-   ${
-     money(
-       Math.max(
-         0,
-         Number(s.maxPrice||0)-
-         Number(s.minPrice||0)
-       )
-     )
-   }
+Մաքս.՝
+${money(
+Math.max(
+0,
+Number(s.maxPrice||0)-Number(s.minPrice||0)
+)
+)}
 
-   </div>
+</div>
 
-   </div>
+</div>
 
-   <div>
+<div>
 
-   <label>Հաճախորդի գին</label>
+<label>Հաճախորդի գին</label>
 
-   <input
-   id="tot_${s.id}"
-   disabled
-   value="${
-     money(
-       Number(s.minPrice||0)+
-       Number(s.profit||0)
-     )
-   }">
+<input
+id="final_${s.id}"
+disabled
+value="${money(
+Number(s.minPrice||0)+Number(s.profit||0)
+)}">
 
-   </div>
+</div>
 
-   <button
-   class="danger"
-   onclick="removeStaff('${s.id}')">
-   ✕
-   </button>
+<button
+class="danger"
+onclick="removeStaff('${s.id}')">
+✕
+</button>
 
-   </div>
+</div>
 
-   `).join("");
+`).join("");
 
- }
+}
 
- updateSummary();
+updateSummary();
 
 }
 
 function getStaff(id){
 
- return current.staff.find(
-   x=>x.id===id
- );
+return current.staff.find(x=>x.id===id);
 
 }
 
-function staffName(id,v){
+function changeStaffName(id,value){
 
- const s=getStaff(id);
+const s=getStaff(id);
 
- if(s){
-   s.name=v;
- }
+if(s)s.name=value;
 
 }
 
-function staffMin(id,v){
+function staffMin(id,value){
 
- const s=getStaff(id);
+const s=getStaff(id);
 
- if(!s)return;
+if(!s)return;
 
- s.minPrice=
- Math.max(
-   0,
-   Number(v)||0
- );
+s.minPrice=Math.max(0,Number(value)||0);
 
- if(s.maxPrice<s.minPrice){
+if(s.maxPrice<s.minPrice){
 
-   s.maxPrice=s.minPrice;
+s.maxPrice=s.minPrice;
 
-   const el=
-   document.getElementById(
-     "max_"+id
-   );
+const el=document.getElementById("max_"+id);
 
-   if(el){
-     el.value=s.maxPrice;
-   }
-
- }
-
- capProfit(s);
-
- refreshRow(s);
-
- updateSummary();
+if(el)el.value=s.maxPrice;
 
 }
 
-function staffMax(id,v){
+fixProfit(s);
 
- const s=getStaff(id);
+refreshStaffRow(s);
 
- if(!s)return;
-
- s.maxPrice=
- Math.max(
-   0,
-   Number(v)||0
- );
-
- if(s.maxPrice<s.minPrice){
-
-   s.maxPrice=s.minPrice;
-
-   const el=
-   document.getElementById(
-     "max_"+id
-   );
-
-   if(el){
-     el.value=s.maxPrice;
-   }
-
- }
-
- capProfit(s);
-
- refreshRow(s);
-
- updateSummary();
+updateSummary();
 
 }
 
-function staffProfit(id,v){
+function staffMax(id,value){
 
- const s=getStaff(id);
+const s=getStaff(id);
 
- if(!s)return;
+if(!s)return;
 
- const limit=
- Math.max(
-   0,
-   s.maxPrice-s.minPrice
- );
+s.maxPrice=Math.max(0,Number(value)||0);
 
- let n=
- Math.max(
-   0,
-   Number(v)||0
- );
+if(s.maxPrice<s.minPrice){
 
- if(n>limit){
+s.maxPrice=s.minPrice;
 
-   n=limit;
+const el=document.getElementById("max_"+id);
 
-   const el=
-   document.getElementById(
-     "pr_"+id
-   );
-
-   if(el){
-     el.value=n;
-   }
-
- }
-
- s.profit=n;
-
- refreshRow(s);
-
- updateSummary();
+if(el)el.value=s.maxPrice;
 
 }
 
-function capProfit(s){
+fixProfit(s);
 
- const limit=
- Math.max(
-   0,
-   s.maxPrice-s.minPrice
- );
+refreshStaffRow(s);
 
- if(Number(s.profit)>limit){
-
-   s.profit=limit;
-
-   const el=
-   document.getElementById(
-     "pr_"+s.id
-   );
-
-   if(el){
-     el.value=limit;
-   }
-
- }
+updateSummary();
 
 }
 
-function refreshRow(s){
+function staffProfit(id,value){
 
- const l=
- document.getElementById(
-   "lim_"+s.id
- );
+const s=getStaff(id);
 
- const t=
- document.getElementById(
-   "tot_"+s.id
- );
+if(!s)return;
 
- if(l){
+const limit=Math.max(
+0,
+Number(s.maxPrice)-Number(s.minPrice)
+);
 
-   l.textContent=
-   "Առավելագույնը՝ "+
-   money(
-     Math.max(
-       0,
-       s.maxPrice-s.minPrice
-     )
-   );
+let n=Math.max(0,Number(value)||0);
 
- }
+if(n>limit){
 
- if(t){
+n=limit;
 
-   t.value=
-   money(
-     Number(s.minPrice||0)+
-     Number(s.profit||0)
-   );
+const el=document.getElementById("profit_"+id);
 
- }
+if(el)el.value=n;
+
+}
+
+s.profit=n;
+
+refreshStaffRow(s);
+
+updateSummary();
+
+}
+
+function fixProfit(s){
+
+const limit=Math.max(
+0,
+Number(s.maxPrice)-Number(s.minPrice)
+);
+
+if(Number(s.profit)>limit){
+
+s.profit=limit;
+
+const el=document.getElementById("profit_"+s.id);
+
+if(el)el.value=limit;
+
+}
+
+}
+
+function refreshStaffRow(s){
+
+const limit=document.getElementById("limit_"+s.id);
+
+const final=document.getElementById("final_"+s.id);
+
+if(limit){
+
+limit.textContent=
+"Մաքս.՝ "+
+money(
+Math.max(
+0,
+Number(s.maxPrice)-Number(s.minPrice)
+)
+);
+
+}
+
+if(final){
+
+final.value=
+money(
+Number(s.minPrice||0)+Number(s.profit||0)
+);
+
+}
 
 }
 
 function removeStaff(id){
 
- current.staff=
- current.staff.filter(
-   x=>x.id!==id
- );
+current.staff=current.staff.filter(x=>x.id!==id);
 
- renderCurrent();
+renderCurrent();
 
 }
 
 function updateSummary(){
 
- const cost=
- current.staff.reduce(
-   (a,s)=>
-   a+
-   (Number(s.minPrice)||0),
-   0
- );
+const cost=current.staff.reduce(
+(a,s)=>a+(Number(s.minPrice)||0),
+0
+);
 
- const profit=
- current.staff.reduce(
-   (a,s)=>
-   a+
-   (Number(s.profit)||0),
-   0
- );
+const profit=current.staff.reduce(
+(a,s)=>a+(Number(s.profit)||0),
+0
+);
 
- document
- .getElementById("cost")
- .textContent=
- money(cost);
+document.getElementById("cost").textContent=money(cost);
 
- document
- .getElementById("profit")
- .textContent=
- money(profit);
+document.getElementById("profit").textContent=money(profit);
 
- document
- .getElementById("total")
- .textContent=
- money(cost+profit);
+document.getElementById("total").textContent=money(cost+profit);
 
 }
 
 function savePackage(){
 
- current.name=
- document
- .getElementById("packName")
- .value
- .trim();
+const name=document.getElementById("packName").value.trim();
 
- if(!current.name){
+if(!name){
 
-   alert("Գրիր փաթեթի անունը։");
+alert("Գրիր փաթեթի անունը");
 
-   return;
+return;
 
- }
+}
 
- if(!current.id){
-   current.id=uid();
- }
+current.name=name;
 
- const copy=
- clone(current);
+if(!current.id){
 
- const i=
- packs.findIndex(
-   x=>x.id===current.id
- );
+current.id=uid();
 
- if(i>=0){
-   packs[i]=copy;
- }else{
-   packs.push(copy);
- }
+}
 
- savePacks();
+const copy=clone(current);
 
- renderSaved();
+const index=packs.findIndex(p=>p.id===current.id);
 
- alert("Փաթեթը պահպանվեց ✅");
+if(index>=0){
+
+packs[index]=copy;
+
+}else{
+
+packs.push(copy);
+
+}
+
+savePacks();
+
+renderSaved();
+
+alert("Փաթեթը պահպանվեց ✅");
 
 }
 
 function openPack(id){
 
- const p=
- packs.find(
-   x=>x.id===id
- );
+const p=packs.find(x=>x.id===id);
 
- if(!p)return;
+if(!p)return;
 
- current=
- clone(p);
+current=clone(p);
 
- current.staff=
- (current.staff||[])
- .map(normalizeStaff);
+renderCurrent();
 
- renderCurrent();
+hidePanels();
 
- hidePanels();
-
- window.scrollTo({
-   top:0,
-   behavior:"smooth"
- });
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
 
 }
 
 function deletePack(id){
 
- const p=
- packs.find(
-   x=>x.id===id
- );
+const p=packs.find(x=>x.id===id);
 
- if(!p)return;
+if(!p)return;
 
- if(
-   !confirm(
-     "Ջնջե՞լ «"+
-     p.name+
-     "» փաթեթը։"
-   )
- )return;
+if(!confirm("Ջնջե՞լ "+p.name+" փաթեթը"))return;
 
- packs=
- packs.filter(
-   x=>x.id!==id
- );
+packs=packs.filter(x=>x.id!==id);
 
- savePacks();
+savePacks();
 
- if(current.id===id){
-   newPackage();
- }
+if(current.id===id){
 
- renderSaved();
+newPackage();
+
+}
+
+renderSaved();
 
 }
 
 function renderSaved(){
 
- const b=
- document.getElementById("savedList");
+const box=document.getElementById("savedList");
 
- if(!packs.length){
+if(!packs.length){
 
-   b.innerHTML=
-   "<p class='note'>Դեռ փաթեթ չկա։</p>";
+box.innerHTML=
+"<div class='note'>Փաթեթ չկա</div>";
 
-   return;
+return;
 
- }
+}
 
- b.innerHTML=
- packs.map(p=>{
+box.innerHTML=packs.map(p=>{
 
-   const staff=
-   (p.staff||[])
-   .map(normalizeStaff);
+const total=(p.staff||[]).reduce(
+(a,s)=>
+a+
+(Number(s.minPrice)||0)+
+(Number(s.profit)||0),
+0
+);
 
-   const total=
-   staff.reduce(
-     (a,s)=>
-     a+
-     Number(s.minPrice||0)+
-     Number(s.profit||0),
-     0
-   );
+return `
 
-   return `
+<div class="saved">
 
-   <div class="saved">
+<div>
 
-   <div>
+<strong>${esc(p.name)}</strong>
 
-   <strong>
-   ${esc(p.name)}
-   </strong>
+<div class="note">
+${(p.staff||[]).length} մասնագետ • ${money(total)}
+</div>
 
-   <div class="note">
-   ${staff.length}
-   մասնագետ
-   •
-   ${money(total)}
-   </div>
+</div>
 
-   </div>
+<div>
 
-   <div>
+<button
+class="primary"
+onclick="openPack('${p.id}')">
+Բացել
+</button>
 
-   <button
-   class="primary"
-   onclick="openPack('${p.id}')">
-   Բացել
-   </button>
+<button
+class="danger"
+onclick="deletePack('${p.id}')">
+🗑
+</button>
 
-   <button
-   class="danger"
-   onclick="deletePack('${p.id}')">
-   🗑
-   </button>
+</div>
 
-   </div>
+</div>
 
-   </div>
+`;
 
-   `;
-
- }).join("");
+}).join("");
 
 }
 
@@ -1933,78 +2039,42 @@ function renderSaved(){
 
 function openBackup(){
 
- const data={
+const data={
 
-   exportedAt:
-   new Date().toISOString(),
+date:new Date().toISOString(),
 
-   origin:
-   location.origin,
+pros,
 
-   href:
-   location.href,
+packs,
 
-   allLocalStorage:{}
+cats
 
- };
+};
 
- for(
-   let i=0;
-   i<localStorage.length;
-   i++
- ){
+document.getElementById("backupText").value=
+JSON.stringify(data,null,2);
 
-   const k=
-   localStorage.key(i);
-
-   if(k!==null){
-
-     data.allLocalStorage[k]=
-     localStorage.getItem(k);
-
-   }
-
- }
-
- document
- .getElementById("backupText")
- .value=
- JSON.stringify(
-   data,
-   null,
-   2
- );
-
- document
- .getElementById("backupModal")
- .classList.remove("hidden");
+document.getElementById("backupModal").classList.remove("hidden");
 
 }
 
 function closeBackup(){
 
- document
- .getElementById("backupModal")
- .classList.add("hidden");
+document.getElementById("backupModal").classList.add("hidden");
 
 }
 
 function copyBackup(){
 
- const t=
- document.getElementById("backupText");
+const text=document.getElementById("backupText");
 
- t.focus();
- t.select();
+text.select();
 
- t.setSelectionRange(
-   0,
-   99999999
- );
+text.setSelectionRange(0,99999999);
 
- document.execCommand("copy");
+document.execCommand("copy");
 
- alert("Backup-ը պատճենվեց ✅");
+alert("Backup-ը copy եղավ ✅");
 
 }
 
@@ -2012,101 +2082,69 @@ function copyBackup(){
 
 function openImport(){
 
- document
- .getElementById("importModal")
- .classList.remove("hidden");
+document.getElementById("importModal").classList.remove("hidden");
 
 }
 
 function closeImport(){
 
- document
- .getElementById("importModal")
- .classList.add("hidden");
+document.getElementById("importModal").classList.add("hidden");
 
 }
 
 function doImport(){
 
- const raw=
- document
- .getElementById("importText")
- .value
- .trim();
+const raw=document.getElementById("importText").value.trim();
 
- if(!raw){
+if(!raw){
 
-   alert("Paste արա Backup JSON-ը։");
+alert("Paste արա Backup-ը");
 
-   return;
+return;
 
- }
+}
 
- let data;
+let data;
 
- try{
+try{
 
-   data=JSON.parse(raw);
+data=JSON.parse(raw);
 
- }catch(e){
+}catch(e){
 
-   alert("JSON-ը սխալ է։");
+alert("Backup-ը սխալ է");
 
-   return;
+return;
 
- }
+}
 
- if(
-   !data.allLocalStorage ||
-   typeof data.allLocalStorage!=="object"
- ){
+if(
+!Array.isArray(data.pros) ||
+!Array.isArray(data.packs) ||
+!Array.isArray(data.cats)
+){
 
-   alert(
-     "Backup-ի ձևաչափը չի համապատասխանում։"
-   );
+alert("Backup-ի ձևաչափը սխալ է");
 
-   return;
+return;
 
- }
+}
 
- if(
-   !confirm(
-     "Վերականգնե՞լ Backup-ի տվյալները։"
-   )
- )return;
+if(!confirm("Վերականգնե՞լ Backup-ը"))return;
 
- Object.entries(
-   data.allLocalStorage
- )
- .forEach(([k,v])=>{
+pros=clone(data.pros);
+packs=clone(data.packs);
+cats=clone(data.cats);
 
-   if(v===null){
+savePros();
+savePacks();
+saveCats();
 
-     localStorage.removeItem(k);
+closeImport();
 
-   }else{
+renderAll();
 
-     localStorage.setItem(
-       k,
-       String(v)
-     );
-
-   }
-
- });
-
- localStorage.setItem(
-   INIT_KEY,
-   "1"
- );
-
- closeImport();
-
- load();
-
- alert(
-   "Backup-ը վերականգնվեց ✅"
- );
+alert("Վերականգնվեց ✅");
 
 }
 

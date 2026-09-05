@@ -328,57 +328,35 @@ border-bottom:1px solid rgba(110,80,20,.12)
 
 .payRow:last-child{border-bottom:0}
 
-.payName{
-font-weight:700
-}
-
-.payAmount{
-font-weight:800;
-white-space:nowrap
-}
+.payName{font-weight:700}
+.payAmount{font-weight:800;white-space:nowrap}
 
 @media(max-width:720px){
 
-.grid,.pro{
-grid-template-columns:1fr
-}
+.grid,.pro{grid-template-columns:1fr}
 
 .staff{
 grid-template-columns:1fr 1fr
 }
 
-.staff .wide{
-grid-column:1/-1
-}
+.staff .wide{grid-column:1/-1}
 
-.summary{
-grid-template-columns:1fr
-}
+.summary{grid-template-columns:1fr}
 
 .saved{
 align-items:flex-start;
 flex-direction:column
 }
 
-.budgetInput{
-grid-template-columns:1fr
-}
+.budgetInput{grid-template-columns:1fr}
 
-.budgetTotals{
-grid-template-columns:1fr 1fr
-}
+.budgetTotals{grid-template-columns:1fr 1fr}
 
-.budgetPro{
-grid-template-columns:1fr 1fr
-}
+.budgetPro{grid-template-columns:1fr 1fr}
 
-.budgetPro .wide{
-grid-column:1/-1
-}
+.budgetPro .wide{grid-column:1/-1}
 
-.categories{
-grid-template-columns:1fr 1fr
-}
+.categories{grid-template-columns:1fr 1fr}
 
 }
 </style>
@@ -392,43 +370,25 @@ grid-template-columns:1fr 1fr
 
 <h1>MOMENTOO EVENTS ✨</h1>
 
-<div>
-Ստեղծում ենք հիշվող ակնթարթներ...
-</div>
+<div>Ստեղծում ենք հիշվող ակնթարթներ...</div>
 
 <div class="menu">
 
-<button class="primary" onclick="newPackage()">
-＋ Նոր փաթեթ
-</button>
+<button class="primary" onclick="newPackage()">＋ Նոր փաթեթ</button>
 
-<button class="light" onclick="openPros()">
-👥 Մասնագետներ
-</button>
+<button class="light" onclick="openPros()">👥 Մասնագետներ</button>
 
-<button class="light" onclick="openCats()">
-📂 Բաժիններ
-</button>
+<button class="light" onclick="openCats()">📂 Բաժիններ</button>
 
-<button class="light" onclick="openSaved()">
-📁 Փաթեթներ
-</button>
+<button class="light" onclick="openSaved()">📁 Փաթեթներ</button>
 
-<button class="gold" onclick="openBudget()">
-💰 Բյուջեով փաթեթ
-</button>
+<button class="gold" onclick="openBudget()">💰 Բյուջեով փաթեթ</button>
 
-<button class="light" onclick="savePackage()">
-💾 Պահպանել
-</button>
+<button class="light" onclick="savePackage()">💾 Պահպանել</button>
 
-<button class="light" onclick="openBackup()">
-📤 Backup
-</button>
+<button class="light" onclick="openBackup()">📤 Backup</button>
 
-<button class="light" onclick="openImport()">
-📥 Import
-</button>
+<button class="light" onclick="openImport()">📥 Import</button>
 
 </div>
 
@@ -441,14 +401,9 @@ grid-template-columns:1fr 1fr
 
 <div class="row">
 
-<input
-id="newCat"
-placeholder="Նոր բաժնի անուն"
->
+<input id="newCat" placeholder="Նոր բաժնի անուն">
 
-<button class="primary" onclick="addCategory()">
-＋
-</button>
+<button class="primary" onclick="addCategory()">＋</button>
 
 </div>
 
@@ -535,16 +490,15 @@ onclick="addPro()"
 
 <div class="note">
 Հաճախորդի գրած գումարը վերջնական սահմանն է։
-Մասնագետի արժեքը և քո շահույթը կարող ես փոխել միայն այս փաթեթի համար։
+Մասնագետի իրական գինը մնում է իր Մաքս․ գինը։
+Եթե փոխես «Մասնագետին» կամ «Իմ շահույթը»՝ մյուս թիվը ավտոմատ կփոխվի։
 </div>
 
 <div class="budgetInput" style="margin-top:12px">
 
 <div>
 
-<label>
-Հաճախորդի վերջնական բյուջե
-</label>
+<label>Հաճախորդի վերջնական բյուջե</label>
 
 <input
 id="budgetAmount"
@@ -557,9 +511,7 @@ placeholder="օր.՝ 100000"
 
 <div>
 
-<label>
-Փաթեթի անուն
-</label>
+<label>Փաթեթի անուն</label>
 
 <input
 id="budgetName"
@@ -631,21 +583,15 @@ onclick="openPicker()"
 
 <div class="row" style="justify-content:space-between">
 
-<h2 style="margin:0">
-Ընտրել մասնագետ
-</h2>
+<h2 style="margin:0">Ընտրել մասնագետ</h2>
 
-<button class="danger" onclick="closePicker()">
-Փակել
-</button>
+<button class="danger" onclick="closePicker()">Փակել</button>
 
 </div>
 
 <div class="searchBox">
 
-<span class="searchIcon">
-🔎
-</span>
+<span class="searchIcon">🔎</span>
 
 <input
 id="search"
@@ -672,13 +618,9 @@ oninput="pickerSearch()"
 
 <div class="row">
 
-<button class="primary" onclick="copyBackup()">
-Copy
-</button>
+<button class="primary" onclick="copyBackup()">Copy</button>
 
-<button class="danger" onclick="closeBackup()">
-Փակել
-</button>
+<button class="danger" onclick="closeBackup()">Փակել</button>
 
 </div>
 
@@ -700,13 +642,9 @@ placeholder="Paste արա Backup JSON-ը"
 
 <div class="row">
 
-<button class="primary" onclick="doImport()">
-Վերականգնել
-</button>
+<button class="primary" onclick="doImport()">Վերականգնել</button>
 
-<button class="danger" onclick="closeImport()">
-Փակել
-</button>
+<button class="danger" onclick="closeImport()">Փակել</button>
 
 </div>
 
@@ -860,7 +798,6 @@ maxPrice:30000
 
 const OLD_PACKS=[];
 
-
 let pros=[];
 let packs=[];
 let cats=[];
@@ -873,13 +810,11 @@ let budgetCat=null;
 let pickerCatQuery="";
 let budgetCatQuery="";
 
-
 let current={
 id:null,
 name:"",
 staff:[]
 };
-
 
 let budgetDraft={
 id:null,
@@ -887,7 +822,6 @@ budget:0,
 name:"",
 staff:[]
 };
-
 
 let budgetEdits={};
 
@@ -944,16 +878,13 @@ function savePros(){
 localStorage.setItem(PRO_KEY,JSON.stringify(pros));
 }
 
-
 function savePacks(){
 localStorage.setItem(PACK_KEY,JSON.stringify(packs));
 }
 
-
 function saveCats(){
 localStorage.setItem(CAT_KEY,JSON.stringify(cats));
 }
-
 
 function saveBudgetPacks(){
 localStorage.setItem(BUDGET_KEY,JSON.stringify(budgetPacks));
@@ -999,7 +930,6 @@ saveCats();
 }
 
 renderAll();
-
 renderSavedBudgetPacks();
 
 }
@@ -1035,7 +965,6 @@ document
 manageCat=null;
 
 renderCatSelect();
-
 renderProsBrowser();
 
 }
@@ -1256,9 +1185,7 @@ c===oldName?n:c
 
 
 if(manageCat===oldName)manageCat=n;
-
 if(pickerCat===oldName)pickerCat=n;
-
 if(budgetCat===oldName)budgetCat=n;
 
 
@@ -1284,8 +1211,7 @@ return alert(
 
 if(!confirm("Ջնջե՞լ բաժինը"))return;
 
-cats=
-cats.filter(x=>x!==n);
+cats=cats.filter(x=>x!==n);
 
 saveCats();
 
@@ -1296,8 +1222,7 @@ renderAll();
 
 function renderCats(){
 
-const box=
-document.getElementById("catsList");
+const box=document.getElementById("catsList");
 
 if(!box)return;
 
@@ -1311,8 +1236,7 @@ cats.map(c=>`
 <strong>${esc(c)}</strong>
 
 <div class="note">
-${pros.filter(p=>p.category===c).length}
-մասնագետ
+${pros.filter(p=>p.category===c).length} մասնագետ
 </div>
 
 </div>
@@ -1342,7 +1266,7 @@ onclick='deleteCat(${JSON.stringify(c)})'
 }
 
 
-/* ՄԱՍՆԱԳԵՏ */
+/* ՄԱՍՆԱԳԵՏՆԵՐ */
 
 function addPro(){
 
@@ -1457,7 +1381,6 @@ document
 function chooseManageCat(c){
 
 manageCat=c;
-
 renderProsBrowser();
 
 }
@@ -1466,7 +1389,6 @@ renderProsBrowser();
 function backManage(){
 
 manageCat=null;
-
 renderProsBrowser();
 
 }
@@ -1484,9 +1406,7 @@ if(!manageCat){
 
 b.innerHTML=`
 
-<h3>
-Ընտրիր բաժինը
-</h3>
+<h3>Ընտրիր բաժինը</h3>
 
 <div class="categories">
 
@@ -1537,9 +1457,7 @@ onclick="backManage()"
 ← Բաժիններ
 </button>
 
-<strong>
-${esc(manageCat)}
-</strong>
+<strong>${esc(manageCat)}</strong>
 
 </div>
 
@@ -1565,9 +1483,7 @@ return `
 
 <div>
 
-<label>
-Անուն
-</label>
+<label>Անուն</label>
 
 <input
 value="${esc(p.name)}"
@@ -1578,9 +1494,7 @@ oninput="editPro('${p.id}','name',this.value)"
 
 <div>
 
-<label>
-Նկարագրություն
-</label>
+<label>Նկարագրություն</label>
 
 <input
 value="${esc(p.type)}"
@@ -1591,9 +1505,7 @@ oninput="editPro('${p.id}','type',this.value)"
 
 <div>
 
-<label>
-Բաժին
-</label>
+<label>Բաժին</label>
 
 <select
 onchange="editPro('${p.id}','category',this.value)"
@@ -1616,9 +1528,7 @@ ${esc(c)}
 
 <div>
 
-<label>
-Մին.
-</label>
+<label>Մին.</label>
 
 <input
 type="number"
@@ -1631,9 +1541,7 @@ oninput="editPro('${p.id}','minPrice',this.value)"
 
 <div>
 
-<label>
-Մաքս.
-</label>
+<label>Մաքս.</label>
 
 <input
 type="number"
@@ -1764,7 +1672,6 @@ renderAll();
 function openPicker(){
 
 pickerCat=null;
-
 pickerCatQuery="";
 
 document.getElementById("search").value="";
@@ -1790,7 +1697,6 @@ document
 function choosePickerCat(c){
 
 pickerCat=c;
-
 pickerCatQuery="";
 
 document.getElementById("search").value="";
@@ -1803,7 +1709,6 @@ renderPicker();
 function backPicker(){
 
 pickerCat=null;
-
 pickerCatQuery="";
 
 document.getElementById("search").value="";
@@ -1863,9 +1768,7 @@ onclick="backPicker()"
 ← Բաժիններ
 </button>
 
-<strong>
-${esc(pickerCat)}
-</strong>
+<strong>${esc(pickerCat)}</strong>
 
 </div>
 
@@ -1893,10 +1796,12 @@ if(!pickerCat){
 
 const filtered=
 cats.filter(c=>
+
 normalizeText(c)
 .includes(
 normalizeText(pickerCatQuery)
 )
+
 );
 
 
@@ -1970,9 +1875,7 @@ onclick="backPicker()"
 ← Բաժիններ
 </button>
 
-<strong>
-${esc(pickerCat)}
-</strong>
+<strong>${esc(pickerCat)}</strong>
 
 </div>
 
@@ -1998,9 +1901,7 @@ return `
 
 <div>
 
-<strong>
-${esc(p.name)}
-</strong>
+<strong>${esc(p.name)}</strong>
 
 <div class="note">
 ${esc(p.type)}
@@ -2073,7 +1974,6 @@ staff:[]
 
 };
 
-
 renderCurrent();
 
 hidePanels();
@@ -2103,9 +2003,7 @@ current.staff.map(s=>`
 
 <div class="wide">
 
-<label>
-Մասնագետ
-</label>
+<label>Մասնագետ</label>
 
 <input
 value="${esc(s.name)}"
@@ -2120,9 +2018,7 @@ ${esc(s.type||"")}
 
 <div>
 
-<label>
-Մին. գին
-</label>
+<label>Մին. գին</label>
 
 <input
 id="min_${s.id}"
@@ -2136,9 +2032,7 @@ oninput="staffMin('${s.id}',this.value)"
 
 <div>
 
-<label>
-Մաքս. գին
-</label>
+<label>Մաքս. գին</label>
 
 <input
 id="max_${s.id}"
@@ -2152,9 +2046,7 @@ oninput="staffMax('${s.id}',this.value)"
 
 <div>
 
-<label>
-Իմ գումարը
-</label>
+<label>Իմ գումարը</label>
 
 <input
 id="profit_${s.id}"
@@ -2185,9 +2077,7 @@ Number(s.minPrice||0)
 
 <div>
 
-<label>
-Հաճախորդի գին
-</label>
+<label>Հաճախորդի գին</label>
 
 <input
 id="final_${s.id}"
@@ -2262,9 +2152,7 @@ if(e)e.value=s.maxPrice;
 }
 
 fixProfit(s);
-
 refreshStaffRow(s);
-
 updateSummary();
 
 }
@@ -2294,9 +2182,7 @@ if(e)e.value=s.maxPrice;
 }
 
 fixProfit(s);
-
 refreshStaffRow(s);
-
 updateSummary();
 
 }
@@ -2334,7 +2220,6 @@ if(e)e.value=n;
 s.profit=n;
 
 refreshStaffRow(s);
-
 updateSummary();
 
 }
@@ -2567,9 +2452,7 @@ return `
 
 <div>
 
-<strong>
-${esc(p.name)}
-</strong>
+<strong>${esc(p.name)}</strong>
 
 <div class="note">
 ${(p.staff||[]).length}
@@ -2605,7 +2488,10 @@ onclick="deletePack('${p.id}')"
 }
 
 
-/* ԲՅՈՒՋԵՈՎ ՓԱԹԵԹ */
+/* ================================================= */
+/* ԲՅՈՒՋԵՈՎ ՓԱԹԵԹ — ՖԻՔՍՎԱԾ ԻՐԱԿԱՆ ՎԵՐՋՆԱԿԱՆ ԳԻՆ */
+/* ================================================= */
+
 
 function getBudgetEdit(id){
 
@@ -2616,7 +2502,8 @@ if(!p){
 
 return{
 cost:0,
-profit:0
+profit:0,
+realPrice:0
 };
 
 }
@@ -2630,7 +2517,7 @@ Math.max(
 Number(p.minPrice)||0
 );
 
-const max=
+const realPrice=
 Math.max(
 cost,
 Number(p.maxPrice)||cost
@@ -2638,13 +2525,15 @@ Number(p.maxPrice)||cost
 
 budgetEdits[id]={
 
-cost:cost,
+cost,
 
 profit:
 Math.max(
 0,
-max-cost
-)
+realPrice-cost
+),
+
+realPrice
 
 };
 
@@ -2697,9 +2586,7 @@ staff:[]
 
 
 budgetEdits={};
-
 budgetCat=null;
-
 budgetCatQuery="";
 
 
@@ -2711,7 +2598,7 @@ Math.max(
 Number(p.minPrice)||0
 );
 
-const max=
+const realPrice=
 Math.max(
 cost,
 Number(p.maxPrice)||cost
@@ -2719,13 +2606,15 @@ Number(p.maxPrice)||cost
 
 budgetEdits[p.id]={
 
-cost:cost,
+cost,
 
 profit:
 Math.max(
 0,
-max-cost
-)
+realPrice-cost
+),
+
+realPrice
 
 };
 
@@ -2752,7 +2641,10 @@ budgetDraft.staff.reduce(
 );
 
 const total=
-cost+profit;
+budgetDraft.staff.reduce(
+(a,s)=>a+(Number(s.realPrice)||Number(s.cost)||0),
+0
+);
 
 return{
 
@@ -2788,21 +2680,56 @@ s=>s.professionalId===id
 }
 
 
+/* Եթե փոխում ես մասնագետին տրվող գումարը՝ շահույթն ավտոմատ է */
+/* Եթե փոխում ես շահույթը՝ մասնագետին տրվող գումարն ավտոմատ է */
+
 function updateBudgetEdit(id,field,value){
 
-const n=
+const edit=
+getBudgetEdit(id);
+
+const realPrice=
+Math.max(
+0,
+Number(edit.realPrice)||0
+);
+
+let n=
 Math.max(
 0,
 Number(value)||0
 );
 
-const edit=
-getBudgetEdit(id);
 
-const oldValue=
-edit[field];
+if(n>realPrice){
 
-edit[field]=n;
+n=realPrice;
+
+}
+
+
+if(field==="cost"){
+
+edit.cost=n;
+
+edit.profit=
+Math.max(
+0,
+realPrice-n
+);
+
+}else if(field==="profit"){
+
+edit.profit=n;
+
+edit.cost=
+Math.max(
+0,
+realPrice-n
+);
+
+}
+
 
 const selected=
 getBudgetStaff(id);
@@ -2810,32 +2737,14 @@ getBudgetStaff(id);
 
 if(selected){
 
-const oldSelected=
-selected[field];
+selected.cost=
+edit.cost;
 
-selected[field]=n;
+selected.profit=
+edit.profit;
 
-const totals=
-budgetTotals();
-
-if(totals.total>budgetDraft.budget){
-
-selected[field]=oldSelected;
-
-edit[field]=oldValue;
-
-alert(
-"Բյուջեն անցնում ես "+
-money(
-totals.total-budgetDraft.budget
-)
-);
-
-renderBudgetBuilder();
-
-return;
-
-}
+selected.realPrice=
+realPrice;
 
 }
 
@@ -2892,17 +2801,42 @@ pros.forEach(p=>{
 const edit=
 getBudgetEdit(p.id);
 
-const f=
+const costInput=
+document.getElementById(
+"budgetCost_"+p.id
+);
+
+const profitInput=
+document.getElementById(
+"budgetProfit_"+p.id
+);
+
+const finalBox=
 document.getElementById(
 "budgetFinal_"+p.id
 );
 
-if(f){
 
-f.textContent=
-money(
-edit.cost+edit.profit
-);
+if(costInput){
+
+costInput.value=
+edit.cost;
+
+}
+
+
+if(profitInput){
+
+profitInput.value=
+edit.profit;
+
+}
+
+
+if(finalBox){
+
+finalBox.textContent=
+money(edit.realPrice);
 
 }
 
@@ -2942,15 +2876,12 @@ if(budgetHas(id))return;
 const edit=
 getBudgetEdit(id);
 
-const newFinal=
-edit.cost+edit.profit;
-
 const totals=
 budgetTotals();
 
 
 if(
-totals.total+newFinal
+totals.total+edit.realPrice
 >
 budgetDraft.budget
 ){
@@ -2960,7 +2891,7 @@ return alert(
 "Չի տեղավորվում բյուջեի մեջ։\n\n"+
 "Այս մասնագետով վերջնական գումարը կլինի՝ "+
 money(
-totals.total+newFinal
+totals.total+edit.realPrice
 )+
 "\n\nԲյուջեն՝ "+
 money(
@@ -2986,7 +2917,9 @@ category:p.category,
 
 cost:edit.cost,
 
-profit:edit.profit
+profit:edit.profit,
+
+realPrice:edit.realPrice
 
 });
 
@@ -3011,7 +2944,6 @@ renderBudgetBuilder();
 function chooseBudgetCat(cat){
 
 budgetCat=cat;
-
 budgetCatQuery="";
 
 renderBudgetBuilder();
@@ -3022,7 +2954,6 @@ renderBudgetBuilder();
 function backBudgetCats(){
 
 budgetCat=null;
-
 budgetCatQuery="";
 
 renderBudgetBuilder();
@@ -3156,7 +3087,7 @@ onclick="sendBudgetToNormalPackage()"
 `;
 
 
-/* ՎՃԱՐՈՒՄՆԵՐ ՄԱՍՆԱԳԵՏՆԵՐԻՆ */
+/* ՎՃԱՐՈՒՄՆԵՐ */
 
 if(budgetDraft.staff.length){
 
@@ -3237,7 +3168,7 @@ ${esc(p.type||"")}
 </div>
 
 <div class="note">
-${esc(p.category||"")}
+Իրական գին՝ ${money(edit.realPrice)}
 </div>
 
 </div>
@@ -3249,6 +3180,7 @@ ${esc(p.category||"")}
 </label>
 
 <input
+id="budgetCost_${p.id}"
 type="number"
 inputmode="numeric"
 value="${edit.cost}"
@@ -3264,6 +3196,7 @@ oninput="updateBudgetEdit('${p.id}','cost',this.value)"
 </label>
 
 <input
+id="budgetProfit_${p.id}"
 type="number"
 inputmode="numeric"
 value="${edit.profit}"
@@ -3282,9 +3215,7 @@ oninput="updateBudgetEdit('${p.id}','profit',this.value)"
 class="finalPriceBox"
 id="budgetFinal_${p.id}"
 >
-${money(
-edit.cost+edit.profit
-)}
+${money(edit.realPrice)}
 </div>
 
 </div>
@@ -3480,8 +3411,8 @@ ${esc(p.type||"")}
 </div>
 
 <div class="note">
-Հիմնական արժեք՝
-${money(p.minPrice)}
+Իրական վերջնական գին՝
+${money(edit.realPrice)}
 </div>
 
 </div>
@@ -3493,6 +3424,7 @@ ${money(p.minPrice)}
 </label>
 
 <input
+id="budgetCost_${p.id}"
 type="number"
 inputmode="numeric"
 value="${edit.cost}"
@@ -3508,6 +3440,7 @@ oninput="updateBudgetEdit('${p.id}','cost',this.value)"
 </label>
 
 <input
+id="budgetProfit_${p.id}"
 type="number"
 inputmode="numeric"
 value="${edit.profit}"
@@ -3526,9 +3459,7 @@ oninput="updateBudgetEdit('${p.id}','profit',this.value)"
 class="finalPriceBox"
 id="budgetFinal_${p.id}"
 >
-${money(
-edit.cost+edit.profit
-)}
+${money(edit.realPrice)}
 </div>
 
 </div>
@@ -3751,7 +3682,7 @@ minPrice:
 Number(s.cost)||0,
 
 maxPrice:
-Number(s.cost)+Number(s.profit),
+Number(s.realPrice)||0,
 
 profit:
 Number(s.profit)||0
@@ -3826,7 +3757,21 @@ const profit=
 );
 
 const total=
-cost+profit;
+(p.staff||[])
+.reduce(
+(a,s)=>
+a+
+(
+Number(s.realPrice)
+||
+Number(s.cost)
++
+Number(s.profit)
+||
+0
+),
+0
+);
 
 const left=
 Number(p.budget||0)-total;
@@ -3935,29 +3880,78 @@ Math.max(
 Number(pro.minPrice)||0
 );
 
-const defaultMax=
+const realPrice=
 Math.max(
 defaultCost,
 Number(pro.maxPrice)||defaultCost
 );
 
 
+if(saved){
+
+const savedReal=
+Math.max(
+Number(saved.realPrice)||0,
+Number(saved.cost)||0
++
+Number(saved.profit)||0
+);
+
+const finalReal=
+savedReal||realPrice;
+
+const savedCost=
+Math.min(
+finalReal,
+Math.max(
+0,
+Number(saved.cost)||0
+)
+);
+
 budgetEdits[pro.id]={
 
-cost:
-saved
-?Number(saved.cost)||0
-:defaultCost,
+cost:savedCost,
 
 profit:
-saved
-?Number(saved.profit)||0
-:Math.max(
+Math.max(
 0,
-defaultMax-defaultCost
-)
+finalReal-savedCost
+),
+
+realPrice:finalReal
 
 };
+
+saved.cost=
+savedCost;
+
+saved.profit=
+Math.max(
+0,
+finalReal-savedCost
+);
+
+saved.realPrice=
+finalReal;
+
+}else{
+
+budgetEdits[pro.id]={
+
+cost:defaultCost,
+
+profit:
+Math.max(
+0,
+realPrice-defaultCost
+),
+
+realPrice
+
+};
+
+}
 
 });
 
@@ -4093,9 +4087,7 @@ b.setSelectionRange(
 99999999
 );
 
-document.execCommand(
-"copy"
-);
+document.execCommand("copy");
 
 alert(
 "Backup-ը copy եղավ ✅"

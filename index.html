@@ -7,9 +7,7 @@
 <title>MOMENTOO EVENTS</title>
 
 <style>
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 body{
   margin:0;
@@ -31,10 +29,7 @@ header{
   margin-bottom:16px;
 }
 
-h1{
-  margin:0;
-  font-size:28px;
-}
+h1{margin:0}
 
 .subtitle{
   margin-top:5px;
@@ -58,11 +53,11 @@ button{
 
 .primary{
   background:#e986a5;
-  color:#fff;
+  color:white;
 }
 
 .secondary{
-  background:#fff;
+  background:white;
   color:#5c4651;
 }
 
@@ -72,16 +67,14 @@ button{
 }
 
 .card{
-  background:#fff;
+  background:white;
   border-radius:20px;
   padding:18px;
   margin-bottom:16px;
   box-shadow:0 5px 22px rgba(70,40,55,.05);
 }
 
-.hidden{
-  display:none!important;
-}
+.hidden{display:none!important}
 
 label{
   display:block;
@@ -96,7 +89,7 @@ input{
   padding:11px;
   border-radius:12px;
   font-size:15px;
-  background:#fff;
+  background:white;
 }
 
 .pro-form{
@@ -155,7 +148,7 @@ input{
 
 .grand{
   background:#6b5661;
-  color:#fff;
+  color:white;
   border-radius:22px;
   padding:20px;
 }
@@ -170,7 +163,7 @@ input{
 
 .payment-list{
   margin-top:18px;
-  background:#fff;
+  background:white;
   color:#34272e;
   padding:16px;
   border-radius:18px;
@@ -205,7 +198,7 @@ input{
 }
 
 .picker-box{
-  background:#fff;
+  background:white;
   width:min(700px,100%);
   max-height:88vh;
   overflow:auto;
@@ -259,9 +252,9 @@ input{
 }
 
 .notice{
-  padding:11px;
-  background:#fff6da;
-  border-radius:12px;
+  background:#fff4d5;
+  padding:12px;
+  border-radius:13px;
   margin-bottom:15px;
   font-size:13px;
 }
@@ -293,7 +286,6 @@ input{
   .manual-grid{
     grid-template-columns:1fr;
   }
-
 }
 </style>
 </head>
@@ -328,8 +320,11 @@ input{
 💾 Պահպանել
 </button>
 
-</div>
+<button class="secondary" onclick="manualRecovery()">
+♻️ Վերականգնել հին տվյալները
+</button>
 
+</div>
 </header>
 
 
@@ -338,7 +333,7 @@ input{
 <h2>👥 Մասնագետների բազա</h2>
 
 <div class="notice">
-Հին «Գին» դաշտում գրած արժեքները ավտոմատ ընդունվում են որպես մինիմալ արժեք։
+Հին «Գին» դաշտում գրած գումարը վերականգնվելու դեպքում դառնում է «Մինիմալ գին»։
 </div>
 
 <div class="pro-form">
@@ -354,12 +349,12 @@ input{
 </div>
 
 <div>
-<label>Մինիմալ արժեք</label>
+<label>Մինիմալ գին</label>
 <input id="proMin" type="number" min="0" placeholder="50000">
 </div>
 
 <div>
-<label>Մաքսիմալ արժեք</label>
+<label>Մաքսիմալ գին</label>
 <input id="proMax" type="number" min="0" placeholder="80000">
 </div>
 
@@ -449,7 +444,6 @@ oninput="currentPackage.name=this.value"
 
 </div>
 
-
 <div class="payment-list">
 
 <h3>Մասնագետներին հատկացվող գումարներ</h3>
@@ -469,31 +463,21 @@ oninput="currentPackage.name=this.value"
 
 <div class="picker-box">
 
-<div style="
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:10px;
-">
+<div style="display:flex;justify-content:space-between;gap:10px;align-items:center">
 
 <h2>Ավելացնել մասնագետ</h2>
 
-<button
-class="danger"
-onclick="closeProfessionalPicker()"
->
+<button class="danger" onclick="closeProfessionalPicker()">
 Փակել
 </button>
 
 </div>
-
 
 <input
 id="proSearch"
 placeholder="Գրիր DJ, երգիչ, լուսանկարիչ կամ անուն..."
 oninput="renderProfessionalChoices()"
 >
-
 
 <div id="professionalChoices" style="margin-top:12px"></div>
 
@@ -506,26 +490,25 @@ oninput="renderProfessionalChoices()"
 
 <div>
 <label>Անուն / ծառայություն</label>
-<input id="manualName" placeholder="Օր․ Արամ">
+<input id="manualName">
 </div>
 
 <div>
 <label>Մասնագիտություն</label>
-<input id="manualType" placeholder="Օր․ DJ">
+<input id="manualType">
 </div>
 
 <div>
-<label>Մինիմալ արժեք</label>
+<label>Մինիմալ գին</label>
 <input id="manualMin" type="number" min="0">
 </div>
 
 <div>
-<label>Մաքսիմալ արժեք</label>
+<label>Մաքսիմալ գին</label>
 <input id="manualMax" type="number" min="0">
 </div>
 
 </div>
-
 
 <div class="checkbox-row">
 
@@ -536,7 +519,6 @@ oninput="renderProfessionalChoices()"
 </label>
 
 </div>
-
 
 <button
 class="primary"
@@ -549,7 +531,6 @@ onclick="addManualStaff()"
 </div>
 
 </div>
-
 </div>
 
 
@@ -557,24 +538,6 @@ onclick="addManualStaff()"
 
 const PRO_KEY="momentoo_pros_v3";
 const PACK_KEY="momentoo_packs_v6";
-
-const OLD_PRO_KEYS=[
-  "momentoo_pros",
-  "momentoo_pros_v1",
-  "momentoo_pros_v2",
-  "momentoo_professionals",
-  "momentoo_events_v4_experts"
-];
-
-const OLD_PACK_KEYS=[
-  "momentoo_packs",
-  "momentoo_packs_v1",
-  "momentoo_packs_v2",
-  "momentoo_packs_v3",
-  "momentoo_packs_v4",
-  "momentoo_packs_v5",
-  "momentoo_events_v4_packages"
-];
 
 let professionals=[];
 let savedPackages=[];
@@ -587,1300 +550,1674 @@ let currentPackage={
 
 
 function uid(){
-
-return Date.now().toString(36)+
-Math.random().toString(36).slice(2);
-
+  return Date.now().toString(36)+Math.random().toString(36).slice(2);
 }
 
 
 function money(v){
-
-return (Number(v)||0)
-.toLocaleString("hy-AM")+" ֏";
-
+  return (Number(v)||0).toLocaleString("hy-AM")+" ֏";
 }
 
 
 function esc(t){
 
-return String(t||"")
-.replaceAll("&","&amp;")
-.replaceAll("<","&lt;")
-.replaceAll(">","&gt;")
-.replaceAll('"',"&quot;");
+  return String(t||"")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;");
 
 }
 
 
-function readStorage(key){
+function readArray(key){
 
-try{
+  try{
 
-const raw=localStorage.getItem(key);
+    const raw=localStorage.getItem(key);
 
-if(!raw) return [];
+    if(!raw) return [];
 
-const parsed=JSON.parse(raw);
+    const parsed=JSON.parse(raw);
 
-return Array.isArray(parsed) ? parsed : [];
+    return Array.isArray(parsed) ? parsed : [];
 
-}catch(e){
+  }catch(e){
 
-return [];
+    return [];
 
-}
+  }
 
 }
 
 
 function normalizeProfessional(p){
 
-const oldPrice=Number(
-p.price ??
-p.cost ??
-p.min ??
-p.amount ??
-0
-);
+  const oldPrice=Number(
+    p.minPrice ??
+    p.price ??
+    p.cost ??
+    p.amount ??
+    p.min ??
+    0
+  );
 
-let minPrice=Number(
-p.minPrice ??
-p.minimumPrice ??
-oldPrice ??
-0
-);
+  let maxPrice=Number(
+    p.maxPrice ??
+    p.maximumPrice ??
+    p.max ??
+    oldPrice
+  );
 
-let maxPrice=Number(
-p.maxPrice ??
-p.maximumPrice ??
-p.max ??
-minPrice
-);
+  if(!maxPrice){
+    maxPrice=oldPrice;
+  }
 
-if(!maxPrice){
-maxPrice=minPrice;
-}
+  if(maxPrice<oldPrice){
+    maxPrice=oldPrice;
+  }
 
-if(maxPrice<minPrice){
-maxPrice=minPrice;
-}
+  return{
+    ...p,
 
-return{
+    id:p.id || uid(),
 
-id:p.id || uid(),
+    name:
+      p.name ||
+      p.expertName ||
+      p.title ||
+      p.specialist ||
+      "Մասնագետ",
 
-name:
-p.name ||
-p.title ||
-p.expertName ||
-p.specialist ||
-"Մասնագետ",
+    type:
+      p.type ||
+      p.profession ||
+      p.service ||
+      p.category ||
+      "",
 
-type:
-p.type ||
-p.service ||
-p.profession ||
-p.category ||
-"",
+    minPrice:oldPrice,
 
-minPrice,
-
-maxPrice
-
-};
+    maxPrice:maxPrice
+  };
 
 }
 
 
 function normalizeStaff(s){
 
-let minPrice=Number(
-s.minPrice ??
-s.price ??
-s.cost ??
-0
-);
+  const minPrice=Number(
+    s.minPrice ??
+    s.price ??
+    s.cost ??
+    s.amount ??
+    0
+  );
 
-let maxPrice=Number(
-s.maxPrice ??
-s.price ??
-s.cost ??
-minPrice
-);
+  let maxPrice=Number(
+    s.maxPrice ??
+    s.maximumPrice ??
+    s.price ??
+    s.cost ??
+    minPrice
+  );
 
-if(maxPrice<minPrice){
-maxPrice=minPrice;
-}
+  if(!maxPrice){
+    maxPrice=minPrice;
+  }
 
-let profit=Number(
-s.profit ??
-s.myAmount ??
-s.margin ??
-0
-);
+  if(maxPrice<minPrice){
+    maxPrice=minPrice;
+  }
 
-const allowed=Math.max(0,maxPrice-minPrice);
+  let profit=Number(
+    s.profit ??
+    s.myAmount ??
+    s.margin ??
+    0
+  );
 
-if(profit>allowed){
-profit=allowed;
-}
+  const allowed=Math.max(
+    0,
+    maxPrice-minPrice
+  );
 
-return{
+  if(profit>allowed){
+    profit=allowed;
+  }
 
-id:s.id || uid(),
+  return{
+    ...s,
 
-professionalId:
-s.professionalId || null,
+    id:s.id || uid(),
 
-name:
-s.name ||
-s.title ||
-s.specialist ||
-"Մասնագետ",
+    professionalId:
+      s.professionalId || null,
 
-type:
-s.type ||
-s.service ||
-"",
+    name:
+      s.name ||
+      s.expertName ||
+      s.title ||
+      s.specialist ||
+      s.service ||
+      "Մասնագետ",
 
-minPrice,
+    type:
+      s.type ||
+      s.profession ||
+      s.service ||
+      "",
 
-maxPrice,
-
-profit
-
-};
+    minPrice,
+    maxPrice,
+    profit
+  };
 
 }
 
 
 function normalizePackage(p){
 
-return{
+  let staff=
+    p.staff ||
+    p.items ||
+    p.experts ||
+    p.services ||
+    [];
 
-id:p.id || uid(),
+  if(!Array.isArray(staff)){
+    staff=[];
+  }
 
-name:
-p.name ||
-p.packageName ||
-"Փաթեթ",
+  return{
+    ...p,
 
-staff:
-Array.isArray(p.staff)
-? p.staff.map(normalizeStaff)
-: Array.isArray(p.items)
-? p.items.map(normalizeStaff)
-: []
+    id:p.id || uid(),
 
-};
+    name:
+      p.name ||
+      p.packageName ||
+      p.title ||
+      "Փաթեթ",
+
+    staff:staff.map(normalizeStaff)
+  };
 
 }
 
+
+/* ==============================
+   ՀԻՆ ՏՎՅԱԼՆԵՐԻ ՎԵՐԱԿԱՆԳՆՈՒՄ
+================================ */
+
+function recoverAllOldMomentooData(){
+
+  let foundPros=[];
+  let foundPacks=[];
+
+
+  /* Սկզբում պահում ենք ներկա տվյալները */
+
+  readArray(PRO_KEY).forEach(p=>{
+    foundPros.push(normalizeProfessional(p));
+  });
+
+  readArray(PACK_KEY).forEach(p=>{
+    foundPacks.push(normalizePackage(p));
+  });
+
+
+  /* Ստուգում ենք localStorage-ի բոլոր բանալիները */
+
+  for(let i=0;i<localStorage.length;i++){
+
+    const key=localStorage.key(i);
+
+    if(!key) continue;
+
+    try{
+
+      const raw=localStorage.getItem(key);
+
+      if(!raw) continue;
+
+      const parsed=JSON.parse(raw);
+
+      if(!Array.isArray(parsed)) continue;
+
+
+      /* Փաթեթների հայտնաբերում */
+
+      const looksLikePackages=
+        parsed.some(item=>
+
+          item &&
+          typeof item==="object" &&
+
+          (
+            Array.isArray(item.staff) ||
+            Array.isArray(item.items) ||
+            Array.isArray(item.experts) ||
+            Array.isArray(item.services)
+          )
+
+        );
+
+
+      if(looksLikePackages){
+
+        parsed.forEach(pack=>{
+
+          const np=normalizePackage(pack);
+
+          const duplicate=
+            foundPacks.some(existing=>
+
+              String(existing.id)===
+              String(np.id)
+
+              ||
+
+              (
+                String(existing.name||"")
+                  .trim()
+                  .toLowerCase()
+                ===
+                String(np.name||"")
+                  .trim()
+                  .toLowerCase()
+
+                &&
+
+                existing.staff.length===
+                np.staff.length
+              )
+
+            );
+
+
+          if(!duplicate){
+            foundPacks.push(np);
+          }
+
+        });
+
+        continue;
+
+      }
+
+
+      /* Մասնագետների հայտնաբերում */
+
+      const looksLikeProfessionals=
+        parsed.some(item=>
+
+          item &&
+          typeof item==="object" &&
+
+          (
+            "price" in item ||
+            "minPrice" in item ||
+            "maxPrice" in item ||
+            "profession" in item ||
+            "service" in item ||
+            "type" in item
+          )
+
+          &&
+
+          (
+            "name" in item ||
+            "title" in item ||
+            "expertName" in item ||
+            "specialist" in item
+          )
+
+        );
+
+
+      if(looksLikeProfessionals){
+
+        parsed.forEach(pro=>{
+
+          const np=
+            normalizeProfessional(pro);
+
+
+          const duplicate=
+            foundPros.some(existing=>
+
+              String(existing.name||"")
+                .trim()
+                .toLowerCase()
+              ===
+              String(np.name||"")
+                .trim()
+                .toLowerCase()
+
+              &&
+
+              String(existing.type||"")
+                .trim()
+                .toLowerCase()
+              ===
+              String(np.type||"")
+                .trim()
+                .toLowerCase()
+
+            );
+
+
+          if(!duplicate){
+            foundPros.push(np);
+          }
+
+        });
+
+      }
+
+    }catch(e){}
+
+  }
+
+
+  /* Փաթեթների միջի մասնագետներին էլ բերում ենք բազա */
+
+  foundPacks.forEach(pack=>{
+
+    pack.staff.forEach(s=>{
+
+      if(!s.name) return;
+
+      const duplicate=
+        foundPros.some(p=>
+
+          String(p.name||"")
+            .trim()
+            .toLowerCase()
+          ===
+          String(s.name||"")
+            .trim()
+            .toLowerCase()
+
+          &&
+
+          String(p.type||"")
+            .trim()
+            .toLowerCase()
+          ===
+          String(s.type||"")
+            .trim()
+            .toLowerCase()
+
+        );
+
+
+      if(!duplicate){
+
+        foundPros.push({
+
+          id:
+            s.professionalId ||
+            uid(),
+
+          name:s.name,
+
+          type:s.type,
+
+          minPrice:s.minPrice,
+
+          maxPrice:s.maxPrice
+
+        });
+
+      }
+
+    });
+
+  });
+
+
+  localStorage.setItem(
+    PRO_KEY,
+    JSON.stringify(foundPros)
+  );
+
+
+  localStorage.setItem(
+    PACK_KEY,
+    JSON.stringify(foundPacks)
+  );
+
+
+  return{
+    professionals:foundPros.length,
+    packages:foundPacks.length
+  };
+
+}
+
+
+function manualRecovery(){
+
+  const result=
+    recoverAllOldMomentooData();
+
+
+  professionals=
+    readArray(PRO_KEY)
+      .map(normalizeProfessional);
+
+
+  savedPackages=
+    readArray(PACK_KEY)
+      .map(normalizePackage);
+
+
+  savePros();
+  savePackages();
+
+  renderProfessionals();
+  renderSaved();
+
+
+  alert(
+    "Վերականգնման փորձն ավարտվեց։\n\n"+
+    "Մասնագետներ՝ "+
+    result.professionals+
+    "\n"+
+    "Փաթեթներ՝ "+
+    result.packages
+  );
+
+}
+
+
+/* ==============================
+   ԲԵՌՆՈՒՄ
+================================ */
 
 function load(){
 
-let mainPros=readStorage(PRO_KEY);
-
-let collectedPros=[...mainPros];
+  recoverAllOldMomentooData();
 
 
-OLD_PRO_KEYS.forEach(key=>{
-
-const old=readStorage(key);
-
-old.forEach(p=>{
-
-const np=normalizeProfessional(p);
-
-const duplicate=collectedPros.some(x=>
-
-String(x.name||"").toLowerCase()===
-String(np.name||"").toLowerCase()
-
-&&
-
-String(x.type||"").toLowerCase()===
-String(np.type||"").toLowerCase()
-
-);
-
-if(!duplicate){
-collectedPros.push(np);
-}
-
-});
-
-});
+  professionals=
+    readArray(PRO_KEY)
+      .map(normalizeProfessional);
 
 
-professionals=
-collectedPros.map(normalizeProfessional);
+  savedPackages=
+    readArray(PACK_KEY)
+      .map(normalizePackage);
 
 
-let mainPacks=readStorage(PACK_KEY);
+  savePros();
+  savePackages();
 
-let collectedPacks=[...mainPacks];
-
-
-OLD_PACK_KEYS.forEach(key=>{
-
-const old=readStorage(key);
-
-old.forEach(p=>{
-
-const np=normalizePackage(p);
-
-const duplicate=collectedPacks.some(x=>
-
-String(x.id)===String(np.id)
-
-||
-
-(
-String(x.name||"").toLowerCase()===
-String(np.name||"").toLowerCase()
-&&
-Array.isArray(x.staff)
-&&
-x.staff.length===np.staff.length
-)
-
-);
-
-if(!duplicate){
-collectedPacks.push(np);
-}
-
-});
-
-});
-
-
-savedPackages=
-collectedPacks.map(normalizePackage);
-
-
-savePros();
-
-savePackages();
-
-renderProfessionals();
-
-renderSaved();
-
-renderCurrent();
+  renderProfessionals();
+  renderSaved();
+  renderCurrent();
 
 }
 
 
 function savePros(){
 
-localStorage.setItem(
-PRO_KEY,
-JSON.stringify(professionals)
-);
+  localStorage.setItem(
+    PRO_KEY,
+    JSON.stringify(professionals)
+  );
 
 }
 
 
 function savePackages(){
 
-localStorage.setItem(
-PACK_KEY,
-JSON.stringify(savedPackages)
-);
+  localStorage.setItem(
+    PACK_KEY,
+    JSON.stringify(savedPackages)
+  );
 
 }
 
+
+/* ==============================
+   ՄԱՍՆԱԳԵՏՆԵՐ
+================================ */
 
 function toggleProfessionals(){
 
-document
-.getElementById("professionalsPanel")
-.classList.toggle("hidden");
+  document
+    .getElementById("professionalsPanel")
+    .classList.toggle("hidden");
 
-renderProfessionals();
-
-}
-
-
-function toggleSaved(){
-
-document
-.getElementById("savedPanel")
-.classList.toggle("hidden");
-
-renderSaved();
+  renderProfessionals();
 
 }
 
 
 function addProfessional(){
 
-const name=
-document.getElementById("proName").value.trim();
+  const name=
+    document.getElementById("proName")
+      .value.trim();
 
-const type=
-document.getElementById("proType").value.trim();
+  const type=
+    document.getElementById("proType")
+      .value.trim();
 
-const minPrice=
-Number(document.getElementById("proMin").value)||0;
+  const minPrice=
+    Number(
+      document.getElementById("proMin").value
+    )||0;
 
-let maxPrice=
-Number(document.getElementById("proMax").value)||0;
-
-
-if(!name){
-
-alert("Գրիր մասնագետի անունը։");
-return;
-
-}
+  let maxPrice=
+    Number(
+      document.getElementById("proMax").value
+    )||0;
 
 
-if(!maxPrice){
-maxPrice=minPrice;
-}
+  if(!name){
+
+    alert("Գրիր մասնագետի անունը։");
+    return;
+
+  }
 
 
-if(maxPrice<minPrice){
-
-alert(
-"Մաքսիմալ արժեքը չի կարող փոքր լինել մինիմալից։"
-);
-
-return;
-
-}
+  if(!maxPrice){
+    maxPrice=minPrice;
+  }
 
 
-professionals.push({
+  if(maxPrice<minPrice){
 
-id:uid(),
+    alert(
+      "Մաքսիմալ գինը չի կարող փոքր լինել մինիմալից։"
+    );
 
-name,
+    return;
 
-type,
-
-minPrice,
-
-maxPrice
-
-});
+  }
 
 
-savePros();
+  professionals.push({
 
-renderProfessionals();
+    id:uid(),
+    name,
+    type,
+    minPrice,
+    maxPrice
+
+  });
 
 
-document.getElementById("proName").value="";
-document.getElementById("proType").value="";
-document.getElementById("proMin").value="";
-document.getElementById("proMax").value="";
+  savePros();
+
+  renderProfessionals();
+
+
+  document.getElementById("proName").value="";
+  document.getElementById("proType").value="";
+  document.getElementById("proMin").value="";
+  document.getElementById("proMax").value="";
 
 }
 
 
 function renderProfessionals(){
 
-const box=
-document.getElementById("professionalsList");
-
-if(!professionals.length){
-
-box.innerHTML=
-"<div>Դեռ մասնագետ չկա։</div>";
-
-return;
-
-}
+  const box=
+    document.getElementById("professionalsList");
 
 
-box.innerHTML=
-professionals.map(p=>`
+  if(!professionals.length){
 
-<div class="pro-row">
+    box.innerHTML=
+      "<div>Դեռ մասնագետ չկա։</div>";
 
-<div>
-<strong>${esc(p.name)}</strong>
-</div>
+    return;
 
-<div>
-${esc(p.type)}
-</div>
+  }
 
-<div>
-${money(p.minPrice)}
-</div>
 
-<div>
-${money(p.maxPrice)}
-</div>
+  box.innerHTML=
+    professionals.map(p=>`
 
-<div>
+      <div class="pro-row">
 
-<button
-class="danger"
-onclick="deleteProfessional('${p.id}')"
->
-Ջնջել
-</button>
+        <div>
+          <strong>${esc(p.name)}</strong>
+        </div>
 
-</div>
+        <div>
+          ${esc(p.type)}
+        </div>
 
-</div>
+        <div>
+          ${money(p.minPrice)}
+        </div>
 
-`).join("");
+        <div>
+          ${money(p.maxPrice)}
+        </div>
+
+        <div>
+
+          <button
+            class="danger"
+            onclick="deleteProfessional('${p.id}')"
+          >
+            Ջնջել
+          </button>
+
+        </div>
+
+      </div>
+
+    `).join("");
 
 }
 
 
 function deleteProfessional(id){
 
-if(!confirm("Ջնջե՞լ մասնագետին։")){
-return;
+  if(!confirm("Ջնջե՞լ մասնագետին։")){
+    return;
+  }
+
+
+  professionals=
+    professionals.filter(
+      p=>p.id!==id
+    );
+
+
+  savePros();
+  renderProfessionals();
+
 }
 
-professionals=
-professionals.filter(p=>p.id!==id);
 
-savePros();
-
-renderProfessionals();
-
-}
-
+/* ==============================
+   ՄԱՍՆԱԳԵՏ ԸՆՏՐԵԼ
+================================ */
 
 function openProfessionalPicker(){
 
-document
-.getElementById("picker")
-.classList.remove("hidden");
+  document
+    .getElementById("picker")
+    .classList.remove("hidden");
 
-document.getElementById("proSearch").value="";
 
-renderProfessionalChoices();
+  document
+    .getElementById("proSearch")
+    .value="";
+
+
+  renderProfessionalChoices();
 
 }
 
 
 function closeProfessionalPicker(){
 
-document
-.getElementById("picker")
-.classList.add("hidden");
+  document
+    .getElementById("picker")
+    .classList.add("hidden");
 
 }
 
 
 function renderProfessionalChoices(){
 
-const query=
-document
-.getElementById("proSearch")
-.value
-.trim()
-.toLowerCase();
-
-const list=
-professionals.filter(p=>{
-
-const text=
-(p.name+" "+p.type).toLowerCase();
-
-return text.includes(query);
-
-});
+  const query=
+    document
+      .getElementById("proSearch")
+      .value
+      .trim()
+      .toLowerCase();
 
 
-const box=
-document.getElementById("professionalChoices");
+  const list=
+    professionals.filter(p=>
+
+      (p.name+" "+p.type)
+        .toLowerCase()
+        .includes(query)
+
+    );
 
 
-if(!list.length){
-
-box.innerHTML=
-"<div style='padding:12px'>Չգտնվեց։ Կարող ես ներքևից ձեռքով ավելացնել։</div>";
-
-return;
-
-}
+  const box=
+    document.getElementById(
+      "professionalChoices"
+    );
 
 
-box.innerHTML=
-list.map(p=>`
+  if(!list.length){
 
-<div class="pro-choice">
+    box.innerHTML=
+      "<div style='padding:12px'>Չգտնվեց։ Կարող ես ներքևից ձեռքով ավելացնել։</div>";
 
-<div>
+    return;
 
-<strong>${esc(p.name)}</strong>
+  }
 
-<div>${esc(p.type)}</div>
 
-<div class="price-range">
+  box.innerHTML=
+    list.map(p=>`
 
-${money(p.minPrice)}
-—
-${money(p.maxPrice)}
+      <div class="pro-choice">
 
-</div>
+        <div>
 
-</div>
+          <strong>
+            ${esc(p.name)}
+          </strong>
 
-<button
-class="primary"
-onclick="addProfessionalToPackage('${p.id}')"
->
-Ավելացնել
-</button>
+          <div>
+            ${esc(p.type)}
+          </div>
 
-</div>
+          <div class="price-range">
 
-`).join("");
+            ${money(p.minPrice)}
+            —
+            ${money(p.maxPrice)}
+
+          </div>
+
+        </div>
+
+
+        <button
+          class="primary"
+          onclick="addProfessionalToPackage('${p.id}')"
+        >
+          Ավելացնել
+        </button>
+
+      </div>
+
+    `).join("");
 
 }
 
 
 function addProfessionalToPackage(id){
 
-const p=
-professionals.find(x=>x.id===id);
-
-if(!p) return;
-
-
-currentPackage.staff.push({
-
-id:uid(),
-
-professionalId:p.id,
-
-name:p.name,
-
-type:p.type,
-
-minPrice:p.minPrice,
-
-maxPrice:p.maxPrice,
-
-profit:0
-
-});
+  const p=
+    professionals.find(
+      x=>x.id===id
+    );
 
 
-closeProfessionalPicker();
+  if(!p) return;
 
-renderCurrent();
+
+  currentPackage.staff.push({
+
+    id:uid(),
+
+    professionalId:p.id,
+
+    name:p.name,
+
+    type:p.type,
+
+    minPrice:p.minPrice,
+
+    maxPrice:p.maxPrice,
+
+    profit:0
+
+  });
+
+
+  closeProfessionalPicker();
+
+  renderCurrent();
 
 }
 
+
+/* ==============================
+   ՁԵՌՔՈՎ ՄԱՍՆԱԳԵՏ
+================================ */
 
 function addManualStaff(){
 
-const name=
-document
-.getElementById("manualName")
-.value
-.trim();
-
-const type=
-document
-.getElementById("manualType")
-.value
-.trim();
-
-const minPrice=
-Number(
-document.getElementById("manualMin").value
-)||0;
-
-let maxPrice=
-Number(
-document.getElementById("manualMax").value
-)||0;
+  const name=
+    document
+      .getElementById("manualName")
+      .value
+      .trim();
 
 
-if(!name){
+  const type=
+    document
+      .getElementById("manualType")
+      .value
+      .trim();
 
-alert("Գրիր անունը կամ ծառայությունը։");
 
-return;
+  const minPrice=
+    Number(
+      document.getElementById("manualMin").value
+    )||0;
+
+
+  let maxPrice=
+    Number(
+      document.getElementById("manualMax").value
+    )||0;
+
+
+  if(!name){
+
+    alert(
+      "Գրիր անունը կամ ծառայությունը։"
+    );
+
+    return;
+
+  }
+
+
+  if(!maxPrice){
+    maxPrice=minPrice;
+  }
+
+
+  if(maxPrice<minPrice){
+
+    alert(
+      "Մաքսիմալ գինը չի կարող փոքր լինել մինիմալից։"
+    );
+
+    return;
+
+  }
+
+
+  let professionalId=null;
+
+
+  if(
+    document
+      .getElementById("saveManualToBase")
+      .checked
+  ){
+
+    professionalId=uid();
+
+
+    professionals.push({
+
+      id:professionalId,
+
+      name,
+      type,
+      minPrice,
+      maxPrice
+
+    });
+
+
+    savePros();
+
+  }
+
+
+  currentPackage.staff.push({
+
+    id:uid(),
+
+    professionalId,
+
+    name,
+    type,
+    minPrice,
+    maxPrice,
+
+    profit:0
+
+  });
+
+
+  document.getElementById("manualName").value="";
+  document.getElementById("manualType").value="";
+  document.getElementById("manualMin").value="";
+  document.getElementById("manualMax").value="";
+
+  document
+    .getElementById("saveManualToBase")
+    .checked=false;
+
+
+  closeProfessionalPicker();
+
+  renderProfessionals();
+
+  renderCurrent();
 
 }
 
 
-if(!maxPrice){
-maxPrice=minPrice;
-}
-
-
-if(maxPrice<minPrice){
-
-alert(
-"Մաքսիմալ արժեքը չի կարող փոքր լինել մինիմալից։"
-);
-
-return;
-
-}
-
-
-let professionalId=null;
-
-
-if(
-document
-.getElementById("saveManualToBase")
-.checked
-){
-
-professionalId=uid();
-
-professionals.push({
-
-id:professionalId,
-
-name,
-
-type,
-
-minPrice,
-
-maxPrice
-
-});
-
-savePros();
-
-}
-
-
-currentPackage.staff.push({
-
-id:uid(),
-
-professionalId,
-
-name,
-
-type,
-
-minPrice,
-
-maxPrice,
-
-profit:0
-
-});
-
-
-document.getElementById("manualName").value="";
-document.getElementById("manualType").value="";
-document.getElementById("manualMin").value="";
-document.getElementById("manualMax").value="";
-document.getElementById("saveManualToBase").checked=false;
-
-
-closeProfessionalPicker();
-
-renderProfessionals();
-
-renderCurrent();
-
-}
-
+/* ==============================
+   ՓԱԹԵԹԻ ՄԱՍՆԱԳԵՏՆԵՐ
+================================ */
 
 function renderCurrent(){
 
-document.getElementById("packageName").value=
-currentPackage.name||"";
+  document
+    .getElementById("packageName")
+    .value=currentPackage.name||"";
 
 
-const box=
-document.getElementById("staffList");
+  const box=
+    document.getElementById("staffList");
 
 
-if(!currentPackage.staff.length){
+  if(!currentPackage.staff.length){
 
-box.innerHTML=
-"<div style='padding:14px 0;color:#8b7b83'>Փաթեթում դեռ մասնագետ չկա։</div>";
+    box.innerHTML=
+      "<div style='padding:14px 0;color:#8b7b83'>Փաթեթում դեռ մասնագետ չկա։</div>";
 
-}else{
-
-box.innerHTML=
-currentPackage.staff.map(s=>{
-
-const maxProfit=
-Math.max(
-0,
-Number(s.maxPrice)-Number(s.minPrice)
-);
-
-return`
-
-<div class="staff">
-
-<div class="wide">
-
-<label>Մասնագետ</label>
-
-<input
-value="${esc(s.name)}"
-oninput="updateStaffName('${s.id}',this.value)"
->
-
-<div class="price-range">
-${esc(s.type)}
-</div>
-
-</div>
+  }else{
 
 
-<div>
-
-<label>Մինիմալ գին</label>
-
-<input
-type="number"
-min="0"
-value="${Number(s.minPrice)||0}"
-oninput="updateStaffMin('${s.id}',this.value)"
->
-
-</div>
+    box.innerHTML=
+      currentPackage.staff.map(s=>{
 
 
-<div>
-
-<label>Մաքսիմալ գին</label>
-
-<input
-type="number"
-min="0"
-value="${Number(s.maxPrice)||0}"
-oninput="updateStaffMax('${s.id}',this.value)"
->
-
-</div>
+        const maxProfit=
+          Math.max(
+            0,
+            Number(s.maxPrice)-
+            Number(s.minPrice)
+          );
 
 
-<div>
+        return`
 
-<label>Իմ գումարը</label>
-
-<input
-type="number"
-min="0"
-max="${maxProfit}"
-value="${Number(s.profit)||0}"
-oninput="updateStaffProfit('${s.id}',this.value)"
->
-
-<div class="limit">
-Առավելագույնը՝ ${money(maxProfit)}
-</div>
-
-</div>
+          <div class="staff">
 
 
-<div>
+            <div class="wide">
 
-<label>Հաճախորդի գին</label>
+              <label>
+                Մասնագետ
+              </label>
 
-<input
-disabled
-value="${money(
-Number(s.minPrice)+Number(s.profit)
-)}"
->
+              <input
+                value="${esc(s.name)}"
+                oninput="updateStaffName('${s.id}',this.value)"
+              >
 
-</div>
+              <div class="price-range">
+                ${esc(s.type)}
+              </div>
 
-
-<div>
-
-<button
-class="danger"
-onclick="removeStaff('${s.id}')"
->
-✕
-</button>
-
-</div>
-
-</div>
-
-`;
-
-}).join("");
-
-}
+            </div>
 
 
-updateSummary();
+            <div>
+
+              <label>
+                Մինիմալ գին
+              </label>
+
+              <input
+                type="number"
+                min="0"
+                value="${Number(s.minPrice)||0}"
+                oninput="updateStaffMin('${s.id}',this.value)"
+              >
+
+            </div>
+
+
+            <div>
+
+              <label>
+                Մաքսիմալ գին
+              </label>
+
+              <input
+                type="number"
+                min="0"
+                value="${Number(s.maxPrice)||0}"
+                oninput="updateStaffMax('${s.id}',this.value)"
+              >
+
+            </div>
+
+
+            <div>
+
+              <label>
+                Իմ գումարը
+              </label>
+
+              <input
+                type="number"
+                min="0"
+                max="${maxProfit}"
+                value="${Number(s.profit)||0}"
+                oninput="updateStaffProfit('${s.id}',this.value)"
+              >
+
+              <div class="limit">
+
+                Առավելագույնը՝
+                ${money(maxProfit)}
+
+              </div>
+
+            </div>
+
+
+            <div>
+
+              <label>
+                Հաճախորդի գին
+              </label>
+
+              <input
+                disabled
+                value="${money(
+                  Number(s.minPrice)+
+                  Number(s.profit)
+                )}"
+              >
+
+            </div>
+
+
+            <div>
+
+              <button
+                class="danger"
+                onclick="removeStaff('${s.id}')"
+              >
+                ✕
+              </button>
+
+            </div>
+
+
+          </div>
+
+        `;
+
+      }).join("");
+
+  }
+
+
+  updateSummary();
 
 }
 
 
 function updateStaffName(id,value){
 
-const s=
-currentPackage.staff.find(x=>x.id===id);
+  const s=
+    currentPackage.staff.find(
+      x=>x.id===id
+    );
 
-if(!s) return;
 
-s.name=value;
+  if(!s) return;
 
-updateSummary();
+  s.name=value;
 
 }
 
 
 function updateStaffMin(id,value){
 
-const s=
-currentPackage.staff.find(x=>x.id===id);
-
-if(!s) return;
-
-s.minPrice=
-Math.max(0,Number(value)||0);
+  const s=
+    currentPackage.staff.find(
+      x=>x.id===id
+    );
 
 
-if(s.maxPrice<s.minPrice){
-s.maxPrice=s.minPrice;
-}
+  if(!s) return;
 
 
-const maxProfit=
-Math.max(0,s.maxPrice-s.minPrice);
+  s.minPrice=
+    Math.max(
+      0,
+      Number(value)||0
+    );
 
 
-if(s.profit>maxProfit){
-s.profit=maxProfit;
-}
+  if(s.maxPrice<s.minPrice){
+
+    s.maxPrice=s.minPrice;
+
+  }
 
 
-renderCurrent();
+  const allowed=
+    Math.max(
+      0,
+      s.maxPrice-s.minPrice
+    );
+
+
+  if(s.profit>allowed){
+
+    s.profit=allowed;
+
+  }
+
+
+  renderCurrent();
 
 }
 
 
 function updateStaffMax(id,value){
 
-const s=
-currentPackage.staff.find(x=>x.id===id);
-
-if(!s) return;
-
-let val=
-Math.max(0,Number(value)||0);
+  const s=
+    currentPackage.staff.find(
+      x=>x.id===id
+    );
 
 
-if(val<s.minPrice){
-
-alert(
-"Մաքսիմալ գինը չի կարող փոքր լինել մինիմալ գներից։"
-);
-
-val=s.minPrice;
-
-}
+  if(!s) return;
 
 
-s.maxPrice=val;
+  let val=
+    Math.max(
+      0,
+      Number(value)||0
+    );
 
 
-const maxProfit=
-Math.max(0,s.maxPrice-s.minPrice);
+  if(val<s.minPrice){
+
+    alert(
+      "Մաքսիմալ գինը չի կարող փոքր լինել մինիմալից։"
+    );
+
+    val=s.minPrice;
+
+  }
 
 
-if(s.profit>maxProfit){
-s.profit=maxProfit;
-}
+  s.maxPrice=val;
 
 
-renderCurrent();
+  const allowed=
+    Math.max(
+      0,
+      s.maxPrice-s.minPrice
+    );
+
+
+  if(s.profit>allowed){
+
+    s.profit=allowed;
+
+  }
+
+
+  renderCurrent();
 
 }
 
 
 function updateStaffProfit(id,value){
 
-const s=
-currentPackage.staff.find(x=>x.id===id);
-
-if(!s) return;
-
-
-const maxProfit=
-Math.max(
-0,
-Number(s.maxPrice)-Number(s.minPrice)
-);
+  const s=
+    currentPackage.staff.find(
+      x=>x.id===id
+    );
 
 
-let val=
-Math.max(
-0,
-Number(value)||0
-);
+  if(!s) return;
 
 
-if(val>maxProfit){
-
-val=maxProfit;
-
-alert(
-"Քո գումարը չի կարող անցնել մասնագետի մաքսիմալ գնի սահմանը։ Առավելագույնը՝ "+
-money(maxProfit)
-);
-
-}
+  const maxProfit=
+    Math.max(
+      0,
+      Number(s.maxPrice)-
+      Number(s.minPrice)
+    );
 
 
-s.profit=val;
+  let val=
+    Math.max(
+      0,
+      Number(value)||0
+    );
 
-renderCurrent();
+
+  if(val>maxProfit){
+
+    val=maxProfit;
+
+
+    alert(
+      "Քո գումարը չի կարող անցնել մասնագետի մաքսիմալ գինը։ Առավելագույնը՝ "+
+      money(maxProfit)
+    );
+
+  }
+
+
+  s.profit=val;
+
+  renderCurrent();
 
 }
 
 
 function removeStaff(id){
 
-currentPackage.staff=
-currentPackage.staff.filter(
-s=>s.id!==id
-);
+  currentPackage.staff=
+    currentPackage.staff.filter(
+      s=>s.id!==id
+    );
 
-renderCurrent();
+
+  renderCurrent();
 
 }
 
 
+/* ==============================
+   ՀԱՇՎԱՐԿ
+================================ */
+
 function updateSummary(){
 
-const cost=
-currentPackage.staff.reduce(
-(sum,s)=>sum+(Number(s.minPrice)||0),
-0
-);
-
-const profit=
-currentPackage.staff.reduce(
-(sum,s)=>sum+(Number(s.profit)||0),
-0
-);
-
-const total=
-cost+profit;
+  const cost=
+    currentPackage.staff.reduce(
+      (sum,s)=>
+        sum+
+        (Number(s.minPrice)||0),
+      0
+    );
 
 
-document.getElementById("packageCost").textContent=
-money(cost);
-
-document.getElementById("packageProfit").textContent=
-money(profit);
-
-document.getElementById("packageTotal").textContent=
-money(total);
-
-
-document.getElementById("allCost").textContent=
-money(cost);
-
-document.getElementById("allProfit").textContent=
-money(profit);
-
-document.getElementById("allTotal").textContent=
-money(total);
+  const profit=
+    currentPackage.staff.reduce(
+      (sum,s)=>
+        sum+
+        (Number(s.profit)||0),
+      0
+    );
 
 
-renderPaymentList();
+  const total=
+    cost+profit;
+
+
+  document
+    .getElementById("packageCost")
+    .textContent=money(cost);
+
+
+  document
+    .getElementById("packageProfit")
+    .textContent=money(profit);
+
+
+  document
+    .getElementById("packageTotal")
+    .textContent=money(total);
+
+
+  document
+    .getElementById("allCost")
+    .textContent=money(cost);
+
+
+  document
+    .getElementById("allProfit")
+    .textContent=money(profit);
+
+
+  document
+    .getElementById("allTotal")
+    .textContent=money(total);
+
+
+  renderPaymentList();
 
 }
 
 
 function renderPaymentList(){
 
-const box=
-document.getElementById("paymentList");
+  const box=
+    document.getElementById("paymentList");
 
 
-if(!currentPackage.staff.length){
+  if(!currentPackage.staff.length){
 
-box.innerHTML="Դեռ մասնագետ չկա։";
+    box.innerHTML=
+      "Դեռ մասնագետ չկա։";
 
-return;
+    return;
+
+  }
+
+
+  box.innerHTML=
+    currentPackage.staff.map(s=>`
+
+      <div class="payment-row">
+
+        <div>
+
+          <strong>
+            ${esc(s.name)}
+          </strong>
+
+          ${
+            s.type
+            ?
+            `<div style="font-size:12px;color:#88767f">
+              ${esc(s.type)}
+            </div>`
+            :
+            ""
+          }
+
+        </div>
+
+
+        <strong>
+          ${money(s.minPrice)}
+        </strong>
+
+      </div>
+
+    `).join("");
 
 }
 
 
-box.innerHTML=
-currentPackage.staff.map(s=>`
+/* ==============================
+   ՓԱԹԵԹՆԵՐ
+================================ */
 
-<div class="payment-row">
+function toggleSaved(){
 
-<div>
+  document
+    .getElementById("savedPanel")
+    .classList.toggle("hidden");
 
-<strong>${esc(s.name)}</strong>
 
-${s.type
-? `<div style="font-size:12px;color:#88767f">${esc(s.type)}</div>`
-: ""
-}
-
-</div>
-
-<strong>
-${money(s.minPrice)}
-</strong>
-
-</div>
-
-`).join("");
+  renderSaved();
 
 }
 
 
 function saveCurrentPackage(){
 
-currentPackage.name=
-document
-.getElementById("packageName")
-.value
-.trim();
+  currentPackage.name=
+    document
+      .getElementById("packageName")
+      .value
+      .trim();
 
 
-if(!currentPackage.name){
+  if(!currentPackage.name){
 
-alert("Գրիր փաթեթի անունը։");
+    alert(
+      "Գրիր փաթեթի անունը։"
+    );
 
-return;
+    return;
 
-}
-
-
-if(!currentPackage.id){
-
-currentPackage.id=uid();
-
-savedPackages.push(
-JSON.parse(
-JSON.stringify(currentPackage)
-)
-);
-
-}else{
-
-const index=
-savedPackages.findIndex(
-p=>p.id===currentPackage.id
-);
-
-if(index>=0){
-
-savedPackages[index]=
-JSON.parse(
-JSON.stringify(currentPackage)
-);
-
-}else{
-
-savedPackages.push(
-JSON.parse(
-JSON.stringify(currentPackage)
-)
-);
-
-}
-
-}
+  }
 
 
-savePackages();
+  if(!currentPackage.id){
 
-renderSaved();
+    currentPackage.id=uid();
 
-alert("Փաթեթը պահպանվեց։");
+
+    savedPackages.push(
+      JSON.parse(
+        JSON.stringify(currentPackage)
+      )
+    );
+
+  }else{
+
+
+    const index=
+      savedPackages.findIndex(
+        p=>p.id===currentPackage.id
+      );
+
+
+    if(index>=0){
+
+      savedPackages[index]=
+        JSON.parse(
+          JSON.stringify(currentPackage)
+        );
+
+    }else{
+
+      savedPackages.push(
+        JSON.parse(
+          JSON.stringify(currentPackage)
+        )
+      );
+
+    }
+
+  }
+
+
+  savePackages();
+
+  renderSaved();
+
+
+  alert(
+    "Փաթեթը պահպանվեց։"
+  );
 
 }
 
 
 function renderSaved(){
 
-const box=
-document.getElementById("savedList");
+  const box=
+    document.getElementById("savedList");
 
 
-if(!savedPackages.length){
+  if(!savedPackages.length){
 
-box.innerHTML=
-"<div>Դեռ պահված փաթեթ չկա։</div>";
+    box.innerHTML=
+      "<div>Դեռ պահված փաթեթ չկա։</div>";
 
-return;
+    return;
 
-}
+  }
 
 
-box.innerHTML=
-savedPackages.map(p=>{
+  box.innerHTML=
+    savedPackages.map(p=>{
 
-const total=
-p.staff.reduce(
-(sum,s)=>
-sum+
-Number(s.minPrice||0)+
-Number(s.profit||0),
-0
-);
 
-return`
+      const total=
+        p.staff.reduce(
+          (sum,s)=>
 
-<div class="saved-item">
+            sum+
+            Number(s.minPrice||0)+
+            Number(s.profit||0),
 
-<div>
+          0
+        );
 
-<strong>${esc(p.name)}</strong>
 
-<div style="
-font-size:12px;
-color:#88767f;
-margin-top:4px
-">
+      return`
 
-${p.staff.length}
-մասնագետ •
-${money(total)}
+        <div class="saved-item">
 
-</div>
 
-</div>
+          <div>
 
-<div style="
-display:flex;
-gap:7px;
-flex-wrap:wrap
-">
+            <strong>
+              ${esc(p.name)}
+            </strong>
 
-<button
-class="primary"
-onclick="openSavedPackage('${p.id}')"
->
-Բացել
-</button>
+            <div style="font-size:12px;color:#88767f;margin-top:4px">
 
-<button
-class="danger"
-onclick="deleteSavedPackage('${p.id}')"
->
-Ջնջել
-</button>
+              ${p.staff.length}
+              մասնագետ •
 
-</div>
+              ${money(total)}
 
-</div>
+            </div>
 
-`;
+          </div>
 
-}).join("");
+
+          <div style="display:flex;gap:7px;flex-wrap:wrap">
+
+            <button
+              class="primary"
+              onclick="openSavedPackage('${p.id}')"
+            >
+              Բացել
+            </button>
+
+            <button
+              class="danger"
+              onclick="deleteSavedPackage('${p.id}')"
+            >
+              Ջնջել
+            </button>
+
+          </div>
+
+
+        </div>
+
+      `;
+
+    }).join("");
 
 }
 
 
 function openSavedPackage(id){
 
-const p=
-savedPackages.find(
-x=>x.id===id
-);
-
-if(!p) return;
+  const p=
+    savedPackages.find(
+      x=>x.id===id
+    );
 
 
-currentPackage=
-JSON.parse(
-JSON.stringify(p)
-);
+  if(!p) return;
 
 
-currentPackage.staff=
-currentPackage.staff.map(
-normalizeStaff
-);
+  currentPackage=
+    JSON.parse(
+      JSON.stringify(p)
+    );
 
 
-renderCurrent();
+  currentPackage.staff=
+    currentPackage.staff.map(
+      normalizeStaff
+    );
 
-document
-.getElementById("savedPanel")
-.classList.add("hidden");
+
+  renderCurrent();
+
+
+  document
+    .getElementById("savedPanel")
+    .classList.add("hidden");
 
 }
 
 
 function deleteSavedPackage(id){
 
-if(!confirm("Ջնջե՞լ պահված փաթեթը։")){
-return;
-}
+  if(
+    !confirm(
+      "Ջնջե՞լ պահված փաթեթը։"
+    )
+  ){
+    return;
+  }
 
 
-savedPackages=
-savedPackages.filter(
-p=>p.id!==id
-);
+  savedPackages=
+    savedPackages.filter(
+      p=>p.id!==id
+    );
 
 
-if(currentPackage.id===id){
+  if(currentPackage.id===id){
 
-currentPackage={
-id:null,
-name:"",
-staff:[]
-};
-
-renderCurrent();
-
-}
+    currentPackage={
+      id:null,
+      name:"",
+      staff:[]
+    };
 
 
-savePackages();
+    renderCurrent();
 
-renderSaved();
+  }
+
+
+  savePackages();
+
+  renderSaved();
 
 }
 
 
 function newPackage(){
 
-if(
-currentPackage.staff.length ||
-document.getElementById("packageName").value
-){
+  if(
+    currentPackage.staff.length ||
+    document
+      .getElementById("packageName")
+      .value
+  ){
 
-if(
-!confirm(
-"Բացել նոր փաթե՞թ։ Չպահված փոփոխությունները կարող են կորել։"
-)
-){
-return;
-}
+    if(
+      !confirm(
+        "Բացել նոր փաթե՞թ։ Չպահված փոփոխությունները կարող են կորել։"
+      )
+    ){
 
-}
+      return;
 
+    }
 
-currentPackage={
-id:null,
-name:"",
-staff:[]
-};
+  }
 
 
-renderCurrent();
+  currentPackage={
+    id:null,
+    name:"",
+    staff:[]
+  };
+
+
+  renderCurrent();
 
 }
 

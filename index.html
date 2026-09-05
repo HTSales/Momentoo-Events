@@ -22,161 +22,103 @@ header{
 }
 h1{margin:0}
 .subtitle{margin-top:6px;opacity:.75}
-.menu{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  margin-top:18px;
-}
+.menu{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
 button{
-  border:0;
-  border-radius:12px;
-  padding:11px 14px;
-  font-weight:700;
-  cursor:pointer;
+  border:0;border-radius:12px;padding:11px 14px;
+  font-weight:700;cursor:pointer;
 }
 .primary{background:#e986a5;color:white}
 .secondary{background:white;color:#5a4550}
 .danger{background:#fff0f3;color:#b64868}
 .card{
-  background:white;
-  border-radius:20px;
-  padding:18px;
-  margin-bottom:16px;
-  box-shadow:0 5px 20px rgba(0,0,0,.04);
+  background:white;border-radius:20px;padding:18px;
+  margin-bottom:16px;box-shadow:0 5px 20px rgba(0,0,0,.04);
 }
 .hidden{display:none!important}
 input{
-  width:100%;
-  border:1px solid #eadde2;
-  border-radius:12px;
-  padding:11px;
-  font-size:15px;
+  width:100%;border:1px solid #eadde2;border-radius:12px;
+  padding:11px;font-size:15px;
 }
 label{
-  display:block;
-  font-size:12px;
-  color:#84767d;
-  margin-bottom:5px;
+  display:block;font-size:12px;color:#84767d;margin-bottom:5px;
 }
 .pro-form{
   display:grid;
-  grid-template-columns:1.5fr 1.2fr 1fr auto;
-  gap:8px;
-  align-items:end;
+  grid-template-columns:1.3fr 1fr .8fr .8fr auto;
+  gap:8px;align-items:end;
 }
 .pro-row{
   display:grid;
-  grid-template-columns:1.5fr 1.2fr 1fr auto;
-  gap:8px;
-  align-items:center;
-  padding:10px 0;
+  grid-template-columns:1.3fr 1fr .8fr .8fr auto;
+  gap:8px;align-items:center;padding:10px 0;
   border-bottom:1px solid #eee;
 }
 .staff{
   display:grid;
-  grid-template-columns:2fr 1fr 1fr 1fr auto;
-  gap:8px;
-  align-items:end;
-  margin-top:10px;
+  grid-template-columns:1.5fr 1fr 1fr 1fr 1fr auto;
+  gap:8px;align-items:end;margin-top:10px;
 }
 .summary{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
-  margin-top:18px;
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:10px;margin-top:18px;
 }
 .summary-box{
-  padding:14px;
-  border-radius:14px;
-  background:#faf6f8;
+  padding:14px;border-radius:14px;background:#faf6f8;
 }
 .summary-box small{display:block;color:#82757b}
 .summary-box strong{font-size:20px}
 .final{background:#fff6dd}
 .grand{
-  background:#30262c;
-  color:white;
-  border-radius:22px;
-  padding:20px;
+  background:#6b5661;color:white;border-radius:22px;padding:20px;
 }
-.grand .summary-box{background:rgba(255,255,255,.1)}
+.grand .summary-box{background:rgba(255,255,255,.12)}
 .grand small{color:#eee}
 .payment-list{
-  margin-top:18px;
-  background:white;
-  color:#30262c;
-  border-radius:18px;
-  padding:16px;
+  margin-top:18px;background:white;color:#30262c;
+  border-radius:18px;padding:16px;
 }
 .payment-row{
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-  padding:10px 0;
-  border-bottom:1px solid #eee;
+  display:flex;justify-content:space-between;gap:10px;
+  padding:10px 0;border-bottom:1px solid #eee;
 }
 .saved-item{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-  padding:12px 0;
-  border-bottom:1px solid #eee;
+  display:flex;justify-content:space-between;align-items:center;
+  gap:10px;padding:12px 0;border-bottom:1px solid #eee;
 }
 .picker{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.45);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:18px;
-  z-index:999;
+  position:fixed;inset:0;background:rgba(60,45,54,.55);
+  display:flex;align-items:center;justify-content:center;
+  padding:18px;z-index:999;
 }
 .picker-box{
-  background:white;
-  width:min(650px,100%);
-  max-height:85vh;
-  overflow:auto;
-  border-radius:20px;
-  padding:18px;
+  background:white;width:min(650px,100%);max-height:85vh;
+  overflow:auto;border-radius:20px;padding:18px;
 }
 .pro-choice{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-  padding:12px;
-  border-bottom:1px solid #eee;
+  display:flex;justify-content:space-between;align-items:center;
+  gap:10px;padding:12px;border-bottom:1px solid #eee;
 }
 .manual-box{
-  margin-top:18px;
-  padding:15px;
-  background:#fff8fa;
-  border-radius:16px;
+  margin-top:18px;padding:15px;background:#fff8fa;border-radius:16px;
 }
 .manual-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr 1fr;
-  gap:8px;
+  display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;
 }
 .checkbox-row{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  margin-top:10px;
+  display:flex;align-items:center;gap:8px;margin-top:10px;
 }
-.checkbox-row input{
-  width:auto;
+.checkbox-row input{width:auto}
+.price-range{
+  font-size:12px;color:#88757e;margin-top:3px;
+}
+.limit{
+  font-size:11px;color:#a85c72;margin-top:4px;
 }
 @media(max-width:700px){
   .pro-form,.pro-row{grid-template-columns:1fr}
   .staff{
-    grid-template-columns:1fr 1fr;
-    background:#fffafd;
-    padding:12px;
-    border-radius:15px;
+    grid-template-columns:1fr 1fr;background:#fffafd;
+    padding:12px;border-radius:15px;
   }
   .staff .wide{grid-column:1/-1}
   .summary{grid-template-columns:1fr}
@@ -191,7 +133,7 @@ label{
 
 <header>
   <h1>MOMENTOO EVENTS ✨</h1>
-  <div class="subtitle">Ստեղծում ենք ակնթարթներ...</div>
+  <div class="subtitle">Ստեղծում ենք հիշվող ակնթարթներ...</div>
 
   <div class="menu">
     <button class="primary" onclick="newPackage()">+ Նոր փաթեթ</button>
@@ -216,8 +158,13 @@ label{
     </div>
 
     <div>
-      <label>Գին</label>
-      <input id="proPrice" type="number" min="0" placeholder="70000">
+      <label>Մինիմալ արժեք</label>
+      <input id="proMin" type="number" min="0" placeholder="50000">
+    </div>
+
+    <div>
+      <label>Մաքսիմալ արժեք</label>
+      <input id="proMax" type="number" min="0" placeholder="80000">
     </div>
 
     <button class="primary" onclick="addProfessional()">+ Ավելացնել</button>
@@ -238,7 +185,9 @@ label{
   <div id="staffList"></div>
 
   <div style="margin-top:14px">
-    <button class="primary" onclick="openProfessionalPicker()">+ Ավելացնել մասնագետ</button>
+    <button class="primary" onclick="openProfessionalPicker()">
+      + Ավելացնել մասնագետ
+    </button>
   </div>
 
   <div class="summary">
@@ -246,11 +195,13 @@ label{
       <small>Մասնագետներին</small>
       <strong id="packageCost">0 ֏</strong>
     </div>
+
     <div class="summary-box">
       <small>Իմ շահույթը</small>
       <strong id="packageProfit">0 ֏</strong>
     </div>
-    <div class="summary-box">
+
+    <div class="summary-box final">
       <small>Հաճախորդի գինը</small>
       <strong id="packageTotal">0 ֏</strong>
     </div>
@@ -265,10 +216,12 @@ label{
       <small>Մասնագետներին ընդհանուր</small>
       <strong id="allCost">0 ֏</strong>
     </div>
+
     <div class="summary-box">
       <small>Իմ շահույթը</small>
       <strong id="allProfit">0 ֏</strong>
     </div>
+
     <div class="summary-box">
       <small>Հաճախորդից ստանալու</small>
       <strong id="allTotal">0 ֏</strong>
@@ -305,7 +258,7 @@ label{
       <div class="manual-grid">
         <div>
           <label>Անուն / ծառայություն</label>
-          <input id="manualName" placeholder="Օր․ DJ կամ Արամ">
+          <input id="manualName" placeholder="Օր․ Արամ">
         </div>
 
         <div>
@@ -314,8 +267,13 @@ label{
         </div>
 
         <div>
-          <label>Իր արժեքը</label>
-          <input id="manualCost" type="number" min="0" placeholder="70000">
+          <label>Մինիմալ արժեք</label>
+          <input id="manualMin" type="number" min="0" placeholder="50000">
+        </div>
+
+        <div>
+          <label>Մաքսիմալ արժեք</label>
+          <input id="manualMax" type="number" min="0" placeholder="80000">
         </div>
       </div>
 
@@ -359,9 +317,33 @@ function esc(t){
 }
 
 function load(){
-  try{professionals=JSON.parse(localStorage.getItem(PRO_KEY))||[]}catch{professionals=[]}
-  try{savedPackages=JSON.parse(localStorage.getItem(PACK_KEY))||[]}catch{savedPackages=[]}
+  try{
+    professionals=JSON.parse(localStorage.getItem(PRO_KEY))||[];
+  }catch{
+    professionals=[];
+  }
 
+  try{
+    savedPackages=JSON.parse(localStorage.getItem(PACK_KEY))||[];
+  }catch{
+    savedPackages=[];
+  }
+
+  /* Հին մեկ գնով մասնագետների ավտոմատ տեղափոխում */
+  professionals=professionals.map(p=>{
+    let minPrice=Number(p.minPrice ?? p.price ?? 0);
+    let maxPrice=Number(p.maxPrice ?? p.price ?? minPrice);
+
+    if(maxPrice<minPrice) maxPrice=minPrice;
+
+    return {
+      ...p,
+      minPrice,
+      maxPrice
+    };
+  });
+
+  savePros();
   renderProfessionals();
   renderSaved();
   newPackage();
@@ -386,65 +368,90 @@ function toggleSaved(){
 function addProfessional(){
   const name=document.getElementById("proName").value.trim();
   const type=document.getElementById("proType").value.trim();
-  const price=Number(document.getElementById("proPrice").value)||0;
+  const minPrice=Number(document.getElementById("proMin").value)||0;
+  const maxPrice=Number(document.getElementById("proMax").value)||0;
 
   if(!name || !type){
     alert("Գրիր անունը և մասնագիտությունը");
     return;
   }
 
-  professionals.push({id:id(),name,type,price});
+  if(maxPrice<minPrice){
+    alert("Մաքսիմալ արժեքը չի կարող փոքր լինել մինիմալ արժեքից");
+    return;
+  }
+
+  professionals.push({
+    id:id(),
+    name,
+    type,
+    minPrice,
+    maxPrice
+  });
+
   savePros();
 
   document.getElementById("proName").value="";
   document.getElementById("proType").value="";
-  document.getElementById("proPrice").value="";
+  document.getElementById("proMin").value="";
+  document.getElementById("proMax").value="";
 
   renderProfessionals();
 }
 
 function deleteProfessional(proId){
-  if(!confirm("Ջնջե՞լ մասնագետին")) return;
-
   professionals=professionals.filter(p=>p.id!==proId);
   savePros();
   renderProfessionals();
 }
 
 function renderProfessionals(){
-  const list=document.getElementById("professionalsList");
+  const box=document.getElementById("professionalsList");
 
-  if(professionals.length===0){
-    list.innerHTML="Դեռ մասնագետ չկա։";
+  if(!professionals.length){
+    box.innerHTML="<div>Դեռ մասնագետ չկա։</div>";
     return;
   }
 
-  list.innerHTML="";
+  box.innerHTML=professionals.map(p=>`
+    <div class="pro-row">
+      <div>
+        <strong>${esc(p.name)}</strong>
+      </div>
 
-  professionals.forEach(p=>{
-    const row=document.createElement("div");
-    row.className="pro-row";
+      <div>${esc(p.type)}</div>
 
-    row.innerHTML=`
-      <strong>${esc(p.name)}</strong>
-      <span>${esc(p.type)}</span>
-      <strong>${money(p.price)}</strong>
-      <button class="danger" onclick="deleteProfessional('${p.id}')">Ջնջել</button>
-    `;
+      <div>
+        <small>Մին․</small><br>
+        <strong>${money(p.minPrice)}</strong>
+      </div>
 
-    list.appendChild(row);
-  });
+      <div>
+        <small>Մաքս․</small><br>
+        <strong>${money(p.maxPrice)}</strong>
+      </div>
+
+      <button class="danger" onclick="deleteProfessional('${p.id}')">
+        Հանել
+      </button>
+    </div>
+  `).join("");
+}
+
+function newPackage(){
+  currentPackage={
+    id:id(),
+    name:"",
+    staff:[]
+  };
+
+  document.getElementById("packageName").value="";
+  renderStaff();
 }
 
 function openProfessionalPicker(){
   document.getElementById("picker").classList.remove("hidden");
-
   document.getElementById("proSearch").value="";
-  document.getElementById("manualName").value="";
-  document.getElementById("manualType").value="";
-  document.getElementById("manualCost").value="";
-  document.getElementById("saveManualToBase").checked=false;
-
   renderProfessionalChoices();
 }
 
@@ -453,41 +460,39 @@ function closeProfessionalPicker(){
 }
 
 function renderProfessionalChoices(){
-  const q=document.getElementById("proSearch").value.trim().toLowerCase();
-  const list=document.getElementById("professionalChoices");
+  const q=document.getElementById("proSearch").value.toLowerCase().trim();
 
-  const results=professionals.filter(p=>{
-    const text=(p.name+" "+p.type).toLowerCase();
-    return text.includes(q);
+  const list=professionals.filter(p=>{
+    return !q ||
+      p.name.toLowerCase().includes(q) ||
+      p.type.toLowerCase().includes(q);
   });
 
-  if(results.length===0){
-    list.innerHTML="Պահված համապատասխան մասնագետ չկա։ Կարող ես ներքևից ձեռքով ավելացնել։";
+  const box=document.getElementById("professionalChoices");
+
+  if(!list.length){
+    box.innerHTML="<div>Համապատասխան մասնագետ չկա։</div>";
     return;
   }
 
-  list.innerHTML="";
-
-  results.forEach(p=>{
-    const row=document.createElement("div");
-    row.className="pro-choice";
-
-    row.innerHTML=`
+  box.innerHTML=list.map(p=>`
+    <div class="pro-choice">
       <div>
-        <strong>${esc(p.name)}</strong><br>
-        <small>${esc(p.type)} — ${money(p.price)}</small>
+        <strong>${esc(p.name)}</strong>
+        <div>${esc(p.type)}</div>
+        <div class="price-range">
+          ${money(p.minPrice)} → ${money(p.maxPrice)}
+        </div>
       </div>
 
-      <button class="primary" onclick="chooseProfessional('${p.id}')">
-        Ընտրել
+      <button class="primary" onclick="addProfessionalToPackage('${p.id}')">
+        Ավելացնել
       </button>
-    `;
-
-    list.appendChild(row);
-  });
+    </div>
+  `).join("");
 }
 
-function chooseProfessional(proId){
+function addProfessionalToPackage(proId){
   const p=professionals.find(x=>x.id===proId);
   if(!p)return;
 
@@ -496,38 +501,46 @@ function chooseProfessional(proId){
     professionalId:p.id,
     name:p.name,
     type:p.type,
-    cost:p.price,
+    cost:Number(p.minPrice)||0,
+    minPrice:Number(p.minPrice)||0,
+    maxPrice:Number(p.maxPrice)||0,
     profit:0
   });
 
   closeProfessionalPicker();
   renderStaff();
-  updateTotals();
 }
 
 function addManualStaff(){
   const name=document.getElementById("manualName").value.trim();
   const type=document.getElementById("manualType").value.trim();
-  const cost=Number(document.getElementById("manualCost").value)||0;
-  const saveToBase=document.getElementById("saveManualToBase").checked;
+
+  const minPrice=Number(document.getElementById("manualMin").value)||0;
+  const maxPrice=Number(document.getElementById("manualMax").value)||0;
 
   if(!name){
     alert("Գրիր անունը կամ ծառայությունը");
     return;
   }
 
-  let professionalId="";
+  if(maxPrice<minPrice){
+    alert("Մաքսիմալ արժեքը չի կարող փոքր լինել մինիմալ արժեքից");
+    return;
+  }
 
-  if(saveToBase){
-    const newPro={
+  let professionalId=null;
+
+  if(document.getElementById("saveManualToBase").checked){
+    const p={
       id:id(),
-      name:name,
-      type:type || name,
-      price:cost
+      name,
+      type,
+      minPrice,
+      maxPrice
     };
 
-    professionals.push(newPro);
-    professionalId=newPro.id;
+    professionals.push(p);
+    professionalId=p.id;
 
     savePros();
     renderProfessionals();
@@ -535,221 +548,262 @@ function addManualStaff(){
 
   currentPackage.staff.push({
     id:id(),
-    professionalId:professionalId,
-    name:name,
-    type:type || "",
-    cost:cost,
+    professionalId,
+    name,
+    type,
+    cost:minPrice,
+    minPrice,
+    maxPrice,
     profit:0
   });
 
+  document.getElementById("manualName").value="";
+  document.getElementById("manualType").value="";
+  document.getElementById("manualMin").value="";
+  document.getElementById("manualMax").value="";
+  document.getElementById("saveManualToBase").checked=false;
+
   closeProfessionalPicker();
   renderStaff();
-  updateTotals();
-}
-
-function newPackage(){
-  currentPackage={id:null,name:"",staff:[]};
-  document.getElementById("packageName").value="";
-  renderStaff();
-  updateTotals();
 }
 
 function removeStaff(staffId){
   currentPackage.staff=currentPackage.staff.filter(s=>s.id!==staffId);
   renderStaff();
-  updateTotals();
 }
 
-function updateStaff(staffId,field,value){
+function changeProfit(staffId,value){
   const s=currentPackage.staff.find(x=>x.id===staffId);
   if(!s)return;
 
-  if(field==="profit"){
-    s.profit=Number(value)||0;
-  }else if(field==="cost"){
-    s.cost=Number(value)||0;
+  let profit=Math.max(0,Number(value)||0);
+
+  const maxProfit=Math.max(
+    0,
+    Number(s.maxPrice||0)-Number(s.minPrice||0)
+  );
+
+  if(profit>maxProfit){
+    profit=maxProfit;
+
+    alert(
+      "Այս մասնագետի դեպքում առավելագույնը կարող ես ավելացնել "+
+      money(maxProfit)+
+      "։ Վերջնական գինը չի կարող անցնել մասնագետի մաքսիմալ արժեքը։"
+    );
   }
 
-  updateTotals();
+  s.profit=profit;
+  renderStaff();
 }
 
 function renderStaff(){
-  const list=document.getElementById("staffList");
-  list.innerHTML="";
+  const box=document.getElementById("staffList");
 
-  currentPackage.staff.forEach(s=>{
-    const row=document.createElement("div");
-    row.className="staff";
+  if(!currentPackage.staff.length){
+    box.innerHTML="<div style='margin-top:15px;color:#8c7d84'>Դեռ մասնագետ չես ավելացրել։</div>";
+  }else{
+    box.innerHTML=currentPackage.staff.map(s=>{
 
-    row.innerHTML=`
-      <div class="wide">
-        <label>Մասնագետ / ծառայություն</label>
-        <input readonly value="${esc(s.name)}${s.type ? " — "+esc(s.type) : ""}">
-      </div>
+      const maxProfit=Math.max(
+        0,
+        Number(s.maxPrice||0)-Number(s.minPrice||0)
+      );
 
-      <div>
-        <label>Իր արժեքը</label>
-        <input
-          type="number"
-          min="0"
-          value="${s.cost}"
-          oninput="updateStaff('${s.id}','cost',this.value)"
-        >
-      </div>
+      const finalPrice=
+        Number(s.minPrice||0)+Number(s.profit||0);
 
-      <div>
-        <label>Իմ գումարը</label>
-        <input
-          type="number"
-          min="0"
-          value="${s.profit||""}"
-          oninput="updateStaff('${s.id}','profit',this.value)"
-        >
-      </div>
+      return `
+        <div class="staff">
 
-      <div>
-        <label>Հաճախորդի գինը</label>
-        <input class="final" id="final-${s.id}" readonly>
-      </div>
+          <div class="wide">
+            <label>Մասնագետ</label>
+            <input value="${esc(s.name)}${s.type ? " — "+esc(s.type) : ""}" readonly>
+          </div>
 
-      <button class="danger" onclick="removeStaff('${s.id}')">✕</button>
-    `;
+          <div>
+            <label>Մինիմալ արժեք</label>
+            <input value="${s.minPrice}" readonly>
+          </div>
 
-    list.appendChild(row);
-  });
+          <div>
+            <label>Իմ գումարը</label>
+            <input
+              type="number"
+              min="0"
+              max="${maxProfit}"
+              value="${s.profit}"
+              onchange="changeProfit('${s.id}',this.value)"
+            >
+            <div class="limit">
+              Մաքս․ ավելացում՝ ${money(maxProfit)}
+            </div>
+          </div>
+
+          <div>
+            <label>Մաքսիմալ արժեք</label>
+            <input value="${s.maxPrice}" readonly>
+          </div>
+
+          <div>
+            <label>Վերջնական գին</label>
+            <input value="${finalPrice}" readonly>
+          </div>
+
+          <button class="danger" onclick="removeStaff('${s.id}')">
+            Հանել
+          </button>
+
+        </div>
+      `;
+    }).join("");
+  }
+
+  calculate();
 }
 
-function updateTotals(){
-  currentPackage.name=document.getElementById("packageName").value;
+function calculate(){
+  const cost=currentPackage.staff.reduce(
+    (sum,s)=>sum+Number(s.minPrice||0),0
+  );
 
-  let cost=0;
-  let profit=0;
+  const profit=currentPackage.staff.reduce(
+    (sum,s)=>sum+Number(s.profit||0),0
+  );
 
-  currentPackage.staff.forEach(s=>{
-    const c=Number(s.cost)||0;
-    const p=Number(s.profit)||0;
-
-    cost+=c;
-    profit+=p;
-
-    const f=document.getElementById("final-"+s.id);
-    if(f)f.value=money(c+p);
-  });
+  const total=cost+profit;
 
   document.getElementById("packageCost").textContent=money(cost);
   document.getElementById("packageProfit").textContent=money(profit);
-  document.getElementById("packageTotal").textContent=money(cost+profit);
+  document.getElementById("packageTotal").textContent=money(total);
 
   document.getElementById("allCost").textContent=money(cost);
   document.getElementById("allProfit").textContent=money(profit);
-  document.getElementById("allTotal").textContent=money(cost+profit);
+  document.getElementById("allTotal").textContent=money(total);
 
   renderPayments();
 }
 
 function renderPayments(){
-  const list=document.getElementById("paymentList");
+  const box=document.getElementById("paymentList");
 
-  if(currentPackage.staff.length===0){
-    list.innerHTML="Դեռ մասնագետ չկա։";
+  if(!currentPackage.staff.length){
+    box.innerHTML="Դեռ մասնագետ չկա։";
     return;
   }
 
-  list.innerHTML="";
-
-  currentPackage.staff.forEach(s=>{
-    const row=document.createElement("div");
-    row.className="payment-row";
-
-    row.innerHTML=`
-      <span>
+  box.innerHTML=currentPackage.staff.map(s=>`
+    <div class="payment-row">
+      <div>
         <strong>${esc(s.name)}</strong>
-        ${s.type ? " — "+esc(s.type) : ""}
-      </span>
+        ${s.type ? `<small> — ${esc(s.type)}</small>` : ""}
+      </div>
 
-      <strong>${money(s.cost)}</strong>
-    `;
-
-    list.appendChild(row);
-  });
+      <strong>${money(s.minPrice)}</strong>
+    </div>
+  `).join("");
 }
 
 function saveCurrentPackage(){
-  currentPackage.name=document.getElementById("packageName").value.trim();
+  const name=document.getElementById("packageName").value.trim();
 
-  if(!currentPackage.name){
+  if(!name){
     alert("Գրիր փաթեթի անունը");
     return;
   }
 
-  if(!currentPackage.id){
-    currentPackage.id=id();
-    savedPackages.push(JSON.parse(JSON.stringify(currentPackage)));
-  }else{
-    const i=savedPackages.findIndex(p=>p.id===currentPackage.id);
+  currentPackage.name=name;
 
-    if(i>=0){
-      savedPackages[i]=JSON.parse(JSON.stringify(currentPackage));
-    }else{
-      savedPackages.push(JSON.parse(JSON.stringify(currentPackage)));
-    }
+  const copy=JSON.parse(JSON.stringify(currentPackage));
+
+  const existing=savedPackages.findIndex(p=>p.id===copy.id);
+
+  if(existing>=0){
+    savedPackages[existing]=copy;
+  }else{
+    savedPackages.push(copy);
   }
 
   savePacks();
   renderSaved();
 
-  alert("Փաթեթը պահպանված է ✅");
+  alert("Փաթեթը պահպանվեց");
 }
 
 function renderSaved(){
-  const list=document.getElementById("savedList");
+  const box=document.getElementById("savedList");
 
-  if(savedPackages.length===0){
-    list.innerHTML="Դեռ պահված փաթեթ չկա։";
+  if(!savedPackages.length){
+    box.innerHTML="Դեռ պահպանված փաթեթ չկա։";
     return;
   }
 
-  list.innerHTML="";
+  box.innerHTML=savedPackages.map(p=>{
 
-  savedPackages.forEach(p=>{
-    const row=document.createElement("div");
-    row.className="saved-item";
+    const total=(p.staff||[]).reduce(
+      (sum,s)=>sum+Number(s.minPrice ?? s.cost ?? 0)+Number(s.profit||0),
+      0
+    );
 
-    row.innerHTML=`
-      <strong>${esc(p.name)}</strong>
+    return `
+      <div class="saved-item">
+        <div>
+          <strong>${esc(p.name)}</strong>
+          <div>${p.staff?.length||0} մասնագետ — ${money(total)}</div>
+        </div>
 
-      <div>
-        <button class="primary" onclick="openSaved('${p.id}')">Բացել</button>
-        <button class="danger" onclick="deleteSaved('${p.id}')">Ջնջել</button>
+        <div>
+          <button class="primary" onclick="loadPackage('${p.id}')">
+            Բացել
+          </button>
+
+          <button class="danger" onclick="deletePackage('${p.id}')">
+            Ջնջել
+          </button>
+        </div>
       </div>
     `;
-
-    list.appendChild(row);
-  });
+  }).join("");
 }
 
-function openSaved(packId){
-  const p=savedPackages.find(x=>x.id===packId);
+function loadPackage(packageId){
+  const p=savedPackages.find(x=>x.id===packageId);
   if(!p)return;
 
   currentPackage=JSON.parse(JSON.stringify(p));
-  document.getElementById("packageName").value=currentPackage.name;
+
+  currentPackage.staff=(currentPackage.staff||[]).map(s=>{
+    let minPrice=Number(s.minPrice ?? s.cost ?? 0);
+    let maxPrice=Number(s.maxPrice ?? minPrice);
+
+    if(maxPrice<minPrice)maxPrice=minPrice;
+
+    let profit=Number(s.profit||0);
+    const cap=Math.max(0,maxPrice-minPrice);
+
+    if(profit>cap)profit=cap;
+
+    return{
+      ...s,
+      minPrice,
+      maxPrice,
+      cost:minPrice,
+      profit
+    };
+  });
+
+  document.getElementById("packageName").value=currentPackage.name||"";
 
   renderStaff();
-  updateTotals();
 
   document.getElementById("savedPanel").classList.add("hidden");
 }
 
-function deleteSaved(packId){
-  if(!confirm("Ջնջե՞լ փաթեթը"))return;
-
-  savedPackages=savedPackages.filter(p=>p.id!==packId);
+function deletePackage(packageId){
+  savedPackages=savedPackages.filter(p=>p.id!==packageId);
   savePacks();
   renderSaved();
 }
-
-document.getElementById("packageName").addEventListener("input",updateTotals);
 
 load();
 </script>

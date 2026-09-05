@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>MOMENTOO — Բյուջեով փաթեթ</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:#fff7f9;color:#4b3942}
+.wrap{max-width:900px;margin:auto;padding:14px}
+header{background:linear-gradient(135deg,#ffc7d6,#ffe6bd);padding:20px;border-radius:22px;margin-bottom:14px}
+h1,h2,h3{margin-top:0}
+.card{background:#fff;padding:16px;border-radius:20px;margin-bottom:14px;box-shadow:0 5px 18px rgba(50,30,40,.06)}
+input{width:100%;padding:12px;border:1px solid #efdce4;border-radius:11px;font-size:16px;background:#fff}
+button,a.btn{display:inline-block;border:0;border-radius:12px;padding:11px 13px;font-weight:700;font-size:14px;cursor:pointer;text-decoration:none}
+.primary{background:#e986a5;color:#fff}.light{background:#fff;color:#5e4652}
+.row{display:flex;gap:8px;align-items:end;flex-wrap:wrap}.grow{flex:1;min-width:220px}
+.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px}
+.sum{background:#faf2f6;padding:14px;border-radius:14px}.sum strong{display:block;font-size:20px;margin-top:4px}.sum.final{background:#fff1c8}
+.result{border:1px solid #efdee5;border-radius:16px;padding:14px;margin-top:12px;background:#fffafd}
+.item{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid #f1e6ea}.item:last-child{border-bottom:0}
+.note{font-size:13px;color:#8d7882;line-height:1.4}.tag{display:inline-block;background:#fff0f5;border-radius:999px;padding:4px 8px;font-size:12px;margin-top:4px}
+.hidden{display:none!important}
+@media(max-width:700px){.summary{grid-template-columns:1fr 1fr}.item{flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<h1>💰 Բյուջեով փաթեթ</h1>
+<div>Մասնագետները հաշվվում են իրենց <b>մաքսիմալ արժեքով</b>, իսկ MAX−MIN ամբողջ տարբերությունը քո շահույթն է։</div>
+<div style="margin-top:14px"><a class="btn light" href="./">← Գլխավոր ծրագիր</a></div>
+</header>
+
+<div class="card">
+<div class="row">
+<div class="grow">
+<label>Հաճախորդի բյուջեն</label>
+<input id="budget" type="number" inputmode="numeric" placeholder="Օր․ 100000">
+</div>
+<div class="grow">
+<label>Փաթեթի անուն</label>
+<input id="packName" placeholder="Օր․ 100,000 դրամանոց փաթեթ">
+</div>
+<button class="primary" onclick="buildSuggestions()">✨ Հաշվել</button>
+</div>
+<p class="note">Ծրագիրը կընտրի միայն այն մասնագետներին, որոնց մաքսիմալ գների ընդհանուր գումարը չի անցնում բյուջեն։ Յուրաքանչյուր ընտրված մասնագետի «Իմ գումարը» ավտոմատ կլինի MAX−MIN։</p>
+</div>
+
+<div id="status" class="card hidden"></div>
+<div id="results"></div>
+</div>
+
+<script>
+const PRO_KEY="momentoo_pros_v3";
+const PACK_KEY="momentoo_packs_v6";
+let pros=[];
+let suggestions=[];
+
+function arr(key){try{const x=JSON.parse(localStorage.getItem(key)||"[]");return Array.isArray(x)?x:[]}catch(e){return[]}}
+function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2)}
+function money(v){return (Number(v)||0).toLocaleString("hy-AM")+" ֏"}
+function esc(v){return String(v??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}
+
+function normalize(){
+ pros=arr(PRO_KEY).map(p=>({
+  ...p,
+  minPrice:Math.max(0,Number(p.minPrice??p.price)||0),
+  maxPrice:Math.max(0,Number(p.maxPrice??p.price??p.minPrice)||0)
+ })).map(p=>({...p,maxPrice:Math.max(p.minPrice,p.maxPrice)}));
+}
+
+function allCombos(items,budget){
+ const n=items.length;
+ const out=[];
+ if(n<=24){
+  const total=1<<n;
+  for(let mask=1;mask<total;mask++){
+   let maxTotal=0,minTotal=0,count=0,chosen=[];
+   for(let i=0;i<n;i++) if(mask&(1<<i)){
+    const p=items[i];
+    maxTotal+=p.maxPrice;
+    if(maxTotal>budget) break;
+    minTotal+=p.minPrice;
+    count++;
+    chosen.push(p);
+   }
+   if(maxTotal<=budget && chosen.length) out.push({chosen,maxTotal,minTotal,profit:maxTotal-minTotal,count});
+  }
+  return out;
+ }
+ const variants=[];
+ const sorts=[
+  [...items].sort((a,b)=>(b.maxPrice-b.minPrice)-(a.maxPrice-a.minPrice)),
+  [...items].sort((a,b)=>b.maxPrice-a.maxPrice),
+  [...items].sort((a,b)=>a.maxPrice-b.maxPrice)
+ ];
+ sorts.forEach(list=>{
+  let chosen=[],maxTotal=0,minTotal=0;
+  list.forEach(p=>{if(maxTotal+p.maxPrice<=budget){chosen.push(p);maxTotal+=p.maxPrice;minTotal+=p.minPrice}});
+  if(chosen.length) variants.push({chosen,maxTotal,minTotal,profit:maxTotal-minTotal,count:chosen.length});
+ });
+ return variants;
+}
+
+function best(combos,sorter){return combos.slice().sort(sorter)[0]||null}
+function sig(c){return c?c.chosen.map(x=>x.id).sort().join("|"):""}
+
+function buildSuggestions(){
+ normalize();
+ const budget=Math.max(0,Number(document.getElementById("budget").value)||0);
+ const status=document.getElementById("status");
+ const results=document.getElementById("results");
+ results.innerHTML=""; suggestions=[];
+ if(!budget){alert("Գրիր բյուջեն");return}
+ const usable=pros.filter(p=>p.maxPrice>0 && p.maxPrice<=budget);
+ if(!usable.length){status.classList.remove("hidden");status.innerHTML="<b>Այս բյուջեի մեջ համապատասխան մասնագետ չկա։</b>";return}
+ const combos=allCombos(usable,budget);
+ const candidates=[
+  {title:"🎯 Ամենամոտ բյուջեին",desc:"Ընդհանուր MAX արժեքը հնարավորինս մոտ է քո գրած բյուջեին։",c:best(combos,(a,b)=>b.maxTotal-a.maxTotal || b.profit-a.profit || b.count-a.count)},
+  {title:"💸 Առավելագույն շահույթ",desc:"Առաջինը քո հնարավոր ամենամեծ շահույթն է։",c:best(combos,(a,b)=>b.profit-a.profit || b.maxTotal-a.maxTotal || b.count-a.count)},
+  {title:"🎉 Ավելի շատ ծառայություններ",desc:"Նպատակը բյուջեի մեջ հնարավորինս շատ մասնագետ ներառելն է։",c:best(combos,(a,b)=>b.count-a.count || b.maxTotal-a.maxTotal || b.profit-a.profit)}
+ ];
+ const seen=new Set();
+ candidates.forEach(x=>{if(x.c && !seen.has(sig(x.c))){seen.add(sig(x.c));suggestions.push(x)}});
+ status.classList.remove("hidden");
+ status.innerHTML=`<b>Բյուջե՝ ${money(budget)}</b><div class="note">Բոլոր ընտրված մասնագետները հաշվվում են իրենց MAX գնով։</div>`;
+ results.innerHTML=suggestions.map((s,i)=>renderSuggestion(s,i,budget)).join("");
+}
+
+function renderSuggestion(s,i,budget){
+ const c=s.c;
+ return `<div class="card">
+  <h2>${s.title}</h2>
+  <div class="note">${s.desc}</div>
+  <div class="result">
+   ${c.chosen.map(p=>`<div class="item"><div><strong>${esc(p.name)}</strong><div class="note">${esc(p.type||"")}</div><span class="tag">${esc(p.category||"Այլ")}</span></div><div><div>Իրական՝ <b>${money(p.minPrice)}</b></div><div>Հաճախորդին՝ <b>${money(p.maxPrice)}</b></div><div>Քո շահույթը՝ <b>${money(p.maxPrice-p.minPrice)}</b></div></div></div>`).join("")}
+  </div>
+  <div class="summary">
+   <div class="sum"><small>Մասնագետներին</small><strong>${money(c.minTotal)}</strong></div>
+   <div class="sum"><small>Քո շահույթը</small><strong>${money(c.profit)}</strong></div>
+   <div class="sum final"><small>Փաթեթի գին</small><strong>${money(c.maxTotal)}</strong></div>
+   <div class="sum"><small>Մնաց բյուջեից</small><strong>${money(budget-c.maxTotal)}</strong></div>
+  </div>
+  <button class="primary" style="margin-top:12px" onclick="makePackage(${i})">✅ Դարձնել փաթեթ</button>
+ </div>`;
+}
+
+function makePackage(i){
+ const s=suggestions[i]; if(!s)return;
+ let name=document.getElementById("packName").value.trim();
+ if(!name) name="Բյուջեով փաթեթ "+money(s.c.maxTotal).replace(" ֏","");
+ const staff=s.c.chosen.map(p=>({
+  id:uid(),professionalId:p.id,name:p.name,type:p.type||"",category:p.category||"Այլ",
+  minPrice:p.minPrice,maxPrice:p.maxPrice,profit:Math.max(0,p.maxPrice-p.minPrice)
+ }));
+ const packs=arr(PACK_KEY);
+ packs.push({id:uid(),name,staff});
+ localStorage.setItem(PACK_KEY,JSON.stringify(packs));
+ alert("Փաթեթը պահպանվեց ✅\nՀաճախորդի գին՝ "+money(s.c.maxTotal)+"\nՔո շահույթը՝ "+money(s.c.profit));
+}
+normalize();
+</script>
+</body>
+</html>

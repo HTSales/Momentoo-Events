@@ -77,6 +77,21 @@ grid-template-columns:1.2fr 1.3fr 1fr .8fr .8fr;
 gap:8px
 }
 
+.proCreateGrid{
+display:grid;
+grid-template-columns:1.2fr 1.3fr 1fr .8fr .8fr;
+gap:8px
+}
+
+.proCalcBox{
+margin-top:10px;
+background:#fff5f8;
+border:1px solid #efdce4;
+border-radius:14px;
+padding:12px;
+font-weight:800
+}
+
 .categories{
 display:grid;
 grid-template-columns:repeat(2,1fr);
@@ -101,7 +116,7 @@ color:#927c86
 
 .pro{
 display:grid;
-grid-template-columns:1.2fr 1.3fr 1fr .8fr .8fr auto auto;
+grid-template-columns:1.2fr 1.3fr 1fr .8fr .8fr .8fr auto auto;
 gap:7px;
 padding:10px 0;
 border-bottom:1px solid #f1e6ea
@@ -301,7 +316,7 @@ border-bottom:1px solid rgba(110,80,20,.12)
 .payAmount{font-weight:800;white-space:nowrap}
 
 @media(max-width:720px){
-.grid,.pro{grid-template-columns:1fr}
+.grid,.proCreateGrid,.pro{grid-template-columns:1fr}
 .staff{grid-template-columns:1fr 1fr}
 .staff .wide{grid-column:1/-1}
 .summary{grid-template-columns:1fr}
@@ -340,7 +355,6 @@ border-bottom:1px solid rgba(110,80,20,.12)
 </div>
 </header>
 
-
 <div id="catsPanel" class="card hidden">
 
 <h2>📂 Բաժիններ</h2>
@@ -356,12 +370,11 @@ border-bottom:1px solid rgba(110,80,20,.12)
 
 </div>
 
-
 <div id="prosPanel" class="card hidden">
 
 <h2>👥 Մասնագետներ</h2>
 
-<div class="grid">
+<div class="proCreateGrid">
 
 <div>
 <label>Անուն</label>
@@ -393,25 +406,31 @@ onfocus="showProCatSuggestions(this.value)"
 </div>
 
 <div>
-<label>Ընկերության համար</label>
+<label>Մինիմալ գին</label>
 <input
-id="pCompany"
+id="pMin"
 type="number"
 inputmode="numeric"
 min="0"
+oninput="newProCalc()"
 >
 </div>
 
 <div>
-<label>Իրական գին</label>
+<label>Շուկայական գին</label>
 <input
 id="pMax"
 type="number"
 inputmode="numeric"
 min="0"
+oninput="newProCalc()"
 >
 </div>
 
+</div>
+
+<div class="proCalcBox">
+Իմ գումարը՝ <span id="pProfitPreview">0 ֏</span>
 </div>
 
 <button
@@ -426,12 +445,10 @@ onclick="addPro()"
 
 </div>
 
-
 <div id="savedPanel" class="card hidden">
 <h2>📁 Պահված փաթեթներ</h2>
 <div id="savedList"></div>
 </div>
-
 
 <div id="budgetPanel" class="card hidden">
 
@@ -439,10 +456,10 @@ onclick="addPro()"
 
 <div class="note">
 Հաճախորդի բյուջեն վերջնական սահմանն է։
-Մասնագետի «Իրական գինը» չի փոխվում բյուջեի հաշվարկի ժամանակ։
+Մասնագետի «Շուկայական գինը» մնում է հիմնական ֆիքսված գինը։
+«Մասնագետին» և «Իմ շահույթը» թվերը կարող ես փոխել, բայց դրանց ընդհանուր գումարը միշտ հավասար է մասնագետի շուկայական գնին։
 Եթե մասնագետին տրվող գումարը պակասեցնես՝ տարբերությունը ավտոմատ ավելանում է «Իմ շահույթը» բաժնում։
 Եթե «Իմ շահույթը» փոխես՝ մասնագետին տրվող գումարը ավտոմատ փոխվում է։
-Երկուսի գումարը չի կարող գերազանցել մասնագետի իրական գինը։
 </div>
 
 <div class="budgetInput" style="margin-top:12px">
@@ -472,7 +489,6 @@ placeholder="օր.՝ 100000"
 <div id="savedBudgetArea" style="margin-top:18px"></div>
 
 </div>
-
 
 <div class="card">
 
@@ -517,7 +533,6 @@ onclick="openPicker()"
 
 </div>
 
-
 <div id="picker" class="overlay hidden">
 
 <div class="modal">
@@ -541,7 +556,6 @@ oninput="pickerSearch()"
 </div>
 </div>
 
-
 <div id="backupModal" class="overlay hidden">
 
 <div class="modal">
@@ -557,7 +571,6 @@ oninput="pickerSearch()"
 
 </div>
 </div>
-
 
 <div id="importModal" class="overlay hidden">
 
@@ -578,11 +591,10 @@ placeholder="Paste արա Backup JSON-ը"
 </div>
 </div>
 
-
 <script>
 
 /* ================================================== */
-/* STORAGE — ՍՐԱՆՔ ՉՓՈԽԵՍ */
+/* STORAGE — ՉՓՈԽԵՍ */
 /* ================================================== */
 
 const PRO_KEY="momentoo_pros_v3";
@@ -603,7 +615,6 @@ const PRO_FORM_DRAFT_KEY="momentoo_pro_form_draft_v1";
 const BUDGET_FORM_DRAFT_KEY="momentoo_budget_form_draft_v1";
 const NEW_CAT_DRAFT_KEY="momentoo_new_cat_draft_v1";
 
-
 /* ================================================== */
 /* DEFAULT CATEGORIES */
 /* ================================================== */
@@ -621,7 +632,6 @@ const DEFAULT_CATS=[
 "Ծաղիկներ",
 "Այլ"
 ];
-
 
 /* ================================================== */
 /* ՀԻՆ 6 ՓԱԹԵԹՆԵՐ */
@@ -933,7 +943,6 @@ profit:0
 
 ];
 
-
 /* ================================================== */
 /* APP STATE */
 /* ================================================== */
@@ -964,7 +973,6 @@ let budgetCat=null;
 
 let pickerCatQuery="";
 let budgetCatQuery="";
-
 
 /* ================================================== */
 /* HELPERS */
@@ -1002,7 +1010,6 @@ return Array.isArray(v)?v:[];
 return [];
 }
 }
-
 
 /* ================================================== */
 /* SAVE */
@@ -1050,7 +1057,6 @@ function touchState(){
 saveWorkState();
 }
 
-
 /* ================================================== */
 /* AUTO BACKUP */
 /* ================================================== */
@@ -1068,7 +1074,7 @@ pro:{
 name:get("pName"),
 type:get("pType"),
 cat:get("pCat"),
-company:get("pCompany"),
+min:get("pMin"),
 real:get("pMax")
 },
 
@@ -1090,7 +1096,7 @@ localStorage.setItem(
 AUTO_FULL_BACKUP_KEY,
 JSON.stringify({
 
-version:3,
+version:4,
 date:new Date().toISOString(),
 
 pros:clone(pros),
@@ -1177,7 +1183,6 @@ budgetEdits:d.budgetEdits||{}
 }catch(e){}
 }
 
-
 /* ================================================== */
 /* LOAD + MIGRATION */
 /* ================================================== */
@@ -1203,65 +1208,53 @@ localStorage.setItem(PACK_KEY,JSON.stringify(arr));
 
 function migratePro(p){
 
-let real=Math.max(
+const real=
+Math.max(
 0,
 Number(p.maxPrice)||0
 );
 
-let company;
+let min;
 
 if(
-p.companyAmount!==undefined &&
-p.companyAmount!==null
+p.minPrice!==undefined &&
+p.minPrice!==null
 ){
 
-company=Math.max(
+min=
+Math.max(
 0,
-Number(p.companyAmount)||0
-);
-
-}else if(
-p.baseProfit!==undefined &&
-p.baseProfit!==null
-){
-
-company=Math.max(
-0,
-Number(p.baseProfit)||0
+Number(p.minPrice)||0
 );
 
 }else{
 
-company=Math.max(
+min=real;
+
+}
+
+if(min>real){
+min=real;
+}
+
+const profit=
+Math.max(
 0,
-real-(Number(p.minPrice)||0)
+real-min
 );
 
-}
-
-if(company>real){
-company=real;
-}
-
+p.minPrice=min;
 p.maxPrice=real;
-p.companyAmount=company;
 
 /*
-Մասնագետին տրվող հիմնական գումարը
-հաշվվում է իրական գին - ընկերության համար։
-*/
-
-p.minPrice=Math.max(
-0,
-real-company
-);
-
-/*
-Հին field-ը պահում ենք compatibility-ի համար։
+Հին compatibility fields-ը պահում ենք,
+բայց նոր տրամաբանությամբ ամբողջ տարբերությունը
+համարվում է ընկերության/մեր գումարը։
 */
 
 p.otherAmount=0;
-p.baseProfit=company;
+p.companyAmount=profit;
+p.baseProfit=profit;
 
 return p;
 }
@@ -1330,7 +1323,6 @@ showView(view,false);
 saveFullAutoBackup();
 }
 
-
 /* ================================================== */
 /* DRAFT AUTOSAVE */
 /* ================================================== */
@@ -1375,7 +1367,10 @@ const map={
 pName:p.name,
 pType:p.type,
 pCat:p.cat,
-pCompany:p.company,
+pMin:
+p.min!==undefined
+?p.min
+:"",
 pMax:p.real
 };
 
@@ -1389,6 +1384,7 @@ e.value=v;
 
 });
 
+newProCalc();
 }
 
 const b=JSON.parse(
@@ -1414,7 +1410,6 @@ localStorage.getItem(NEW_CAT_DRAFT_KEY)||"";
 
 }catch(e){}
 }
-
 
 /* ================================================== */
 /* NAVIGATION BACK / FORWARD */
@@ -1553,7 +1548,6 @@ i>=h.length-1;
 }
 }
 
-
 /* ================================================== */
 /* PANELS */
 /* ================================================== */
@@ -1649,7 +1643,6 @@ showView("saved");
 function openBudget(){
 showView("budget");
 }
-
 
 /* ================================================== */
 /* CATEGORIES */
@@ -1858,10 +1851,41 @@ onclick='deleteCat(${JSON.stringify(c)})'
 `).join("");
 }
 
-
 /* ================================================== */
 /* PROFESSIONALS */
 /* ================================================== */
+
+function newProCalc(){
+
+const min=
+Math.max(
+0,
+Number(
+document.getElementById("pMin").value
+)||0
+);
+
+const real=
+Math.max(
+0,
+Number(
+document.getElementById("pMax").value
+)||0
+);
+
+const profit=
+Math.max(
+0,
+real-min
+);
+
+document.getElementById(
+"pProfitPreview"
+).textContent=
+money(profit);
+
+saveDrafts();
+}
 
 function addPro(){
 
@@ -1877,14 +1901,16 @@ const category=
 document.getElementById("pCat")
 .value.trim();
 
-let company=Math.max(
+let min=
+Math.max(
 0,
 Number(
-document.getElementById("pCompany").value
+document.getElementById("pMin").value
 )||0
 );
 
-const real=Math.max(
+const real=
+Math.max(
 0,
 Number(
 document.getElementById("pMax").value
@@ -1899,16 +1925,18 @@ if(!cats.includes(category)){
 return alert("Ընտրիր գոյություն ունեցող բաժին");
 }
 
-if(company>real){
+if(min>real){
+
 return alert(
-"Ընկերության համար գումարը չի կարող գերազանցել իրական գինը"
+"Մինիմալ գինը չի կարող գերազանցել շուկայական գինը"
 );
+
 }
 
-const cost=
+const profit=
 Math.max(
 0,
-real-company
+real-min
 );
 
 pros.push({
@@ -1918,14 +1946,12 @@ name,
 type,
 category,
 
-/*
-Compatibility fields
-*/
-minPrice:cost,
+minPrice:min,
 maxPrice:real,
+
 otherAmount:0,
-companyAmount:company,
-baseProfit:company
+companyAmount:profit,
+baseProfit:profit
 
 });
 
@@ -1935,13 +1961,17 @@ savePros();
 "pName",
 "pType",
 "pCat",
-"pCompany",
+"pMin",
 "pMax"
 ].forEach(id=>{
 
 document.getElementById(id).value="";
 
 });
+
+document
+.getElementById("pProfitPreview")
+.textContent="0 ֏";
 
 document
 .getElementById("proCatSuggestions")
@@ -2031,16 +2061,22 @@ ${list.length
 
 function proRow(p){
 
-const company=
+const min=
 Math.max(
 0,
-Number(p.companyAmount)||0
+Number(p.minPrice)||0
 );
 
 const real=
 Math.max(
 0,
 Number(p.maxPrice)||0
+);
+
+const profit=
+Math.max(
+0,
+real-min
 );
 
 return `
@@ -2094,21 +2130,21 @@ ${esc(c)}
 
 <div>
 
-<label>Ընկերության համար</label>
+<label>Մինիմալ գին</label>
 
 <input
-id="company_${p.id}"
+id="minPro_${p.id}"
 type="number"
 inputmode="numeric"
-value="${company}"
-oninput="editProMoney('${p.id}','company',this.value)"
+value="${min}"
+oninput="editProMoney('${p.id}','min',this.value)"
 >
 
 </div>
 
 <div>
 
-<label>Իրական գին</label>
+<label>Շուկայական գին</label>
 
 <input
 id="real_${p.id}"
@@ -2117,6 +2153,19 @@ inputmode="numeric"
 value="${real}"
 oninput="editProMoney('${p.id}','real',this.value)"
 >
+
+</div>
+
+<div>
+
+<label>Իմ գումարը</label>
+
+<div
+class="finalPriceBox"
+id="proProfit_${p.id}"
+>
+${money(profit)}
+</div>
 
 </div>
 
@@ -2174,16 +2223,16 @@ const p=getPro(id);
 
 if(!p)return;
 
+let min=
+Math.max(
+0,
+Number(p.minPrice)||0
+);
+
 let real=
 Math.max(
 0,
 Number(p.maxPrice)||0
-);
-
-let company=
-Math.max(
-0,
-Number(p.companyAmount)||0
 );
 
 const n=
@@ -2192,43 +2241,42 @@ Math.max(
 Number(value)||0
 );
 
+if(field==="min"){
+
+min=n;
+
+if(min>real){
+min=real;
+}
+
+}
+
 if(field==="real"){
 
 real=n;
 
-if(company>real){
-company=real;
+if(min>real){
+min=real;
 }
 
 }
 
-if(field==="company"){
-
-company=n;
-
-if(company>real){
-company=real;
-}
-
-}
-
-p.maxPrice=real;
-p.companyAmount=company;
-p.otherAmount=0;
-p.baseProfit=company;
-
-/*
-Մասնագետին հասնող բազային գումար
-*/
-p.minPrice=
+const profit=
 Math.max(
 0,
-real-company
+real-min
 );
 
-const c=
+p.minPrice=min;
+p.maxPrice=real;
+
+p.otherAmount=0;
+p.companyAmount=profit;
+p.baseProfit=profit;
+
+const m=
 document.getElementById(
-"company_"+id
+"minPro_"+id
 );
 
 const r=
@@ -2236,8 +2284,14 @@ document.getElementById(
 "real_"+id
 );
 
-if(c)c.value=company;
+const pr=
+document.getElementById(
+"proProfit_"+id
+);
+
+if(m)m.value=min;
 if(r)r.value=real;
+if(pr)pr.textContent=money(profit);
 
 savePros();
 }
@@ -2248,7 +2302,7 @@ const p=getPro(id);
 
 if(!p)return;
 
-p=migratePro(p);
+migratePro(p);
 
 packs.forEach(pk=>
 (pk.staff||[]).forEach(s=>{
@@ -2307,7 +2361,6 @@ pros.filter(x=>x.id!==id);
 savePros();
 renderProsBrowser();
 }
-
 
 /* ================================================== */
 /* NORMAL PACKAGE PICKER */
@@ -2440,7 +2493,22 @@ ${esc(p.type||"")}
 </div>
 
 <div class="note">
-Իրական գին՝ ${money(p.maxPrice)}
+Մինիմալ գին՝ ${money(p.minPrice)}
+</div>
+
+<div class="note">
+Շուկայական գին՝ ${money(p.maxPrice)}
+</div>
+
+<div class="note">
+Իմ գումարը՝ ${money(
+Math.max(
+0,
+(Number(p.maxPrice)||0)
+-
+(Number(p.minPrice)||0)
+)
+)}
 </div>
 
 </div>
@@ -2479,10 +2547,6 @@ name:p.name,
 type:p.type,
 category:p.category,
 
-/*
-Սովորական փաթեթի մեջ
-սկզբնական մասնագետի գումարը
-*/
 minPrice:
 Math.max(
 0,
@@ -2498,7 +2562,9 @@ Number(p.maxPrice)||0
 profit:
 Math.max(
 0,
-Number(p.companyAmount)||0
+(Number(p.maxPrice)||0)
+-
+(Number(p.minPrice)||0)
 )
 
 });
@@ -2508,7 +2574,6 @@ closePicker();
 renderCurrent();
 touchState();
 }
-
 
 /* ================================================== */
 /* NORMAL PACKAGES */
@@ -2589,7 +2654,7 @@ oninput="staffCost('${s.id}',this.value)"
 
 <div>
 
-<label>Իրական գին</label>
+<label>Շուկայական գին</label>
 
 <input
 id="max_${s.id}"
@@ -3045,7 +3110,6 @@ onclick="deletePack('${p.id}')"
 }).join("");
 }
 
-
 /* ================================================== */
 /* BUDGET */
 /* ================================================== */
@@ -3058,30 +3122,25 @@ Math.max(
 Number(p.maxPrice)||0
 );
 
-const company=
+const min=
 Math.min(
 real,
 Math.max(
 0,
-Number(p.companyAmount)||0
+Number(p.minPrice)||0
 )
 );
-
-/*
-Սկզբնական շահույթը ընկերության համար գումարն է։
-Մասնագետին՝ իրական գին - շահույթ։
-*/
 
 return{
 
 realPrice:real,
 
-profit:company,
+cost:min,
 
-cost:
+profit:
 Math.max(
 0,
-real-company
+real-min
 )
 
 };
@@ -3232,10 +3291,6 @@ Math.max(
 Number(value)||0
 );
 
-/*
-Չի կարող գերազանցել իրական գինը
-*/
-
 if(n>real){
 n=real;
 }
@@ -3263,10 +3318,6 @@ real-n
 );
 
 }
-
-/*
-cost + profit միշտ = real
-*/
 
 const selected=
 budgetSelected(id);
@@ -3297,10 +3348,6 @@ getBudgetEdit(id);
 const totals=
 budgetTotals();
 
-/*
-Ավելացնելիս ստուգում ենք իրական գինը։
-*/
-
 if(
 totals.total+
 e.realPrice
@@ -3310,7 +3357,7 @@ Number(budgetDraft.budget)
 
 return alert(
 "Այս մասնագետը չի տեղավորվում բյուջեի մեջ։\n\n"+
-"Մասնագետի իրական գինը՝ "+
+"Մասնագետի շուկայական գինը՝ "+
 money(e.realPrice)+
 "\nՄնացած բյուջեն՝ "+
 money(totals.left)
@@ -3456,9 +3503,6 @@ onclick="sendBudgetToNormalPackage()"
 </div>
 `;
 
-
-/* Վճարումներ մասնագետներին */
-
 if(budgetDraft.staff.length){
 
 html+=`
@@ -3493,9 +3537,6 @@ ${money(s.cost)}
 `;
 
 }
-
-
-/* Ընտրված մասնագետներ */
 
 if(budgetDraft.staff.length){
 
@@ -3535,7 +3576,7 @@ ${esc(p.type||"")}
 </div>
 
 <div class="note">
-Իրական գին՝
+Մասնագետի շուկայական գին՝
 ${money(e.realPrice)}
 </div>
 
@@ -3576,7 +3617,7 @@ oninput="updateBudgetEdit('${p.id}','profit',this.value)"
 <div>
 
 <label>
-Վերջնական
+Մասնագետի շուկայական գին
 </label>
 
 <div
@@ -3606,9 +3647,6 @@ html+=`
 `;
 
 }
-
-
-/* Մասնագետ ավելացնելու մաս */
 
 html+=`
 
@@ -3743,7 +3781,12 @@ ${esc(p.type||"")}
 </div>
 
 <div class="note">
-Գրանցված իրական գին՝
+Մինիմալ գին՝
+${money(p.minPrice)}
+</div>
+
+<div class="note">
+Մասնագետի շուկայական գին՝
 ${money(e.realPrice)}
 </div>
 
@@ -3784,7 +3827,7 @@ oninput="updateBudgetEdit('${p.id}','profit',this.value)"
 <div>
 
 <label>
-Վերջնական
+Մասնագետի շուկայական գին
 </label>
 
 <div
@@ -3932,7 +3975,6 @@ money(s.cost);
 
 saveWorkState();
 }
-
 
 /* ================================================== */
 /* SAVED BUDGET PACKAGES */
@@ -4227,24 +4269,15 @@ behavior:"smooth"
 });
 }
 
-
 /* ================================================== */
 /* BACKUP / IMPORT */
 /* ================================================== */
 
 function openBackup(){
 
-/*
-ԱՅՍ BACKUP-Ը ՊԱՀՈՒՄ Է ԱՄԵՆ ԻՆՉ։
-
-Մասնագետների մեջ նաև՝
-maxPrice = Իրական գին
-companyAmount = Ընկերության համար
-*/
-
 const data={
 
-version:3,
+version:4,
 date:new Date().toISOString(),
 
 pros:clone(pros),
@@ -4458,7 +4491,6 @@ alert(
 );
 }
 
-
 /* ================================================== */
 /* RENDER ALL */
 /* ================================================== */
@@ -4473,7 +4505,6 @@ renderSavedBudgetPacks();
 updateNavButtons();
 }
 
-
 /* ================================================== */
 /* AUTOSAVE INPUTS */
 /* ================================================== */
@@ -4482,7 +4513,7 @@ updateNavButtons();
 "pName",
 "pType",
 "pCat",
-"pCompany",
+"pMin",
 "pMax",
 "budgetAmount",
 "budgetName",
@@ -4501,7 +4532,6 @@ saveDrafts();
 );
 
 });
-
 
 /* ================================================== */
 /* PAGE CLOSE SAVE */
@@ -4528,7 +4558,6 @@ saveFullAutoBackup();
 
 }
 );
-
 
 /* ================================================== */
 /* START */

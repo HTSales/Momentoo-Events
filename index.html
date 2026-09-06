@@ -4,53 +4,33 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>MOMENTOO EVENTS</title>
-
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:#fff7f9;color:#4b3942}
-.wrap{max-width:1000px;margin:auto;padding:14px}
-header{background:linear-gradient(135deg,#ffc7d6,#ffe6bd);padding:20px;border-radius:22px;margin-bottom:14px}
-h1{margin:0;font-size:28px}
-h2{margin:0 0 12px}
-h3{margin:0 0 8px}
-button{border:0;border-radius:12px;padding:11px 14px;background:#8d5267;color:white;font-weight:700;cursor:pointer}
-button.secondary{background:#eadde2;color:#593f49}
-button.danger{background:#b83d57}
-button.success{background:#39845c}
-button:disabled{opacity:.45}
-input,select{width:100%;padding:11px;border:1px solid #decbd2;border-radius:11px;background:white;font-size:15px}
-label{display:block;font-weight:700;margin:8px 0 5px}
-.card{background:white;border-radius:18px;padding:15px;margin-bottom:12px;box-shadow:0 3px 14px #0000000b}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+body{margin:0;font-family:Arial,sans-serif;background:#f5f5f7;color:#171717}
+button,input,select{font:inherit}
+button{cursor:pointer}
+.wrap{max-width:1100px;margin:auto;padding:14px}
+h1,h2,h3{margin:8px 0}
+.card{background:#fff;border-radius:18px;padding:15px;margin:10px 0;box-shadow:0 3px 15px #00000010}
 .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.nav{display:flex;gap:7px;overflow:auto;margin-bottom:12px}
-.nav button{white-space:nowrap}
-.item{border:1px solid #eadde2;border-radius:14px;padding:12px;margin:8px 0}
-.small{font-size:13px;color:#806b74}
-.price{font-size:19px;font-weight:800}
-.profit{color:#39845c;font-weight:800}
-.total{font-size:22px;font-weight:900}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+input,select{width:100%;padding:12px;border:1px solid #ddd;border-radius:12px;background:#fff}
+label{display:block;font-size:13px;font-weight:bold;margin:7px 0 5px}
+.btn{border:0;border-radius:12px;padding:11px 14px;background:#111;color:#fff}
+.btn2{border:1px solid #ddd;border-radius:12px;padding:10px 13px;background:#fff}
+.red{background:#d92d20}.green{background:#16803c}.blue{background:#2457d6}.orange{background:#c96a00}
+.small{font-size:12px;color:#666}
+.price{font-weight:800}
 .hidden{display:none!important}
-.catBox{border:1px solid #eadde2;border-radius:14px;padding:12px;margin:8px 0;background:#fffafd}
-.catHead{display:flex;justify-content:space-between;gap:8px;align-items:center}
-.catName{font-size:18px;font-weight:800}
-.catPros{margin-top:8px;border-top:1px solid #eadde2}
-.catPro{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:9px 0;border-bottom:1px solid #f0e6ea}
-.catPro:last-child{border-bottom:0}
-.editBox{background:#fff7fa;border:1px solid #eadde2;border-radius:13px;padding:10px;margin-top:8px}
-.budgetBox{background:#fffaf0;border:1px solid #eadfba;border-radius:16px;padding:12px;margin-top:10px}
-.budgetGrid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr auto;gap:8px;align-items:end}
-.summary{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:12px}
-.sum{background:#faf1f5;padding:11px;border-radius:12px}
-.sum strong{display:block;font-size:18px;margin-top:4px}
-.pay{background:#fff3cd;border-radius:14px;padding:12px;margin-top:10px}
-.saved{border:1px solid #eadde2;border-radius:14px;padding:12px;margin:8px 0;background:#fffafd}
-@media(max-width:700px){
-.grid{grid-template-columns:1fr}
-.budgetGrid{grid-template-columns:1fr 1fr}
-.summary{grid-template-columns:1fr 1fr}
-.catHead{align-items:flex-start;flex-direction:column}
-}
+.tabbar{display:flex;gap:7px;overflow:auto;padding-bottom:4px}
+.tabbar button{white-space:nowrap}
+.cat{display:flex;justify-content:space-between;align-items:center;padding:12px;border:1px solid #eee;border-radius:14px;margin:7px 0;background:#fff}
+.pro{border:1px solid #eee;border-radius:14px;padding:12px;margin:8px 0}
+.badge{display:inline-block;padding:5px 8px;border-radius:8px;background:#eee;font-size:12px}
+.total{font-size:20px;font-weight:900}
+.staffrow{display:flex;justify-content:space-between;gap:8px;align-items:center;border:1px solid #eee;border-radius:12px;padding:9px;margin:6px 0}
+hr{border:0;border-top:1px solid #eee;margin:14px 0}
+textarea{width:100%;min-height:90px;border:1px solid #ddd;border-radius:12px;padding:10px}
 </style>
 
 <script src="https://www.gstatic.com/firebasejs/12.18.0/firebase-app-compat.js"></script>
@@ -61,58 +41,28 @@ label{display:block;font-weight:700;margin:8px 0 5px}
 <body>
 <div class="wrap">
 
-<header>
-<h1>💗 MOMENTOO EVENTS</h1>
-<div class="small">Միջոցառումների մասնագետների և փաթեթների կառավարում</div>
-</header>
+<h1>🎉 MOMENTOO EVENTS</h1>
 
-<div class="nav">
-<button onclick="newPackage()">➕ Նոր փաթեթ</button>
-<button onclick="openPros()">👥 Մասնագետներ</button>
-<button onclick="openCats()">📂 Կատեգորիաներ</button>
-<button onclick="openSaved()">📦 Փաթեթներ</button>
-<button onclick="openBudget()">💰 Բյուջեով փաթեթ</button>
-<button onclick="undoState()" id="undoBtn">↶</button>
-<button onclick="redoState()" id="redoBtn">↷</button>
+<div class="tabbar">
+<button class="btn" onclick="showPanel('prosPanel')">👥 Մասնագետներ</button>
+<button class="btn" onclick="showPanel('packsPanel')">📦 Փաթեթներ</button>
+<button class="btn" onclick="showPanel('budgetPanel')">💰 Բյուջեով փաթեթ</button>
+<button class="btn" onclick="showPanel('budgetPacksPanel')">💰 Բյուջեի փաթեթներ</button>
+<button class="btn" onclick="showPanel('paymentsPanel')">💸 Վճարումներ մասնագետներին</button>
+<button class="btn" onclick="showPanel('backupPanel')">💾 Backup</button>
 </div>
 
-<section id="mainView">
-
-<div class="card">
-<h2>📦 Ընթացիկ փաթեթ</h2>
-
-<label>Փաթեթի անվանում</label>
-<input id="packName" placeholder="Օր․ Երեխայի ծնունդ">
-
-<div class="row" style="margin-top:10px">
-<button onclick="saveCurrentPackage()">💾 Պահպանել</button>
-<button class="success" onclick="finishCurrentToBudget()">💰 Ավարտել → Բյուջե</button>
-<button class="danger" onclick="deleteCurrentPackage()">🗑 Ջնջել ընթացիկ փաթեթը</button>
-</div>
-
-<div id="currentPackage"></div>
-</div>
-
-<div class="card">
-<h2>➕ Ավելացնել մասնագետ</h2>
-<div id="mainProList"></div>
-</div>
-
-</section>
-
-<section id="prosView" class="hidden">
-
-<div class="card">
+<div id="prosPanel" class="card">
 <h2>👥 Մասնագետներ</h2>
 
-<label>Անուն</label>
-<input id="pName" placeholder="Մասնագետի անուն">
+<div class="card">
+<h3>➕ Ավելացնել մասնագետ</h3>
 
-<label>Մասնագիտություն</label>
-<input id="pType" placeholder="Օր․ DJ">
+<label>Անուն / անվանում</label>
+<input id="proName" placeholder="Օր․ Նվեր">
 
-<label>Կատեգորիա</label>
-<select id="pCat"></select>
+<label>Բաժին</label>
+<select id="proCat"></select>
 
 <label>Մասնագետի շուկայական գին</label>
 <input id="pMax" type="number" min="0" placeholder="30000">
@@ -120,85 +70,103 @@ label{display:block;font-weight:700;margin:8px 0 5px}
 <label>Մինիմալ գին</label>
 <input id="pMin" type="number" min="0" placeholder="25000">
 
-<div class="small" style="margin-top:7px">
-Իմ գումարը = Շուկայական գին − Մինիմալ գին
+<div class="small">
+Իմ գումարը = շուկայական գին − մինիմալ գին
 </div>
 
-<div class="row" style="margin-top:10px">
-<button onclick="addPro()">➕ Ավելացնել</button>
-<button class="secondary" onclick="openCats()">📂 Կատեգորիաներ</button>
-</div>
+<div id="proDerived" class="price">Իմ գումարը՝ 0 ֏</div>
+
+<button class="btn green" onclick="savePro()">Պահպանել մասնագետին</button>
 </div>
 
+<div class="card">
+<h3>📂 Բաժիններ</h3>
+<div id="cats"></div>
+
+<input id="newCat" placeholder="Նոր բաժնի անուն">
+<button class="btn blue" onclick="addCategory()">➕ Ավելացնել բաժին</button>
+</div>
+
+<div class="card">
+<h3>👤 Մասնագետների ցանկ</h3>
 <div id="prosList"></div>
-</section>
-
-<section id="catsView" class="hidden">
-
-<div class="card">
-<h2>📂 Կատեգորիաներ</h2>
-
-<div id="catsList"></div>
-
-<label>Նոր կատեգորիա</label>
-<input id="newCat" placeholder="Կատեգորիայի անուն">
-
-<div class="row" style="margin-top:10px">
-<button onclick="addCategory()">➕ Ավելացնել կատեգորիա</button>
 </div>
 </div>
 
-</section>
-
-<section id="savedView" class="hidden">
+<div id="packsPanel" class="card hidden">
+<h2>📦 Փաթեթներ</h2>
 
 <div class="card">
-<h2>📦 Պահպանված փաթեթներ</h2>
-<div id="savedList"></div>
+<h3>Նոր փաթեթ</h3>
+<label>Փաթեթի անուն</label>
+<input id="packName" placeholder="Օր․ Երեխայի ծնունդ">
+
+<div class="row">
+<button class="btn blue" onclick="openPackagePicker()">➕ Ավելացնել մասնագետ</button>
+<button class="btn green" onclick="saveCurrentPack()">💾 Պահպանել փաթեթը</button>
+<button class="btn orange" onclick="finishCurrentToBudget()">💰 Ուղարկել բյուջե</button>
+<button class="btn red" onclick="deleteCurrentPackage()">🗑 Ջնջել ընթացիկ փաթեթը</button>
 </div>
 
-</section>
-
-<section id="budgetView" class="hidden">
+<div id="currentPack"></div>
+<div id="currentTotal" class="total">Ընդհանուր՝ 0 ֏</div>
+</div>
 
 <div class="card">
+<h3>📦 Պահպանված փաթեթներ</h3>
+<div id="savedPacks"></div>
+</div>
+</div>
+
+<div id="budgetPanel" class="card hidden">
 <h2>💰 Բյուջեով փաթեթ</h2>
 
-<label>Փաթեթի անվանում</label>
-<input id="budgetName" placeholder="Օր․ Միջոցառում">
+<div class="card">
+<label>Փաթեթի անուն</label>
+<input id="budgetName" placeholder="Օր․ Բյուջետային հարսանիք">
 
 <label>Հաճախորդի բյուջե</label>
-<input id="budgetAmount" type="number" min="0" placeholder="100000">
+<input id="budgetTotal" type="number" min="0" oninput="renderBudget()">
 
+<div class="row">
+<button class="btn blue" onclick="openBudgetPicker()">➕ Ավելացնել մասնագետ</button>
+<button class="btn green" onclick="saveBudgetPackage()">💾 Պահպանել բյուջեի փաթեթը</button>
+<button class="btn red" onclick="deleteCurrentBudget()">🗑 Ջնջել ընթացիկ բյուջեն</button>
+</div>
+
+<div id="budgetStaff"></div>
 <div id="budgetSummary"></div>
-
-<div class="row" style="margin-top:10px">
-<button onclick="saveBudgetPackage()">💾 Պահպանել բյուջեն</button>
-<button onclick="sendBudgetToNormalPackage()">➡️ Ուղարկել հիմնական փաթեթ</button>
-<button class="danger" onclick="deleteCurrentBudget()">🗑 Ջնջել ընթացիկ բյուջեն</button>
 </div>
 </div>
 
-<div class="card">
-<h2>➕ Ավելացնել մասնագետ բյուջեով</h2>
-<div id="budgetProList"></div>
+<div id="budgetPacksPanel" class="card hidden">
+<h2>💰 Բյուջեի պահպանված փաթեթներ</h2>
+<div id="savedBudgetPacks"></div>
 </div>
 
-<div class="card">
+<div id="paymentsPanel" class="card hidden">
 <h2>💸 Վճարումներ մասնագետներին</h2>
-<div id="budgetPayments"></div>
+<div id="payments"></div>
 </div>
 
-<div class="card">
-<h2>📦 Պահպանված բյուջետային փաթեթներ</h2>
-<div id="savedBudgetList"></div>
+<div id="backupPanel" class="card hidden">
+<h2>💾 Backup / Import</h2>
+<button class="btn blue" onclick="exportBackup()">⬇️ Backup</button>
+<input type="file" id="importFile" accept=".json" onchange="importBackup(event)">
 </div>
 
-</section>
+<div id="picker" class="card hidden">
+<h3 id="pickerTitle">Ընտրել մասնագետ</h3>
+<div id="pickerCats"></div>
+<div id="pickerPros"></div>
+<button class="btn2" onclick="closePicker()">Փակել</button>
+</div>
 
 </div>
 
 <script>
+"use strict";
+
 const PRO_KEY="momentoo_pros_v3";
 const PACK_KEY="momentoo_packs_v6";
 const CAT_KEY="momentoo_categories_v2";
@@ -216,47 +184,6 @@ const PRO_FORM_DRAFT_KEY="momentoo_pro_form_draft_v1";
 const BUDGET_FORM_DRAFT_KEY="momentoo_budget_form_draft_v1";
 const NEW_CAT_DRAFT_KEY="momentoo_new_cat_draft_v1";
 
-const firebaseConfig={
-apiKey:"AIzaSyBka_OD8XoM5X6K-zw2SjejfMXTeHzwC0",
-authDomain:"momentoo-events.firebaseapp.com",
-projectId:"momentoo-events",
-storageBucket:"momentoo-events.firebasestorage.app",
-messagingSenderId:"111582575594",
-appId:"1:111582575594:web:682c651a0cb1e5cc3d9093",
-measurementId:"G-CV4DGR3T46"
-};
-
-let pros=[];
-let packs=[];
-let cats=[];
-let budgetPacks=[];
-let current={id:null,name:"",items:[]};
-let budgetDraft={id:null,name:"",budget:0,items:[]};
-let budgetEdits={};
-let budgetCat="";
-let editingProId=null;
-let editingPackId=null;
-let editingBudgetId=null;
-
-let cloudReady=false;
-let cloudApplying=false;
-let cloudTimer=null;
-let cloudRetryTimer=null;
-
-const DEFAULT_CATS=[
-"DJ-ներ",
-"Ջութակահարներ",
-"Ռիլմեյքերներ",
-"Լուսանկարիչներ",
-"Դրոն նկարահանում",
-"Ֆոտոզոնա / Դեկոր",
-"Պարային շոուներ",
-"Արջուկներ / կերպարներ",
-"Երաժիշտներ",
-"Ծաղիկներ",
-"Այլ"
-];
-
 const OLD_PACKS=[
 "Երեխայի ծնունդ",
 "Նորածնի դուրսգրում",
@@ -266,2159 +193,1561 @@ const OLD_PACKS=[
 "Ամուսնության առաջարկ Ասա այո"
 ];
 
+let pros=[];
+let packs=[];
+let cats=[];
+let budgetPacks=[];
+let current={
+ name:"",
+ staff:[]
+};
+let budgetDraft={
+ name:"",
+ budget:0,
+ staff:[]
+};
+let budgetEdits={};
+let pickerMode="";
+let pickerCat="";
+let manageCat="";
+let editingProId=null;
+
 function clone(x){
-try{return JSON.parse(JSON.stringify(x))}
-catch(e){return x}
+ return JSON.parse(JSON.stringify(x));
 }
 
 function uid(){
-return Date.now().toString(36)+Math.random().toString(36).slice(2,9)
+ return Date.now().toString(36)+Math.random().toString(36).slice(2,9);
+}
+
+function money(n){
+ return Number(n||0).toLocaleString("en-US")+" ֏";
 }
 
 function num(v){
-return Math.max(0,Number(v)||0)
-}
-
-function money(v){
-return num(v).toLocaleString("hy-AM")+" ֏"
-}
-
-function esc(s){
-return String(s??"")
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#039;");
-}
-
-function readArray(key){
-try{
-const v=JSON.parse(localStorage.getItem(key)||"[]");
-return Array.isArray(v)?v:[];
-}catch(e){return []}
-}
-
-function readObject(key,def){
-try{
-const v=JSON.parse(localStorage.getItem(key)||"null");
-return v&&typeof v==="object"?v:def;
-}catch(e){return def}
+ return Math.max(0,Number(v)||0);
 }
 
 function savePros(){
-localStorage.setItem(PRO_KEY,JSON.stringify(pros));
-scheduleCloudSave();
+ localStorage.setItem(PRO_KEY,JSON.stringify(pros));
+ saveFullAutoBackup();
+ scheduleCloudSave();
 }
 
 function savePacks(){
-localStorage.setItem(PACK_KEY,JSON.stringify(packs));
-scheduleCloudSave();
+ localStorage.setItem(PACK_KEY,JSON.stringify(packs));
+ saveFullAutoBackup();
+ scheduleCloudSave();
 }
 
 function saveCats(){
-localStorage.setItem(CAT_KEY,JSON.stringify(cats));
-scheduleCloudSave();
+ localStorage.setItem(CAT_KEY,JSON.stringify(cats));
+ saveFullAutoBackup();
+ scheduleCloudSave();
 }
 
 function saveBudgetPacks(){
-localStorage.setItem(BUDGET_KEY,JSON.stringify(budgetPacks));
-scheduleCloudSave();
+ localStorage.setItem(BUDGET_KEY,JSON.stringify(budgetPacks));
+ saveFullAutoBackup();
+ scheduleCloudSave();
 }
 
 function saveWorkState(){
-try{
-localStorage.setItem(WORK_KEY,JSON.stringify({
-current,
-budgetDraft,
-budgetEdits
-}));
-}catch(e){}
-scheduleCloudSave();
-}
-
-function market(p){
-return num(p.maxPrice)
-}
-
-function minimum(p){
-return num(p.minPrice)
-}
-
-function specialistProfit(p){
-return num(p.companyAmount!==undefined?p.companyAmount:(p.baseProfit!==undefined?p.baseProfit:market(p)-minimum(p)-num(p.otherAmount)))
-}
-
-function oldProfit(p){
-return num(p.otherAmount)+specialistProfit(p)
-}
-
-function restoreOldPacks(){
-let changed=false;
-
-OLD_PACKS.forEach(name=>{
-if(!packs.some(p=>String(p.name||"").trim()===name)){
-packs.push({
-id:uid(),
-name,
-items:[]
-});
-changed=true;
-}
-});
-
-if(changed)savePacks();
-}
-
-function seedData(){
-
-if(!cats.length){
-cats=clone(DEFAULT_CATS);
-saveCats();
-}
-
-restoreOldPacks();
-
-if(!localStorage.getItem(SEED_KEY)){
-localStorage.setItem(SEED_KEY,"1");
-}
-}
-
-function load(){
-
-pros=readArray(PRO_KEY);
-packs=readArray(PACK_KEY);
-cats=readArray(CAT_KEY);
-budgetPacks=readArray(BUDGET_KEY);
-
-const w=readObject(
-WORK_KEY,
-{
-current:{id:null,name:"",items:[]},
-budgetDraft:{id:null,name:"",budget:0,items:[]},
-budgetEdits:{}
-}
-);
-
-current=w.current||{id:null,name:"",items:[]};
-budgetDraft=w.budgetDraft||{id:null,name:"",budget:0,items:[]};
-budgetEdits=w.budgetEdits||{};
-
-seedData();
-
-document.getElementById("packName").value=current.name||"";
-renderAll();
-}
-
-function renderAll(){
-renderCategorySelect();
-renderPros();
-renderCats();
-renderCurrent();
-renderSaved();
-renderBudget();
-renderSavedBudgetPacks();
-updateHistoryButtons();
-}
-
-function hideViews(){
-["prosView","catsView","savedView","budgetView"].forEach(id=>{
-document.getElementById(id).classList.add("hidden");
-});
-document.getElementById("mainView").classList.remove("hidden");
-}
-
-function openPros(){
-hideViews();
-document.getElementById("mainView").classList.add("hidden");
-document.getElementById("prosView").classList.remove("hidden");
-localStorage.setItem(ACTIVE_VIEW_KEY,"pros");
-}
-
-function openCats(){
-hideViews();
-document.getElementById("mainView").classList.add("hidden");
-document.getElementById("catsView").classList.remove("hidden");
-localStorage.setItem(ACTIVE_VIEW_KEY,"cats");
-}
-
-function openSaved(){
-hideViews();
-document.getElementById("mainView").classList.add("hidden");
-document.getElementById("savedView").classList.remove("hidden");
-localStorage.setItem(ACTIVE_VIEW_KEY,"saved");
-}
-
-function openBudget(){
-hideViews();
-document.getElementById("mainView").classList.add("hidden");
-document.getElementById("budgetView").classList.remove("hidden");
-localStorage.setItem(ACTIVE_VIEW_KEY,"budget");
-}
-
-function newPackage(){
-
-current={
-id:null,
-name:"",
-items:[]
-};
-
-document.getElementById("packName").value="";
-
-saveWorkState();
-renderCurrent();
-hideViews();
-touchState();
-}
-
-function renderCategorySelect(){
-
-const s=document.getElementById("pCat");
-
-if(!s)return;
-
-s.innerHTML=
-`<option value="">Ընտրել կատեգորիա</option>`+
-cats.map(c=>`<option value="${esc(c)}">${esc(c)}</option>`).join("");
-}
-
-function addPro(){
-
-const name=document.getElementById("pName").value.trim();
-const type=document.getElementById("pType").value.trim();
-const cat=document.getElementById("pCat").value;
-const max=num(document.getElementById("pMax").value);
-const min=num(document.getElementById("pMin").value);
-
-if(!name)return alert("Գրիր մասնագետի անունը");
-if(!cat)return alert("Ընտրիր կատեգորիա");
-if(!max)return alert("Գրիր շուկայական գինը");
-if(min>max)return alert("Մինիմալ գինը չի կարող շուկայական գնից բարձր լինել");
-
-pros.push({
-id:uid(),
-name,
-type,
-cat,
-maxPrice:max,
-minPrice:min,
-companyAmount:max-min,
-baseProfit:max-min,
-otherAmount:0
-});
-
-savePros();
-
-document.getElementById("pName").value="";
-document.getElementById("pType").value="";
-document.getElementById("pCat").value="";
-document.getElementById("pMax").value="";
-document.getElementById("pMin").value="";
-
-renderPros();
-renderCategorySelect();
-renderCats();
-touchState();
-}
-
-function renderPros(){
-
-const box=document.getElementById("prosList");
-
-if(!box)return;
-
-if(!pros.length){
-box.innerHTML=`<div class="item">Մասնագետներ դեռ չկան։</div>`;
-return;
-}
-
-box.innerHTML=pros.map(p=>`
-
-<div class="item">
-
-<div class="grid">
-
-<div>
-<div class="small">Անուն</div>
-<b>${esc(p.name)}</b>
-</div>
-
-<div>
-<div class="small">Մասնագիտություն</div>
-${esc(p.type||"")}
-</div>
-
-<div>
-<div class="small">Կատեգորիա</div>
-${esc(p.cat||"")}
-</div>
-
-<div>
-<div class="small">Շուկայական</div>
-<div class="price">${money(market(p))}</div>
-</div>
-
-<div>
-<div class="small">Մինիմալ</div>
-<div class="price">${money(minimum(p))}</div>
-</div>
-
-</div>
-
-<div class="row" style="margin-top:10px">
-<button class="secondary" onclick="editPro('${p.id}')">✏️ Փոփոխել</button>
-<button class="danger" onclick="deletePro('${p.id}')">🗑 Ջնջել</button>
-</div>
-
-<div id="editPro_${p.id}" class="editBox hidden">
-
-<label>Անուն</label>
-<input id="editName_${p.id}" value="${esc(p.name)}">
-
-<label>Մասնագիտություն</label>
-<input id="editType_${p.id}" value="${esc(p.type||"")}">
-
-<label>Կատեգորիա</label>
-<select id="editCat_${p.id}">
-${cats.map(c=>`
-<option value="${esc(c)}" ${c===p.cat?"selected":""}>${esc(c)}</option>
-`).join("")}
-</select>
-
-<label>Մասնագետի շուկայական գին</label>
-<input id="editMax_${p.id}" type="number" value="${market(p)}">
-
-<label>Մինիմալ գին</label>
-<input id="editMin_${p.id}" type="number" value="${minimum(p)}">
-
-<div class="row" style="margin-top:9px">
-<button onclick="saveProEdit('${p.id}')">💾 Պահպանել</button>
-<button class="secondary" onclick="editPro('${p.id}')">Չեղարկել</button>
-</div>
-
-</div>
-
-</div>
-
-`).join("");
-}
-
-function editPro(id){
-
-const box=document.getElementById("editPro_"+id);
-
-if(box)box.classList.toggle("hidden");
-}
-
-function saveProEdit(id){
-
-const p=pros.find(x=>x.id===id);
-
-if(!p)return;
-
-const name=document.getElementById("editName_"+id).value.trim();
-const type=document.getElementById("editType_"+id).value.trim();
-const cat=document.getElementById("editCat_"+id).value;
-const max=num(document.getElementById("editMax_"+id).value);
-const min=num(document.getElementById("editMin_"+id).value);
-
-if(!name)return alert("Գրիր անուն");
-if(!cat)return alert("Ընտրիր կատեգորիա");
-if(min>max)return alert("Մինիմալ գինը չի կարող շուկայականից բարձր լինել");
-
-p.name=name;
-p.type=type;
-p.cat=cat;
-p.maxPrice=max;
-p.minPrice=min;
-p.companyAmount=max-min;
-p.baseProfit=max-min;
-p.otherAmount=0;
-
-savePros();
-
-current.items.forEach(i=>{
-if(i.proId===id){
-i.name=p.name;
-i.type=p.type;
-i.cat=p.cat;
-i.marketPrice=max;
-}
-});
-
-budgetDraft.items.forEach(i=>{
-if(i.proId===id){
-i.name=p.name;
-i.type=p.type;
-i.cat=p.cat;
-i.marketPrice=max;
-}
-});
-
-saveWorkState();
-renderAll();
-touchState();
-}
-
-function deletePro(id){
-
-const p=pros.find(x=>x.id===id);
-
-if(!p)return;
-
-if(!confirm(`Ջնջե՞լ «${p.name}» մասնագետին։`))return;
-
-pros=pros.filter(x=>x.id!==id);
-
-current.items=current.items.filter(x=>x.proId!==id);
-budgetDraft.items=budgetDraft.items.filter(x=>x.proId!==id);
-
-packs.forEach(pack=>{
-pack.items=(pack.items||[]).filter(x=>x.proId!==id);
-});
-
-budgetPacks.forEach(pack=>{
-pack.items=(pack.items||[]).filter(x=>x.proId!==id);
-});
-
-savePros();
-savePacks();
-saveBudgetPacks();
-saveWorkState();
-
-renderAll();
-touchState();
-}
-
-function addCategory(){
-
-const input=document.getElementById("newCat");
-const name=input.value.trim();
-
-if(!name)return;
-
-if(cats.some(c=>c.toLowerCase()===name.toLowerCase())){
-return alert("Այս կատեգորիան արդեն կա");
-}
-
-cats.push(name);
-
-saveCats();
-
-input.value="";
-
-renderAll();
-touchState();
-}
-
-function renameCategory(oldName){
-
-const name=prompt("Նոր անունը",oldName);
-
-if(name===null)return;
-
-const newName=name.trim();
-
-if(!newName)return;
-
-if(newName===oldName)return;
-
-if(cats.some(c=>c.toLowerCase()===newName.toLowerCase())){
-return alert("Այս անունով կատեգորիա արդեն կա");
-}
-
-cats=cats.map(c=>c===oldName?newName:c);
-
-pros.forEach(p=>{
-if(p.cat===oldName)p.cat=newName;
-});
-
-current.items.forEach(i=>{
-if(i.cat===oldName)i.cat=newName;
-});
-
-budgetDraft.items.forEach(i=>{
-if(i.cat===oldName)i.cat=newName;
-});
-
-packs.forEach(pack=>{
-(pack.items||[]).forEach(i=>{
-if(i.cat===oldName)i.cat=newName;
-});
-});
-
-budgetPacks.forEach(pack=>{
-(pack.items||[]).forEach(i=>{
-if(i.cat===oldName)i.cat=newName;
-});
-});
-
-saveCats();
-savePros();
-savePacks();
-saveBudgetPacks();
-saveWorkState();
-
-renderAll();
-touchState();
-}
-
-function deleteCategory(name){
-
-const count=pros.filter(p=>p.cat===name).length;
-
-if(count){
-
-if(!confirm(
-`«${name}» կատեգորիայում կա ${count} մասնագետ։\n\nՋնջե՞լ կատեգորիան և այդ կատեգորիայի մասնագետներին։`
-))return;
-
-pros=pros.filter(p=>p.cat!==name);
-
-current.items=current.items.filter(i=>i.cat!==name);
-budgetDraft.items=budgetDraft.items.filter(i=>i.cat!==name);
-
-packs.forEach(pack=>{
-pack.items=(pack.items||[]).filter(i=>i.cat!==name);
-});
-
-budgetPacks.forEach(pack=>{
-pack.items=(pack.items||[]).filter(i=>i.cat!==name);
-});
-
-savePros();
-savePacks();
-saveBudgetPacks();
-saveWorkState();
-
-}else{
-
-if(!confirm(`Ջնջե՞լ «${name}» կատեգորիան։`))return;
-
-}
-
-cats=cats.filter(c=>c!==name);
-
-saveCats();
-
-renderAll();
-touchState();
-}
-
-function renderCats(){
-
-const box=document.getElementById("catsList");
-
-if(!box)return;
-
-if(!cats.length){
-box.innerHTML=`<div class="item">Կատեգորիաներ չկան։</div>`;
-return;
-}
-
-box.innerHTML=cats.map(cat=>{
-
-const list=pros.filter(p=>p.cat===cat);
-
-return`
-
-<div class="catBox">
-
-<div class="catHead">
-
-<div>
-<div class="catName">📂 ${esc(cat)}</div>
-<div class="small">
-Մասնագետներ՝ ${list.length}
-</div>
-</div>
-
-<div class="row">
-<button class="secondary" onclick="renameCategory(${JSON.stringify(cat)})">
-✏️ Անունը փոխել
-</button>
-
-<button class="danger" onclick="deleteCategory(${JSON.stringify(cat)})">
-🗑 Ջնջել
-</button>
-</div>
-
-</div>
-
-${list.length?`
-
-<div class="catPros">
-
-${list.map(p=>`
-
-<div class="catPro">
-
-<div>
-<b>${esc(p.name)}</b>
-<div class="small">${esc(p.type||"")}</div>
-<div class="small">
-Շուկայական՝ ${money(market(p))}
-</div>
-</div>
-
-<button class="danger" onclick="deletePro('${p.id}')">
-🗑 Ջնջել մասնագետին
-</button>
-
-</div>
-
-`).join("")}
-
-</div>
-
-`:""}
-
-</div>
-`;
-
-}).join("");
-}
-
-function addCurrentPro(id){
-
-const p=pros.find(x=>x.id===id);
-
-if(!p)return;
-
-if(current.items.some(x=>x.proId===id))return;
-
-current.items.push({
-id:uid(),
-proId:p.id,
-name:p.name,
-type:p.type,
-cat:p.cat,
-marketPrice:market(p),
-cost:market(p),
-profit:0
-});
-
-saveWorkState();
-renderCurrent();
-touchState();
-}
-
-function removeCurrentPro(id){
-
-current.items=current.items.filter(x=>x.id!==id);
-
-saveWorkState();
-renderCurrent();
-touchState();
-}
-
-function changeCurrentCost(id,value){
-
-const s=current.items.find(x=>x.id===id);
-
-if(!s)return;
-
-const m=num(s.marketPrice);
-
-s.cost=Math.min(m,num(value));
-s.profit=m-s.cost;
-
-saveWorkState();
-renderCurrent();
-touchState();
-}
-
-function changeCurrentProfit(id,value){
-
-const s=current.items.find(x=>x.id===id);
-
-if(!s)return;
-
-const m=num(s.marketPrice);
-
-s.profit=Math.min(m,num(value));
-s.cost=m-s.profit;
-
-saveWorkState();
-renderCurrent();
-touchState();
-}
-
-function renderCurrent(){
-
-const box=document.getElementById("currentPackage");
-
-if(!box)return;
-
-if(!current.items.length){
-
-box.innerHTML=`<div class="item" style="margin-top:12px">Մասնագետներ դեռ չկան։</div>`;
-
-return;
-}
-
-box.innerHTML=current.items.map(s=>`
-
-<div class="item">
-
-<div class="grid">
-
-<div>
-<div class="small">Մասնագետ</div>
-<b>${esc(s.name)}</b>
-<div class="small">${esc(s.cat||"")}</div>
-</div>
-
-<div>
-<label>Մասնագետին</label>
-<input
-type="number"
-value="${num(s.cost)}"
-oninput="changeCurrentCost('${s.id}',this.value)"
->
-</div>
-
-<div>
-<label>Իմ գումարը</label>
-<input
-type="number"
-value="${num(s.profit)}"
-oninput="changeCurrentProfit('${s.id}',this.value)"
->
-</div>
-
-<div>
-<div class="small">Մասնագետի շուկայական գին</div>
-<div class="price">${money(s.marketPrice)}</div>
-</div>
-
-<div>
-<button class="danger" onclick="removeCurrentPro('${s.id}')">🗑</button>
-</div>
-
-</div>
-
-</div>
-
-`).join("");
-
-}
-
-function renderMainProList(){
-
-const box=document.getElementById("mainProList");
-
-if(!box)return;
-
-if(!pros.length){
-box.innerHTML=`<div class="item">Մասնագետներ չկան։</div>`;
-return;
-}
-
-box.innerHTML=cats.map(cat=>{
-
-const list=pros.filter(p=>p.cat===cat);
-
-if(!list.length)return"";
-
-return`
-
-<div class="item">
-
-<h3>📂 ${esc(cat)}</h3>
-
-${list.map(p=>{
-
-const selected=current.items.some(x=>x.proId===p.id);
-
-return`
-
-<div class="row" style="justify-content:space-between;padding:8px 0;border-bottom:1px solid #eee">
-
-<div>
-<b>${esc(p.name)}</b>
-<div class="small">${esc(p.type||"")}</div>
-<div class="small">Շուկայական՝ ${money(market(p))}</div>
-</div>
-
-<button
-${selected?"disabled":""}
-onclick="addCurrentPro('${p.id}')"
->
-${selected?"Ավելացված":"➕ Ավելացնել"}
-</button>
-
-</div>
-
-`;
-
-}).join("")}
-
-</div>
-
-`;
-
-}).join("");
-
-}
-
-function saveCurrentPackage(){
-
-const name=document.getElementById("packName").value.trim();
-
-if(name)current.name=name;
-
-if(!current.name){
-return alert("Գրիր փաթեթի անունը");
-}
-
-if(!current.id)current.id=uid();
-
-const index=packs.findIndex(p=>p.id===current.id);
-
-const saved=clone(current);
-
-if(index>=0)packs[index]=saved;
-else packs.push(saved);
-
-savePacks();
-saveWorkState();
-renderSaved();
-
-alert("Փաթեթը պահպանվեց ✅");
-
-touchState();
-}
-
-function savePackage(){
-saveCurrentPackage();
-}
-
-function finishCurrentToBudget(){
-
-if(!current.items.length){
-return alert("Ընթացիկ փաթեթում մասնագետ չկա");
-}
-
-const name=document.getElementById("packName").value.trim()||current.name||"Նոր փաթեթ";
-
-const total=current.items.reduce(
-(a,s)=>a+market({maxPrice:s.marketPrice}),
-0
-);
-
-budgetPacks.push({
-id:uid(),
-name,
-budget:total,
-items:clone(current.items)
-});
-
-saveBudgetPacks();
-
-current={
-id:null,
-name:"",
-items:[]
-};
-
-document.getElementById("packName").value="";
-
-saveWorkState();
-renderAll();
-openBudget();
-
-alert("Փաթեթը տեղափոխվեց բյուջետային փաթեթներ ✅");
-
-touchState();
-}
-
-function deleteCurrentPackage(){
-
-if(!current.name&&!current.items.length)return;
-
-if(!confirm("Ջնջե՞լ ընթացիկ փաթեթը։"))return;
-
-current={
-id:null,
-name:"",
-items:[]
-};
-
-document.getElementById("packName").value="";
-
-saveWorkState();
-renderCurrent();
-touchState();
-}
-
-function renderSaved(){
-
-const box=document.getElementById("savedList");
-
-if(!box)return;
-
-if(!packs.length){
-box.innerHTML=`<div class="item">Պահված փաթեթներ չկան։</div>`;
-return;
-}
-
-box.innerHTML=packs.map(p=>`
-
-<div class="saved">
-
-<div>
-<b>${esc(p.name||"Անանուն փաթեթ")}</b>
-<div class="small">${(p.items||[]).length} մասնագետ</div>
-</div>
-
-<div class="row">
-<button onclick="openPack('${p.id}')">Բացել</button>
-<button class="danger" onclick="deletePack('${p.id}')">🗑</button>
-</div>
-
-</div>
-
-`).join("");
-}
-
-function openPack(id){
-
-const p=packs.find(x=>x.id===id);
-
-if(!p)return;
-
-current=clone(p);
-
-document.getElementById("packName").value=current.name||"";
-
-saveWorkState();
-renderCurrent();
-hideViews();
-touchState();
-}
-
-function deletePack(id){
-
-if(!confirm("Ջնջե՞լ այս պահպանված փաթեթը։"))return;
-
-packs=packs.filter(p=>p.id!==id);
-
-savePacks();
-renderSaved();
-touchState();
-}
-
-function buildBudget(){
-
-const budget=num(document.getElementById("budgetAmount").value);
-const name=document.getElementById("budgetName").value.trim();
-
-if(!budget)return alert("Գրիր հաճախորդի բյուջեն");
-
-budgetDraft={
-id:uid(),
-name:name||"Նոր բյուջե",
-budget,
-items:[]
-};
-
-budgetEdits={};
-
-saveWorkState();
-renderBudget();
-touchState();
-}
-
-function getBudgetEdit(s,p){
-
-const m=market(p);
-
-if(!budgetEdits[s.id]){
-
-budgetEdits[s.id]={
-cost:num(s.cost!==undefined?s.cost:minimum(p)),
-profit:num(
-s.profit!==undefined?
-s.profit:
-Math.max(0,m-minimum(p))
-),
-realPrice:m
-};
-
-}
-
-const e=budgetEdits[s.id];
-
-e.realPrice=m;
-
-if(e.cost>m){
-e.cost=m;
-e.profit=0;
-}
-
-if(e.profit>m){
-e.profit=m;
-e.cost=0;
-}
-
-return e;
-}
-
-function updateBudgetEdit(id,field,value){
-
-const s=budgetDraft.items.find(x=>x.id===id);
-
-if(!s)return;
-
-const p=pros.find(x=>x.id===s.proId);
-
-if(!p)return;
-
-const m=market(p);
-
-const e=getBudgetEdit(s,p);
-
-if(field==="cost"){
-e.cost=Math.min(m,num(value));
-e.profit=m-e.cost;
-}
-
-if(field==="profit"){
-e.profit=Math.min(m,num(value));
-e.cost=m-e.profit;
-}
-
-s.cost=e.cost;
-s.profit=e.profit;
-s.marketPrice=m;
-
-saveWorkState();
-renderBudget();
-touchState();
-}
-
-function addBudgetPro(id){
-
-const p=pros.find(x=>x.id===id);
-
-if(!p)return;
-
-if(budgetDraft.items.some(x=>x.proId===id))return;
-
-const m=market(p);
-
-const used=budgetDraft.items.reduce(
-(a,s)=>a+num(s.marketPrice),
-0
-);
-
-const remaining=num(budgetDraft.budget)-used;
-
-if(m>remaining){
-
-return alert(
-`Չի կարելի ավելացնել։\nՄասնագետի շուկայական գինը՝ ${money(m)}\nՄնացորդը՝ ${money(remaining)}`
-);
-
-}
-
-const s={
-id:uid(),
-proId:p.id,
-name:p.name,
-type:p.type,
-cat:p.cat,
-marketPrice:m,
-cost:minimum(p),
-profit:Math.max(0,m-minimum(p))
-};
-
-budgetDraft.items.push(s);
-
-budgetEdits[s.id]={
-cost:s.cost,
-profit:s.profit,
-realPrice:m
-};
-
-saveWorkState();
-renderBudget();
-touchState();
-}
-
-function removeBudgetPro(id){
-
-budgetDraft.items=budgetDraft.items.filter(x=>x.id!==id);
-
-delete budgetEdits[id];
-
-saveWorkState();
-renderBudget();
-touchState();
-}
-
-function budgetTotals(){
-
-const total=budgetDraft.items.reduce(
-(a,s)=>a+num(s.marketPrice),
-0
-);
-
-let specialist=0;
-let profit=0;
-
-budgetDraft.items.forEach(s=>{
-
-const p=pros.find(x=>x.id===s.proId)||{};
-const e=getBudgetEdit(s,p);
-
-specialist+=num(e.cost);
-profit+=num(e.profit);
-
-});
-
-return{
-total,
-specialist,
-profit,
-budget:num(budgetDraft.budget),
-remaining:num(budgetDraft.budget)-total
-};
-
-}
-
-function renderBudget(){
-
-const box=document.getElementById("budgetSummary");
-
-const proBox=document.getElementById("budgetProList");
-
-if(!box||!proBox)return;
-
-if(!budgetDraft.budget){
-
-box.innerHTML=`<div class="item">Ստեղծիր բյուջե՝ նշելով հաճախորդի բյուջեն։</div>`;
-proBox.innerHTML="";
-return;
-
-}
-
-const t=budgetTotals();
-
-box.innerHTML=`
-
-<div class="summary">
-
-<div class="sum">
-<div class="small">Հաճախորդի բյուջե</div>
-<strong>${money(t.budget)}</strong>
-</div>
-
-<div class="sum">
-<div class="small">Շուկայական արժեք</div>
-<strong>${money(t.total)}</strong>
-</div>
-
-<div class="sum">
-<div class="small">Մասնագետներին</div>
-<strong>${money(t.specialist)}</strong>
-</div>
-
-<div class="sum">
-<div class="small">Իմ շահույթը</div>
-<strong>${money(t.profit)}</strong>
-</div>
-
-<div class="sum">
-<div class="small">Մնացորդ</div>
-<strong>${money(t.remaining)}</strong>
-</div>
-
-</div>
-
-${budgetDraft.items.map(s=>{
-
-const p=pros.find(x=>x.id===s.proId)||{};
-const e=getBudgetEdit(s,p);
-
-return`
-
-<div class="budgetBox">
-
-<div class="budgetGrid">
-
-<div>
-<div class="small">Մասնագետ</div>
-<b>${esc(s.name)}</b>
-<div class="small">${esc(s.cat||"")}</div>
-</div>
-
-<div>
-<label>Մասնագետին</label>
-<input
-type="number"
-value="${num(e.cost)}"
-oninput="updateBudgetEdit('${s.id}','cost',this.value)"
->
-</div>
-
-<div>
-<label>Իմ շահույթը</label>
-<input
-type="number"
-value="${num(e.profit)}"
-oninput="updateBudgetEdit('${s.id}','profit',this.value)"
->
-</div>
-
-<div>
-<label>Մասնագետի շուկայական գին</label>
-<div class="price">${money(market(p))}</div>
-</div>
-
-<button class="danger" onclick="removeBudgetPro('${s.id}')">🗑</button>
-
-</div>
-
-</div>
-
-`;
-
-}).join("")}
-
-`;
-
-proBox.innerHTML=cats.map(cat=>{
-
-const list=pros.filter(p=>p.cat===cat);
-
-if(!list.length)return"";
-
-return`
-
-<div class="budgetBox">
-
-<h3>📂 ${esc(cat)}</h3>
-
-${list.map(p=>{
-
-const selected=budgetDraft.items.some(
-s=>s.proId===p.id
-);
-
-return`
-
-<div class="catPro">
-
-<div>
-<b>${esc(p.name)}</b>
-<div class="small">${esc(p.type||"")}</div>
-<div class="small">
-Շուկայական՝ ${money(market(p))}
-</div>
-</div>
-
-<button
-${selected?"disabled":""}
-onclick="addBudgetPro('${p.id}')"
->
-${selected?"Ավելացված":"➕ Ավելացնել"}
-</button>
-
-</div>
-
-`;
-
-}).join("")}
-
-</div>
-
-`;
-
-}).join("");
-
-renderBudgetPayments();
-}
-
-function renderBudgetPayments(){
-
-const box=document.getElementById("budgetPayments");
-
-if(!box)return;
-
-if(!budgetDraft.items.length){
-box.innerHTML="";
-return;
-}
-
-box.innerHTML=`
-
-<div class="pay">
-
-<h3>💸 Վճարումներ մասնագետներին</h3>
-
-${budgetDraft.items.map(s=>{
-
-const p=pros.find(x=>x.id===s.proId)||{};
-const e=getBudgetEdit(s,p);
-
-return`
-
-<div class="row" style="justify-content:space-between;padding:8px 0;border-bottom:1px solid #eadfba">
-
-<div>
-<b>${esc(s.name)}</b>
-<div class="small">${esc(s.cat||"")}</div>
-</div>
-
-<strong>${money(e.cost)}</strong>
-
-</div>
-
-`;
-
-}).join("")}
-
-</div>
-`;
-
-}
-
-function saveBudgetPackage(){
-
-if(!budgetDraft.budget){
-return alert("Ստեղծիր բյուջե");
-}
-
-const t=budgetTotals();
-
-if(t.total>t.budget){
-return alert("Շուկայական ընդհանուր արժեքը գերազանցում է հաճախորդի բյուջեն");
-}
-
-const saved=clone(budgetDraft);
-
-if(!saved.id)saved.id=uid();
-
-const index=budgetPacks.findIndex(
-p=>p.id===saved.id
-);
-
-if(index>=0)budgetPacks[index]=saved;
-else budgetPacks.push(saved);
-
-saveBudgetPacks();
-renderSavedBudgetPacks();
-
-alert("Բյուջետային փաթեթը պահպանվեց ✅");
-
-touchState();
-}
-
-function renderSavedBudgetPacks(){
-
-const box=document.getElementById("savedBudgetList");
-
-if(!box)return;
-
-if(!budgetPacks.length){
-
-box.innerHTML=`<div class="item">Պահված բյուջետային փաթեթներ չկան։</div>`;
-
-return;
-}
-
-box.innerHTML=budgetPacks.map(p=>{
-
-const total=(p.items||[]).reduce(
-(a,s)=>a+num(s.marketPrice),
-0
-);
-
-return`
-
-<div class="saved">
-
-<div>
-<b>${esc(p.name||"Բյուջե")}</b>
-
-<div class="small">
-Հաճախորդի բյուջե՝ ${money(p.budget)}
-</div>
-
-<div class="small">
-Շուկայական արժեք՝ ${money(total)}
-</div>
-
-<div class="small">
-Մասնագետներ՝ ${(p.items||[]).length}
-</div>
-</div>
-
-<div class="row">
-
-<button onclick="openBudgetPack('${p.id}')">
-✏️ Բացել
-</button>
-
-<button class="danger" onclick="deleteBudgetPack('${p.id}')">
-🗑 Ջնջել
-</button>
-
-</div>
-
-</div>
-`;
-
-}).join("");
-}
-
-function openBudgetPack(id){
-
-const p=budgetPacks.find(x=>x.id===id);
-
-if(!p)return;
-
-budgetDraft=clone(p);
-budgetEdits={};
-
-budgetDraft.items.forEach(s=>{
-
-const p=pros.find(x=>x.id===s.proId)||{};
-const m=market(p)||num(s.marketPrice);
-
-budgetEdits[s.id]={
-cost:num(s.cost),
-profit:num(s.profit),
-realPrice:m
-};
-
-});
-
-document.getElementById("budgetName").value=budgetDraft.name||"";
-document.getElementById("budgetAmount").value=budgetDraft.budget||"";
-
-saveWorkState();
-renderBudget();
-openBudget();
-touchState();
-}
-
-function deleteBudgetPack(id){
-
-if(!confirm("Ջնջե՞լ այս բյուջետային փաթեթը։"))return;
-
-budgetPacks=budgetPacks.filter(
-p=>p.id!==id
-);
-
-saveBudgetPacks();
-renderSavedBudgetPacks();
-touchState();
-}
-
-function deleteCurrentBudget(){
-
-if(
-!budgetDraft.budget&&
-!budgetDraft.name&&
-!budgetDraft.items.length
-)return;
-
-if(!confirm("Ջնջե՞լ ընթացիկ բյուջեն։"))return;
-
-budgetDraft={
-id:null,
-name:"",
-budget:0,
-items:[]
-};
-
-budgetEdits={};
-
-document.getElementById("budgetName").value="";
-document.getElementById("budgetAmount").value="";
-
-saveWorkState();
-renderBudget();
-renderSavedBudgetPacks();
-touchState();
-}
-
-function sendBudgetToNormalPackage(){
-
-if(!budgetDraft.items.length){
-return alert("Բյուջեում մասնագետ չկա");
-}
-
-current={
-id:null,
-name:budgetDraft.name||"Նոր փաթեթ",
-items:clone(budgetDraft.items)
-};
-
-document.getElementById("packName").value=current.name;
-
-saveWorkState();
-renderCurrent();
-hideViews();
-touchState();
-}
-
-function openBackup(){
-
-const data={
-date:new Date().toISOString(),
-pros,
-packs,
-cats,
-budgetPacks,
-current,
-budgetDraft,
-budgetEdits
-};
-
-const text=JSON.stringify(data,null,2);
-
-prompt("Backup",text);
-}
-
-function importBackup(){
-
-const text=prompt("Տեղադրիր Backup-ի JSON-ը");
-
-if(!text)return;
-
-try{
-
-const data=JSON.parse(text);
-
-if(Array.isArray(data.pros))pros=data.pros;
-if(Array.isArray(data.packs))packs=data.packs;
-if(Array.isArray(data.cats))cats=data.cats;
-if(Array.isArray(data.budgetPacks))budgetPacks=data.budgetPacks;
-
-if(data.current)current=data.current;
-if(data.budgetDraft)budgetDraft=data.budgetDraft;
-if(data.budgetEdits)budgetEdits=data.budgetEdits;
-
-savePros();
-savePacks();
-saveCats();
-saveBudgetPacks();
-saveWorkState();
-
-renderAll();
-
-alert("Backup-ը վերականգնվեց ✅");
-
-}catch(e){
-
-alert("Backup-ը սխալ է");
-
-}
-
-}
-
-function snapshot(){
-
-return{
-pros:clone(pros),
-packs:clone(packs),
-cats:clone(cats),
-budgetPacks:clone(budgetPacks),
-current:clone(current),
-budgetDraft:clone(budgetDraft),
-budgetEdits:clone(budgetEdits)
-};
-
-}
-
-function touchState(){
-
-try{
-
-const h=readObject(
-HISTORY_KEY,
-{items:[],index:-1}
-);
-
-let items=Array.isArray(h.items)?h.items:[];
-let index=Number(h.index);
-
-if(!Number.isFinite(index))index=-1;
-
-items=items.slice(0,index+1);
-
-items.push(snapshot());
-
-if(items.length>50){
-items=items.slice(-50);
-}
-
-index=items.length-1;
-
-localStorage.setItem(
-HISTORY_KEY,
-JSON.stringify({items,index})
-);
-
-localStorage.setItem(
-HISTORY_INDEX_KEY,
-String(index)
-);
-
-}catch(e){}
-
-updateHistoryButtons();
-saveFullAutoBackup();
-}
-
-function restoreSnapshot(s){
-
-pros=clone(s.pros||[]);
-packs=clone(s.packs||[]);
-cats=clone(s.cats||[]);
-budgetPacks=clone(s.budgetPacks||[]);
-current=clone(s.current||{id:null,name:"",items:[]});
-budgetDraft=clone(s.budgetDraft||{id:null,name:"",budget:0,items:[]});
-budgetEdits=clone(s.budgetEdits||{});
-
-savePros();
-savePacks();
-saveCats();
-saveBudgetPacks();
-saveWorkState();
-
-document.getElementById("packName").value=current.name||"";
-renderAll();
-}
-
-function undoState(){
-
-const h=readObject(
-HISTORY_KEY,
-{items:[],index:-1}
-);
-
-const items=h.items||[];
-let index=Number(h.index);
-
-if(!items.length||index<=0)return;
-
-index--;
-
-localStorage.setItem(
-HISTORY_KEY,
-JSON.stringify({items,index})
-);
-
-restoreSnapshot(items[index]);
-
-updateHistoryButtons();
-}
-
-function redoState(){
-
-const h=readObject(
-HISTORY_KEY,
-{items:[],index:-1}
-);
-
-const items=h.items||[];
-let index=Number(h.index);
-
-if(!items.length||index>=items.length-1)return;
-
-index++;
-
-localStorage.setItem(
-HISTORY_KEY,
-JSON.stringify({items,index})
-);
-
-restoreSnapshot(items[index]);
-
-updateHistoryButtons();
-}
-
-function updateHistoryButtons(){
-
-const h=readObject(
-HISTORY_KEY,
-{items:[],index:-1}
-);
-
-const items=h.items||[];
-const index=Number(h.index);
-
-const u=document.getElementById("undoBtn");
-const r=document.getElementById("redoBtn");
-
-if(u)u.disabled=!items.length||index<=0;
-if(r)r.disabled=!items.length||index>=items.length-1;
+ try{
+  localStorage.setItem(WORK_KEY,JSON.stringify({
+   current,
+   budgetDraft,
+   budgetEdits
+  }));
+ }catch(e){}
+ scheduleCloudSave();
 }
 
 function saveFullAutoBackup(){
-
-try{
-
-localStorage.setItem(
-AUTO_FULL_BACKUP_KEY,
-JSON.stringify({
-date:new Date().toISOString(),
-pros:clone(pros),
-packs:clone(packs),
-cats:clone(cats),
-budgetPacks:clone(budgetPacks),
-current:clone(current),
-budgetDraft:clone(budgetDraft),
-budgetEdits:clone(budgetEdits)
-})
-);
-
-}catch(e){}
-
+ try{
+  const data={
+   date:new Date().toISOString(),
+   pros,
+   packs,
+   cats,
+   budgetPacks,
+   current,
+   budgetDraft,
+   budgetEdits
+  };
+  localStorage.setItem(AUTO_FULL_BACKUP_KEY,JSON.stringify(data));
+ }catch(e){}
 }
 
+function restoreOldPacks(){
+ let changed=false;
 
-/* FIREBASE */
+ OLD_PACKS.forEach(name=>{
+  if(!packs.some(p=>p.name===name)){
+   packs.push({
+    id:uid(),
+    name,
+    staff:[],
+    total:0
+   });
+   changed=true;
+  }
+ });
+
+ if(changed)savePacks();
+}
+
+function load(){
+ try{
+  pros=JSON.parse(localStorage.getItem(PRO_KEY)||"[]");
+  packs=JSON.parse(localStorage.getItem(PACK_KEY)||"[]");
+  cats=JSON.parse(localStorage.getItem(CAT_KEY)||"[]");
+  budgetPacks=JSON.parse(localStorage.getItem(BUDGET_KEY)||"[]");
+
+  const w=JSON.parse(localStorage.getItem(WORK_KEY)||"null");
+  if(w){
+   if(w.current)current=w.current;
+   if(w.budgetDraft)budgetDraft=w.budgetDraft;
+   if(w.budgetEdits)budgetEdits=w.budgetEdits;
+  }
+
+  if(!Array.isArray(pros))pros=[];
+  if(!Array.isArray(packs))packs=[];
+  if(!Array.isArray(cats))cats=[];
+  if(!Array.isArray(budgetPacks))budgetPacks=[];
+
+ }catch(e){
+  console.error(e);
+ }
+
+ if(!cats.length){
+  cats=[
+   "DJ-ներ",
+   "Ջութակահարներ",
+   "Ռիլմեյքերներ",
+   "Լուսանկարիչներ",
+   "Դրոն նկարահանում",
+   "Ֆոտոզոնա / Դեկոր",
+   "Պարային շոուներ",
+   "Արջուկներ / կերպարներ",
+   "Երաժիշտներ",
+   "Ծաղիկներ",
+   "Այլ"
+  ];
+  saveCats();
+ }
+
+ restoreOldPacks();
+
+ renderAll();
+}
+
+function renderAll(){
+ renderProCatSelect();
+ renderCats();
+ renderPros();
+ renderSavedPacks();
+ renderCurrentPack();
+ renderBudget();
+ renderSavedBudgetPacks();
+ renderPayments();
+ updateDerived();
+}
+
+function showPanel(id){
+ document.querySelectorAll(
+  "#prosPanel,#packsPanel,#budgetPanel,#budgetPacksPanel,#paymentsPanel,#backupPanel"
+ ).forEach(x=>x.classList.add("hidden"));
+
+ const el=document.getElementById(id);
+ if(el)el.classList.remove("hidden");
+
+ localStorage.setItem(ACTIVE_VIEW_KEY,id);
+}
+
+function renderProCatSelect(){
+ const s=document.getElementById("proCat");
+ if(!s)return;
+
+ s.innerHTML=cats.map(c=>
+  `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`
+ ).join("");
+
+ if(!s.value && cats.length)s.value=cats[0];
+}
+
+function escapeHtml(v){
+ return String(v??"")
+ .replace(/&/g,"&amp;")
+ .replace(/</g,"&lt;")
+ .replace(/>/g,"&gt;")
+ .replace(/"/g,"&quot;")
+ .replace(/'/g,"&#039;");
+}
+
+function addCategory(){
+ const i=document.getElementById("newCat");
+ const n=i.value.trim();
+
+ if(!n)return;
+
+ if(cats.includes(n)){
+  alert("Այս բաժինն արդեն կա");
+  return;
+ }
+
+ cats.push(n);
+ saveCats();
+
+ i.value="";
+ renderAll();
+}
+
+function renameCat(oldName){
+ const x=prompt("Նոր անուն",oldName);
+ if(x===null)return;
+
+ const n=x.trim();
+ if(!n)return;
+
+ if(cats.includes(n)&&n!==oldName){
+  alert("Այս անունով բաժին արդեն կա");
+  return;
+ }
+
+ pros.forEach(p=>{
+  if(p.category===oldName)p.category=n;
+ });
+
+ packs.forEach(p=>{
+  (p.staff||[]).forEach(s=>{
+   if(s.category===oldName)s.category=n;
+  });
+ });
+
+ budgetPacks.forEach(p=>{
+  (p.staff||[]).forEach(s=>{
+   if(s.category===oldName)s.category=n;
+  });
+ });
+
+ cats=cats.map(c=>c===oldName?n:c);
+
+ if(manageCat===oldName)manageCat=n;
+ if(pickerCat===oldName)pickerCat=n;
+
+ saveCats();
+ savePros();
+ savePacks();
+ saveBudgetPacks();
+
+ renderAll();
+}
+
+function deleteCat(n){
+ if(pros.some(p=>p.category===n)){
+  alert("Այս բաժնում մասնագետ կա։ Նախ տեղափոխիր մասնագետներին ուրիշ բաժին կամ ջնջիր մասնագետներին։");
+  return;
+ }
+
+ if(!confirm("Ջնջե՞լ բաժինը"))return;
+
+ cats=cats.filter(x=>x!==n);
+ saveCats();
+ renderAll();
+}
+
+function renderCats(){
+ const box=document.getElementById("cats");
+ if(!box)return;
+
+ if(!cats.length){
+  box.innerHTML="<div class='small'>Բաժիններ չկան</div>";
+  return;
+ }
+
+ box.innerHTML=cats.map(c=>{
+  const count=pros.filter(p=>p.category===c).length;
+
+  return `
+   <div class="cat">
+    <div>
+     <b>${escapeHtml(c)}</b>
+     <div class="small">${count} մասնագետ</div>
+    </div>
+    <div class="row">
+     <button class="btn blue" onclick='openCategoryManage(${JSON.stringify(c)})'>👥 Մտնել</button>
+     <button class="btn2" onclick='renameCat(${JSON.stringify(c)})'>✏️ Անուն</button>
+     <button class="btn red" onclick='deleteCat(${JSON.stringify(c)})'>🗑</button>
+    </div>
+   </div>
+  `;
+ }).join("");
+}
+
+function openCategoryManage(category){
+ manageCat=category;
+ showPanel("prosPanel");
+
+ const box=document.getElementById("prosList");
+ const list=pros.filter(p=>p.category===category);
+
+ if(!list.length){
+  box.innerHTML=`
+   <div class="card">
+    <b>${escapeHtml(category)}</b>
+    <div class="small">Այս բաժնում մասնագետ չկա։</div>
+   </div>
+  `;
+  return;
+ }
+
+ box.innerHTML=`
+  <div class="card">
+   <h3>📂 ${escapeHtml(category)}</h3>
+   ${list.map(renderProCard).join("")}
+  </div>
+ `;
+}
+
+function renderPros(){
+ const box=document.getElementById("prosList");
+ if(!box)return;
+
+ if(manageCat){
+  const exists=cats.includes(manageCat);
+  if(exists){
+   const list=pros.filter(p=>p.category===manageCat);
+
+   box.innerHTML=`
+    <div class="row">
+     <button class="btn2" onclick="manageCat='';renderPros()">← Բոլոր մասնագետները</button>
+    </div>
+    <h3>📂 ${escapeHtml(manageCat)}</h3>
+    ${list.length?list.map(renderProCard).join(""):"<div class='small'>Մասնագետ չկա</div>"}
+   `;
+   return;
+  }
+ }
+
+ if(!pros.length){
+  box.innerHTML="<div class='small'>Մասնագետներ չկան</div>";
+  return;
+ }
+
+ box.innerHTML=pros.map(renderProCard).join("");
+}
+
+function renderProCard(p){
+ const market=num(p.maxPrice);
+ const min=num(p.minPrice);
+ const profit=Math.max(0,market-min);
+
+ return `
+ <div class="pro">
+  <div class="row" style="justify-content:space-between">
+   <div>
+    <b>${escapeHtml(p.name)}</b>
+    <div class="small">${escapeHtml(p.category)}</div>
+   </div>
+   <span class="badge">Շուկա ${money(market)}</span>
+  </div>
+
+  <div class="grid">
+   <div>
+    <div class="small">Մասնագետի շուկայական գին</div>
+    <b>${money(market)}</b>
+   </div>
+   <div>
+    <div class="small">Մինիմալ գին</div>
+    <b>${money(min)}</b>
+   </div>
+   <div>
+    <div class="small">Իմ գումարը</div>
+    <b>${money(profit)}</b>
+   </div>
+  </div>
+
+  <div class="row">
+   <button class="btn2" onclick='editPro(${JSON.stringify(p.id)})'>✏️ Փոխել</button>
+   <button class="btn red" onclick='deletePro(${JSON.stringify(p.id)})'>🗑 Ջնջել</button>
+  </div>
+ </div>
+ `;
+}
+
+function savePro(){
+ const name=document.getElementById("proName").value.trim();
+ const category=document.getElementById("proCat").value;
+ const market=num(document.getElementById("pMax").value);
+ const minimum=num(document.getElementById("pMin").value);
+
+ if(!name){
+  alert("Գրիր մասնագետի անունը");
+  return;
+ }
+
+ if(market<=0){
+  alert("Գրիր շուկայական գինը");
+  return;
+ }
+
+ if(minimum>market){
+  alert("Մինիմալ գինը չի կարող մեծ լինել շուկայական գնից");
+  return;
+ }
+
+ const profit=market-minimum;
+
+ if(editingProId){
+  const p=pros.find(x=>x.id===editingProId);
+
+  if(p){
+   p.name=name;
+   p.category=category;
+   p.maxPrice=market;
+   p.minPrice=minimum;
+   p.companyAmount=profit;
+   p.baseProfit=profit;
+   p.otherAmount=0;
+  }
+
+  editingProId=null;
+ }else{
+  pros.push({
+   id:uid(),
+   name,
+   category,
+   maxPrice:market,
+   minPrice:minimum,
+   companyAmount:profit,
+   baseProfit:profit,
+   otherAmount:0
+  });
+ }
+
+ savePros();
+
+ document.getElementById("proName").value="";
+ document.getElementById("pMax").value="";
+ document.getElementById("pMin").value="";
+
+ renderAll();
+}
+
+function editPro(id){
+ const p=pros.find(x=>x.id===id);
+ if(!p)return;
+
+ editingProId=id;
+
+ document.getElementById("proName").value=p.name||"";
+ document.getElementById("proCat").value=p.category||cats[0]||"";
+ document.getElementById("pMax").value=num(p.maxPrice);
+ document.getElementById("pMin").value=num(p.minPrice);
+
+ updateDerived();
+
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function deletePro(id){
+ const p=pros.find(x=>x.id===id);
+ if(!p)return;
+
+ if(!confirm(`Ջնջե՞լ ${p.name}-ին`))return;
+
+ pros=pros.filter(x=>x.id!==id);
+
+ savePros();
+ renderAll();
+}
+
+function updateDerived(){
+ const market=num(document.getElementById("pMax")?.value);
+ const minimum=num(document.getElementById("pMin")?.value);
+ const d=document.getElementById("proDerived");
+
+ if(d)d.textContent="Իմ գումարը՝ "+money(Math.max(0,market-minimum));
+}
+
+document.getElementById("pMax").addEventListener("input",updateDerived);
+document.getElementById("pMin").addEventListener("input",updateDerived);
+
+function openPackagePicker(){
+ pickerMode="normal";
+ pickerCat="";
+ document.getElementById("pickerTitle").textContent="📦 Փաթեթ — ընտրել մասնագետ";
+ document.getElementById("picker").classList.remove("hidden");
+ renderPickerCats();
+}
+
+function openBudgetPicker(){
+ pickerMode="budget";
+ pickerCat="";
+ document.getElementById("pickerTitle").textContent="💰 Բյուջե — ընտրել մասնագետ";
+ document.getElementById("picker").classList.remove("hidden");
+ renderPickerCats();
+}
+
+function closePicker(){
+ document.getElementById("picker").classList.add("hidden");
+}
+
+function renderPickerCats(){
+ const box=document.getElementById("pickerCats");
+
+ box.innerHTML=cats.map(c=>{
+  const count=pros.filter(p=>p.category===c).length;
+
+  return `
+   <button class="btn2" style="margin:4px"
+    onclick='pickerCat=${JSON.stringify(c)};renderPickerPros()'>
+    ${escapeHtml(c)} (${count})
+   </button>
+  `;
+ }).join("");
+
+ renderPickerPros();
+}
+
+function renderPickerPros(){
+ const box=document.getElementById("pickerPros");
+
+ if(!pickerCat){
+  box.innerHTML="<div class='small'>Ընտրիր բաժին</div>";
+  return;
+ }
+
+ const list=pros.filter(p=>p.category===pickerCat);
+
+ if(!list.length){
+  box.innerHTML="<div class='small'>Այս բաժնում մասնագետ չկա</div>";
+  return;
+ }
+
+ box.innerHTML=list.map(p=>`
+  <div class="staffrow">
+   <div>
+    <b>${escapeHtml(p.name)}</b>
+    <div class="small">
+     Շուկայական՝ ${money(p.maxPrice)} · Մինիմալ՝ ${money(p.minPrice)}
+    </div>
+   </div>
+   <button class="btn green" onclick='pickPro(${JSON.stringify(p.id)})'>➕</button>
+  </div>
+ `).join("");
+}
+
+function pickPro(id){
+ const p=pros.find(x=>x.id===id);
+ if(!p)return;
+
+ if(pickerMode==="normal"){
+  addToPack(p);
+ }else{
+  addToBudget(p);
+ }
+}
+
+function addToPack(p){
+ if(current.staff.some(x=>x.proId===p.id)){
+  alert("Այս մասնագետն արդեն ավելացված է");
+  return;
+ }
+
+ current.staff.push({
+  id:uid(),
+  proId:p.id,
+  name:p.name,
+  category:p.category,
+  marketPrice:num(p.maxPrice),
+  cost:num(p.minPrice),
+  profit:0
+ });
+
+ saveWorkState();
+ renderCurrentPack();
+}
+
+function removeFromPack(id){
+ current.staff=current.staff.filter(x=>x.id!==id);
+ saveWorkState();
+ renderCurrentPack();
+}
+
+function renderCurrentPack(){
+ const box=document.getElementById("currentPack");
+ if(!box)return;
+
+ const total=(current.staff||[]).reduce((a,x)=>a+num(x.marketPrice),0);
+
+ document.getElementById("currentTotal").textContent="Ընդհանուր՝ "+money(total);
+
+ if(!current.staff.length){
+  box.innerHTML="<div class='small'>Փաթեթում մասնագետ չկա</div>";
+  return;
+ }
+
+ box.innerHTML=current.staff.map(x=>`
+  <div class="staffrow">
+   <div>
+    <b>${escapeHtml(x.name)}</b>
+    <div class="small">${escapeHtml(x.category)}</div>
+   </div>
+   <div>
+    <b>${money(x.marketPrice)}</b>
+    <button class="btn red" onclick='removeFromPack(${JSON.stringify(x.id)})'>🗑</button>
+   </div>
+  </div>
+ `).join("");
+}
+
+function saveCurrentPack(){
+ const name=document.getElementById("packName").value.trim();
+
+ if(!name){
+  alert("Գրիր փաթեթի անունը");
+  return;
+ }
+
+ if(!current.staff.length){
+  alert("Ավելացրու առնվազն մեկ մասնագետ");
+  return;
+ }
+
+ const total=current.staff.reduce((a,x)=>a+num(x.marketPrice),0);
+
+ const existing=packs.find(p=>p.name===name);
+
+ if(existing){
+  if(!confirm("Այս անունով փաթեթ արդեն կա։ Փոխարինե՞լ"))return;
+
+  existing.staff=clone(current.staff);
+  existing.total=total;
+ }else{
+  packs.push({
+   id:uid(),
+   name,
+   staff:clone(current.staff),
+   total
+  });
+ }
+
+ savePacks();
+
+ current={name:"",staff:[]};
+ document.getElementById("packName").value="";
+ saveWorkState();
+
+ renderAll();
+ alert("Փաթեթը պահպանվեց 📦");
+}
+
+function renderSavedPacks(){
+ const box=document.getElementById("savedPacks");
+ if(!box)return;
+
+ if(!packs.length){
+  box.innerHTML="<div class='small'>Պահպանված փաթեթ չկա</div>";
+  return;
+ }
+
+ box.innerHTML=packs.map(p=>{
+  const total=(p.staff||[]).reduce((a,x)=>a+num(x.marketPrice||x.maxPrice),0);
+
+  return `
+  <div class="card">
+   <div class="row" style="justify-content:space-between">
+    <div>
+     <h3>${escapeHtml(p.name)}</h3>
+     <div class="small">${(p.staff||[]).length} մասնագետ</div>
+    </div>
+    <b>${money(total)}</b>
+   </div>
+
+   ${(p.staff||[]).map(s=>`
+    <div class="small">• ${escapeHtml(s.name)} — ${money(s.marketPrice||s.maxPrice)}</div>
+   `).join("")}
+
+   <div class="row">
+    <button class="btn blue" onclick='loadPack(${JSON.stringify(p.id)})'>✏️ Բացել</button>
+    <button class="btn orange" onclick='copyPackToBudget(${JSON.stringify(p.id)})'>💰 Ուղարկել բյուջե</button>
+    <button class="btn red" onclick='deletePack(${JSON.stringify(p.id)})'>🗑 Ջնջել</button>
+   </div>
+  </div>
+  `;
+ }).join("");
+}
+
+function loadPack(id){
+ const p=packs.find(x=>x.id===id);
+ if(!p)return;
+
+ current=clone(p);
+ current.staff=current.staff||[];
+
+ document.getElementById("packName").value=current.name||"";
+
+ saveWorkState();
+ showPanel("packsPanel");
+ renderCurrentPack();
+}
+
+function deletePack(id){
+ if(!confirm("Ջնջե՞լ այս պահպանված փաթեթը"))return;
+
+ packs=packs.filter(x=>x.id!==id);
+ savePacks();
+ renderSavedPacks();
+}
+
+function deleteCurrentPackage(){
+ current={name:"",staff:[]};
+
+ document.getElementById("packName").value="";
+
+ saveWorkState();
+ renderCurrentPack();
+}
+
+function finishCurrentToBudget(){
+ if(!current.staff.length){
+  alert("Ընթացիկ փաթեթում մասնագետ չկա");
+  return;
+ }
+
+ const total=current.staff.reduce((a,x)=>a+num(x.marketPrice),0);
+
+ budgetDraft={
+  name:current.name||"",
+  budget:total,
+  staff:clone(current.staff)
+ };
+
+ budgetEdits={};
+
+ current={name:"",staff:[]};
+ document.getElementById("packName").value="";
+
+ saveWorkState();
+
+ showPanel("budgetPanel");
+ renderBudget();
+}
+
+function copyPackToBudget(id){
+ const p=packs.find(x=>x.id===id);
+ if(!p)return;
+
+ budgetDraft={
+  name:p.name,
+  budget:(p.staff||[]).reduce((a,x)=>a+num(x.marketPrice||x.maxPrice),0),
+  staff:clone(p.staff||[])
+ };
+
+ budgetEdits={};
+
+ saveWorkState();
+ showPanel("budgetPanel");
+ renderBudget();
+}
+
+function getBudgetEdit(x){
+ const market=num(x.marketPrice||x.maxPrice);
+ const saved=budgetEdits[x.id];
+
+ if(saved){
+  let cost=num(saved.cost);
+  let profit=num(saved.profit);
+
+  if(cost+profit!==market){
+   cost=Math.min(cost,market);
+   profit=market-cost;
+  }
+
+  return{
+   cost,
+   profit,
+   realPrice:market
+  };
+ }
+
+ const cost=Math.min(num(x.cost||x.minPrice),market);
+ const profit=market-cost;
+
+ return{
+  cost,
+  profit,
+  realPrice:market
+ };
+}
+
+function updateBudgetEdit(id,field,value){
+ const x=(budgetDraft.staff||[]).find(s=>s.id===id);
+ if(!x)return;
+
+ const market=num(x.marketPrice||x.maxPrice);
+
+ let e=getBudgetEdit(x);
+
+ value=Math.max(0,num(value));
+
+ if(field==="cost"){
+  e.cost=Math.min(value,market);
+  e.profit=market-e.cost;
+ }
+
+ if(field==="profit"){
+  e.profit=Math.min(value,market);
+  e.cost=market-e.profit;
+ }
+
+ e.realPrice=market;
+ budgetEdits[id]=e;
+
+ saveWorkState();
+ renderBudget();
+}
+
+function addToBudget(p){
+ const market=num(p.maxPrice);
+
+ if(budgetDraft.staff.some(x=>x.proId===p.id)){
+  alert("Այս մասնագետն արդեն ավելացված է");
+  return;
+ }
+
+ const used=budgetDraft.staff.reduce((a,x)=>a+num(x.marketPrice||x.maxPrice),0);
+ const budget=num(budgetDraft.budget);
+
+ if(used+market>budget){
+  alert(
+   "Չի տեղավորվում բյուջեի մեջ։\n\n"+
+   "Մասնագետի շուկայական գին՝ "+money(market)+"\n"+
+   "Մնացած բյուջե՝ "+money(Math.max(0,budget-used))
+  );
+  return;
+ }
+
+ budgetDraft.staff.push({
+  id:uid(),
+  proId:p.id,
+  name:p.name,
+  category:p.category,
+  marketPrice:market,
+  cost:num(p.minPrice),
+  profit:Math.max(0,market-num(p.minPrice))
+ });
+
+ saveWorkState();
+ renderBudget();
+}
+
+function removeFromBudget(id){
+ budgetDraft.staff=budgetDraft.staff.filter(x=>x.id!==id);
+ delete budgetEdits[id];
+
+ saveWorkState();
+ renderBudget();
+}
+
+function budgetTotals(){
+ let total=0;
+ let payouts=0;
+ let profit=0;
+
+ (budgetDraft.staff||[]).forEach(x=>{
+  const e=getBudgetEdit(x);
+  total+=e.realPrice;
+  payouts+=e.cost;
+  profit+=e.profit;
+ });
+
+ const customerBudget=num(budgetDraft.budget);
+
+ return{
+  total,
+  payouts,
+  profit,
+  remaining:customerBudget-total,
+  customerBudget,
+  used:total
+ };
+}
+
+function renderBudget(){
+ const name=document.getElementById("budgetName");
+ const budget=document.getElementById("budgetTotal");
+
+ if(!name||!budget)return;
+
+ if(document.activeElement!==name)name.value=budgetDraft.name||"";
+ if(document.activeElement!==budget)budget.value=budgetDraft.budget||"";
+
+ budgetDraft.name=name.value;
+ budgetDraft.budget=num(budget.value);
+
+ const box=document.getElementById("budgetStaff");
+ const summary=document.getElementById("budgetSummary");
+
+ if(!budgetDraft.staff.length){
+  box.innerHTML="<div class='small'>Բյուջեի փաթեթում մասնագետ չկա</div>";
+ }else{
+  box.innerHTML=budgetDraft.staff.map(x=>{
+   const e=getBudgetEdit(x);
+
+   return `
+   <div class="card">
+    <div class="row" style="justify-content:space-between">
+     <div>
+      <b>${escapeHtml(x.name)}</b>
+      <div class="small">${escapeHtml(x.category)}</div>
+     </div>
+
+     <button class="btn red" onclick='removeFromBudget(${JSON.stringify(x.id)})'>🗑</button>
+    </div>
+
+    <div class="grid">
+     <div>
+      <div class="small">Մասնագետի շուկայական գին</div>
+      <b>${money(e.realPrice)}</b>
+     </div>
+
+     <div>
+      <label>Մասնագետին վճարելու եմ</label>
+      <input
+       type="number"
+       value="${e.cost}"
+       onchange='updateBudgetEdit(${JSON.stringify(x.id)},"cost",this.value)'
+      >
+     </div>
+
+     <div>
+      <label>Իմ շահույթը</label>
+      <input
+       type="number"
+       value="${e.profit}"
+       onchange='updateBudgetEdit(${JSON.stringify(x.id)},"profit",this.value)'
+      >
+     </div>
+    </div>
+   </div>
+   `;
+  }).join("");
+ }
+
+ const t=budgetTotals();
+
+ summary.innerHTML=`
+ <div class="card">
+  <div class="grid">
+   <div>
+    <div class="small">Հաճախորդի բյուջե</div>
+    <div class="total">${money(t.customerBudget)}</div>
+   </div>
+
+   <div>
+    <div class="small">Մասնագետների վճարներ</div>
+    <div class="total">${money(t.payouts)}</div>
+   </div>
+
+   <div>
+    <div class="small">Իմ շահույթը</div>
+    <div class="total">${money(t.profit)}</div>
+   </div>
+
+   <div>
+    <div class="small">Օգտագործված գումար</div>
+    <div class="total">${money(t.used)}</div>
+   </div>
+
+   <div>
+    <div class="small">Մնացած բյուջե</div>
+    <div class="total">${money(t.remaining)}</div>
+   </div>
+  </div>
+ </div>
+ `;
+
+ saveWorkState();
+}
+
+function saveBudgetPackage(){
+ const name=document.getElementById("budgetName").value.trim();
+ const budget=num(document.getElementById("budgetTotal").value);
+
+ if(!name){
+  alert("Գրիր փաթեթի անունը");
+  return;
+ }
+
+ if(budget<=0){
+  alert("Գրիր հաճախորդի բյուջեն");
+  return;
+ }
+
+ if(!budgetDraft.staff.length){
+  alert("Ավելացրու առնվազն մեկ մասնագետ");
+  return;
+ }
+
+ const t=budgetTotals();
+
+ if(t.used>budget){
+  alert("Փաթեթը գերազանցում է հաճախորդի բյուջեն");
+  return;
+ }
+
+ const pack={
+  id:budgetDraft.id||uid(),
+  name,
+  budget,
+  staff:clone(budgetDraft.staff),
+  edits:clone(budgetEdits),
+  total:t.used,
+  payouts:t.payouts,
+  profit:t.profit
+ };
+
+ const index=budgetPacks.findIndex(x=>x.id===pack.id);
+
+ if(index>=0){
+  budgetPacks[index]=pack;
+ }else{
+  budgetPacks.push(pack);
+ }
+
+ saveBudgetPacks();
+
+ budgetDraft={
+  name:"",
+  budget:0,
+  staff:[]
+ };
+ budgetEdits={};
+
+ document.getElementById("budgetName").value="";
+ document.getElementById("budgetTotal").value="";
+
+ saveWorkState();
+ renderAll();
+
+ alert("Բյուջեի փաթեթը պահպանվեց 💰");
+}
+
+function renderSavedBudgetPacks(){
+ const box=document.getElementById("savedBudgetPacks");
+ if(!box)return;
+
+ if(!budgetPacks.length){
+  box.innerHTML="<div class='small'>Պահպանված բյուջեի փաթեթ չկա</div>";
+  return;
+ }
+
+ box.innerHTML=budgetPacks.map(p=>`
+  <div class="card">
+   <div class="row" style="justify-content:space-between">
+    <div>
+     <h3>${escapeHtml(p.name)}</h3>
+     <div class="small">${(p.staff||[]).length} մասնագետ</div>
+    </div>
+    <b>${money(p.budget)}</b>
+   </div>
+
+   <div class="small">Օգտագործված՝ ${money(p.total||0)}</div>
+   <div class="small">Մասնագետներին՝ ${money(p.payouts||0)}</div>
+   <div class="small">Իմ շահույթը՝ ${money(p.profit||0)}</div>
+
+   ${(p.staff||[]).map(s=>{
+    const e=p.edits?.[s.id]||{
+     cost:s.cost||0,
+     profit:s.profit||0,
+     realPrice:s.marketPrice||s.maxPrice||0
+    };
+
+    return `
+     <div class="small">
+      • ${escapeHtml(s.name)}
+      — շուկա ${money(e.realPrice||s.marketPrice||0)}
+      — մասնագետին ${money(e.cost||0)}
+      — շահույթ ${money(e.profit||0)}
+     </div>
+    `;
+   }).join("")}
+
+   <div class="row">
+    <button class="btn blue" onclick='loadBudgetPack(${JSON.stringify(p.id)})'>✏️ Բացել</button>
+    <button class="btn red" onclick='deleteBudgetPack(${JSON.stringify(p.id)})'>🗑 Ջնջել</button>
+   </div>
+  </div>
+ `).join("");
+}
+
+function loadBudgetPack(id){
+ const p=budgetPacks.find(x=>x.id===id);
+ if(!p)return;
+
+ budgetDraft={
+  id:p.id,
+  name:p.name||"",
+  budget:num(p.budget),
+  staff:clone(p.staff||[])
+ };
+
+ budgetEdits=clone(p.edits||{});
+
+ saveWorkState();
+ showPanel("budgetPanel");
+ renderBudget();
+}
+
+function deleteBudgetPack(id){
+ if(!confirm("Ջնջե՞լ այս բյուջեի փաթեթը"))return;
+
+ budgetPacks=budgetPacks.filter(x=>x.id!==id);
+ saveBudgetPacks();
+ renderSavedBudgetPacks();
+}
+
+function deleteCurrentBudget(){
+ budgetDraft={
+  name:"",
+  budget:0,
+  staff:[]
+ };
+
+ budgetEdits={};
+
+ document.getElementById("budgetName").value="";
+ document.getElementById("budgetTotal").value="";
+
+ saveWorkState();
+ renderBudget();
+}
+
+function renderPayments(){
+ const box=document.getElementById("payments");
+ if(!box)return;
+
+ const map={};
+
+ budgetPacks.forEach(p=>{
+  (p.staff||[]).forEach(s=>{
+   const e=p.edits?.[s.id]||{
+    cost:s.cost||0,
+    profit:s.profit||0,
+    realPrice:s.marketPrice||0
+   };
+
+   const key=s.proId||s.name;
+
+   if(!map[key]){
+    map[key]={
+     name:s.name,
+     category:s.category,
+     amount:0
+    };
+   }
+
+   map[key].amount+=num(e.cost);
+  });
+ });
+
+ const arr=Object.values(map);
+
+ if(!arr.length){
+  box.innerHTML="<div class='small'>Վճարումների տվյալներ չկան</div>";
+  return;
+ }
+
+ box.innerHTML=arr.map(x=>`
+  <div class="staffrow">
+   <div>
+    <b>${escapeHtml(x.name)}</b>
+    <div class="small">${escapeHtml(x.category||"")}</div>
+   </div>
+   <b>${money(x.amount)}</b>
+  </div>
+ `).join("");
+}
+
+function exportBackup(){
+ const data={
+  date:new Date().toISOString(),
+  pros,
+  packs,
+  cats,
+  budgetPacks,
+  current,
+  budgetDraft,
+  budgetEdits
+ };
+
+ const blob=new Blob(
+  [JSON.stringify(data,null,2)],
+  {type:"application/json"}
+ );
+
+ const a=document.createElement("a");
+ a.href=URL.createObjectURL(blob);
+ a.download="momentoo-events-backup.json";
+ a.click();
+
+ setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+}
+
+function importBackup(event){
+ const file=event.target.files?.[0];
+ if(!file)return;
+
+ const reader=new FileReader();
+
+ reader.onload=()=>{
+  try{
+   const data=JSON.parse(reader.result);
+
+   if(Array.isArray(data.pros))pros=data.pros;
+   if(Array.isArray(data.packs))packs=data.packs;
+   if(Array.isArray(data.cats))cats=data.cats;
+   if(Array.isArray(data.budgetPacks))budgetPacks=data.budgetPacks;
+
+   if(data.current)current=data.current;
+   if(data.budgetDraft)budgetDraft=data.budgetDraft;
+   if(data.budgetEdits)budgetEdits=data.budgetEdits;
+
+   savePros();
+   savePacks();
+   saveCats();
+   saveBudgetPacks();
+   saveWorkState();
+
+   restoreOldPacks();
+   renderAll();
+
+   alert("Backup-ը ներմուծվեց");
+  }catch(e){
+   alert("Backup-ի ֆայլը սխալ է");
+  }
+ };
+
+ reader.readAsText(file);
+}
+
+let cloudReady=false;
+let cloudApplying=false;
+let cloudTimer=null;
+let cloudRetryTimer=null;
+
+const firebaseConfig={
+ apiKey:"AIzaSyBka_OD8XoM5X6K-zw2SjejfMXTeHzwC0",
+ authDomain:"momentoo-events.firebaseapp.com",
+ projectId:"momentoo-events",
+ storageBucket:"momentoo-events.firebasestorage.app",
+ messagingSenderId:"111582575594",
+ appId:"1:111582575594:web:682c651a0cb1e5cc3d9093",
+ measurementId:"G-CV4DGR3T46"
+};
 
 try{
-
-firebase.initializeApp(firebaseConfig);
-
-window.momentooAuth=firebase.auth();
-window.momentooDB=firebase.firestore();
-
+ firebase.initializeApp(firebaseConfig);
+ window.momentooAuth=firebase.auth();
+ window.momentooDB=firebase.firestore();
 }catch(e){
-
-console.error("Firebase initialization error",e);
-
+ console.error("Firebase initialization error",e);
 }
 
 function isStandaloneApp(){
-
-return window.navigator.standalone===true||
-window.matchMedia("(display-mode: standalone)").matches;
-
+ return window.navigator.standalone===true ||
+ window.matchMedia("(display-mode: standalone)").matches;
 }
 
 function cloudSnapshot(){
-
-return{
-pros:clone(pros),
-packs:clone(packs),
-cats:clone(cats),
-budgetPacks:clone(budgetPacks),
-current:clone(current),
-budgetDraft:clone(budgetDraft),
-budgetEdits:clone(budgetEdits)
-};
-
+ return{
+  pros:clone(pros),
+  packs:clone(packs),
+  cats:clone(cats),
+  budgetPacks:clone(budgetPacks),
+  current:clone(current),
+  budgetDraft:clone(budgetDraft),
+  budgetEdits:clone(budgetEdits)
+ };
 }
 
 function scheduleCloudSave(){
+ if(!cloudReady||cloudApplying)return;
 
-if(!cloudReady||cloudApplying)return;
+ clearTimeout(cloudTimer);
 
-clearTimeout(cloudTimer);
-
-cloudTimer=setTimeout(
-saveCloud,
-700
-);
-
+ cloudTimer=setTimeout(saveCloud,700);
 }
 
 async function saveCloud(){
+ if(!cloudReady||cloudApplying)return;
 
-if(!cloudReady||cloudApplying)return;
+ try{
+  const d=cloudSnapshot();
+  const root=momentooDB.collection("momentoo");
+  const batch=momentooDB.batch();
+  const ts=firebase.firestore.FieldValue.serverTimestamp();
 
-try{
+  batch.set(root.doc("pros"),{
+   data:d.pros,
+   updatedAt:ts
+  });
 
-const d=cloudSnapshot();
+  batch.set(root.doc("packs"),{
+   data:d.packs,
+   updatedAt:ts
+  });
 
-const root=
-momentooDB.collection("momentoo");
+  batch.set(root.doc("cats"),{
+   data:d.cats,
+   updatedAt:ts
+  });
 
-const batch=
-momentooDB.batch();
+  batch.set(root.doc("budgetPacks"),{
+   data:d.budgetPacks,
+   updatedAt:ts
+  });
 
-const ts=
-firebase.firestore.FieldValue.serverTimestamp();
+  batch.set(root.doc("work"),{
+   current:d.current,
+   budgetDraft:d.budgetDraft,
+   budgetEdits:d.budgetEdits,
+   updatedAt:ts
+  });
 
-batch.set(
-root.doc("pros"),
-{
-data:d.pros,
-updatedAt:ts
-}
-);
+  batch.set(root.doc("meta"),{
+   ready:true,
+   updatedAt:ts,
+   version:1
+  },{
+   merge:true
+  });
 
-batch.set(
-root.doc("packs"),
-{
-data:d.packs,
-updatedAt:ts
-}
-);
+  await batch.commit();
 
-batch.set(
-root.doc("cats"),
-{
-data:d.cats,
-updatedAt:ts
-}
-);
-
-batch.set(
-root.doc("budgetPacks"),
-{
-data:d.budgetPacks,
-updatedAt:ts
-}
-);
-
-batch.set(
-root.doc("work"),
-{
-current:d.current,
-budgetDraft:d.budgetDraft,
-budgetEdits:d.budgetEdits,
-updatedAt:ts
-}
-);
-
-batch.set(
-root.doc("meta"),
-{
-ready:true,
-updatedAt:ts,
-version:1
-},
-{merge:true}
-);
-
-await batch.commit();
-
-}catch(e){
-
-console.error(
-"Firebase save error",
-e
-);
-
-}
-
+ }catch(e){
+  console.error("Firebase save error",e);
+ }
 }
 
 async function cloudExists(){
+ try{
+  const s=await momentooDB
+   .collection("momentoo")
+   .doc("meta")
+   .get();
 
-try{
+  return s.exists &&
+   s.data() &&
+   s.data().ready===true;
 
-const s=
-await momentooDB
-.collection("momentoo")
-.doc("meta")
-.get();
-
-return s.exists&&
-s.data()&&
-s.data().ready===true;
-
-}catch(e){
-
-console.error(
-"Firebase meta error",
-e
-);
-
-return false;
-
-}
-
+ }catch(e){
+  console.error("Firebase meta error",e);
+  return false;
+ }
 }
 
 async function loadCloud(){
+ try{
+  cloudApplying=true;
 
-try{
+  const root=momentooDB.collection("momentoo");
 
-cloudApplying=true;
+  const [
+   pd,
+   pk,
+   cd,
+   bd,
+   wd
+  ]=await Promise.all([
+   root.doc("pros").get(),
+   root.doc("packs").get(),
+   root.doc("cats").get(),
+   root.doc("budgetPacks").get(),
+   root.doc("work").get()
+  ]);
 
-const root=
-momentooDB.collection("momentoo");
+  if(pd.exists&&Array.isArray(pd.data().data)){
+   pros=clone(pd.data().data);
+  }
 
-const[
-pd,
-pk,
-cd,
-bd,
-wd
-]=await Promise.all([
+  if(pk.exists&&Array.isArray(pk.data().data)){
+   packs=clone(pk.data().data);
+  }
 
-root.doc("pros").get(),
-root.doc("packs").get(),
-root.doc("cats").get(),
-root.doc("budgetPacks").get(),
-root.doc("work").get()
+  if(cd.exists&&Array.isArray(cd.data().data)){
+   cats=clone(cd.data().data);
+  }
 
-]);
+  if(bd.exists&&Array.isArray(bd.data().data)){
+   budgetPacks=clone(bd.data().data);
+  }
 
-if(
-pd.exists&&
-Array.isArray(pd.data().data)
-){
-pros=clone(pd.data().data);
-}
+  if(wd.exists){
+   const w=wd.data();
 
-if(
-pk.exists&&
-Array.isArray(pk.data().data)
-){
-packs=clone(pk.data().data);
-}
+   if(w.current&&typeof w.current==="object"){
+    current=clone(w.current);
+   }
 
-if(
-cd.exists&&
-Array.isArray(cd.data().data)
-){
-cats=clone(cd.data().data);
-}
+   if(w.budgetDraft&&typeof w.budgetDraft==="object"){
+    budgetDraft=clone(w.budgetDraft);
+   }
 
-if(
-bd.exists&&
-Array.isArray(bd.data().data)
-){
-budgetPacks=clone(bd.data().data);
-}
+   if(w.budgetEdits&&typeof w.budgetEdits==="object"){
+    budgetEdits=clone(w.budgetEdits);
+   }
+  }
 
-if(wd.exists){
+  localStorage.setItem(
+   PRO_KEY,
+   JSON.stringify(pros)
+  );
 
-const w=wd.data();
+  localStorage.setItem(
+   PACK_KEY,
+   JSON.stringify(packs)
+  );
 
-if(w.current){
-current=clone(w.current);
-}
+  localStorage.setItem(
+   CAT_KEY,
+   JSON.stringify(cats)
+  );
 
-if(w.budgetDraft){
-budgetDraft=clone(w.budgetDraft);
-}
+  localStorage.setItem(
+   BUDGET_KEY,
+   JSON.stringify(budgetPacks)
+  );
 
-if(w.budgetEdits){
-budgetEdits=clone(w.budgetEdits);
-}
+  localStorage.setItem(
+   WORK_KEY,
+   JSON.stringify({
+    current,
+    budgetDraft,
+    budgetEdits
+   })
+  );
 
-}
+  restoreOldPacks();
 
-localStorage.setItem(
-PRO_KEY,
-JSON.stringify(pros)
-);
+  renderAll();
 
-localStorage.setItem(
-PACK_KEY,
-JSON.stringify(packs)
-);
+ }catch(e){
+  console.error("Firebase load error",e);
 
-localStorage.setItem(
-CAT_KEY,
-JSON.stringify(cats)
-);
-
-localStorage.setItem(
-BUDGET_KEY,
-JSON.stringify(budgetPacks)
-);
-
-localStorage.setItem(
-WORK_KEY,
-JSON.stringify({
-current,
-budgetDraft,
-budgetEdits
-})
-);
-
-restoreOldPacks();
-
-renderAll();
-
-}catch(e){
-
-console.error(
-"Firebase load error",
-e
-);
-
-}finally{
-
-cloudApplying=false;
-
-}
-
+ }finally{
+  cloudApplying=false;
+ }
 }
 
 async function initCloud(){
+ if(!window.momentooAuth||!window.momentooDB)return;
 
-if(
-!window.momentooAuth||
-!window.momentooDB
-)return;
+ try{
+  await momentooAuth.signInAnonymously();
 
-try{
+  cloudReady=true;
 
-await momentooAuth.signInAnonymously();
+  if(await cloudExists()){
+   await loadCloud();
+   return;
+  }
 
-cloudReady=true;
+  /*
+   * Եթե Cloud-ը դեռ դատարկ է՝
+   * Safari-ի տեղային արդեն գոյություն ունեցող տվյալները
+   * դառնում են առաջին Cloud copy-ը։
+   *
+   * Standalone/Home Screen-ը դատարկ տվյալներով երբեք
+   * չի overwrite անում Cloud-ը։
+   */
+  if(!isStandaloneApp()){
+   await saveCloud();
+   return;
+  }
 
-if(await cloudExists()){
+  clearTimeout(cloudRetryTimer);
 
-await loadCloud();
+  cloudRetryTimer=setTimeout(
+   async function retryCloud(){
+    if(await cloudExists()){
+     await loadCloud();
+    }else{
+     cloudRetryTimer=setTimeout(retryCloud,5000);
+    }
+   },
+   5000
+  );
 
-return;
-
+ }catch(e){
+  console.error("Firebase auth/sync error",e);
+ }
 }
 
-if(!isStandaloneApp()){
+window.addEventListener("online",function(){
+ if(cloudReady)scheduleCloudSave();
+});
 
-await saveCloud();
-
-return;
-
-}
-
-clearTimeout(cloudRetryTimer);
-
-cloudRetryTimer=setTimeout(
-async function retryCloud(){
-
-if(await cloudExists()){
-
-await loadCloud();
-
-}else{
-
-cloudRetryTimer=setTimeout(
-retryCloud,
-5000
+document.getElementById("budgetName").addEventListener(
+ "input",
+ function(){
+  budgetDraft.name=this.value;
+  saveWorkState();
+ }
 );
 
-}
-
-},
-5000
+document.getElementById("budgetTotal").addEventListener(
+ "input",
+ function(){
+  budgetDraft.budget=num(this.value);
+  saveWorkState();
+  renderBudget();
+ }
 );
 
-}catch(e){
-
-console.error(
-"Firebase auth/sync error",
-e
+document.getElementById("packName").addEventListener(
+ "input",
+ function(){
+  current.name=this.value;
+  saveWorkState();
+ }
 );
 
-}
-
-}
-
-window.addEventListener(
-"online",
-function(){
-
-if(cloudReady){
-scheduleCloudSave();
-}
-
-}
+document.getElementById("proName").addEventListener(
+ "input",
+ function(){
+  localStorage.setItem(
+   PRO_FORM_DRAFT_KEY,
+   JSON.stringify({
+    name:this.value,
+    category:document.getElementById("proCat").value,
+    pMax:document.getElementById("pMax").value,
+    pMin:document.getElementById("pMin").value
+   })
+  );
+ }
 );
 
-renderMainProList=function(){
-
-const box=document.getElementById("mainProList");
-
-if(!box)return;
-
-if(!pros.length){
-
-box.innerHTML=
-`<div class="item">Մասնագետներ դեռ չկան։</div>`;
-
-return;
-
-}
-
-box.innerHTML=cats.map(cat=>{
-
-const list=pros.filter(
-p=>p.cat===cat
+document.getElementById("newCat").addEventListener(
+ "input",
+ function(){
+  localStorage.setItem(
+   NEW_CAT_DRAFT_KEY,
+   this.value
+  );
+ }
 );
 
-if(!list.length)return"";
-
-return`
-
-<div class="item">
-
-<h3>📂 ${esc(cat)}</h3>
-
-${list.map(p=>{
-
-const selected=
-current.items.some(
-x=>x.proId===p.id
-);
-
-return`
-
-<div class="row" style="justify-content:space-between;padding:8px 0;border-bottom:1px solid #eee">
-
-<div>
-<b>${esc(p.name)}</b>
-<div class="small">${esc(p.type||"")}</div>
-<div class="small">Շուկայական՝ ${money(market(p))}</div>
-</div>
-
-<button
-${selected?"disabled":""}
-onclick="addCurrentPro('${p.id}')"
->
-${selected?"Ավելացված":"➕ Ավելացնել"}
-</button>
-
-</div>
-
-`;
-
-}).join("")}
-
-</div>
-`;
-
-};
-
-const oldRenderAll=renderAll;
-
-renderAll=function(){
-
-oldRenderAll();
-renderMainProList();
-
-};
-
-const oldRenderCurrent=renderCurrent;
-
-renderCurrent=function(){
-
-oldRenderCurrent();
-renderMainProList();
-
-};
+window.addEventListener("beforeunload",function(){
+ saveWorkState();
+ saveFullAutoBackup();
+});
 
 load();
 initCloud();
-
 </script>
 </body>
 </html>

@@ -740,7 +740,7 @@ return [];
 }
 
 /* ========================================= */
-/* ՄՇՏԱԿԱՆ ՎԻՃԱԿ + ՀԵՏ / ԱՌԱՋ */
+/* ՄՇՏԱԿԱՆ ՎԻՃԱԿ */
 /* ========================================= */
 
 function saveWorkState(){
@@ -803,7 +803,6 @@ try{
 localStorage.setItem(HISTORY_KEY,JSON.stringify(h));
 localStorage.setItem(HISTORY_INDEX_KEY,String(index));
 }catch(e){}
-updateHistoryButtons();
 }
 
 function sameState(a,b){
@@ -835,7 +834,6 @@ index=h.length-1;
 }
 
 if(sameState(h[index],now)){
-updateHistoryButtons();
 return;
 }
 
@@ -852,120 +850,14 @@ index=h.length-1;
 setHistory(h,index);
 }
 
-/* ԱՅՍՏԵՂ Է ՈՒՂՂՎԱԾ՝ ԱՆՄԻՋԱՊԵՍ Է ՊԱՀՈՒՄ */
 function scheduleHistory(){
-
 if(!appLoaded||applyingHistory)return;
-
 commitHistory();
-
 }
 
 function touchState(){
 saveWorkState();
 scheduleHistory();
-}
-
-function applySnapshot(s){
-
-if(!s)return;
-
-applyingHistory=true;
-
-pros=clone(s.pros||[]);
-packs=clone(s.packs||[]);
-cats=clone(s.cats||[]);
-budgetPacks=clone(s.budgetPacks||[]);
-
-current=clone(
-s.current||{id:null,name:"",staff:[]}
-);
-
-budgetDraft=clone(
-s.budgetDraft||{
-id:null,
-budget:0,
-name:"",
-staff:[]
-}
-);
-
-budgetEdits=clone(s.budgetEdits||{});
-
-localStorage.setItem(PRO_KEY,JSON.stringify(pros));
-localStorage.setItem(PACK_KEY,JSON.stringify(packs));
-localStorage.setItem(CAT_KEY,JSON.stringify(cats));
-localStorage.setItem(BUDGET_KEY,JSON.stringify(budgetPacks));
-
-saveWorkState();
-
-renderAll();
-renderSavedBudgetPacks();
-
-if(
-!document.getElementById("budgetPanel").classList.contains("hidden")
-&& budgetDraft.budget
-){
-renderBudgetBuilder();
-}
-
-applyingHistory=false;
-updateHistoryButtons();
-}
-
-function undoState(){
-
-const h=getHistory();
-let index=getHistoryIndex();
-
-if(!h.length||index<=0){
-return;
-}
-
-index--;
-
-localStorage.setItem(
-HISTORY_INDEX_KEY,
-String(index)
-);
-
-applySnapshot(h[index]);
-}
-
-function redoState(){
-
-const h=getHistory();
-let index=getHistoryIndex();
-
-if(!h.length||index<0||index>=h.length-1){
-return;
-}
-
-index++;
-
-localStorage.setItem(
-HISTORY_INDEX_KEY,
-String(index)
-);
-
-applySnapshot(h[index]);
-}
-
-function updateHistoryButtons(){
-
-const h=getHistory();
-const i=getHistoryIndex();
-
-const u=document.getElementById("undoBtn");
-const r=document.getElementById("redoBtn");
-
-if(u){
-u.disabled=!h.length||i<=0;
-}
-
-if(r){
-r.disabled=!h.length||i<0||i>=h.length-1;
-}
 }
 
 function savePros(){
@@ -1142,19 +1034,14 @@ let h=getHistory();
 let i=getHistoryIndex();
 
 if(!h.length||i<0){
-
-setHistory(
-[stateSnapshot()],
-0
-);
-
-}else{
-
-updateHistoryButtons();
-
+setHistory([stateSnapshot()],0);
 }
 
 }
+
+/* ========================================= */
+/* PANELS */
+/* ========================================= */
 
 function hidePanels(){
 
@@ -1285,6 +1172,7 @@ function selectProCategory(category){
 
 document.getElementById("pCat").value=category;
 document.getElementById("proCatSuggestions").innerHTML="";
+saveProFormDraft();
 }
 
 function addCategory(){
@@ -1303,7 +1191,9 @@ cats.push(n);
 saveCats();
 
 i.value="";
+localStorage.removeItem(NEW_CAT_DRAFT_KEY);
 renderAll();
+saveFullAutoBackup();
 }
 
 function renameCat(oldName){
@@ -1453,9 +1343,12 @@ document.getElementById("pCompany").value="";
 document.getElementById("pMax").value="";
 document.getElementById("proCatSuggestions").innerHTML="";
 
+localStorage.removeItem(PRO_FORM_DRAFT_KEY);
+
 manageCat=category;
 
 renderAll();
+saveFullAutoBackup();
 }
 
 function renderProsBrowser(){
@@ -1633,6 +1526,7 @@ if(!p)return;
 
 p[f]=v;
 savePros();
+saveFullAutoBackup();
 }
 
 function editProMoney(id,field,value){
@@ -1667,6 +1561,7 @@ if(co)co.value=p.companyAmount;
 if(f)f.value=p.maxPrice;
 
 savePros();
+saveFullAutoBackup();
 }
 
 function savePro(id){
@@ -1720,6 +1615,7 @@ saveBudgetPacks();
 manageCat=p.category;
 
 renderAll();
+saveFullAutoBackup();
 
 alert("Պահպանվեց ✅");
 }
@@ -1736,6 +1632,7 @@ pros=pros.filter(x=>x.id!==id);
 
 savePros();
 renderAll();
+saveFullAutoBackup();
 }
 
 function openPicker(){
@@ -1954,6 +1851,7 @@ closePicker();
 
 renderCurrent();
 touchState();
+saveFullAutoBackup();
 }
 
 function newPackage(){
@@ -1967,6 +1865,8 @@ staff:[]
 renderCurrent();
 hidePanels();
 touchState();
+navVisit("main");
+saveFullAutoBackup();
 }
 
 function renderCurrent(){
@@ -2098,6 +1998,7 @@ const s=getStaff(id);
 if(s){
 s.name=v;
 touchState();
+saveFullAutoBackup();
 }
 }
 
@@ -2121,6 +2022,7 @@ fixProfit(s);
 refreshStaffRow(s);
 updateSummary();
 touchState();
+saveFullAutoBackup();
 }
 
 function staffMax(id,v){
@@ -2143,6 +2045,7 @@ fixProfit(s);
 refreshStaffRow(s);
 updateSummary();
 touchState();
+saveFullAutoBackup();
 }
 
 function staffProfit(id,v){
@@ -2171,6 +2074,7 @@ s.profit=n;
 refreshStaffRow(s);
 updateSummary();
 touchState();
+saveFullAutoBackup();
 }
 
 function fixProfit(s){
@@ -2224,6 +2128,7 @@ current.staff=current.staff.filter(x=>x.id!==id);
 
 renderCurrent();
 touchState();
+saveFullAutoBackup();
 }
 
 function updateSummary(){
@@ -2270,6 +2175,7 @@ packs.push(cp);
 savePacks();
 renderSaved();
 saveWorkState();
+saveFullAutoBackup();
 
 alert("Փաթեթը պահպանվեց ✅");
 }
@@ -2285,6 +2191,8 @@ current=clone(p);
 renderCurrent();
 hidePanels();
 touchState();
+navVisit("main");
+saveFullAutoBackup();
 
 window.scrollTo({
 top:0,
@@ -2309,6 +2217,7 @@ newPackage();
 }
 
 renderSaved();
+saveFullAutoBackup();
 }
 
 function renderSaved(){
@@ -2482,6 +2391,7 @@ realPrice
 
 renderBudgetBuilder();
 touchState();
+saveFullAutoBackup();
 }
 
 function budgetTotals(){
@@ -2563,6 +2473,7 @@ selected.realPrice=realPrice;
 
 refreshBudgetLive();
 touchState();
+saveFullAutoBackup();
 }
 
 function refreshBudgetLive(){
@@ -2676,6 +2587,7 @@ realPrice:edit.realPrice
 
 renderBudgetBuilder();
 touchState();
+saveFullAutoBackup();
 }
 
 function removeBudgetPro(id){
@@ -2687,6 +2599,7 @@ s=>s.professionalId!==id
 
 renderBudgetBuilder();
 touchState();
+saveFullAutoBackup();
 }
 
 function chooseBudgetCat(cat){
@@ -3177,6 +3090,7 @@ budgetPacks.push(copy);
 saveBudgetPacks();
 renderSavedBudgetPacks();
 saveWorkState();
+saveFullAutoBackup();
 
 alert("Բյուջետային փաթեթը պահպանվեց ✅");
 }
@@ -3318,6 +3232,8 @@ String(budgetDraft.name||"")
 
 renderBudgetBuilder();
 touchState();
+navVisit("budget");
+saveFullAutoBackup();
 
 window.scrollTo({
 top:0,
@@ -3361,6 +3277,7 @@ document.getElementById("budgetResults").innerHTML="";
 
 renderSavedBudgetPacks();
 touchState();
+saveFullAutoBackup();
 }
 
 function sendBudgetToNormalPackage(){
@@ -3407,6 +3324,8 @@ profit:Number(s.profit)||0
 renderCurrent();
 hidePanels();
 touchState();
+navVisit("main");
+saveFullAutoBackup();
 
 window.scrollTo({
 top:0,
@@ -3414,7 +3333,9 @@ behavior:"smooth"
 });
 }
 
+/* ========================================= */
 /* BACKUP */
+/* ========================================= */
 
 function openBackup(){
 
@@ -3590,20 +3511,731 @@ renderAll();
 renderSavedBudgetPacks();
 
 commitHistory();
+saveFullAutoBackup();
 
 alert("Backup-ը վերականգնվեց ✅");
 }
 
-window.addEventListener("pagehide",function(){
-saveWorkState();
-commitHistory();
+/* ========================================= */
+/* AUTO FULL BACKUP */
+/* ========================================= */
+
+const AUTO_FULL_BACKUP_KEY="momentoo_auto_full_backup_v1";
+const NAV_HISTORY_KEY="momentoo_nav_history_v1";
+const NAV_INDEX_KEY="momentoo_nav_index_v1";
+const ACTIVE_VIEW_KEY="momentoo_active_view_v1";
+const PRO_FORM_DRAFT_KEY="momentoo_pro_form_draft_v1";
+const BUDGET_FORM_DRAFT_KEY="momentoo_budget_form_draft_v1";
+const NEW_CAT_DRAFT_KEY="momentoo_new_cat_draft_v1";
+
+function currentFormDrafts(){
+
+const read=id=>{
+const el=document.getElementById(id);
+return el?el.value:"";
+};
+
+return{
+
+pro:{
+pName:read("pName"),
+pType:read("pType"),
+pCat:read("pCat"),
+pMin:read("pMin"),
+pOther:read("pOther"),
+pCompany:read("pCompany")
+},
+
+budget:{
+amount:read("budgetAmount"),
+name:read("budgetName")
+},
+
+newCat:read("newCat")
+
+};
+
+}
+
+function saveFullAutoBackup(){
+
+try{
+
+localStorage.setItem(
+AUTO_FULL_BACKUP_KEY,
+JSON.stringify({
+
+version:1,
+date:new Date().toISOString(),
+
+pros:clone(pros),
+packs:clone(packs),
+cats:clone(cats),
+budgetPacks:clone(budgetPacks),
+
+current:clone(current),
+budgetDraft:clone(budgetDraft),
+budgetEdits:clone(budgetEdits),
+
+drafts:currentFormDrafts()
+
+})
+);
+
+}catch(e){}
+
+}
+
+function restoreFullAutoBackupIfNeeded(){
+
+try{
+
+const raw=localStorage.getItem(
+AUTO_FULL_BACKUP_KEY
+);
+
+if(!raw)return;
+
+const data=JSON.parse(raw);
+
+if(!data||typeof data!=="object")return;
+
+if(
+localStorage.getItem(PRO_KEY)===null &&
+Array.isArray(data.pros)
+){
+
+localStorage.setItem(
+PRO_KEY,
+JSON.stringify(data.pros)
+);
+
+}
+
+if(
+localStorage.getItem(PACK_KEY)===null &&
+Array.isArray(data.packs)
+){
+
+localStorage.setItem(
+PACK_KEY,
+JSON.stringify(data.packs)
+);
+
+}
+
+if(
+localStorage.getItem(CAT_KEY)===null &&
+Array.isArray(data.cats)
+){
+
+localStorage.setItem(
+CAT_KEY,
+JSON.stringify(data.cats)
+);
+
+}
+
+if(
+localStorage.getItem(BUDGET_KEY)===null &&
+Array.isArray(data.budgetPacks)
+){
+
+localStorage.setItem(
+BUDGET_KEY,
+JSON.stringify(data.budgetPacks)
+);
+
+}
+
+if(
+localStorage.getItem(WORK_KEY)===null
+){
+
+localStorage.setItem(
+WORK_KEY,
+JSON.stringify({
+
+current:
+data.current||
+{id:null,name:"",staff:[]},
+
+budgetDraft:
+data.budgetDraft||
+{id:null,budget:0,name:"",staff:[]},
+
+budgetEdits:
+data.budgetEdits||{}
+
+})
+);
+
+}
+
+}catch(e){}
+
+}
+
+/* ========================================= */
+/* FORM DRAFT AUTOSAVE */
+/* ========================================= */
+
+function saveProFormDraft(){
+
+try{
+
+const d=currentFormDrafts().pro;
+
+localStorage.setItem(
+PRO_FORM_DRAFT_KEY,
+JSON.stringify(d)
+);
+
+}catch(e){}
+
+saveFullAutoBackup();
+
+}
+
+function restoreProFormDraft(){
+
+try{
+
+const d=JSON.parse(
+localStorage.getItem(
+PRO_FORM_DRAFT_KEY
+)||"null"
+);
+
+if(!d)return;
+
+[
+"pName",
+"pType",
+"pCat",
+"pMin",
+"pOther",
+"pCompany"
+].forEach(id=>{
+
+const el=document.getElementById(id);
+
+if(
+el &&
+d[id]!==undefined
+){
+el.value=d[id];
+}
+
 });
 
-window.addEventListener("beforeunload",function(){
-saveWorkState();
-});
+newProCalc();
+
+}catch(e){}
+
+}
+
+function saveBudgetFormDraft(){
+
+try{
+
+const d=currentFormDrafts().budget;
+
+localStorage.setItem(
+BUDGET_FORM_DRAFT_KEY,
+JSON.stringify(d)
+);
+
+}catch(e){}
+
+saveFullAutoBackup();
+
+}
+
+function restoreBudgetFormDraft(){
+
+try{
+
+const d=JSON.parse(
+localStorage.getItem(
+BUDGET_FORM_DRAFT_KEY
+)||"null"
+);
+
+if(!d)return;
+
+const a=document.getElementById(
+"budgetAmount"
+);
+
+const n=document.getElementById(
+"budgetName"
+);
+
+if(a&&!a.value){
+a.value=d.amount||"";
+}
+
+if(n&&!n.value){
+n.value=d.name||"";
+}
+
+}catch(e){}
+
+}
+
+function saveNewCatDraft(){
+
+try{
+
+const el=document.getElementById(
+"newCat"
+);
+
+localStorage.setItem(
+NEW_CAT_DRAFT_KEY,
+el?el.value:""
+);
+
+}catch(e){}
+
+saveFullAutoBackup();
+
+}
+
+function restoreNewCatDraft(){
+
+try{
+
+const el=document.getElementById(
+"newCat"
+);
+
+if(el&&!el.value){
+
+el.value=
+localStorage.getItem(
+NEW_CAT_DRAFT_KEY
+)||"";
+
+}
+
+}catch(e){}
+
+}
+
+/* ========================================= */
+/* NAVIGATION HISTORY */
+/* ========================================= */
+
+function getNavHistory(){
+
+try{
+
+const h=JSON.parse(
+localStorage.getItem(
+NAV_HISTORY_KEY
+)||"[]"
+);
+
+return Array.isArray(h)?h:[];
+
+}catch(e){
+
+return [];
+
+}
+
+}
+
+function getNavIndex(){
+
+const raw=
+localStorage.getItem(
+NAV_INDEX_KEY
+);
+
+if(raw===null)return -1;
+
+const n=Number(raw);
+
+return Number.isFinite(n)?n:-1;
+
+}
+
+function setNavHistory(h,index){
+
+try{
+
+localStorage.setItem(
+NAV_HISTORY_KEY,
+JSON.stringify(h)
+);
+
+localStorage.setItem(
+NAV_INDEX_KEY,
+String(index)
+);
+
+}catch(e){}
+
+updateHistoryButtons();
+
+}
+
+function navVisit(view){
+
+let h=getNavHistory();
+let index=getNavIndex();
+
+if(
+!h.length ||
+index<0
+){
+
+h=[view];
+index=0;
+
+}else if(
+h[index]!==view
+){
+
+h=h.slice(0,index+1);
+
+h.push(view);
+
+if(h.length>50){
+h=h.slice(h.length-50);
+}
+
+index=h.length-1;
+
+}
+
+setNavHistory(h,index);
+
+localStorage.setItem(
+ACTIVE_VIEW_KEY,
+view
+);
+
+}
+
+function showNavView(view){
+
+if(view==="pros"){
+
+hidePanels();
+document
+.getElementById("prosPanel")
+.classList.remove("hidden");
+
+manageCat=null;
+renderCatSelect();
+renderProsBrowser();
+
+}else if(view==="cats"){
+
+hidePanels();
+document
+.getElementById("catsPanel")
+.classList.remove("hidden");
+
+renderCats();
+
+}else if(view==="saved"){
+
+hidePanels();
+document
+.getElementById("savedPanel")
+.classList.remove("hidden");
+
+renderSaved();
+
+}else if(view==="budget"){
+
+hidePanels();
+document
+.getElementById("budgetPanel")
+.classList.remove("hidden");
+
+renderSavedBudgetPacks();
+
+if(budgetDraft.budget){
+renderBudgetBuilder();
+}
+
+}else{
+
+hidePanels();
+
+}
+
+localStorage.setItem(
+ACTIVE_VIEW_KEY,
+view
+);
+
+updateHistoryButtons();
+
+}
+
+function navBack(){
+
+const h=getNavHistory();
+let i=getNavIndex();
+
+if(
+!h.length ||
+i<=0
+)return;
+
+i--;
+
+localStorage.setItem(
+NAV_INDEX_KEY,
+String(i)
+);
+
+showNavView(h[i]);
+
+}
+
+function navForward(){
+
+const h=getNavHistory();
+let i=getNavIndex();
+
+if(
+!h.length ||
+i<0 ||
+i>=h.length-1
+)return;
+
+i++;
+
+localStorage.setItem(
+NAV_INDEX_KEY,
+String(i)
+);
+
+showNavView(h[i]);
+
+}
+
+function undoState(){
+navBack();
+}
+
+function redoState(){
+navForward();
+}
+
+function updateHistoryButtons(){
+
+const h=getNavHistory();
+const i=getNavIndex();
+
+const u=document.getElementById(
+"undoBtn"
+);
+
+const r=document.getElementById(
+"redoBtn"
+);
+
+if(u){
+u.disabled=
+!h.length||
+i<=0;
+}
+
+if(r){
+r.disabled=
+!h.length||
+i<0||
+i>=h.length-1;
+}
+
+}
+
+/* ========================================= */
+/* MENU NAV WRAPPERS */
+/* ========================================= */
+
+const originalOpenPros=openPros;
+const originalOpenCats=openCats;
+const originalOpenSaved=openSaved;
+const originalOpenBudget=openBudget;
+
+openPros=function(){
+
+originalOpenPros();
+navVisit("pros");
+
+};
+
+openCats=function(){
+
+originalOpenCats();
+navVisit("cats");
+
+};
+
+openSaved=function(){
+
+originalOpenSaved();
+navVisit("saved");
+
+};
+
+openBudget=function(){
+
+originalOpenBudget();
+navVisit("budget");
+
+};
+
+/* ========================================= */
+/* INIT */
+/* ========================================= */
+
+restoreFullAutoBackupIfNeeded();
 
 load();
+
+restoreProFormDraft();
+restoreBudgetFormDraft();
+restoreNewCatDraft();
+
+[
+"pName",
+"pType",
+"pCat",
+"pMin",
+"pOther",
+"pCompany"
+].forEach(id=>{
+
+const el=document.getElementById(id);
+
+if(el){
+
+el.addEventListener(
+"input",
+saveProFormDraft
+);
+
+}
+
+});
+
+const budgetAmount=
+document.getElementById(
+"budgetAmount"
+);
+
+const budgetName=
+document.getElementById(
+"budgetName"
+);
+
+const newCat=
+document.getElementById(
+"newCat"
+);
+
+if(budgetAmount){
+
+budgetAmount.addEventListener(
+"input",
+saveBudgetFormDraft
+);
+
+}
+
+if(budgetName){
+
+budgetName.addEventListener(
+"input",
+saveBudgetFormDraft
+);
+
+}
+
+if(newCat){
+
+newCat.addEventListener(
+"input",
+saveNewCatDraft
+);
+
+}
+
+let currentView=
+localStorage.getItem(
+ACTIVE_VIEW_KEY
+)||"main";
+
+let navHistory=
+getNavHistory();
+
+let navIndex=
+getNavIndex();
+
+if(
+!navHistory.length ||
+navIndex<0
+){
+
+navHistory=[currentView];
+navIndex=0;
+
+setNavHistory(
+navHistory,
+navIndex
+);
+
+}else{
+
+currentView=
+navHistory[navIndex]
+||currentView;
+
+}
+
+showNavView(
+currentView
+);
+
+saveFullAutoBackup();
+
+window.addEventListener(
+"pagehide",
+function(){
+
+saveWorkState();
+saveProFormDraft();
+saveBudgetFormDraft();
+saveNewCatDraft();
+saveFullAutoBackup();
+commitHistory();
+
+}
+);
+
+window.addEventListener(
+"beforeunload",
+function(){
+
+saveWorkState();
+saveProFormDraft();
+saveBudgetFormDraft();
+saveNewCatDraft();
+saveFullAutoBackup();
+
+}
+);
 
 </script>
 

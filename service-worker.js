@@ -10,9 +10,8 @@ self.addEventListener('install', event => {
   self.skipWaiting();
 
   event.waitUntil(
-    caches.open(CACHE_NAME).then(cache =>
-      cache.addAll(FILES)
-    )
+    caches.open(CACHE_NAME)
+      .then(cache => cache.addAll(FILES))
   );
 });
 
@@ -47,9 +46,8 @@ self.addEventListener('fetch', event => {
         .then(response => {
           const copy = response.clone();
 
-          caches.open(CACHE_NAME).then(cache => {
-            cache.put(request, copy);
-          });
+          caches.open(CACHE_NAME)
+            .then(cache => cache.put(request, copy));
 
           return response;
         })
@@ -64,9 +62,8 @@ self.addEventListener('fetch', event => {
       .then(response => {
         const copy = response.clone();
 
-        caches.open(CACHE_NAME).then(cache => {
-          cache.put(request, copy);
-        });
+        caches.open(CACHE_NAME)
+          .then(cache => cache.put(request, copy));
 
         return response;
       })

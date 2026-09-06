@@ -372,9 +372,7 @@ border-bottom:1px solid rgba(110,80,20,.12)
 <button id="undoBtn" class="light" onclick="undoState()">← Հետ</button>
 <button id="redoBtn" class="light" onclick="redoState()">Առաջ →</button>
 </div>
-
 </header>
-
 
 <div id="catsPanel" class="card hidden">
 <h2>📂 Բաժիններ</h2>
@@ -386,7 +384,6 @@ border-bottom:1px solid rgba(110,80,20,.12)
 
 <div id="catsList"></div>
 </div>
-
 
 <div id="prosPanel" class="card hidden">
 <h2>👥 Մասնագետներ</h2>
@@ -422,42 +419,22 @@ onfocus="showProCatSuggestions(this.value)"
 
 <div>
 <label>Մասնագետին</label>
-<input
-id="pMin"
-type="number"
-inputmode="numeric"
-oninput="newProCalc()"
->
+<input id="pMin" type="number" inputmode="numeric" oninput="newProCalc()">
 </div>
 
 <div>
 <label>Ուրիշի համար</label>
-<input
-id="pOther"
-type="number"
-inputmode="numeric"
-oninput="newProCalc()"
->
+<input id="pOther" type="number" inputmode="numeric" oninput="newProCalc()">
 </div>
 
 <div>
 <label>Ընկերության համար</label>
-<input
-id="pCompany"
-type="number"
-inputmode="numeric"
-oninput="newProCalc()"
->
+<input id="pCompany" type="number" inputmode="numeric" oninput="newProCalc()">
 </div>
 
 <div>
 <label>Իրական գին</label>
-<input
-id="pMax"
-type="number"
-inputmode="numeric"
-disabled
->
+<input id="pMax" type="number" inputmode="numeric" disabled>
 </div>
 
 </div>
@@ -469,12 +446,10 @@ disabled
 <div id="prosBrowser" style="margin-top:18px"></div>
 </div>
 
-
 <div id="savedPanel" class="card hidden">
 <h2>📁 Պահված փաթեթներ</h2>
 <div id="savedList"></div>
 </div>
-
 
 <div id="budgetPanel" class="card hidden">
 
@@ -505,9 +480,7 @@ disabled
 
 <div id="budgetResults"></div>
 <div id="savedBudgetArea" style="margin-top:18px"></div>
-
 </div>
-
 
 <div class="card">
 
@@ -547,7 +520,6 @@ oninput="current.name=this.value;touchState()"
 
 </div>
 
-
 <div id="picker" class="overlay hidden">
 
 <div class="modal">
@@ -567,7 +539,6 @@ oninput="current.name=this.value;touchState()"
 </div>
 </div>
 
-
 <div id="backupModal" class="overlay hidden">
 <div class="modal">
 
@@ -582,7 +553,6 @@ oninput="current.name=this.value;touchState()"
 
 </div>
 </div>
-
 
 <div id="importModal" class="overlay hidden">
 <div class="modal">
@@ -599,7 +569,6 @@ oninput="current.name=this.value;touchState()"
 </div>
 </div>
 
-
 <script>
 
 const PRO_KEY="momentoo_pros_v3";
@@ -611,11 +580,9 @@ const SEED_KEY="momentoo_correct_seed_20260906_v1";
 
 const BUDGET_KEY="momentoo_budget_packs_v1";
 
-/* ՆՈՐ KEY-ԵՐ՝ ՀԻՆ ՏՎՅԱԼՆԵՐԻՆ ՉԵՆ ԿՊՉՈՒՄ */
 const WORK_KEY="momentoo_work_state_v1";
 const HISTORY_KEY="momentoo_history_v1";
 const HISTORY_INDEX_KEY="momentoo_history_index_v1";
-
 
 const DEFAULT_CATS=[
 "DJ-ներ",
@@ -630,7 +597,6 @@ const DEFAULT_CATS=[
 "Ծաղիկներ",
 "Այլ"
 ];
-
 
 const OLD_PROS=[
 {id:"mtmtembj1cvooecjjlo",name:"Սաքո Տերոյան",type:"DJ",category:"DJ-ներ",minPrice:25000,maxPrice:25000},
@@ -649,9 +615,7 @@ const OLD_PROS=[
 {id:"mtmxpdzz2sfgucjqh3f",name:"Ֆոտո Զոնա (photo_zona_kar)",type:"Ֆոտո զոնա",category:"Ֆոտոզոնա / Դեկոր",minPrice:30000,maxPrice:30000}
 ];
 
-
 const OLD_PACKS=[
-
 {
 id:"mtmxu92ub7afxeutirp",
 name:"Երեխայի ծնունդ",
@@ -662,7 +626,6 @@ staff:[
 {id:"ep4",professionalId:"mtmxrakk7wjy38hjvos",name:"Ռիլմեյքեր Maga Dallaqyan",type:"Նկարում է մոնտաժում և հանձնում",category:"Ռիլմեյքերներ",minPrice:10000,maxPrice:10000,profit:0}
 ]
 },
-
 {
 id:"mtn0msot5e1bvsj4wnd",
 name:"Նորածնի դուրսգրում",
@@ -674,7 +637,6 @@ staff:[
 {id:"nb5",professionalId:"mtn0kkkak6yjkpj9kgb",name:"Գոռ Շահինյան",type:"Միայն Ջութակ",category:"Ջութակահարներ",minPrice:15000,maxPrice:15000,profit:0}
 ]
 },
-
 {
 id:"mtne1lh48vvvyj6d675",
 name:"Կնունքի փաթեթ",
@@ -685,7 +647,6 @@ staff:[
 {id:"kn4",professionalId:"mtmxrakk7wjy38hjvos",name:"Ռիլմեյքեր Maga Dallaqyan",type:"Նկարում է մոնտաժում և հանձնում",category:"Ռիլմեյքերներ",minPrice:15000,maxPrice:15000,profit:0}
 ]
 },
-
 {
 id:"mtnh6l1lgebu4yccu95",
 name:"Ատամհատիկ",
@@ -696,7 +657,6 @@ staff:[
 {id:"at4",professionalId:"mtmx6r4xcfebc27w3g",name:"Արջուկների մուտք Hska Arjuk",type:"2 պարային շոու,մասնակղում են տորթի արարողությանը,լուսանկարում են և ավարտում",category:"Արջուկներ / կերպարներ",minPrice:28000,maxPrice:28000,profit:0}
 ]
 },
-
 {
 id:"mtnkyhdbzujotoomdlm",
 name:"Մայրիկի համար",
@@ -708,7 +668,6 @@ staff:[
 {id:"ma5",professionalId:"mtmym7un5ykjwq1p2dn",name:"Air Magic Ֆոտո զոնա",type:"Ֆոտո զոնա",category:"Ֆոտոզոնա / Դեկոր",minPrice:25000,maxPrice:25000,profit:0}
 ]
 },
-
 {
 id:"mto5pu9a9y4q9tr0ghl",
 name:"Ամուսնության առաջարկ Ասա այո",
@@ -719,9 +678,7 @@ staff:[
 {id:"aa4",professionalId:"mtmym7un5ykjwq1p2dn",name:"Air Magic Ֆոտո զոնա",type:"Ֆոտո զոնա",category:"Ֆոտոզոնա / Դեկոր",minPrice:25000,maxPrice:25000,profit:0}
 ]
 }
-
 ];
-
 
 let pros=[];
 let packs=[];
@@ -735,11 +692,7 @@ let budgetCat=null;
 let pickerCatQuery="";
 let budgetCatQuery="";
 
-let current={
-id:null,
-name:"",
-staff:[]
-};
+let current={id:null,name:"",staff:[]};
 
 let budgetDraft={
 id:null,
@@ -752,8 +705,6 @@ let budgetEdits={};
 
 let appLoaded=false;
 let applyingHistory=false;
-let historyTimer=null;
-
 
 function clone(x){
 return JSON.parse(JSON.stringify(x));
@@ -788,58 +739,40 @@ return [];
 }
 }
 
-
-/* ================================================= */
-/* ՄՇՏԱԿԱՆ ՊԱՀՊԱՆՈՒՄ + ՀԵՏ / ԱՌԱՋ */
-/* ================================================= */
+/* ========================================= */
+/* ՄՇՏԱԿԱՆ ՎԻՃԱԿ + ՀԵՏ / ԱՌԱՋ */
+/* ========================================= */
 
 function saveWorkState(){
-
 try{
-
-localStorage.setItem(
-WORK_KEY,
-JSON.stringify({
+localStorage.setItem(WORK_KEY,JSON.stringify({
 current,
 budgetDraft,
 budgetEdits
-})
-);
-
+}));
 }catch(e){}
-
 }
 
-
 function loadWorkState(){
-
 try{
-
-const x=JSON.parse(
-localStorage.getItem(WORK_KEY)||"null"
-);
-
+const x=JSON.parse(localStorage.getItem(WORK_KEY)||"null");
 if(!x)return;
 
-if(x.current && typeof x.current==="object"){
+if(x.current&&typeof x.current==="object"){
 current=x.current;
 }
 
-if(x.budgetDraft && typeof x.budgetDraft==="object"){
+if(x.budgetDraft&&typeof x.budgetDraft==="object"){
 budgetDraft=x.budgetDraft;
 }
 
-if(x.budgetEdits && typeof x.budgetEdits==="object"){
+if(x.budgetEdits&&typeof x.budgetEdits==="object"){
 budgetEdits=x.budgetEdits;
 }
-
 }catch(e){}
-
 }
 
-
 function stateSnapshot(){
-
 return{
 pros:clone(pros),
 packs:clone(packs),
@@ -849,94 +782,52 @@ current:clone(current),
 budgetDraft:clone(budgetDraft),
 budgetEdits:clone(budgetEdits)
 };
-
 }
-
 
 function getHistory(){
-
 try{
-
-const h=JSON.parse(
-localStorage.getItem(HISTORY_KEY)||"[]"
-);
-
+const h=JSON.parse(localStorage.getItem(HISTORY_KEY)||"[]");
 return Array.isArray(h)?h:[];
-
 }catch(e){
-
 return [];
-
 }
-
 }
-
 
 function getHistoryIndex(){
-
-const i=Number(
-localStorage.getItem(HISTORY_INDEX_KEY)
-);
-
+const i=Number(localStorage.getItem(HISTORY_INDEX_KEY));
 return Number.isFinite(i)?i:-1;
-
 }
-
 
 function setHistory(h,index){
-
 try{
-
-localStorage.setItem(
-HISTORY_KEY,
-JSON.stringify(h)
-);
-
-localStorage.setItem(
-HISTORY_INDEX_KEY,
-String(index)
-);
-
+localStorage.setItem(HISTORY_KEY,JSON.stringify(h));
+localStorage.setItem(HISTORY_INDEX_KEY,String(index));
 }catch(e){}
-
 updateHistoryButtons();
-
 }
 
-
 function sameState(a,b){
-
 try{
 return JSON.stringify(a)===JSON.stringify(b);
 }catch(e){
 return false;
 }
-
 }
-
 
 function commitHistory(){
 
-if(!appLoaded || applyingHistory)return;
-
-if(historyTimer){
-clearTimeout(historyTimer);
-historyTimer=null;
-}
+if(!appLoaded||applyingHistory)return;
 
 const now=stateSnapshot();
 
 let h=getHistory();
 let index=getHistoryIndex();
 
-if(!h.length || index<0){
-
+if(!h.length||index<0){
 h=[now];
 index=0;
-
 setHistory(h,index);
 return;
-
 }
 
 if(index>=h.length){
@@ -948,47 +839,32 @@ updateHistoryButtons();
 return;
 }
 
-/* Եթե հետ ենք գնացել ու հետո նոր բան ենք փոխել՝
-առաջվա ճյուղը հանում ենք */
 h=h.slice(0,index+1);
 
 h.push(now);
 
-/* Չափից շատ չմեծանա */
-if(h.length>30){
-h=h.slice(h.length-30);
+if(h.length>40){
+h=h.slice(h.length-40);
 }
 
 index=h.length-1;
 
 setHistory(h,index);
-
 }
 
-
+/* ԱՅՍՏԵՂ Է ՈՒՂՂՎԱԾ՝ ԱՆՄԻՋԱՊԵՍ Է ՊԱՀՈՒՄ */
 function scheduleHistory(){
 
-if(!appLoaded || applyingHistory)return;
+if(!appLoaded||applyingHistory)return;
 
-if(historyTimer){
-clearTimeout(historyTimer);
-}
-
-historyTimer=setTimeout(
-commitHistory,
-350
-);
+commitHistory();
 
 }
-
 
 function touchState(){
-
 saveWorkState();
 scheduleHistory();
-
 }
-
 
 function applySnapshot(s){
 
@@ -1002,11 +878,7 @@ cats=clone(s.cats||[]);
 budgetPacks=clone(s.budgetPacks||[]);
 
 current=clone(
-s.current||{
-id:null,
-name:"",
-staff:[]
-}
+s.current||{id:null,name:"",staff:[]}
 );
 
 budgetDraft=clone(
@@ -1018,9 +890,7 @@ staff:[]
 }
 );
 
-budgetEdits=clone(
-s.budgetEdits||{}
-);
+budgetEdits=clone(s.budgetEdits||{});
 
 localStorage.setItem(PRO_KEY,JSON.stringify(pros));
 localStorage.setItem(PACK_KEY,JSON.stringify(packs));
@@ -1033,34 +903,24 @@ renderAll();
 renderSavedBudgetPacks();
 
 if(
-!document
-.getElementById("budgetPanel")
-.classList.contains("hidden")
-&&
-budgetDraft.budget
+!document.getElementById("budgetPanel").classList.contains("hidden")
+&& budgetDraft.budget
 ){
 renderBudgetBuilder();
 }
 
 applyingHistory=false;
-
 updateHistoryButtons();
-
 }
-
 
 function undoState(){
 
-if(historyTimer){
-clearTimeout(historyTimer);
-historyTimer=null;
-commitHistory();
-}
-
-let h=getHistory();
+const h=getHistory();
 let index=getHistoryIndex();
 
-if(index<=0)return;
+if(!h.length||index<=0){
+return;
+}
 
 index--;
 
@@ -1070,21 +930,16 @@ String(index)
 );
 
 applySnapshot(h[index]);
-
 }
-
 
 function redoState(){
-
-if(historyTimer){
-clearTimeout(historyTimer);
-historyTimer=null;
-}
 
 const h=getHistory();
 let index=getHistoryIndex();
 
-if(index<0 || index>=h.length-1)return;
+if(!h.length||index<0||index>=h.length-1){
+return;
+}
 
 index++;
 
@@ -1094,9 +949,7 @@ String(index)
 );
 
 applySnapshot(h[index]);
-
 }
-
 
 function updateHistoryButtons(){
 
@@ -1107,174 +960,95 @@ const u=document.getElementById("undoBtn");
 const r=document.getElementById("redoBtn");
 
 if(u){
-u.disabled=(
-!h.length
-||
-i<=0
-);
+u.disabled=!h.length||i<=0;
 }
 
 if(r){
-r.disabled=(
-!h.length
-||
-i<0
-||
-i>=h.length-1
-);
+r.disabled=!h.length||i<0||i>=h.length-1;
 }
-
 }
-
 
 function savePros(){
-
-localStorage.setItem(
-PRO_KEY,
-JSON.stringify(pros)
-);
-
+localStorage.setItem(PRO_KEY,JSON.stringify(pros));
 saveWorkState();
 scheduleHistory();
-
 }
 
 function savePacks(){
-
-localStorage.setItem(
-PACK_KEY,
-JSON.stringify(packs)
-);
-
+localStorage.setItem(PACK_KEY,JSON.stringify(packs));
 saveWorkState();
 scheduleHistory();
-
 }
 
 function saveCats(){
-
-localStorage.setItem(
-CAT_KEY,
-JSON.stringify(cats)
-);
-
+localStorage.setItem(CAT_KEY,JSON.stringify(cats));
 saveWorkState();
 scheduleHistory();
-
 }
 
 function saveBudgetPacks(){
-
-localStorage.setItem(
-BUDGET_KEY,
-JSON.stringify(budgetPacks)
-);
-
+localStorage.setItem(BUDGET_KEY,JSON.stringify(budgetPacks));
 saveWorkState();
 scheduleHistory();
-
 }
 
-
-/* ================================================= */
-/* ՄԱՍՆԱԳԵՏԻ ԳՆԵՐ */
-/* ================================================= */
+/* ========================================= */
+/* ՄԱՍՆԱԳԵՏԻ 3 ԳՈՒՄԱՐՆԵՐ */
+/* ========================================= */
 
 function getProOther(p){
-
 if(!p)return 0;
-
-return Math.max(
-0,
-Number(p.otherAmount)||0
-);
-
+return Math.max(0,Number(p.otherAmount)||0);
 }
-
 
 function getProCompany(p){
 
 if(!p)return 0;
 
 if(
-p.companyAmount!==undefined
-&&
+p.companyAmount!==undefined &&
 p.companyAmount!==null
 ){
-
-return Math.max(
-0,
-Number(p.companyAmount)||0
-);
-
+return Math.max(0,Number(p.companyAmount)||0);
 }
 
-/* ՀԻՆ baseProfit-ը չենք կորցնում */
 if(
-p.baseProfit!==undefined
-&&
+p.baseProfit!==undefined &&
 p.baseProfit!==null
 ){
+return Math.max(0,Number(p.baseProfit)||0);
+}
 
 return Math.max(
 0,
-Number(p.baseProfit)||0
+(Number(p.maxPrice)||0)-(Number(p.minPrice)||0)
 );
-
 }
-
-/* ՀԻՆ ԳԻՆԸ ՆՈՒՅՆՆ Է ՄՆՈՒՄ */
-return Math.max(
-0,
-(Number(p.maxPrice)||0)
--
-(Number(p.minPrice)||0)
-);
-
-}
-
 
 function getProBaseProfit(p){
-
 return Math.max(
 0,
 getProOther(p)+getProCompany(p)
 );
-
 }
-
 
 function recalcProFinal(p){
 
 if(!p)return;
 
-p.minPrice=Math.max(
-0,
-Number(p.minPrice)||0
-);
-
-p.otherAmount=Math.max(
-0,
-Number(p.otherAmount)||0
-);
-
-p.companyAmount=Math.max(
-0,
-Number(p.companyAmount)||0
-);
+p.minPrice=Math.max(0,Number(p.minPrice)||0);
+p.otherAmount=Math.max(0,Number(p.otherAmount)||0);
+p.companyAmount=Math.max(0,Number(p.companyAmount)||0);
 
 p.maxPrice=
 p.minPrice+
 p.otherAmount+
 p.companyAmount;
 
-/* Հին կոդի հետ համատեղելիության համար */
 p.baseProfit=
 p.otherAmount+
 p.companyAmount;
-
 }
-
 
 function seedOldData(){
 
@@ -1293,9 +1067,7 @@ localStorage.setItem(CAT_KEY,JSON.stringify(DEFAULT_CATS));
 }
 
 localStorage.setItem(SEED_KEY,"1");
-
 }
-
 
 function restoreOldPacks(){
 
@@ -1304,30 +1076,19 @@ let changed=false;
 
 OLD_PACKS.forEach(oldPack=>{
 
-const exists=existing.some(
-p=>p.id===oldPack.id
-);
+const exists=existing.some(p=>p.id===oldPack.id);
 
 if(!exists){
-
 existing.push(clone(oldPack));
 changed=true;
-
 }
 
 });
 
 if(changed){
-
-localStorage.setItem(
-PACK_KEY,
-JSON.stringify(existing)
-);
-
+localStorage.setItem(PACK_KEY,JSON.stringify(existing));
 }
-
 }
-
 
 function load(){
 
@@ -1339,45 +1100,21 @@ packs=getArray(PACK_KEY);
 cats=getArray(CAT_KEY);
 budgetPacks=getArray(BUDGET_KEY);
 
-/* ՀԻՆ ՄԱՍՆԱԳԵՏՆԵՐԻ ԳՆԵՐԸ ՉԵՆ ՓՈԽՎՈՒՄ */
 pros.forEach(p=>{
 
-if(
-p.otherAmount===undefined
-||
-p.otherAmount===null
-){
-
+if(p.otherAmount===undefined||p.otherAmount===null){
 p.otherAmount=0;
-
 }
 
-if(
-p.companyAmount===undefined
-||
-p.companyAmount===null
-){
+if(p.companyAmount===undefined||p.companyAmount===null){
 
-if(
-p.baseProfit!==undefined
-&&
-p.baseProfit!==null
-){
-
-p.companyAmount=Math.max(
-0,
-Number(p.baseProfit)||0
-);
-
+if(p.baseProfit!==undefined&&p.baseProfit!==null){
+p.companyAmount=Math.max(0,Number(p.baseProfit)||0);
 }else{
-
 p.companyAmount=Math.max(
 0,
-(Number(p.maxPrice)||0)
--
-(Number(p.minPrice)||0)
+(Number(p.maxPrice)||0)-(Number(p.minPrice)||0)
 );
-
 }
 
 }
@@ -1387,20 +1124,11 @@ getProOther(p)+getProCompany(p);
 
 });
 
-localStorage.setItem(
-PRO_KEY,
-JSON.stringify(pros)
-);
+localStorage.setItem(PRO_KEY,JSON.stringify(pros));
 
 if(!cats.length){
-
 cats=clone(DEFAULT_CATS);
-
-localStorage.setItem(
-CAT_KEY,
-JSON.stringify(cats)
-);
-
+localStorage.setItem(CAT_KEY,JSON.stringify(cats));
 }
 
 loadWorkState();
@@ -1410,11 +1138,23 @@ renderSavedBudgetPacks();
 
 appLoaded=true;
 
-commitHistory();
+let h=getHistory();
+let i=getHistoryIndex();
+
+if(!h.length||i<0){
+
+setHistory(
+[stateSnapshot()],
+0
+);
+
+}else{
+
 updateHistoryButtons();
 
 }
 
+}
 
 function hidePanels(){
 
@@ -1424,138 +1164,86 @@ function hidePanels(){
 "savedPanel",
 "budgetPanel"
 ].forEach(id=>{
-
-document
-.getElementById(id)
-.classList.add("hidden");
-
+document.getElementById(id).classList.add("hidden");
 });
-
 }
-
 
 function openPros(){
 
 hidePanels();
-
-document
-.getElementById("prosPanel")
-.classList.remove("hidden");
+document.getElementById("prosPanel").classList.remove("hidden");
 
 manageCat=null;
 
 renderCatSelect();
 renderProsBrowser();
-
 }
-
 
 function openCats(){
 
 hidePanels();
-
-document
-.getElementById("catsPanel")
-.classList.remove("hidden");
-
+document.getElementById("catsPanel").classList.remove("hidden");
 renderCats();
-
 }
-
 
 function openSaved(){
 
 hidePanels();
-
-document
-.getElementById("savedPanel")
-.classList.remove("hidden");
-
+document.getElementById("savedPanel").classList.remove("hidden");
 renderSaved();
-
 }
-
 
 function openBudget(){
 
 hidePanels();
-
-document
-.getElementById("budgetPanel")
-.classList.remove("hidden");
+document.getElementById("budgetPanel").classList.remove("hidden");
 
 renderSavedBudgetPacks();
 
 if(budgetDraft.budget){
 renderBudgetBuilder();
 }
-
 }
 
-
 function renderAll(){
-
 renderCatSelect();
 renderCats();
 renderProsBrowser();
 renderSaved();
 renderCurrent();
 updateHistoryButtons();
-
 }
-
 
 function renderCatSelect(){
 
 const d=document.getElementById("pCat");
-
 if(!d)return;
 
-if(
-d.value
-&&
-!cats.includes(d.value)
-){
-
+if(d.value&&!cats.includes(d.value)){
 d.value="";
-
 }
-
 }
-
-
-/* ՆՈՐ ՄԱՍՆԱԳԵՏԻ ԳՆԵՐԻ ՀԱՇՎԱՐԿ */
 
 function newProCalc(){
 
 const cost=Math.max(
 0,
-Number(
-document.getElementById("pMin").value
-)||0
+Number(document.getElementById("pMin").value)||0
 );
 
 const other=Math.max(
 0,
-Number(
-document.getElementById("pOther").value
-)||0
+Number(document.getElementById("pOther").value)||0
 );
 
 const company=Math.max(
 0,
-Number(
-document.getElementById("pCompany").value
-)||0
+Number(document.getElementById("pCompany").value)||0
 );
 
 document.getElementById("pMax").value=
 cost+other+company;
-
 }
-
-
-/* ԲԱԺՆԻ ԱՎՏՈ ՓՆՏՐՈՒՄ */
 
 function showProCatSuggestions(value){
 
@@ -1565,10 +1253,8 @@ if(!box)return;
 const q=normalizeText(value);
 
 if(!q){
-
 box.innerHTML="";
 return;
-
 }
 
 const found=cats.filter(c=>
@@ -1593,17 +1279,13 @@ onclick='selectProCategory(${JSON.stringify(c)})'
 Բաժին չգտնվեց
 </div>
 `;
-
 }
-
 
 function selectProCategory(category){
 
 document.getElementById("pCat").value=category;
 document.getElementById("proCatSuggestions").innerHTML="";
-
 }
-
 
 function addCategory(){
 
@@ -1621,18 +1303,12 @@ cats.push(n);
 saveCats();
 
 i.value="";
-
 renderAll();
-
 }
-
 
 function renameCat(oldName){
 
-const x=prompt(
-"Նոր անուն",
-oldName
-);
+const x=prompt("Նոր անուն",oldName);
 
 if(!x)return;
 
@@ -1640,49 +1316,27 @@ const n=x.trim();
 
 if(!n)return;
 
-if(
-cats.includes(n)
-&&
-n!==oldName
-){
-
-return alert(
-"Այս անունով բաժին արդեն կա"
-);
-
+if(cats.includes(n)&&n!==oldName){
+return alert("Այս անունով բաժին արդեն կա");
 }
 
 pros.forEach(p=>{
-
-if(p.category===oldName){
-p.category=n;
-}
-
+if(p.category===oldName)p.category=n;
 });
 
 packs.forEach(p=>
 (p.staff||[]).forEach(s=>{
-
-if(s.category===oldName){
-s.category=n;
-}
-
+if(s.category===oldName)s.category=n;
 })
 );
 
 budgetPacks.forEach(p=>
 (p.staff||[]).forEach(s=>{
-
-if(s.category===oldName){
-s.category=n;
-}
-
+if(s.category===oldName)s.category=n;
 })
 );
 
-cats=cats.map(
-c=>c===oldName?n:c
-);
+cats=cats.map(c=>c===oldName?n:c);
 
 if(manageCat===oldName)manageCat=n;
 if(pickerCat===oldName)pickerCat=n;
@@ -1694,36 +1348,23 @@ savePacks();
 saveBudgetPacks();
 
 renderAll();
-
 }
-
 
 function deleteCat(n){
 
-if(
-pros.some(p=>p.category===n)
-){
-
+if(pros.some(p=>p.category===n)){
 return alert(
 "Այս բաժնում մասնագետ կա։ Նախ տեղափոխիր մասնագետներին ուրիշ բաժին։"
 );
-
 }
 
-if(
-!confirm("Ջնջե՞լ բաժինը")
-)return;
+if(!confirm("Ջնջե՞լ բաժինը"))return;
 
-cats=cats.filter(
-x=>x!==n
-);
+cats=cats.filter(x=>x!==n);
 
 saveCats();
-
 renderAll();
-
 }
-
 
 function renderCats(){
 
@@ -1743,17 +1384,11 @@ ${pros.filter(p=>p.category===c).length} մասնագետ
 
 <div>
 
-<button
-class="gold"
-onclick='renameCat(${JSON.stringify(c)})'
->
+<button class="gold" onclick='renameCat(${JSON.stringify(c)})'>
 ✏️
 </button>
 
-<button
-class="danger"
-onclick='deleteCat(${JSON.stringify(c)})'
->
+<button class="danger" onclick='deleteCat(${JSON.stringify(c)})'>
 🗑
 </button>
 
@@ -1762,92 +1397,49 @@ onclick='deleteCat(${JSON.stringify(c)})'
 </div>
 
 `).join("");
-
 }
-
-
-/* ================================================= */
-/* ՄԱՍՆԱԳԵՏՆԵՐ */
-/* ================================================= */
 
 function addPro(){
 
-const name=document
-.getElementById("pName")
-.value
-.trim();
-
-const type=document
-.getElementById("pType")
-.value
-.trim();
-
-const category=document
-.getElementById("pCat")
-.value
-.trim();
+const name=document.getElementById("pName").value.trim();
+const type=document.getElementById("pType").value.trim();
+const category=document.getElementById("pCat").value.trim();
 
 const min=Math.max(
 0,
-Number(
-document.getElementById("pMin").value
-)||0
+Number(document.getElementById("pMin").value)||0
 );
 
 const other=Math.max(
 0,
-Number(
-document.getElementById("pOther").value
-)||0
+Number(document.getElementById("pOther").value)||0
 );
 
 const company=Math.max(
 0,
-Number(
-document.getElementById("pCompany").value
-)||0
+Number(document.getElementById("pCompany").value)||0
 );
 
-const max=
-min+
-other+
-company;
+const max=min+other+company;
 
 if(!name){
-
-return alert(
-"Գրիր մասնագետի անունը"
-);
-
+return alert("Գրիր մասնագետի անունը");
 }
 
 if(!cats.includes(category)){
-
-return alert(
-"Ընտրիր գոյություն ունեցող բաժին"
-);
-
+return alert("Ընտրիր գոյություն ունեցող բաժին");
 }
 
 pros.push({
-
 id:uid(),
-
 name,
 type,
 category,
-
 minPrice:min,
-
 otherAmount:other,
-
 companyAmount:company,
-
-baseProfit:
-other+company,
-
+baseProfit:other+company,
 maxPrice:max
-
 });
 
 savePros();
@@ -1864,9 +1456,7 @@ document.getElementById("proCatSuggestions").innerHTML="";
 manageCat=category;
 
 renderAll();
-
 }
-
 
 function renderProsBrowser(){
 
@@ -1904,22 +1494,15 @@ ${pros.filter(p=>p.category===c).length} մասնագետ
 `;
 
 return;
-
 }
 
-
-const list=pros.filter(
-p=>p.category===manageCat
-);
+const list=pros.filter(p=>p.category===manageCat);
 
 box.innerHTML=`
 
 <div class="row" style="margin-bottom:12px">
 
-<button
-class="light"
-onclick="manageCat=null;renderProsBrowser()"
->
+<button class="light" onclick="manageCat=null;renderProsBrowser()">
 ← Բաժիններ
 </button>
 
@@ -1933,9 +1516,7 @@ ${list.length
 }
 
 `;
-
 }
-
 
 function proEditRow(p){
 
@@ -1965,9 +1546,7 @@ oninput="editPro('${p.id}','type',this.value)"
 <div>
 <label>Բաժին</label>
 
-<select
-onchange="editPro('${p.id}','category',this.value)"
->
+<select onchange="editPro('${p.id}','category',this.value)">
 
 ${cats.map(c=>`
 
@@ -1985,9 +1564,7 @@ ${esc(c)}
 </div>
 
 <div>
-
 <label>Մասնագետին</label>
-
 <input
 id="proCost_${p.id}"
 type="number"
@@ -1995,13 +1572,10 @@ inputmode="numeric"
 value="${Number(p.minPrice)||0}"
 oninput="editProMoney('${p.id}','cost',this.value)"
 >
-
 </div>
 
 <div>
-
 <label>Ուրիշի համար</label>
-
 <input
 id="proOther_${p.id}"
 type="number"
@@ -2009,13 +1583,10 @@ inputmode="numeric"
 value="${other}"
 oninput="editProMoney('${p.id}','other',this.value)"
 >
-
 </div>
 
 <div>
-
 <label>Ընկերության համար</label>
-
 <input
 id="proCompany_${p.id}"
 type="number"
@@ -2023,13 +1594,10 @@ inputmode="numeric"
 value="${company}"
 oninput="editProMoney('${p.id}','company',this.value)"
 >
-
 </div>
 
 <div>
-
 <label>Իրական գին</label>
-
 <input
 id="proFinal_${p.id}"
 type="number"
@@ -2037,7 +1605,6 @@ inputmode="numeric"
 disabled
 value="${Number(p.maxPrice)||0}"
 >
-
 </div>
 
 <button
@@ -2057,38 +1624,23 @@ onclick="deletePro('${p.id}')"
 </div>
 
 `;
-
 }
-
 
 function editPro(id,f,v){
 
-const p=pros.find(
-x=>x.id===id
-);
-
+const p=pros.find(x=>x.id===id);
 if(!p)return;
 
 p[f]=v;
-
-/* Ծրագիրը փակելու դեպքում էլ փոփոխությունը մնա */
 savePros();
-
 }
-
 
 function editProMoney(id,field,value){
 
-const p=pros.find(
-x=>x.id===id
-);
-
+const p=pros.find(x=>x.id===id);
 if(!p)return;
 
-const n=Math.max(
-0,
-Number(value)||0
-);
+const n=Math.max(0,Number(value)||0);
 
 if(field==="cost"){
 p.minPrice=n;
@@ -2104,21 +1656,10 @@ p.companyAmount=n;
 
 recalcProFinal(p);
 
-const c=document.getElementById(
-"proCost_"+id
-);
-
-const o=document.getElementById(
-"proOther_"+id
-);
-
-const co=document.getElementById(
-"proCompany_"+id
-);
-
-const f=document.getElementById(
-"proFinal_"+id
-);
+const c=document.getElementById("proCost_"+id);
+const o=document.getElementById("proOther_"+id);
+const co=document.getElementById("proCompany_"+id);
+const f=document.getElementById("proFinal_"+id);
 
 if(c)c.value=p.minPrice;
 if(o)o.value=p.otherAmount;
@@ -2126,24 +1667,16 @@ if(co)co.value=p.companyAmount;
 if(f)f.value=p.maxPrice;
 
 savePros();
-
 }
-
 
 function savePro(id){
 
-const p=pros.find(
-x=>x.id===id
-);
+const p=pros.find(x=>x.id===id);
 
 if(!p)return;
 
 if(!cats.includes(p.category)){
-
-return alert(
-"Ընտրիր գոյություն ունեցող բաժին"
-);
-
+return alert("Ընտրիր գոյություն ունեցող բաժին");
 }
 
 recalcProFinal(p);
@@ -2189,38 +1722,21 @@ manageCat=p.category;
 renderAll();
 
 alert("Պահպանվեց ✅");
-
 }
-
 
 function deletePro(id){
 
-const p=pros.find(
-x=>x.id===id
-);
+const p=pros.find(x=>x.id===id);
 
 if(!p)return;
 
-if(
-!confirm(
-"Ջնջե՞լ "+p.name+" մասնագետին"
-)
-)return;
+if(!confirm("Ջնջե՞լ "+p.name+" մասնագետին"))return;
 
-pros=pros.filter(
-x=>x.id!==id
-);
+pros=pros.filter(x=>x.id!==id);
 
 savePros();
-
 renderAll();
-
 }
-
-
-/* ================================================= */
-/* ՍՈՎՈՐԱԿԱՆ ՓԱԹԵԹ */
-/* ================================================= */
 
 function openPicker(){
 
@@ -2229,23 +1745,14 @@ pickerCatQuery="";
 
 document.getElementById("search").value="";
 
-document
-.getElementById("picker")
-.classList.remove("hidden");
+document.getElementById("picker").classList.remove("hidden");
 
 renderPicker();
-
 }
-
 
 function closePicker(){
-
-document
-.getElementById("picker")
-.classList.add("hidden");
-
+document.getElementById("picker").classList.add("hidden");
 }
-
 
 function choosePickerCat(c){
 
@@ -2253,11 +1760,8 @@ pickerCat=c;
 pickerCatQuery="";
 
 document.getElementById("search").value="";
-
 renderPicker();
-
 }
-
 
 function backPicker(){
 
@@ -2265,11 +1769,8 @@ pickerCat=null;
 pickerCatQuery="";
 
 document.getElementById("search").value="";
-
 renderPicker();
-
 }
-
 
 function pickerSearch(){
 
@@ -2280,9 +1781,7 @@ document.getElementById("search").value
 if(!pickerCat){
 
 pickerCatQuery=q;
-
 renderPicker();
-
 return;
 
 }
@@ -2290,9 +1789,7 @@ return;
 const list=pros.filter(p=>
 
 p.category===pickerCat
-
 &&
-
 (
 normalizeText(p.name).includes(q)
 ||
@@ -2301,19 +1798,11 @@ normalizeText(p.type).includes(q)
 
 );
 
-document
-.getElementById("pickerBody")
-.innerHTML=`
+document.getElementById("pickerBody").innerHTML=`
 
-<div
-class="row"
-style="margin-top:14px"
->
+<div class="row" style="margin-top:14px">
 
-<button
-class="light"
-onclick="backPicker()"
->
+<button class="light" onclick="backPicker()">
 ← Բաժիններ
 </button>
 
@@ -2323,17 +1812,11 @@ onclick="backPicker()"
 
 ${list.length
 ?list.map(choiceRow).join("")
-:`
-<div class="noResult">
-Չգտնվեց
-</div>
-`
+:`<div class="noResult">Չգտնվեց</div>`
 }
 
 `;
-
 }
-
 
 function renderPicker(){
 
@@ -2343,8 +1826,7 @@ if(!pickerCat){
 
 const filtered=cats.filter(c=>
 
-normalizeText(c)
-.includes(
+normalizeText(c).includes(
 normalizeText(pickerCatQuery)
 )
 
@@ -2396,25 +1878,15 @@ ${pros.filter(p=>p.category===c).length}
 `;
 
 return;
-
 }
 
-
-const list=pros.filter(
-p=>p.category===pickerCat
-);
+const list=pros.filter(p=>p.category===pickerCat);
 
 body.innerHTML=`
 
-<div
-class="row"
-style="margin-top:14px"
->
+<div class="row" style="margin-top:14px">
 
-<button
-class="light"
-onclick="backPicker()"
->
+<button class="light" onclick="backPicker()">
 ← Բաժիններ
 </button>
 
@@ -2424,17 +1896,11 @@ onclick="backPicker()"
 
 ${list.length
 ?list.map(choiceRow).join("")
-:`
-<div class="note">
-Այս բաժնում մասնագետ չկա
-</div>
-`
+:`<div class="note">Այս բաժնում մասնագետ չկա</div>`
 }
 
 `;
-
 }
-
 
 function choiceRow(p){
 
@@ -2456,44 +1922,30 @@ ${money(p.minPrice)} — ${money(p.maxPrice)}
 
 </div>
 
-<button
-class="primary"
-onclick="addToPack('${p.id}')"
->
+<button class="primary" onclick="addToPack('${p.id}')">
 Ավելացնել
 </button>
 
 </div>
 
 `;
-
 }
-
 
 function addToPack(id){
 
-const p=pros.find(
-x=>x.id===id
-);
+const p=pros.find(x=>x.id===id);
 
 if(!p)return;
 
 current.staff.push({
 
 id:uid(),
-
 professionalId:p.id,
-
 name:p.name,
-
 type:p.type,
-
 category:p.category,
-
 minPrice:Number(p.minPrice)||0,
-
 maxPrice:Number(p.maxPrice)||0,
-
 profit:0
 
 });
@@ -2502,9 +1954,7 @@ closePicker();
 
 renderCurrent();
 touchState();
-
 }
-
 
 function newPackage(){
 
@@ -2515,18 +1965,13 @@ staff:[]
 };
 
 renderCurrent();
-
 hidePanels();
-
 touchState();
-
 }
-
 
 function renderCurrent(){
 
-document.getElementById("packName").value=
-current.name||"";
+document.getElementById("packName").value=current.name||"";
 
 const list=document.getElementById("staffList");
 
@@ -2596,10 +2041,7 @@ value="${Number(s.profit)||0}"
 oninput="staffProfit('${s.id}',this.value)"
 >
 
-<div
-id="limit_${s.id}"
-class="note"
->
+<div id="limit_${s.id}" class="note">
 
 Մաքս.՝
 ${money(
@@ -2631,10 +2073,7 @@ Number(s.profit||0)
 
 </div>
 
-<button
-class="danger"
-onclick="removeStaff('${s.id}')"
->
+<button class="danger" onclick="removeStaff('${s.id}')">
 ✕
 </button>
 
@@ -2646,99 +2085,69 @@ onclick="removeStaff('${s.id}')"
 
 updateSummary();
 saveWorkState();
-
 }
-
 
 function getStaff(id){
-
-return current.staff.find(
-x=>x.id===id
-);
-
+return current.staff.find(x=>x.id===id);
 }
-
 
 function changeStaffName(id,v){
 
 const s=getStaff(id);
 
 if(s){
-
 s.name=v;
 touchState();
-
 }
-
 }
-
 
 function staffMin(id,v){
 
 const s=getStaff(id);
-
 if(!s)return;
 
-s.minPrice=Math.max(
-0,
-Number(v)||0
-);
+s.minPrice=Math.max(0,Number(v)||0);
 
 if(s.maxPrice<s.minPrice){
 
 s.maxPrice=s.minPrice;
 
-const e=document.getElementById(
-"max_"+id
-);
+const e=document.getElementById("max_"+id);
 
 if(e)e.value=s.maxPrice;
-
 }
 
 fixProfit(s);
 refreshStaffRow(s);
 updateSummary();
 touchState();
-
 }
-
 
 function staffMax(id,v){
 
 const s=getStaff(id);
-
 if(!s)return;
 
-s.maxPrice=Math.max(
-0,
-Number(v)||0
-);
+s.maxPrice=Math.max(0,Number(v)||0);
 
 if(s.maxPrice<s.minPrice){
 
 s.maxPrice=s.minPrice;
 
-const e=document.getElementById(
-"max_"+id
-);
+const e=document.getElementById("max_"+id);
 
 if(e)e.value=s.maxPrice;
-
 }
 
 fixProfit(s);
 refreshStaffRow(s);
 updateSummary();
 touchState();
-
 }
-
 
 function staffProfit(id,v){
 
 const s=getStaff(id);
-
 if(!s)return;
 
 const lim=Math.max(
@@ -2746,21 +2155,15 @@ const lim=Math.max(
 Number(s.maxPrice)-Number(s.minPrice)
 );
 
-let n=Math.max(
-0,
-Number(v)||0
-);
+let n=Math.max(0,Number(v)||0);
 
 if(n>lim){
 
 n=lim;
 
-const e=document.getElementById(
-"profit_"+id
-);
+const e=document.getElementById("profit_"+id);
 
 if(e)e.value=n;
-
 }
 
 s.profit=n;
@@ -2768,9 +2171,7 @@ s.profit=n;
 refreshStaffRow(s);
 updateSummary();
 touchState();
-
 }
-
 
 function fixProfit(s){
 
@@ -2783,26 +2184,16 @@ if(Number(s.profit)>lim){
 
 s.profit=lim;
 
-const e=document.getElementById(
-"profit_"+s.id
-);
+const e=document.getElementById("profit_"+s.id);
 
 if(e)e.value=lim;
-
 }
-
 }
-
 
 function refreshStaffRow(s){
 
-const l=document.getElementById(
-"limit_"+s.id
-);
-
-const f=document.getElementById(
-"final_"+s.id
-);
+const l=document.getElementById("limit_"+s.id);
+const f=document.getElementById("final_"+s.id);
 
 if(l){
 
@@ -2814,7 +2205,6 @@ Math.max(
 Number(s.maxPrice)-Number(s.minPrice)
 )
 );
-
 }
 
 if(f){
@@ -2825,23 +2215,16 @@ Number(s.minPrice||0)
 +
 Number(s.profit||0)
 );
-
 }
-
 }
-
 
 function removeStaff(id){
 
-current.staff=current.staff.filter(
-x=>x.id!==id
-);
+current.staff=current.staff.filter(x=>x.id!==id);
 
 renderCurrent();
 touchState();
-
 }
-
 
 function updateSummary(){
 
@@ -2855,34 +2238,17 @@ const p=current.staff.reduce(
 0
 );
 
-document
-.getElementById("cost")
-.textContent=money(c);
-
-document
-.getElementById("profit")
-.textContent=money(p);
-
-document
-.getElementById("total")
-.textContent=money(c+p);
-
+document.getElementById("cost").textContent=money(c);
+document.getElementById("profit").textContent=money(p);
+document.getElementById("total").textContent=money(c+p);
 }
-
 
 function savePackage(){
 
-const n=document
-.getElementById("packName")
-.value
-.trim();
+const n=document.getElementById("packName").value.trim();
 
 if(!n){
-
-return alert(
-"Գրիր փաթեթի անունը"
-);
-
+return alert("Գրիր փաթեթի անունը");
 }
 
 current.name=n;
@@ -2893,73 +2259,48 @@ current.id=uid();
 
 const cp=clone(current);
 
-const i=packs.findIndex(
-p=>p.id===current.id
-);
+const i=packs.findIndex(p=>p.id===current.id);
 
 if(i>=0){
-
 packs[i]=cp;
-
 }else{
-
 packs.push(cp);
-
 }
 
 savePacks();
-
 renderSaved();
-
 saveWorkState();
-commitHistory();
 
 alert("Փաթեթը պահպանվեց ✅");
-
 }
-
 
 function openPack(id){
 
-const p=packs.find(
-x=>x.id===id
-);
+const p=packs.find(x=>x.id===id);
 
 if(!p)return;
 
 current=clone(p);
 
 renderCurrent();
-
 hidePanels();
-
 touchState();
 
 window.scrollTo({
 top:0,
 behavior:"smooth"
 });
-
 }
-
 
 function deletePack(id){
 
-const p=packs.find(
-x=>x.id===id
-);
+const p=packs.find(x=>x.id===id);
 
 if(!p)return;
 
-if(
-!confirm(
-"Ջնջե՞լ "+p.name+" փաթեթը"
-)
-)return;
+if(!confirm("Ջնջե՞լ "+p.name+" փաթեթը"))return;
 
-packs=packs.filter(
-x=>x.id!==id
-);
+packs=packs.filter(x=>x.id!==id);
 
 savePacks();
 
@@ -2968,9 +2309,7 @@ newPackage();
 }
 
 renderSaved();
-
 }
-
 
 function renderSaved(){
 
@@ -2978,11 +2317,8 @@ const box=document.getElementById("savedList");
 
 if(!packs.length){
 
-box.innerHTML=
-"<div class='note'>Փաթեթ չկա</div>";
-
+box.innerHTML="<div class='note'>Փաթեթ չկա</div>";
 return;
-
 }
 
 box.innerHTML=packs.map(p=>{
@@ -3013,17 +2349,11 @@ ${(p.staff||[]).length}
 
 <div>
 
-<button
-class="primary"
-onclick="openPack('${p.id}')"
->
+<button class="primary" onclick="openPack('${p.id}')">
 Բացել
 </button>
 
-<button
-class="danger"
-onclick="deletePack('${p.id}')"
->
+<button class="danger" onclick="deletePack('${p.id}')">
 🗑
 </button>
 
@@ -3034,28 +2364,22 @@ onclick="deletePack('${p.id}')"
 `;
 
 }).join("");
-
 }
 
-
-/* ================================================= */
+/* ========================================= */
 /* ԲՅՈՒՋԵՈՎ ՓԱԹԵԹ */
-/* ================================================= */
+/* ========================================= */
 
 function getBudgetEdit(id){
 
-const p=pros.find(
-x=>x.id===id
-);
+const p=pros.find(x=>x.id===id);
 
 if(!p){
-
 return{
 cost:0,
 profit:0,
 realPrice:0
 };
-
 }
 
 if(!budgetEdits[id]){
@@ -3081,61 +2405,30 @@ let initialCost=Math.max(
 realPrice-profit
 );
 
-/* ՀԻՆ ՏՎՅԱԼՆԵՐԻ ԴԵՊՔՈՒՄ */
-if(
-p.otherAmount===undefined
-&&
-p.companyAmount===undefined
-&&
-p.baseProfit===undefined
-){
-
-initialCost=cost;
-profit=Math.max(
-0,
-realPrice-initialCost
-);
-
-}
-
 budgetEdits[id]={
-
 cost:initialCost,
-
 profit,
-
 realPrice
-
 };
 
 }
 
 return budgetEdits[id];
-
 }
-
 
 function buildBudget(){
 
 const budget=Math.max(
 0,
-Number(
-document.getElementById("budgetAmount").value
-)||0
+Number(document.getElementById("budgetAmount").value)||0
 );
 
 if(!budget){
-
-return alert(
-"Գրիր հաճախորդի բյուջեն"
-);
-
+return alert("Գրիր հաճախորդի բյուջեն");
 }
 
-const customName=document
-.getElementById("budgetName")
-.value
-.trim();
+const customName=
+document.getElementById("budgetName").value.trim();
 
 budgetDraft={
 
@@ -3180,22 +2473,16 @@ realPrice-profit
 );
 
 budgetEdits[p.id]={
-
 cost:initialCost,
-
 profit,
-
 realPrice
-
 };
 
 });
 
 renderBudgetBuilder();
 touchState();
-
 }
-
 
 function budgetTotals(){
 
@@ -3210,47 +2497,29 @@ const profit=budgetDraft.staff.reduce(
 );
 
 const total=budgetDraft.staff.reduce(
-(a,s)=>a+(
-Number(s.realPrice)
-||
-Number(s.cost)
-||
-0
-),
+(a,s)=>a+(Number(s.realPrice)||Number(s.cost)||0),
 0
 );
 
 return{
-
 cost,
 profit,
 total,
-
-left:
-budgetDraft.budget-total
-
+left:budgetDraft.budget-total
 };
-
 }
 
-
 function budgetHas(id){
-
 return budgetDraft.staff.some(
 s=>s.professionalId===id
 );
-
 }
 
-
 function getBudgetStaff(id){
-
 return budgetDraft.staff.find(
 s=>s.professionalId===id
 );
-
 }
-
 
 function updateBudgetEdit(id,field,value){
 
@@ -3273,20 +2542,12 @@ n=realPrice;
 if(field==="cost"){
 
 edit.cost=n;
-
-edit.profit=Math.max(
-0,
-realPrice-n
-);
+edit.profit=Math.max(0,realPrice-n);
 
 }else if(field==="profit"){
 
 edit.profit=n;
-
-edit.cost=Math.max(
-0,
-realPrice-n
-);
+edit.cost=Math.max(0,realPrice-n);
 
 }
 
@@ -3302,9 +2563,7 @@ selected.realPrice=realPrice;
 
 refreshBudgetLive();
 touchState();
-
 }
-
 
 function refreshBudgetLive(){
 
@@ -3316,21 +2575,11 @@ const profitEl=document.getElementById("btProfit");
 const totalEl=document.getElementById("btTotal");
 const leftEl=document.getElementById("btLeft");
 
-if(budgetEl)
-budgetEl.textContent=money(budgetDraft.budget);
-
-if(costEl)
-costEl.textContent=money(totals.cost);
-
-if(profitEl)
-profitEl.textContent=money(totals.profit);
-
-if(totalEl)
-totalEl.textContent=money(totals.total);
-
-if(leftEl)
-leftEl.textContent=money(totals.left);
-
+if(budgetEl)budgetEl.textContent=money(budgetDraft.budget);
+if(costEl)costEl.textContent=money(totals.cost);
+if(profitEl)profitEl.textContent=money(totals.profit);
+if(totalEl)totalEl.textContent=money(totals.total);
+if(leftEl)leftEl.textContent=money(totals.left);
 
 pros.forEach(p=>{
 
@@ -3362,7 +2611,6 @@ finalBox.textContent=money(edit.realPrice);
 
 });
 
-
 budgetDraft.staff.forEach(s=>{
 
 const pay=document.getElementById(
@@ -3370,25 +2618,17 @@ const pay=document.getElementById(
 );
 
 if(pay){
-
-pay.textContent=money(
-Number(s.cost)||0
-);
-
+pay.textContent=money(Number(s.cost)||0);
 }
 
 });
 
 saveWorkState();
-
 }
-
 
 function addBudgetPro(id){
 
-const p=pros.find(
-x=>x.id===id
-);
+const p=pros.find(x=>x.id===id);
 
 if(!p)return;
 
@@ -3405,21 +2645,14 @@ budgetDraft.budget
 ){
 
 return alert(
-
 "Չի տեղավորվում բյուջեի մեջ։\n\n"+
 "Այս մասնագետով վերջնական գումարը կլինի՝ "+
-money(
-totals.total+edit.realPrice
-)+
+money(totals.total+edit.realPrice)+
 "\n\nԲյուջեն՝ "+
-money(
-budgetDraft.budget
-)
-
+money(budgetDraft.budget)
 );
 
 }
-
 
 budgetDraft.staff.push({
 
@@ -3443,9 +2676,7 @@ realPrice:edit.realPrice
 
 renderBudgetBuilder();
 touchState();
-
 }
-
 
 function removeBudgetPro(id){
 
@@ -3456,50 +2687,36 @@ s=>s.professionalId!==id
 
 renderBudgetBuilder();
 touchState();
-
 }
-
 
 function chooseBudgetCat(cat){
 
 budgetCat=cat;
 budgetCatQuery="";
-
 renderBudgetBuilder();
-
 }
-
 
 function backBudgetCats(){
 
 budgetCat=null;
 budgetCatQuery="";
-
 renderBudgetBuilder();
-
 }
-
 
 function budgetCategorySearch(value){
 
 budgetCatQuery=normalizeText(value);
-
 renderBudgetBuilder();
-
 }
-
 
 function renderBudgetBuilder(){
 
-const box=document.getElementById(
-"budgetResults"
-);
+const box=document.getElementById("budgetResults");
 
 if(!budgetDraft.budget){
 
 box.innerHTML="";
 return;
-
 }
 
 const totals=budgetTotals();
@@ -3515,97 +2732,56 @@ let html=`
 <div class="budgetTotals">
 
 <div class="bt">
-
-<small>
-Հաճախորդի բյուջե
-</small>
-
+<small>Հաճախորդի բյուջե</small>
 <strong id="btBudget">
 ${money(budgetDraft.budget)}
 </strong>
-
 </div>
 
-
 <div class="bt">
-
-<small>
-Մասնագետներին
-</small>
-
+<small>Մասնագետներին</small>
 <strong id="btCost">
 ${money(totals.cost)}
 </strong>
-
 </div>
 
-
 <div class="bt ok">
-
-<small>
-Քո շահույթը
-</small>
-
+<small>Քո շահույթը</small>
 <strong id="btProfit">
 ${money(totals.profit)}
 </strong>
-
 </div>
 
-
 <div class="bt">
-
-<small>
-Օգտագործված գումար
-</small>
-
+<small>Օգտագործված գումար</small>
 <strong id="btTotal">
 ${money(totals.total)}
 </strong>
-
 </div>
 
-
 <div class="bt warn">
-
-<small>
-Մնաց բյուջեից
-</small>
-
+<small>Մնաց բյուջեից</small>
 <strong id="btLeft">
 ${money(totals.left)}
 </strong>
-
 </div>
 
 </div>
 
+<div class="row" style="margin-top:12px;flex-wrap:wrap">
 
-<div
-class="row"
-style="margin-top:12px;flex-wrap:wrap"
->
-
-<button
-class="primary"
-onclick="saveBudgetPackage()"
->
+<button class="primary" onclick="saveBudgetPackage()">
 💾 Պահել այս բյուջեի փաթեթը
 </button>
 
-<button
-class="gold"
-onclick="sendBudgetToNormalPackage()"
->
+<button class="gold" onclick="sendBudgetToNormalPackage()">
 ＋ Տանել հիմնական փաթեթ
 </button>
 
 </div>
 
 </div>
-
 `;
-
 
 if(budgetDraft.staff.length){
 
@@ -3639,9 +2815,7 @@ ${money(s.cost)}
 </div>
 
 `;
-
 }
-
 
 if(budgetDraft.staff.length){
 
@@ -3685,7 +2859,6 @@ ${esc(p.type||"")}
 
 </div>
 
-
 <div>
 
 <label>
@@ -3701,7 +2874,6 @@ oninput="updateBudgetEdit('${p.id}','cost',this.value)"
 >
 
 </div>
-
 
 <div>
 
@@ -3719,7 +2891,6 @@ oninput="updateBudgetEdit('${p.id}','profit',this.value)"
 
 </div>
 
-
 <div>
 
 <label>
@@ -3734,7 +2905,6 @@ ${money(edit.realPrice)}
 </div>
 
 </div>
-
 
 <div>
 
@@ -3754,9 +2924,7 @@ onclick="removeBudgetPro('${p.id}')"
 });
 
 html+=`</div>`;
-
 }
-
 
 html+=`
 
@@ -3782,13 +2950,11 @@ oninput="budgetCategorySearch(this.value)"
 
 `;
 
-
 if(!budgetCat){
 
 const filteredCats=cats.filter(c=>
 
-normalizeText(c)
-.includes(
+normalizeText(c).includes(
 normalizeText(budgetCatQuery)
 )
 
@@ -3822,9 +2988,7 @@ ${pros.filter(p=>p.category===c).length}
 
 }else{
 
-const q=normalizeText(
-budgetCatQuery
-);
+const q=normalizeText(budgetCatQuery);
 
 const list=pros.filter(p=>
 
@@ -3844,15 +3008,9 @@ normalizeText(p.type).includes(q)
 
 html+=`
 
-<div
-class="row"
-style="margin-top:14px"
->
+<div class="row" style="margin-top:14px">
 
-<button
-class="light"
-onclick="backBudgetCats()"
->
+<button class="light" onclick="backBudgetCats()">
 ← Բաժիններ
 </button>
 
@@ -3861,18 +3019,14 @@ ${esc(budgetCat)}
 </strong>
 
 </div>
-
 `;
-
 
 if(!list.length){
 
 html+=`
-
 <div class="noResult">
 Մասնագետ չգտնվեց
 </div>
-
 `;
 
 }else{
@@ -3903,7 +3057,6 @@ ${money(edit.realPrice)}
 
 </div>
 
-
 <div>
 
 <label>
@@ -3919,7 +3072,6 @@ oninput="updateBudgetEdit('${p.id}','cost',this.value)"
 >
 
 </div>
-
 
 <div>
 
@@ -3937,7 +3089,6 @@ oninput="updateBudgetEdit('${p.id}','profit',this.value)"
 
 </div>
 
-
 <div>
 
 <label>
@@ -3952,7 +3103,6 @@ ${money(edit.realPrice)}
 </div>
 
 </div>
-
 
 <div>
 
@@ -3991,69 +3141,45 @@ onclick="addBudgetPro('${p.id}')"
 
 }
 
-
 html+=`</div>`;
 
 box.innerHTML=html;
 
 refreshBudgetLive();
-
 }
-
 
 function saveBudgetPackage(){
 
 if(!budgetDraft.budget){
-
-return alert(
-"Սկզբում ստեղծիր բյուջեն"
-);
-
+return alert("Սկզբում ստեղծիր բյուջեն");
 }
 
 if(!budgetDraft.staff.length){
-
-return alert(
-"Ավելացրու գոնե մեկ մասնագետ"
-);
-
+return alert("Ավելացրու գոնե մեկ մասնագետ");
 }
 
 if(!budgetDraft.id){
 budgetDraft.id=uid();
 }
 
-const copy=clone(
-budgetDraft
-);
+const copy=clone(budgetDraft);
 
 const index=budgetPacks.findIndex(
 x=>x.id===copy.id
 );
 
 if(index>=0){
-
 budgetPacks[index]=copy;
-
 }else{
-
 budgetPacks.push(copy);
-
 }
 
 saveBudgetPacks();
-
 renderSavedBudgetPacks();
-
 saveWorkState();
-commitHistory();
 
-alert(
-"Բյուջետային փաթեթը պահպանվեց ✅"
-);
-
+alert("Բյուջետային փաթեթը պահպանվեց ✅");
 }
-
 
 function renderSavedBudgetPacks(){
 
@@ -4067,7 +3193,6 @@ if(!budgetPacks.length){
 
 area.innerHTML="";
 return;
-
 }
 
 area.innerHTML=`
@@ -4121,17 +3246,11 @@ ${esc(p.name)}
 
 <div>
 
-<button
-class="primary"
-onclick="openBudgetPack('${p.id}')"
->
+<button class="primary" onclick="openBudgetPack('${p.id}')">
 Բացել
 </button>
 
-<button
-class="danger"
-onclick="deleteBudgetPack('${p.id}')"
->
+<button class="danger" onclick="deleteBudgetPack('${p.id}')">
 🗑
 </button>
 
@@ -4146,9 +3265,7 @@ onclick="deleteBudgetPack('${p.id}')"
 }).join("")}
 
 `;
-
 }
-
 
 function openBudgetPack(id){
 
@@ -4192,19 +3309,12 @@ document
 .getElementById("budgetPanel")
 .classList.remove("hidden");
 
-document.getElementById(
-"budgetAmount"
-).value=
+document.getElementById("budgetAmount").value=
 budgetDraft.budget||"";
 
-document.getElementById(
-"budgetName"
-).value=
+document.getElementById("budgetName").value=
 String(budgetDraft.name||"")
-.replace(
-/\s*—\s*[\d\s,․]+\s*֏.*$/,
-""
-);
+.replace(/\s*—\s*[\d\s,․]+\s*֏.*$/,"");
 
 renderBudgetBuilder();
 touchState();
@@ -4213,9 +3323,7 @@ window.scrollTo({
 top:0,
 behavior:"smooth"
 });
-
 }
-
 
 function deleteBudgetPack(id){
 
@@ -4231,8 +3339,7 @@ if(
 )
 )return;
 
-budgetPacks=
-budgetPacks.filter(
+budgetPacks=budgetPacks.filter(
 x=>x.id!==id
 );
 
@@ -4249,26 +3356,17 @@ staff:[]
 
 budgetEdits={};
 
-document
-.getElementById("budgetResults")
-.innerHTML="";
-
+document.getElementById("budgetResults").innerHTML="";
 }
 
 renderSavedBudgetPacks();
 touchState();
-
 }
-
 
 function sendBudgetToNormalPackage(){
 
 if(!budgetDraft.staff.length){
-
-return alert(
-"Մասնագետներ ընտրված չեն"
-);
-
+return alert("Մասնագետներ ընտրված չեն");
 }
 
 current={
@@ -4277,8 +3375,7 @@ id:null,
 
 name:budgetDraft.name,
 
-staff:
-budgetDraft.staff.map(s=>({
+staff:budgetDraft.staff.map(s=>({
 
 id:uid(),
 
@@ -4308,7 +3405,6 @@ profit:Number(s.profit)||0
 };
 
 renderCurrent();
-
 hidePanels();
 touchState();
 
@@ -4316,13 +3412,9 @@ window.scrollTo({
 top:0,
 behavior:"smooth"
 });
-
 }
 
-
-/* ================================================= */
 /* BACKUP */
-/* ================================================= */
 
 function openBackup(){
 
@@ -4341,30 +3433,20 @@ budgetEdits
 
 };
 
-document
-.getElementById("backupText")
-.value=
-JSON.stringify(
-data,
-null,
-2
-);
+document.getElementById("backupText").value=
+JSON.stringify(data,null,2);
 
 document
 .getElementById("backupModal")
 .classList.remove("hidden");
-
 }
-
 
 function closeBackup(){
 
 document
 .getElementById("backupModal")
 .classList.add("hidden");
-
 }
-
 
 async function copyBackup(){
 
@@ -4376,46 +3458,32 @@ try{
 
 await navigator.clipboard.writeText(txt);
 
-alert(
-"Backup-ը copy եղավ ✅"
-);
+alert("Backup-ը copy եղավ ✅");
 
 }catch(e){
 
-document
-.getElementById("backupText")
-.select();
+document.getElementById("backupText").select();
 
-alert(
-"Ընտրել եմ տեքստը․ սեղմիր Copy"
-);
+alert("Ընտրել եմ տեքստը․ սեղմիր Copy");
 
 }
-
 }
-
 
 function openImport(){
 
-document
-.getElementById("importText")
-.value="";
+document.getElementById("importText").value="";
 
 document
 .getElementById("importModal")
 .classList.remove("hidden");
-
 }
-
 
 function closeImport(){
 
 document
 .getElementById("importModal")
 .classList.add("hidden");
-
 }
-
 
 function doImport(){
 
@@ -4434,17 +3502,11 @@ data=JSON.parse(text);
 
 }catch(e){
 
-return alert(
-"JSON-ը սխալ է"
-);
+return alert("JSON-ը սխալ է");
 
 }
 
-if(
-!confirm(
-"Վերականգնե՞լ Backup-ը"
-)
-)return;
+if(!confirm("Վերականգնե՞լ Backup-ը"))return;
 
 if(Array.isArray(data.pros)){
 pros=data.pros;
@@ -4463,75 +3525,46 @@ budgetPacks=data.budgetPacks;
 }
 
 if(
-data.current
-&&
+data.current &&
 typeof data.current==="object"
 ){
-
 current=data.current;
-
 }
 
 if(
-data.budgetDraft
-&&
+data.budgetDraft &&
 typeof data.budgetDraft==="object"
 ){
-
 budgetDraft=data.budgetDraft;
-
 }
 
 if(
-data.budgetEdits
-&&
+data.budgetEdits &&
 typeof data.budgetEdits==="object"
 ){
-
 budgetEdits=data.budgetEdits;
-
 }
 
-
-/* ՀԻՆ ՄԱՍՆԱԳԵՏՆԵՐԻ ԳՆԵՐԸ ՊԱՀՊԱՆԵԼ */
 pros.forEach(p=>{
 
-if(
-p.otherAmount===undefined
-||
-p.otherAmount===null
-){
-
+if(p.otherAmount===undefined||p.otherAmount===null){
 p.otherAmount=0;
-
 }
 
-if(
-p.companyAmount===undefined
-||
-p.companyAmount===null
-){
+if(p.companyAmount===undefined||p.companyAmount===null){
 
-if(
-p.baseProfit!==undefined
-&&
-p.baseProfit!==null
-){
-
+if(p.baseProfit!==undefined&&p.baseProfit!==null){
 p.companyAmount=Math.max(
 0,
 Number(p.baseProfit)||0
 );
-
 }else{
-
 p.companyAmount=Math.max(
 0,
 (Number(p.maxPrice)||0)
 -
 (Number(p.minPrice)||0)
 );
-
 }
 
 }
@@ -4558,41 +3591,17 @@ renderSavedBudgetPacks();
 
 commitHistory();
 
-alert(
-"Backup-ը վերականգնվեց ✅"
-);
-
+alert("Backup-ը վերականգնվեց ✅");
 }
 
-
-/* ԷՋԸ ՓԱԿԵԼՈՒՑ ԱՌԱՋ ԷԼ ՊԱՀՊԱՆՈՒՄ Է */
-window.addEventListener(
-"pagehide",
-function(){
-
+window.addEventListener("pagehide",function(){
 saveWorkState();
-
-if(historyTimer){
-
-clearTimeout(historyTimer);
-historyTimer=null;
-
-}
-
 commitHistory();
+});
 
-}
-);
-
-window.addEventListener(
-"beforeunload",
-function(){
-
+window.addEventListener("beforeunload",function(){
 saveWorkState();
-
-}
-);
-
+});
 
 load();
 

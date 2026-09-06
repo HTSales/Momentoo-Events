@@ -933,9 +933,8 @@ function renderBudgetPros(){
 const box=document.getElementById("budgetProList");
 if(!box)return;
 
-const budget=num(budgetDraft.budget);
 const used=budgetTotals().used;
-const remaining=budget-used;
+const remaining=num(budgetDraft.budget)-used;
 
 const groups={};
 
@@ -959,8 +958,7 @@ return`
 Շուկայական՝ ${money(price)} · Մինիմալ՝ ${money(p.minPrice)}
 </span>
 </div>
-<button
-${already||price>remaining?"disabled":""}
+<button ${already||price>remaining?"disabled":""}
 onclick="addBudgetPro('${p.id}')">
 ${already?"Ավելացված":price>remaining?"Բյուջեն չի բավականացնում":"➕ Ավելացնել"}
 </button>
@@ -1028,20 +1026,17 @@ return`
 <div class="small">${escapeHtml(item.category)}</div>
 
 <label>Մասնագետին վճարում</label>
-<input
-type="number"
-value="${e.cost}"
+<input type="number" value="${e.cost}"
 oninput="updateBudgetEdit('${item.id}','cost',this.value)">
 
 <label>Իմ շահույթը</label>
-<input
-type="number"
-value="${e.profit}"
+<input type="number" value="${e.profit}"
 oninput="updateBudgetEdit('${item.id}','profit',this.value)">
 
 <div class="small">Շուկայական գին՝ ${money(e.realPrice)}</div>
 
-<button class="danger" style="margin-top:7px" onclick="removeBudgetItem('${item.id}')">
+<button class="danger" style="margin-top:7px"
+onclick="removeBudgetItem('${item.id}')">
 🗑 Հեռացնել
 </button>
 </div>
@@ -1193,15 +1188,9 @@ renderCurrent();
 }
 
 function newPackage(){
-current={
-name:"",
-items:[]
-};
-
+current={name:"",items:[]};
 editingPackId=null;
-
 saveWorkState();
-
 showNavView("main");
 navVisit("main");
 renderCurrent();
@@ -1232,70 +1221,6 @@ renderBudget();
 renderSavedBudgetPacks();
 }
 
-function restoreProFormDraft(){
-try{
-const d=JSON.parse(localStorage.getItem(PRO_FORM_DRAFT_KEY)||"null");
-if(!d)return;
-
-["pName","pType","pCat","pMax","pMin"].forEach(id=>{
-const el=document.getElementById(id);
-if(el&&d[id]!==undefined)el.value=d[id];
-});
-}catch(e){}
-}
-
-function saveProFormDraft(){
-try{
-const d={};
-["pName","pType","pCat","pMax","pMin"].forEach(id=>{
-const el=document.getElementById(id);
-if(el)d[id]=el.value;
-});
-localStorage.setItem(PRO_FORM_DRAFT_KEY,JSON.stringify(d));
-}catch(e){}
-}
-
-function restoreBudgetFormDraft(){
-try{
-const d=JSON.parse(localStorage.getItem(BUDGET_FORM_DRAFT_KEY)||"null");
-if(!d)return;
-
-if(d.budgetName!==undefined){
-const el=document.getElementById("budgetName");
-if(el)el.value=d.budgetName;
-}
-
-if(d.budgetAmount!==undefined){
-const el=document.getElementById("budgetAmount");
-if(el)el.value=d.budgetAmount;
-}
-}catch(e){}
-}
-
-function saveBudgetFormDraft(){
-try{
-localStorage.setItem(BUDGET_FORM_DRAFT_KEY,JSON.stringify({
-budgetName:document.getElementById("budgetName")?.value||"",
-budgetAmount:document.getElementById("budgetAmount")?.value||""
-}));
-}catch(e){}
-}
-
-function restoreNewCatDraft(){
-try{
-const v=localStorage.getItem(NEW_CAT_DRAFT_KEY);
-const el=document.getElementById("newCat");
-if(el&&v!==null)el.value=v;
-}catch(e){}
-}
-
-function saveNewCatDraft(){
-try{
-const el=document.getElementById("newCat");
-if(el)localStorage.setItem(NEW_CAT_DRAFT_KEY,el.value||"");
-}catch(e){}
-}
-
 function renderAll(){
 renderCatsSelect();
 renderMainPros();
@@ -1321,15 +1246,13 @@ budgetEdits:clone(budgetEdits)
 }
 
 function isStandaloneApp(){
-return window.navigator.standalone===true ||
+return window.navigator.standalone===true||
 window.matchMedia("(display-mode: standalone)").matches;
 }
 
 function scheduleCloudSave(){
 if(!cloudReady||cloudApplying)return;
-
 clearTimeout(cloudTimer);
-
 cloudTimer=setTimeout(saveCloud,700);
 }
 
@@ -1342,26 +1265,10 @@ const root=momentooDB.collection("momentoo");
 const batch=momentooDB.batch();
 const ts=firebase.firestore.FieldValue.serverTimestamp();
 
-batch.set(root.doc("pros"),{
-data:d.pros,
-updatedAt:ts
-});
-
-batch.set(root.doc("packs"),{
-data:d.packs,
-updatedAt:ts
-});
-
-batch.set(root.doc("cats"),{
-data:d.cats,
-updatedAt:ts
-});
-
-batch.set(root.doc("budgetPacks"),{
-data:d.budgetPacks,
-updatedAt:ts
-});
-
+batch.set(root.doc("pros"),{data:d.pros,updatedAt:ts});
+batch.set(root.doc("packs"),{data:d.packs,updatedAt:ts});
+batch.set(root.doc("cats"),{data:d.cats,updatedAt:ts});
+batch.set(root.doc("budgetPacks"),{data:d.budgetPacks,updatedAt:ts});
 batch.set(root.doc("work"),{
 current:d.current,
 budgetDraft:d.budgetDraft,
@@ -1376,7 +1283,6 @@ version:1
 },{merge:true});
 
 await batch.commit();
-
 }catch(e){
 console.error("Firebase save error",e);
 }
@@ -1457,7 +1363,6 @@ if(!window.momentooAuth||!window.momentooDB)return;
 
 try{
 await momentooAuth.signInAnonymously();
-
 cloudReady=true;
 
 if(await cloudExists()){
@@ -1488,85 +1393,15 @@ console.error("Firebase auth/sync error",e);
 function setupFirebase(){
 try{
 firebase.initializeApp(firebaseConfig);
-
 window.momentooAuth=firebase.auth();
 window.momentooDB=firebase.firestore();
-
 }catch(e){
 console.error("Firebase initialization error",e);
 }
 }
 
-document.getElementById("packName").addEventListener("input",function(){
-current.name=this.value;
-saveWorkState();
-});
-
-document.getElementById("budgetName").addEventListener("input",function(){
-budgetDraft.name=this.value;
-saveWorkState();
-saveBudgetFormDraft();
-});
-
-document.getElementById("budgetAmount").addEventListener("input",function(){
-budgetDraft.budget=num(this.value);
-saveWorkState();
-saveBudgetFormDraft();
-renderBudget();
-});
-
-["pName","pType","pCat","pMax","pMin"].forEach(id=>{
-const el=document.getElementById(id);
-if(el)el.addEventListener("input",saveProFormDraft);
-});
-
-document.getElementById("newCat").addEventListener("input",saveNewCatDraft);
-
-window.addEventListener("online",function(){
-if(cloudReady)scheduleCloudSave();
-});
-
-window.addEventListener("pagehide",function(){
-saveProFormDraft();
-saveBudgetFormDraft();
-saveNewCatDraft();
-saveFullAutoBackup();
-});
-
-window.addEventListener("beforeunload",function(){
-saveProFormDraft();
-saveBudgetFormDraft();
-saveNewCatDraft();
-saveFullAutoBackup();
-});
-
-function load(){
-restoreFullAutoBackupIfNeeded();
-loadData();
-
-restoreProFormDraft();
-restoreBudgetFormDraft();
-restoreNewCatDraft();
-
-let view=localStorage.getItem(ACTIVE_VIEW_KEY)||"main";
-let h=getNavHistory();
-let i=getNavIndex();
-
-if(!h.length||i<0){
-h=[view];
-i=0;
-setNavHistory(h,i);
-}else{
-view=h[i]||view;
-}
-
-renderAll();
-showNavView(view);
-saveFullAutoBackup();
-}
-
-setupFirebase();
 load();
+setupFirebase();
 initCloud();
 
 </script>

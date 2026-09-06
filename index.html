@@ -13,232 +13,89 @@
 <title>MOMENTOO EVENTS</title>
 
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#fff7fa;color:#4b3441}
-button,input,select{font:inherit}
-button{cursor:pointer}
-.wrap{max-width:1050px;margin:auto;padding:14px}
-.hero{background:linear-gradient(135deg,#ffc4d5,#ffd9cf 55%,#ffe6b9);border-radius:24px;padding:22px 18px;margin-bottom:10px}
-.hero h1{font-size:clamp(34px,8vw,64px);margin:0;font-weight:900;color:#503643}
-.hero p{font-size:16px;font-weight:700;margin:12px 0 16px}
-.spark{font-size:30px;margin:2px 0 8px}
-.quick{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.quick button{border:0;border-radius:14px;padding:12px 10px;background:#fff;color:#563d49;font-weight:800;font-size:14px}
-.quick .primary{background:#e97fa4;color:#fff}
-.quick .budget{background:#fff0bd;color:#795a16}
-.card{background:#fff;border-radius:18px;padding:14px;margin:9px 0;box-shadow:0 4px 18px #5a304010}
-.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px}
-input,select{width:100%;padding:11px;border:1px solid #ead6df;border-radius:15px;background:#fff;color:#4b3441;outline:none}
-input:focus,select:focus{border-color:#e77fa3;box-shadow:0 0 0 3px #e77fa320}
-label{display:block;font-size:13px;font-weight:800;margin:9px 0 5px;color:#7a6670}
-.btn{border:0;border-radius:12px;padding:10px 12px;background:#563d49;color:#fff;font-weight:800}
-.btn2{border:1px solid #ead6df;border-radius:12px;padding:9px 11px;background:#fff;color:#563d49;font-weight:700}
-.pink{background:#e77fa3}.green{background:#3f9b65}.blue{background:#5b75d8}
-.orange{background:#c98a31}.red{background:#d95050}.yellow{background:#fff0bd;color:#745816}
-.hidden{display:none!important}
-.tabs{display:flex;gap:8px;overflow:auto;padding:3px 1px 8px}
-.tabs button{white-space:nowrap}
-.section-title{display:flex;justify-content:space-between;align-items:center;gap:10px}
-.small{font-size:13px;color:#8b7881}
-.price{font-weight:900}
-.total{font-size:20px;font-weight:900}
-.cat,.pro,.staffrow{border:1px solid #f0e2e8;border-radius:17px;padding:13px;margin:8px 0;background:#fff}
-.cat{display:flex;justify-content:space-between;align-items:center;gap:8px}
-.staffrow{display:flex;justify-content:space-between;gap:10px;align-items:center}
-.badge{display:inline-block;padding:6px 9px;border-radius:10px;background:#f7edf2;font-size:12px;font-weight:700}
-.summary{background:#fbf2f6;border-radius:20px;padding:15px}
-.danger-text{color:#c94444;font-weight:800}
-.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:#2d2328;color:#fff;padding:12px 18px;border-radius:14px;z-index:100;box-shadow:0 8px 30px #0004}
-@media(max-width:620px){
-.wrap{padding:10px}.hero{padding:25px 18px;border-radius:26px}
-.quick{grid-template-columns:1fr 1fr}
-.quick button{font-size:15px;padding:14px 8px}
-.card{padding:14px;border-radius:20px}
-.tabs{margin:0 -4px}
-.row>.btn,.row>.btn2{flex:1 1 auto}
-.staffrow{align-items:flex-start}
-}
-html,body{overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent}
-body{-webkit-user-select:none;user-select:none}
-input,textarea,select{-webkit-user-select:text;user-select:text}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#fff7fa;color:#4b3441}button,input,select{font:inherit}button{cursor:pointer}.wrap{max-width:1050px;margin:auto;padding:14px}.hero{background:linear-gradient(135deg,#ffc4d5,#ffd9cf 55%,#ffe6b9);border-radius:24px;padding:22px 18px;margin-bottom:10px}.hero h1{font-size:clamp(34px,8vw,64px);margin:0;font-weight:900;color:#503643}.hero p{font-size:16px;font-weight:700;margin:12px 0 16px}.spark{font-size:30px;margin:2px 0 8px}.quick{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.quick button{border:0;border-radius:14px;padding:12px 10px;background:#fff;color:#563d49;font-weight:800;font-size:14px}.quick .primary{background:#e97fa4;color:#fff}.quick .budget{background:#fff0bd;color:#795a16}.card{background:#fff;border-radius:18px;padding:14px;margin:9px 0;box-shadow:0 4px 18px #5a304010}.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px}input,select{width:100%;padding:11px;border:1px solid #ead6df;border-radius:15px;background:#fff;color:#4b3441;outline:none}input:focus,select:focus{border-color:#e77fa3;box-shadow:0 0 0 3px #e77fa320}label{display:block;font-size:13px;font-weight:800;margin:9px 0 5px;color:#7a6670}.btn{border:0;border-radius:12px;padding:10px 12px;background:#563d49;color:#fff;font-weight:800}.btn2{border:1px solid #ead6df;border-radius:12px;padding:9px 11px;background:#fff;color:#563d49;font-weight:700}.pink{background:#e77fa3}.green{background:#3f9b65}.blue{background:#5b75d8}.orange{background:#c98a31}.red{background:#d95050}.yellow{background:#fff0bd;color:#745816}.hidden{display:none!important}.tabs{display:flex;gap:8px;overflow:auto;padding:3px 1px 8px}.tabs button{white-space:nowrap}.section-title{display:flex;justify-content:space-between;align-items:center;gap:10px}.small{font-size:13px;color:#8b7881}.price{font-weight:900}.total{font-size:20px;font-weight:900}.cat,.pro,.staffrow{border:1px solid #f0e2e8;border-radius:17px;padding:13px;margin:8px 0;background:#fff}.cat{display:flex;justify-content:space-between;align-items:center;gap:8px}.staffrow{display:flex;justify-content:space-between;gap:10px;align-items:center}.badge{display:inline-block;padding:6px 9px;border-radius:10px;background:#f7edf2;font-size:12px;font-weight:700}.summary{background:#fbf2f6;border-radius:20px;padding:15px}.danger-text{color:#c94444;font-weight:800}.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:#2d2328;color:#fff;padding:12px 18px;border-radius:14px;z-index:100;box-shadow:0 8px 30px #0004}.navback{margin-bottom:8px}@media(max-width:620px){.wrap{padding:10px}.hero{padding:25px 18px;border-radius:26px}.quick{grid-template-columns:1fr 1fr}.quick button{font-size:15px;padding:14px 8px}.card{padding:14px;border-radius:20px}.tabs{margin:0 -4px}.row>.btn,.row>.btn2{flex:1 1 auto}.staffrow{align-items:flex-start}.staffrow>div:last-child{text-align:right}}
 </style>
 
 <script src="https://www.gstatic.com/firebasejs/12.18.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/12.18.0/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore-compat.js"></script>
+<style>html,body{overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent}body{-webkit-user-select:none;user-select:none}input,textarea,select{-webkit-user-select:text;user-select:text}</style>
 </head>
 
 <body>
 <div class="wrap">
+  <div class="hero">
+    <h1>MOMENTOO EVENTS</h1>
+    <div class="spark">✨</div>
+    <p>Ստեղծում ենք հիշվող անակնկալներ...</p>
+    <div class="quick">
+      <button class="primary" onclick="newNormalPackage()">＋ Նոր փաթեթ</button>
+      <button onclick="showPanel('prosPanel')">👥 Մասնագետներ</button>
+      <button onclick="showPanel('prosPanel')">📂 Բաժիններ</button>
+      <button onclick="showPanel('packsPanel')">📂 Փաթեթներ</button>
+      <button class="budget" onclick="newBudgetPackage()">💰 Բյուջետային փաթեթ</button>
+      <button onclick="showPanel('paymentsPanel')">💾 Պահպանել / Վճարումներ</button>
+      <button onclick="showPanel('backupPanel')">📥 Backup</button>
+      <button onclick="showPanel('backupPanel')">📤 Import</button>
+      <button onclick="goBack()">← Հետ</button>
+      <button onclick="goForward()">Առաջ →</button>
+    </div>
+  </div>
 
-<div class="hero">
-<h1>MOMENTOO EVENTS</h1>
-<div class="spark">✨</div>
-<p>Ստեղծում ենք հիշվող անակնկալներ...</p>
+  <div class="tabs">
+    <button class="btn2" onclick="showPanel('prosPanel')">👥 Մասնագետներ</button>
+    <button class="btn2" onclick="showPanel('packsPanel')">📦 Փաթեթներ</button>
+    <button class="btn2" onclick="newBudgetPackage()">💰 Բյուջետային փաթեթ</button>
+    <button class="btn2" onclick="showPanel('budgetPacksPanel')">💰 Բյուջեի փաթեթներ</button>
+    <button class="btn2" onclick="showPanel('paymentsPanel')">💸 Վճարումներ</button>
+    <button class="btn2" onclick="showPanel('backupPanel')">💾 Backup</button>
+  </div>
 
-<div class="quick">
-<button class="primary" onclick="newNormalPackage()">＋ Նոր փաթեթ</button>
-<button onclick="showPanel('prosPanel')">👥 Մասնագետներ</button>
-<button onclick="showPanel('prosPanel')">📂 Բաժիններ</button>
-<button onclick="showPanel('packsPanel')">📂 Փաթեթներ</button>
-<button class="budget" onclick="newBudgetPackage()">💰 Բյուջետային փաթեթ</button>
-<button onclick="showPanel('paymentsPanel')">💾 Վճարումներ</button>
-<button onclick="showPanel('backupPanel')">📥 Backup</button>
-<button onclick="showPanel('backupPanel')">📤 Import</button>
-<button onclick="goBack()">← Հետ</button>
-<button onclick="goForward()">Առաջ →</button>
-</div>
-</div>
+  <section id="prosPanel" class="card">
+    <div class="section-title"><h2>👥 Մասնագետներ</h2><span class="badge" id="proCount">0</span></div>
+    <div class="card">
+      <h3 id="proFormTitle">➕ Ավելացնել մասնագետ</h3>
+      <label>Անուն / անվանում</label><input id="proName" placeholder="Օր․ Նվեր">
+      <label>Բաժին</label><select id="proCat"></select>
+      <div class="grid">
+        <div><label>Մասնագետի շուկայական գին</label><input id="pMax" type="number" min="0" placeholder="30000"></div>
+        <div><label>Մինիմալ գին</label><input id="pMin" type="number" min="0" placeholder="25000"></div>
+      </div>
+      <div class="small">Իմ գումարը = շուկայական գին − մինիմալ գին</div>
+      <div id="proDerived" class="price">Իմ գումարը՝ 0 ֏</div>
+      <div class="row"><button class="btn green" onclick="savePro()">Պահպանել մասնագետին</button><button id="cancelProEdit" class="btn2 hidden" onclick="cancelProEdit()">Չեղարկել</button></div>
+    </div>
+    <div class="card"><h3>📂 Բաժիններ</h3><div id="cats"></div><input id="newCat" placeholder="Նոր բաժնի անուն"><button class="btn blue" onclick="addCategory()">➕ Ավելացնել բաժին</button></div>
+    <div class="card"><h3>👤 Մասնագետների ցանկ</h3><div id="prosList"></div></div>
+  </section>
 
-<div class="tabs">
-<button class="btn2" onclick="showPanel('prosPanel')">👥 Մասնագետներ</button>
-<button class="btn2" onclick="showPanel('packsPanel')">📦 Փաթեթներ</button>
-<button class="btn2" onclick="newBudgetPackage()">💰 Բյուջետային փաթեթ</button>
-<button class="btn2" onclick="showPanel('budgetPacksPanel')">💰 Բյուջեի փաթեթներ</button>
-<button class="btn2" onclick="showPanel('paymentsPanel')">💸 Վճարումներ</button>
-<button class="btn2" onclick="showPanel('backupPanel')">💾 Backup</button>
-</div>
+  <section id="packsPanel" class="card hidden">
+    <div class="section-title"><h2>📦 Փաթեթներ</h2><button class="btn pink" onclick="newNormalPackage()">＋ Նոր փաթեթ</button></div>
+    <div class="card">
+      <h3>Նոր / խմբագրվող փաթեթ</h3>
+      <label>Փաթեթի անուն</label><input id="packName" placeholder="Օր․ Երեխայի ծնունդ">
+      <div class="row"><button class="btn blue" onclick="openPackagePicker()">➕ Ավելացնել մասնագետ</button><button class="btn green" onclick="saveCurrentPack()">💾 Պահպանել փաթեթը</button><button class="btn orange" onclick="finishCurrentToBudget()">💰 Ուղարկել բյուջե</button><button class="btn red" onclick="deleteCurrentPackage()">🗑 Մաքրել</button></div>
+      <div id="currentPack"></div><div id="currentTotal" class="total">Ընդհանուր՝ 0 ֏</div>
+    </div>
+    <div class="card"><h3>📦 Պահպանված փաթեթներ</h3><div id="savedPacks"></div></div>
+  </section>
 
-<section id="prosPanel" class="card">
-<div class="section-title">
-<h2>👥 Մասնագետներ</h2>
-<span class="badge" id="proCount">0</span>
-</div>
+  <section id="budgetPanel" class="card hidden">
+    <div class="section-title"><h2>💰 Բյուջետային փաթեթ</h2><button class="btn2" onclick="showPanel('budgetPacksPanel')">Պահպանվածները</button></div>
+    <div class="card">
+      <label>Փաթեթի անուն</label><input id="budgetName" placeholder="Օր․ Բյուջետային հարսանիք">
+      <label>Պատվիրատուի առավելագույն բյուջե</label><input id="budgetTotal" type="number" min="0" placeholder="Օր․ 100000">
+      <div class="small" style="margin:6px 0 10px">Պատվիրատուի վճարը չի կարող գերազանցել այս գումարը։ Եթե մասնագետների գները բարձր են, կարող ես իջեցնել նրանց վճարը, իսկ տարբերությունը կհաշվվի որպես քո շահույթ։</div>
+      <div class="row"><button class="btn blue" onclick="openBudgetPicker()">➕ Ավելացնել մասնագետ</button><button class="btn green" onclick="saveBudgetPackage()">💾 Պահպանել բյուջեի փաթեթը</button><button class="btn red" onclick="deleteCurrentBudget()">🗑 Մաքրել</button></div>
+      <div id="budgetStaff"></div><div id="budgetSummary"></div>
+    </div>
+  </section>
 
-<div class="card">
-<h3 id="proFormTitle">➕ Ավելացնել մասնագետ</h3>
+  <section id="budgetPacksPanel" class="card hidden"><div class="section-title"><h2>💰 Բյուջեի պահպանված փաթեթներ</h2><button class="btn2" onclick="newBudgetPackage()">＋ Նոր</button></div><div id="savedBudgetPacks"></div></section>
+  <section id="paymentsPanel" class="card hidden"><h2>💸 Վճարումներ մասնագետներին</h2><div id="payments"></div></section>
+  <section id="backupPanel" class="card hidden"><h2>💾 Backup / Import</h2><div class="row"><button class="btn blue" onclick="exportBackup()">⬇️ Backup</button><label class="btn2" style="display:inline-block;cursor:pointer">📥 Import <input style="display:none" type="file" id="importFile" accept=".json" onchange="importBackup(event)"></label></div></section>
 
-<label>Անուն / անվանում</label>
-<input id="proName" placeholder="Օր․ Նվեր">
-
-<label>Բաժին</label>
-<select id="proCat"></select>
-
-<div class="grid">
-<div>
-<label>Մասնագետի շուկայական գին</label>
-<input id="pMax" type="number" min="0" placeholder="30000">
-</div>
-
-<div>
-<label>Մինիմալ գին</label>
-<input id="pMin" type="number" min="0" placeholder="25000">
-</div>
-</div>
-
-<div class="small">Իմ գումարը = շուկայական գին − մինիմալ գին</div>
-<div id="proDerived" class="price">Իմ գումարը՝ 0 ֏</div>
-
-<div class="row">
-<button class="btn green" onclick="savePro()">Պահպանել մասնագետին</button>
-<button id="cancelProEdit" class="btn2 hidden" onclick="cancelProEdit()">Չեղարկել</button>
-</div>
-</div>
-
-<div class="card">
-<h3>📂 Բաժիններ</h3>
-<div id="cats"></div>
-<input id="newCat" placeholder="Նոր բաժնի անուն">
-<button class="btn blue" onclick="addCategory()">➕ Ավելացնել բաժին</button>
-</div>
-
-<div class="card">
-<h3>👤 Մասնագետների ցանկ</h3>
-<div id="prosList"></div>
-</div>
-</section>
-
-<section id="packsPanel" class="card hidden">
-<div class="section-title">
-<h2>📦 Փաթեթներ</h2>
-<button class="btn pink" onclick="newNormalPackage()">＋ Նոր փաթեթ</button>
-</div>
-
-<div class="card">
-<h3>Նոր / խմբագրվող փաթեթ</h3>
-
-<label>Փաթեթի անուն</label>
-<input id="packName" placeholder="Օր․ Երեխայի ծնունդ">
-
-<div class="row">
-<button class="btn blue" onclick="openPackagePicker()">➕ Ավելացնել մասնագետ</button>
-<button class="btn green" onclick="saveCurrentPack()">💾 Պահպանել փաթեթը</button>
-<button class="btn orange" onclick="finishCurrentToBudget()">💰 Ուղարկել բյուջե</button>
-<button class="btn red" onclick="deleteCurrentPackage()">🗑 Մաքրել</button>
-</div>
-
-<div id="currentPack"></div>
-<div id="currentTotal" class="total">Ընդհանուր՝ 0 ֏</div>
-</div>
-
-<div class="card">
-<h3>📦 Պահպանված փաթեթներ</h3>
-<div id="savedPacks"></div>
-</div>
-</section>
-
-<section id="budgetPanel" class="card hidden">
-<div class="section-title">
-<h2>💰 Բյուջետային փաթեթ</h2>
-<button class="btn2" onclick="showPanel('budgetPacksPanel')">Պահպանվածները</button>
-</div>
-
-<div class="card">
-<label>Փաթեթի անուն</label>
-<input id="budgetName" placeholder="Օր․ Բյուջետային հարսանիք">
-
-<label>Պատվիրատուի առավելագույն բյուջե</label>
-<input id="budgetTotal" type="number" min="0" placeholder="Օր․ 100000">
-
-<div class="small">
-Պատվիրատուի վճարը չի կարող գերազանցել այս գումարը։
-Եթե մասնագետների գները բարձր են, կարող ես իջեցնել նրանց վճարը,
-իսկ տարբերությունը կհաշվվի որպես քո շահույթ։
-</div>
-
-<div class="row">
-<button class="btn blue" onclick="openBudgetPicker()">➕ Ավելացնել մասնագետ</button>
-<button class="btn green" onclick="saveBudgetPackage()">💾 Պահպանել բյուջեի փաթեթը</button>
-<button class="btn red" onclick="deleteCurrentBudget()">🗑 Մաքրել</button>
-</div>
-
-<div id="budgetStaff"></div>
-<div id="budgetSummary"></div>
-</div>
-</section>
-
-<section id="budgetPacksPanel" class="card hidden">
-<div class="section-title">
-<h2>💰 Բյուջեի պահպանված փաթեթներ</h2>
-<button class="btn2" onclick="newBudgetPackage()">＋ Նոր</button>
-</div>
-<div id="savedBudgetPacks"></div>
-</section>
-
-<section id="paymentsPanel" class="card hidden">
-<h2>💸 Վճարումներ մասնագետներին</h2>
-<div id="payments"></div>
-</section>
-
-<section id="backupPanel" class="card hidden">
-<h2>💾 Backup / Import</h2>
-<div class="row">
-<button class="btn blue" onclick="exportBackup()">⬇️ Backup</button>
-<label class="btn2" style="display:inline-block;cursor:pointer">
-📥 Import
-<input style="display:none" type="file" id="importFile" accept=".json" onchange="importBackup(event)">
-</label>
-</div>
-</section>
-
-<section id="picker" class="card hidden">
-<h3 id="pickerTitle">Ընտրել մասնագետ</h3>
-<div id="pickerCats"></div>
-<div id="pickerPros"></div>
-<button class="btn2" onclick="closePicker()">Փակել</button>
-</section>
-
+  <section id="picker" class="card hidden"><h3 id="pickerTitle">Ընտրել մասնագետ</h3><div id="pickerCats"></div><div id="pickerPros"></div><button class="btn2" onclick="closePicker()">Փակել</button></section>
 </div>
 
 <div id="toast" class="toast hidden"></div>
@@ -253,37 +110,10 @@ const BUDGET_KEY='momentoo_budget_packs_v1';
 const WORK_KEY='momentoo_work_state_v1';
 
 const DEFAULT_CATS=[
-'DJ-ներ',
-'Ջութակահարներ',
-'Ռիլմեյքերներ',
-'Լուսանկարիչներ',
-'Դրոն նկարահանում',
-'Ֆոտոզոնա / Դեկոր',
-'Պարային շոուներ',
-'Արջուկներ / կերպարներ',
-'Երաժիշտներ',
-'Ծաղիկներ',
-'Այլ'
+'DJ-ներ','Ջութակահարներ','Ռիլմեյքերներ','Լուսանկարիչներ',
+'Դրոն նկարահանում','Ֆոտոզոնա / Դեկոր','Պարային շոուներ',
+'Արջուկներ / կերպարներ','Երաժիշտներ','Ծաղիկներ','Այլ'
 ];
-
-const SEED_PACKS=[
-'Երեխայի ծնունդ',
-'Նորածնի դուրսգրում',
-'Կնունքի փաթեթ',
-'Ատամհատիկ',
-'Մայրիկի համար',
-'Ամուսնության առաջարկ Ասա այո'
-];
-
-const firebaseConfig={
-apiKey:'AIzaSyBka_OD8XoM5X6K-zw2SjejfMXTeHzwC0',
-authDomain:'momentoo-events.firebaseapp.com',
-projectId:'momentoo-events',
-storageBucket:'momentoo-events.firebasestorage.app',
-messagingSenderId:'111582575594',
-appId:'1:111582575594:web:682c651a0cb1e5cc3d9093',
-measurementId:'G-CV4DGR3T46'
-};
 
 let pros=[];
 let packs=[];
@@ -293,40 +123,34 @@ let current={name:'',staff:[],editingId:null};
 let budgetDraft={name:'',budget:0,staff:[],editingId:null};
 let budgetEdits={};
 let pickerMode='';
-let pickerCat='';
 let editingProId=null;
-let cloudReady=false;
-let cloudApplying=false;
-let cloudTimer=null;
 
-function clone(x){
-return JSON.parse(JSON.stringify(x));
-}
-
-function num(x){
-const n=Number(x);
-return Number.isFinite(n)?n:0;
-}
-
-function uid(prefix='id'){
-return prefix+'_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2,9);
-}
+function clone(x){return JSON.parse(JSON.stringify(x))}
+function num(x){const n=Number(x);return Number.isFinite(n)?n:0}
+function uid(p='id'){return p+'_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2,9)}
+function readLocal(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):clone(d)}catch(e){return clone(d)}}
+function escapeHtml(x){return String(x??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;')}
+function money(x){return num(x).toLocaleString()+' ֏'}
 
 function toast(msg){
-const el=document.getElementById('toast');
-el.textContent=msg;
-el.classList.remove('hidden');
-clearTimeout(window.__toastTimer);
-window.__toastTimer=setTimeout(()=>el.classList.add('hidden'),2800);
+const x=document.getElementById('toast');
+x.textContent=msg;
+x.classList.remove('hidden');
+clearTimeout(window.__toast);
+window.__toast=setTimeout(()=>x.classList.add('hidden'),2800);
 }
 
-function readLocal(key,fallback){
-try{
-const raw=localStorage.getItem(key);
-return raw?JSON.parse(raw):clone(fallback);
-}catch(e){
-return clone(fallback);
+function saveWorkState(sync=true){
+localStorage.setItem(WORK_KEY,JSON.stringify({current,budgetDraft,budgetEdits}));
+if(sync)scheduleCloudSave();
 }
+
+function saveLocalAll(){
+localStorage.setItem(PRO_KEY,JSON.stringify(pros));
+localStorage.setItem(PACK_KEY,JSON.stringify(packs));
+localStorage.setItem(CAT_KEY,JSON.stringify(cats));
+localStorage.setItem(BUDGET_KEY,JSON.stringify(budgetPacks));
+saveWorkState(false);
 }
 
 function load(){
@@ -338,52 +162,19 @@ const w=readLocal(WORK_KEY,{current:{},budgetDraft:{},budgetEdits:{}});
 current=Object.assign({name:'',staff:[],editingId:null},w.current||{});
 budgetDraft=Object.assign({name:'',budget:0,staff:[],editingId:null},w.budgetDraft||{});
 budgetEdits=w.budgetEdits||{};
-
 if(!Array.isArray(cats)||!cats.length)cats=DEFAULT_CATS.slice();
-
-const existingNames=new Set(packs.map(x=>String(x.name||'').toLowerCase()));
-SEED_PACKS.forEach(name=>{
-if(!existingNames.has(name.toLowerCase())){
-packs.push({id:uid('pack'),name,staff:[],total:0});
-}
-});
-
-saveLocalAll();
 renderAll();
-}
-
-function saveLocalAll(){
-localStorage.setItem(PRO_KEY,JSON.stringify(pros));
-localStorage.setItem(PACK_KEY,JSON.stringify(packs));
-localStorage.setItem(CAT_KEY,JSON.stringify(cats));
-localStorage.setItem(BUDGET_KEY,JSON.stringify(budgetPacks));
-saveWorkState(false);
-}
-
-function saveWorkState(schedule=true){
-localStorage.setItem(WORK_KEY,JSON.stringify({
-current,
-budgetDraft,
-budgetEdits
-}));
-if(schedule)scheduleCloudSave();
 }
 
 function showPanel(id){
 document.querySelectorAll('section').forEach(x=>x.classList.add('hidden'));
-const el=document.getElementById(id);
-if(el)el.classList.remove('hidden');
+document.getElementById(id)?.classList.remove('hidden');
 renderAll();
 window.scrollTo({top:0,behavior:'smooth'});
 }
 
-function goBack(){
-history.back();
-}
-
-function goForward(){
-history.forward();
-}
+function goBack(){history.back()}
+function goForward(){history.forward()}
 
 function updateDerived(){
 const max=num(document.getElementById('pMax').value);
@@ -400,75 +191,46 @@ renderBudgetPacks();
 renderPayments();
 fillCategorySelect();
 updateDerived();
-
 document.getElementById('packName').value=current.name||'';
 document.getElementById('budgetName').value=budgetDraft.name||'';
 document.getElementById('budgetTotal').value=budgetDraft.budget||'';
 }
 
+function fillCategorySelect(){
+document.getElementById('proCat').innerHTML=cats.map(c=>`<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join('');
+}
+
 function renderCategories(){
-const el=document.getElementById('cats');
-el.innerHTML='';
-
-cats.forEach((cat,i)=>{
-const div=document.createElement('div');
-div.className='cat';
-
-const left=document.createElement('div');
-left.innerHTML='<strong>'+escapeHtml(cat)+'</strong>';
-
-const row=document.createElement('div');
-
-const open=document.createElement('button');
-open.className='btn2';
-open.textContent='Բացել';
-open.onclick=()=>openCategory(cat);
-
-const edit=document.createElement('button');
-edit.className='btn2';
-edit.textContent='✏️';
-edit.onclick=()=>renameCategory(i);
-
-const del=document.createElement('button');
-del.className='btn2';
-del.textContent='🗑';
-del.onclick=()=>deleteCategory(i);
-
-row.append(open,edit,del);
-div.append(left,row);
-el.appendChild(div);
-});
+document.getElementById('cats').innerHTML=cats.map((c,i)=>`
+<div class="cat">
+<strong>${escapeHtml(c)}</strong>
+<div class="row">
+<button class="btn2" onclick="openCategory(${i})">Բացել</button>
+<button class="btn2" onclick="renameCategory(${i})">✏️</button>
+<button class="btn2" onclick="deleteCategory(${i})">🗑</button>
+</div>
+</div>`).join('');
 }
 
-function openCategory(cat){
+function openCategory(i){
+const cat=cats[i];
 const list=pros.filter(p=>p.category===cat);
-let html='<div class="card"><button class="btn2" onclick="renderAll()">← Բաժիններ</button><h3>'+escapeHtml(cat)+'</h3>';
-
-if(!list.length){
-html+='<div class="small">Այս բաժնում դեռ մասնագետ չկա։</div>';
-}else{
-list.forEach(p=>{
-html+=proHtml(p);
-});
-}
-html+='</div>';
-
-document.getElementById('prosList').innerHTML=html;
+document.getElementById('prosList').innerHTML=`
+<div class="card">
+<button class="btn2" onclick="renderAll()">← Բաժիններ</button>
+<h3>${escapeHtml(cat)}</h3>
+${list.length?list.map(proHtml).join(''):'<div class="small">Այս բաժնում մասնագետ չկա։</div>'}
+</div>`;
 }
 
 function proHtml(p){
-const max=num(p.market);
-const min=num(p.min);
-return `
-<div class="pro">
-<div>
-<strong>${escapeHtml(p.name||'')}</strong>
-<div class="small">${escapeHtml(p.category||'')}</div>
-</div>
+return `<div class="pro">
+<strong>${escapeHtml(p.name)}</strong>
+<div class="small">${escapeHtml(p.category)}</div>
 <div class="grid">
-<div>Շուկայական՝ <b>${max.toLocaleString()} ֏</b></div>
-<div>Մինիմալ՝ <b>${min.toLocaleString()} ֏</b></div>
-<div>Իմ գումարը՝ <b>${Math.max(0,max-min).toLocaleString()} ֏</b></div>
+<div>Շուկայական՝ <b>${money(p.market)}</b></div>
+<div>Մինիմալ՝ <b>${money(p.min)}</b></div>
+<div>Իմ գումարը՝ <b>${money(Math.max(0,num(p.market)-num(p.min)))}</b></div>
 </div>
 <div class="row">
 <button class="btn2" onclick="editPro('${p.id}')">✏️ Խմբագրել</button>
@@ -479,60 +241,29 @@ return `
 
 function renderPros(){
 document.getElementById('proCount').textContent=pros.length;
-const el=document.getElementById('prosList');
-
-if(!pros.length){
-el.innerHTML='<div class="small">Դեռ մասնագետ չկա։</div>';
-return;
-}
-
-el.innerHTML=pros.map(proHtml).join('');
-}
-
-function fillCategorySelect(){
-const select=document.getElementById('proCat');
-select.innerHTML='';
-cats.forEach(cat=>{
-const o=document.createElement('option');
-o.value=cat;
-o.textContent=cat;
-select.appendChild(o);
-});
+document.getElementById('prosList').innerHTML=pros.length?pros.map(proHtml).join(''):'<div class="small">Դեռ մասնագետ չկա։</div>';
 }
 
 function addCategory(){
-const input=document.getElementById('newCat');
-const name=input.value.trim();
-if(!name)return;
-if(cats.some(x=>x.toLowerCase()===name.toLowerCase())){
-toast('Այս բաժինը արդեն կա');
-return;
-}
-cats.push(name);
-input.value='';
+const x=document.getElementById('newCat').value.trim();
+if(!x)return;
+if(cats.some(c=>c.toLowerCase()===x.toLowerCase()))return toast('Այս բաժինը արդեն կա');
+cats.push(x);
+document.getElementById('newCat').value='';
 saveLocalAll();
 scheduleCloudSave();
 renderAll();
-toast('Բաժինը ավելացվեց');
 }
 
 function renameCategory(i){
 const old=cats[i];
-const name=prompt('Նոր անուն',old);
-if(name===null)return;
-const n=name.trim();
-if(!n||n===old)return;
-
-if(cats.some((x,j)=>j!==i&&x.toLowerCase()===n.toLowerCase())){
-toast('Այս անունով բաժին արդեն կա');
-return;
-}
-
-pros.forEach(p=>{
-if(p.category===old)p.category=n;
-});
-
-cats[i]=n;
+const x=prompt('Նոր անուն',old);
+if(x===null)return;
+const name=x.trim();
+if(!name||name===old)return;
+if(cats.some((c,j)=>j!==i&&c.toLowerCase()===name.toLowerCase()))return toast('Այս անունով բաժին արդեն կա');
+pros.forEach(p=>{if(p.category===old)p.category=name});
+cats[i]=name;
 saveLocalAll();
 scheduleCloudSave();
 renderAll();
@@ -540,13 +271,8 @@ renderAll();
 
 function deleteCategory(i){
 const cat=cats[i];
-if(pros.some(p=>p.category===cat)){
-alert('Այս բաժինը չի կարելի ջնջել, քանի դեռ մասնագետ կա։');
-return;
-}
-
+if(pros.some(p=>p.category===cat)){alert('Այս բաժինը չի կարելի ջնջել, քանի դեռ մասնագետ կա։');return}
 if(!confirm('Ջնջե՞լ «'+cat+'» բաժինը։'))return;
-
 cats.splice(i,1);
 if(!cats.length)cats=DEFAULT_CATS.slice();
 saveLocalAll();
@@ -559,28 +285,13 @@ const name=document.getElementById('proName').value.trim();
 const category=document.getElementById('proCat').value;
 const market=num(document.getElementById('pMax').value);
 const min=num(document.getElementById('pMin').value);
-
-if(!name){
-toast('Գրիր մասնագետի անունը');
-return;
-}
+if(!name)return toast('Գրիր մասնագետի անունը');
 
 if(editingProId){
 const p=pros.find(x=>x.id===editingProId);
-if(p){
-p.name=name;
-p.category=category;
-p.market=market;
-p.min=min;
-}
+if(p){p.name=name;p.category=category;p.market=market;p.min=min}
 }else{
-pros.push({
-id:uid('pro'),
-name,
-category,
-market,
-min
-});
+pros.push({id:uid('pro'),name,category,market,min});
 }
 
 editingProId=null;
@@ -589,7 +300,6 @@ document.getElementById('pMax').value='';
 document.getElementById('pMin').value='';
 document.getElementById('cancelProEdit').classList.add('hidden');
 document.getElementById('proFormTitle').textContent='➕ Ավելացնել մասնագետ';
-
 saveLocalAll();
 scheduleCloudSave();
 renderAll();
@@ -599,7 +309,6 @@ toast('Մասնագետը պահպանվեց ☁️');
 function editPro(id){
 const p=pros.find(x=>x.id===id);
 if(!p)return;
-
 editingProId=id;
 document.getElementById('proName').value=p.name||'';
 document.getElementById('proCat').value=p.category||cats[0]||'';
@@ -608,7 +317,7 @@ document.getElementById('pMin').value=num(p.min);
 document.getElementById('cancelProEdit').classList.remove('hidden');
 document.getElementById('proFormTitle').textContent='✏️ Խմբագրել մասնագետին';
 updateDerived();
-window.scrollTo({top:0,behavior:'smooth'});
+window.scrollTo(0,0);
 }
 
 function cancelProEdit(){
@@ -637,159 +346,68 @@ showPanel('packsPanel');
 
 function openPackagePicker(){
 pickerMode='normal';
-pickerCat='';
 renderPicker();
 document.getElementById('picker').classList.remove('hidden');
 }
 
 function openBudgetPicker(){
 pickerMode='budget';
-pickerCat='';
 renderPicker();
 document.getElementById('picker').classList.remove('hidden');
 }
 
-function closePicker(){
-document.getElementById('picker').classList.add('hidden');
-}
+function closePicker(){document.getElementById('picker').classList.add('hidden')}
 
 function renderPicker(){
-document.getElementById('pickerTitle').textContent=
-pickerMode==='budget'?'Բյուջեում ավելացնել մասնագետ':'Փաթեթում ավելացնել մասնագետ';
-
-const catsEl=document.getElementById('pickerCats');
-catsEl.innerHTML='';
-
-cats.forEach(cat=>{
-const b=document.createElement('button');
-b.className='btn2';
-b.textContent=cat;
-b.onclick=()=>{
-pickerCat=cat;
-renderPicker();
-};
-catsEl.appendChild(b);
-});
-
-const el=document.getElementById('pickerPros');
-const list=pros.filter(p=>!pickerCat||p.category===pickerCat);
-
-el.innerHTML='';
-
-if(!list.length){
-el.innerHTML='<div class="small" style="margin-top:10px">Այս բաժնում մասնագետ չկա։</div>';
-return;
+document.getElementById('pickerTitle').textContent=pickerMode==='budget'?'Բյուջեում ավելացնել մասնագետ':'Փաթեթում ավելացնել մասնագետ';
+document.getElementById('pickerCats').innerHTML=cats.map(c=>`<button class="btn2" onclick="renderPickerPros('${escapeHtml(c)}')">${escapeHtml(c)}</button>`).join('');
+renderPickerPros('');
 }
 
-list.forEach(p=>{
-const div=document.createElement('div');
-div.className='staffrow';
-
-const info=document.createElement('div');
-info.innerHTML='<strong>'+escapeHtml(p.name)+'</strong><div class="small">'+escapeHtml(p.category)+'</div>';
-
-const b=document.createElement('button');
-b.className='btn green';
-b.textContent='＋ Ավելացնել';
-b.onclick=()=>addPickerPro(p);
-
-div.append(info,b);
-el.appendChild(div);
-});
+function renderPickerPros(cat){
+const list=pros.filter(p=>!cat||p.category===cat);
+document.getElementById('pickerPros').innerHTML=list.length?list.map(p=>`
+<div class="staffrow">
+<div><strong>${escapeHtml(p.name)}</strong><div class="small">${escapeHtml(p.category)}</div></div>
+<button class="btn green" onclick="addPickerPro('${p.id}')">＋ Ավելացնել</button>
+</div>`).join(''):'<div class="small">Մասնագետ չկա։</div>';
 }
 
-function addPickerPro(p){
+function addPickerPro(id){
+const p=pros.find(x=>x.id===id);
+if(!p)return;
+
 if(pickerMode==='normal'){
-current.staff=current.staff||[];
-current.staff.push({
-id:uid('staff'),
-proId:p.id,
-name:p.name,
-category:p.category,
-amount:num(p.market)
-});
-saveWorkState();
-renderPacks();
+current.staff.push({id:uid('staff'),proId:p.id,name:p.name,category:p.category,amount:num(p.market)});
 }else{
-budgetDraft.staff=budgetDraft.staff||[];
-budgetDraft.staff.push({
-id:uid('bstaff'),
-proId:p.id,
-name:p.name,
-category:p.category,
-amount:num(p.market),
-original:num(p.market)
-});
-saveWorkState();
-renderBudget();
+budgetDraft.staff.push({id:uid('bstaff'),proId:p.id,name:p.name,category:p.category,amount:num(p.market),original:num(p.market)});
 }
+saveWorkState();
+renderAll();
 closePicker();
 }
 
 function renderPacks(){
-const el=document.getElementById('currentPack');
-el.innerHTML='';
-
-if(!current.staff||!current.staff.length){
-el.innerHTML='<div class="small">Փաթեթում մասնագետ չկա։</div>';
-}else{
-current.staff.forEach((s,i)=>{
-const div=document.createElement('div');
-div.className='staffrow';
-
-const info=document.createElement('div');
-info.innerHTML='<strong>'+escapeHtml(s.name)+'</strong><div class="small">'+escapeHtml(s.category)+'</div>';
-
-const controls=document.createElement('div');
-controls.innerHTML=`
-<input style="width:130px" type="number" min="0" value="${num(s.amount)}"
-onchange="changeCurrentAmount(${i},this.value)">
+document.getElementById('currentPack').innerHTML=current.staff.length?current.staff.map((s,i)=>`
+<div class="staffrow">
+<div><strong>${escapeHtml(s.name)}</strong><div class="small">${escapeHtml(s.category)}</div></div>
+<div class="row">
+<input style="width:130px" type="number" min="0" value="${num(s.amount)}" onchange="changeCurrentAmount(${i},this.value)">
 <button class="btn2" onclick="removeCurrentStaff(${i})">🗑</button>
-`;
+</div>
+</div>`).join(''):'<div class="small">Փաթեթում մասնագետ չկա։</div>';
 
-div.append(info,controls);
-el.appendChild(div);
-});
+const total=current.staff.reduce((a,s)=>a+num(s.amount),0);
+document.getElementById('currentTotal').textContent='Ընդհանուր՝ '+total.toLocaleString()+' ֏';
 
-}
-
-document.getElementById('currentTotal').textContent=
-'Ընդհանուր՝ '+(current.staff||[]).reduce((a,s)=>a+num(s.amount),0).toLocaleString()+' ֏';
-
-const saved=document.getElementById('savedPacks');
-saved.innerHTML='';
-
-if(!packs.length){
-saved.innerHTML='<div class="small">Պահպանված փաթեթ չկա։</div>';
-return;
-}
-
-packs.forEach(p=>{
-const div=document.createElement('div');
-div.className='cat';
-
-const info=document.createElement('div');
-info.innerHTML=`
-<strong>${escapeHtml(p.name||'Անվանում չկա')}</strong>
-<div class="small">${(p.staff||[]).length} մասնագետ · ${num(p.total).toLocaleString()} ֏</div>
-`;
-
-const row=document.createElement('div');
-
-const open=document.createElement('button');
-open.className='btn2';
-open.textContent='✏️ Բացել';
-open.onclick=()=>editPackage(p.id);
-
-const del=document.createElement('button');
-del.className='btn2';
-del.textContent='🗑';
-del.onclick=()=>deletePackage(p.id);
-
-row.append(open,del);
-div.append(info,row);
-saved.appendChild(div);
-});
+document.getElementById('savedPacks').innerHTML=packs.length?packs.map(p=>`
+<div class="cat">
+<div><strong>${escapeHtml(p.name||'')}</strong><div class="small">${(p.staff||[]).length} մասնագետ · ${money(p.total)}</div></div>
+<div class="row">
+<button class="btn2" onclick="editPackage('${p.id}')">✏️ Բացել</button>
+<button class="btn2" onclick="deletePackage('${p.id}')">🗑</button>
+</div>
+</div>`).join(''):'<div class="small">Պահպանված փաթեթ չկա։</div>';
 }
 
 function changeCurrentAmount(i,v){
@@ -807,29 +425,15 @@ renderPacks();
 
 function saveCurrentPack(){
 const name=document.getElementById('packName').value.trim();
-if(!name){
-toast('Գրիր փաթեթի անունը');
-return;
-}
-
+if(!name)return toast('Գրիր փաթեթի անունը');
 current.name=name;
-
-const total=(current.staff||[]).reduce((a,s)=>a+num(s.amount),0);
+const total=current.staff.reduce((a,s)=>a+num(s.amount),0);
 
 if(current.editingId){
 const p=packs.find(x=>x.id===current.editingId);
-if(p){
-p.name=name;
-p.staff=clone(current.staff||[]);
-p.total=total;
-}
+if(p){p.name=name;p.staff=clone(current.staff);p.total=total}
 }else{
-const p={
-id:uid('pack'),
-name,
-staff:clone(current.staff||[]),
-total
-};
+const p={id:uid('pack'),name,staff:clone(current.staff),total};
 packs.push(p);
 current.editingId=p.id;
 }
@@ -843,14 +447,7 @@ toast('Փաթեթը պահպանվեց ☁️');
 function editPackage(id){
 const p=packs.find(x=>x.id===id);
 if(!p)return;
-
-current={
-id:p.id,
-editingId:p.id,
-name:p.name||'',
-staff:clone(p.staff||[])
-};
-
+current={name:p.name||'',staff:clone(p.staff||[]),editingId:p.id};
 saveWorkState();
 showPanel('packsPanel');
 }
@@ -858,11 +455,7 @@ showPanel('packsPanel');
 function deletePackage(id){
 if(!confirm('Ջնջե՞լ այս փաթեթը։'))return;
 packs=packs.filter(x=>x.id!==id);
-
-if(current.editingId===id){
-current={name:'',staff:[],editingId:null};
-}
-
+if(current.editingId===id)current={name:'',staff:[],editingId:null};
 saveLocalAll();
 scheduleCloudSave();
 renderAll();
@@ -875,139 +468,76 @@ renderPacks();
 }
 
 function finishCurrentToBudget(){
-const total=(current.staff||[]).reduce((a,s)=>a+num(s.amount),0);
-
 budgetDraft={
 name:current.name||'',
-budget:total,
-staff:(current.staff||[]).map(s=>({
-id:uid('bstaff'),
-proId:s.proId,
-name:s.name,
-category:s.category,
-amount:num(s.amount),
-original:num(s.amount)
-})),
+budget:current.staff.reduce((a,s)=>a+num(s.amount),0),
+staff:current.staff.map(s=>({id:uid('bstaff'),proId:s.proId,name:s.name,category:s.category,amount:num(s.amount),original:num(s.amount)})),
 editingId:null
 };
-
 saveWorkState();
 showPanel('budgetPanel');
 }
 
 function newBudgetPackage(){
-budgetDraft={
-name:'',
-budget:0,
-staff:[],
-editingId:null
-};
+budgetDraft={name:'',budget:0,staff:[],editingId:null};
 budgetEdits={};
 saveWorkState();
 showPanel('budgetPanel');
 }
 
 function renderBudget(){
-const el=document.getElementById('budgetStaff');
-el.innerHTML='';
-
-if(!budgetDraft.staff||!budgetDraft.staff.length){
-el.innerHTML='<div class="small">Բյուջետային փաթեթում մասնագետ չկա։</div>';
-}else{
-
-budgetDraft.staff.forEach((s,i)=>{
-const div=document.createElement('div');
-div.className='staffrow';
-
-const info=document.createElement('div');
-info.innerHTML=`
-<strong>${escapeHtml(s.name)}</strong>
-<div class="small">${escapeHtml(s.category)}</div>
-<div class="small">Սկզբնական՝ ${num(s.original||s.amount).toLocaleString()} ֏</div>
-`;
-
-const controls=document.createElement('div');
-
-const input=document.createElement('input');
-input.type='number';
-input.min='0';
-input.style.width='130px';
-input.value=num(s.amount);
-input.onchange=()=>{
-const budget=num(budgetDraft.budget);
-let value=Math.max(0,num(input.value));
-const other=budgetDraft.staff.reduce((sum,x,j)=>j===i?sum:sum+num(x.amount),0);
-if(other+value>budget){
-value=Math.max(0,budget-other);
-input.value=value;
-}
-s.amount=value;
-saveWorkState();
-renderBudget();
-};
-
-const remove=document.createElement('button');
-remove.className='btn2';
-remove.textContent='🗑';
-remove.onclick=()=>{
-budgetDraft.staff.splice(i,1);
-saveWorkState();
-renderBudget();
-};
-
-controls.append(input,remove);
-div.append(info,controls);
-el.appendChild(div);
-});
-}
+document.getElementById('budgetStaff').innerHTML=budgetDraft.staff.length?budgetDraft.staff.map((s,i)=>`
+<div class="staffrow">
+<div><strong>${escapeHtml(s.name)}</strong><div class="small">${escapeHtml(s.category)}</div><div class="small">Սկզբնական՝ ${money(s.original||s.amount)}</div></div>
+<div class="row">
+<input style="width:130px" type="number" min="0" value="${num(s.amount)}" onchange="changeBudgetAmount(${i},this.value)">
+<button class="btn2" onclick="removeBudgetStaff(${i})">🗑</button>
+</div>
+</div>`).join(''):'<div class="small">Բյուջետային փաթեթում մասնագետ չկա։</div>';
 
 const budget=num(budgetDraft.budget);
-const specialistTotal=(budgetDraft.staff||[]).reduce((a,s)=>a+num(s.amount),0);
-const profit=Math.max(0,budget-specialistTotal);
+const total=budgetDraft.staff.reduce((a,s)=>a+num(s.amount),0);
+const profit=Math.max(0,budget-total);
 
 document.getElementById('budgetSummary').innerHTML=`
 <div class="summary">
-<div>Պատվիրատուի բյուջե՝ <b>${budget.toLocaleString()} ֏</b></div>
-<div>Մասնագետների ընդհանուր վճար՝ <b>${specialistTotal.toLocaleString()} ֏</b></div>
-<div>Քո շահույթը՝ <b>${profit.toLocaleString()} ֏</b></div>
-<div class="total">Պատվիրատուն վճարում է՝ ${Math.min(budget,specialistTotal+profit).toLocaleString()} ֏</div>
-</div>
-`;
+<div>Պատվիրատուի բյուջե՝ <b>${money(budget)}</b></div>
+<div>Մասնագետների ընդհանուր վճար՝ <b>${money(total)}</b></div>
+<div>Քո շահույթը՝ <b>${money(profit)}</b></div>
+<div class="total">Պատվիրատուն վճարում է՝ ${money(Math.min(budget,total+profit))}</div>
+</div>`;
+}
+
+function changeBudgetAmount(i,v){
+const max=num(budgetDraft.budget);
+const other=budgetDraft.staff.reduce((a,s,j)=>j===i?a:a+num(s.amount),0);
+budgetDraft.staff[i].amount=Math.min(Math.max(0,num(v)),Math.max(0,max-other));
+saveWorkState();
+renderBudget();
+}
+
+function removeBudgetStaff(i){
+budgetDraft.staff.splice(i,1);
+saveWorkState();
+renderBudget();
 }
 
 function saveBudgetPackage(){
 const name=document.getElementById('budgetName').value.trim();
 const budget=num(document.getElementById('budgetTotal').value);
+if(!name)return toast('Գրիր փաթեթի անունը');
 
-if(!name){
-toast('Գրիր փաթեթի անունը');
-return;
-}
-
-if(budget<0){
-toast('Բյուջեն սխալ է');
-return;
-}
-
-const total=(budgetDraft.staff||[]).reduce((a,s)=>a+num(s.amount),0);
-
-if(total>budget){
-toast('Մասնագետների ընդհանուր վճարը գերազանցում է բյուջեն');
-return;
-}
+const total=budgetDraft.staff.reduce((a,s)=>a+num(s.amount),0);
+if(total>budget)return toast('Մասնագետների ընդհանուր վճարը գերազանցում է բյուջեն');
 
 budgetDraft.name=name;
 budgetDraft.budget=budget;
 
-const data=clone(budgetDraft);
-
 if(budgetDraft.editingId){
 const p=budgetPacks.find(x=>x.id===budgetDraft.editingId);
-if(p){
-Object.assign(p,data);
-}
+if(p)Object.assign(p,clone(budgetDraft));
 }else{
-const p=Object.assign({id:uid('budget')},data);
+const p=Object.assign({id:uid('budget')},clone(budgetDraft));
 budgetPacks.push(p);
 budgetDraft.editingId=p.id;
 }
@@ -1019,61 +549,30 @@ toast('Բյուջեի փաթեթը պահպանվեց ☁️');
 }
 
 function renderBudgetPacks(){
-const el=document.getElementById('savedBudgetPacks');
-el.innerHTML='';
-
-if(!budgetPacks.length){
-el.innerHTML='<div class="small">Պահպանված բյուջետային փաթեթ չկա։</div>';
-return;
+document.getElementById('savedBudgetPacks').innerHTML=budgetPacks.length?budgetPacks.map(p=>`
+<div class="cat">
+<div><strong>${escapeHtml(p.name||'')}</strong><div class="small">${(p.staff||[]).length} մասնագետ · Բյուջե՝ ${money(p.budget)}</div></div>
+<div class="row">
+<button class="btn2" onclick="loadBudgetPack('${p.id}')">✏️ Բացել</button>
+<button class="btn2" onclick="deleteBudgetPack('${p.id}')">🗑</button>
+</div>
+</div>`).join(''):'<div class="small">Պահպանված բյուջետային փաթեթ չկա։</div>';
 }
 
-budgetPacks.forEach(p=>{
-const div=document.createElement('div');
-div.className='cat';
-
-const info=document.createElement('div');
-info.innerHTML=`
-<strong>${escapeHtml(p.name||'Անվանում չկա')}</strong>
-<div class="small">${(p.staff||[]).length} մասնագետ · Բյուջե՝ ${num(p.budget).toLocaleString()} ֏</div>
-`;
-
-const row=document.createElement('div');
-
-const open=document.createElement('button');
-open.className='btn2';
-open.textContent='✏️ Բացել';
-open.onclick=()=>editBudgetPackage(p.id);
-
-const del=document.createElement('button');
-del.className='btn2';
-del.textContent='🗑';
-del.onclick=()=>deleteBudgetPackage(p.id);
-
-row.append(open,del);
-div.append(info,row);
-el.appendChild(div);
-});
-}
-
-function editBudgetPackage(id){
+function loadBudgetPack(id){
 const p=budgetPacks.find(x=>x.id===id);
 if(!p)return;
-
 budgetDraft=clone(p);
 budgetDraft.editingId=p.id;
+budgetEdits=clone(p.edits||{});
 saveWorkState();
 showPanel('budgetPanel');
 }
 
-function deleteBudgetPackage(id){
-if(!confirm('Ջնջե՞լ բյուջեի փաթեթը։'))return;
-
+function deleteBudgetPack(id){
+if(!confirm('Ջնջե՞լ այս բյուջեի փաթեթը։'))return;
 budgetPacks=budgetPacks.filter(x=>x.id!==id);
-
-if(budgetDraft.editingId===id){
-budgetDraft={name:'',budget:0,staff:[],editingId:null};
-}
-
+if(budgetDraft.editingId===id)budgetDraft={name:'',budget:0,staff:[],editingId:null};
 saveLocalAll();
 scheduleCloudSave();
 renderAll();
@@ -1081,147 +580,131 @@ renderAll();
 
 function deleteCurrentBudget(){
 budgetDraft={name:'',budget:0,staff:[],editingId:null};
+budgetEdits={};
 saveWorkState();
 renderBudget();
 }
 
 function renderPayments(){
-const el=document.getElementById('payments');
-const totals={};
+const map={};
 
-budgetPacks.forEach(p=>{
-(p.staff||[]).forEach(s=>{
+budgetPacks.forEach(p=>(p.staff||[]).forEach(s=>{
+const e=p.edits?.[s.id]||{cost:s.cost||s.amount||0};
 const key=s.proId||s.name;
-totals[key]=(totals[key]||0)+num(s.amount);
-});
-});
+if(!map[key])map[key]={name:s.name,category:s.category,amount:0};
+map[key].amount+=num(e.cost);
+}));
 
-packs.forEach(p=>{
-(p.staff||[]).forEach(s=>{
-const key=s.proId||s.name;
-totals[key]=(totals[key]||0)+num(s.amount);
-});
-});
+const arr=Object.values(map);
 
-el.innerHTML='';
-
-const keys=Object.keys(totals);
-
-if(!keys.length){
-el.innerHTML='<div class="small">Վճարման տվյալ չկա։</div>';
-return;
-}
-
-keys.forEach(key=>{
-const p=pros.find(x=>x.id===key);
-const name=p?p.name:key;
-
-const div=document.createElement('div');
-div.className='staffrow';
-div.innerHTML=`
-<div><strong>${escapeHtml(name)}</strong></div>
-<div class="price">${totals[key].toLocaleString()} ֏</div>
-`;
-
-el.appendChild(div);
-});
+document.getElementById('payments').innerHTML=arr.length?arr.map(x=>`
+<div class="staffrow">
+<div><b>${escapeHtml(x.name)}</b><div class="small">${escapeHtml(x.category||'')}</div></div>
+<b>${money(x.amount)}</b>
+</div>`).join(''):'<div class="small">Վճարումների տվյալներ չկան</div>';
 }
 
 function exportBackup(){
-const data={
-version:10,
-pros:clone(pros),
-packs:clone(packs),
-cats:clone(cats),
-budgetPacks:clone(budgetPacks),
-work:{
-current:clone(current),
-budgetDraft:clone(budgetDraft),
-budgetEdits:clone(budgetEdits)
-}
-};
-
+const data={date:new Date().toISOString(),pros,packs,cats,budgetPacks,current,budgetDraft,budgetEdits};
 const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
 const a=document.createElement('a');
 a.href=URL.createObjectURL(blob);
 a.download='momentoo-events-backup.json';
 a.click();
-URL.revokeObjectURL(a.href);
+setTimeout(()=>URL.revokeObjectURL(a.href),1000);
 }
 
 function importBackup(event){
-const file=event.target.files[0];
+const file=event.target.files?.[0];
 if(!file)return;
 
-const reader=new FileReader();
+const r=new FileReader();
 
-reader.onload=()=>{
+r.onload=()=>{
 try{
-const data=JSON.parse(reader.result);
-
-pros=Array.isArray(data.pros)?data.pros:[];
-packs=Array.isArray(data.packs)?data.packs:[];
-cats=Array.isArray(data.cats)&&data.cats.length?data.cats:DEFAULT_CATS.slice();
-budgetPacks=Array.isArray(data.budgetPacks)?data.budgetPacks:[];
-
-if(data.work){
-current=data.work.current||{name:'',staff:[],editingId:null};
-budgetDraft=data.work.budgetDraft||{name:'',budget:0,staff:[],editingId:null};
-budgetEdits=data.work.budgetEdits||{};
-}
+const d=JSON.parse(r.result);
+if(Array.isArray(d.pros))pros=d.pros;
+if(Array.isArray(d.packs))packs=d.packs;
+if(Array.isArray(d.cats)&&d.cats.length)cats=d.cats;
+if(Array.isArray(d.budgetPacks))budgetPacks=d.budgetPacks;
+if(d.current)current=d.current;
+if(d.budgetDraft)budgetDraft=d.budgetDraft;
+if(d.budgetEdits)budgetEdits=d.budgetEdits;
 
 saveLocalAll();
-scheduleCloudSave();
 renderAll();
-
+scheduleCloudSave();
 toast('Backup-ը ներմուծվեց ☁️');
 }catch(e){
-alert('Backup ֆայլը սխալ է');
+alert('Backup-ի ֆայլը սխալ է');
 }
 };
 
-reader.readAsText(file);
-}
-
-function escapeHtml(value){
-return String(value??'')
-.replace(/&/g,'&amp;')
-.replace(/</g,'&lt;')
-.replace(/>/g,'&gt;')
-.replace(/"/g,'&quot;')
-.replace(/'/g,'&#039;');
+r.readAsText(file);
 }
 
 /* FIREBASE */
 
+let cloudReady=false;
+let cloudApplying=false;
+let cloudTimer=null;
+
+const firebaseConfig={
+apiKey:'AIzaSyBka_OD8XoM5X6K-zw2SjejfMXTeHzwC0',
+authDomain:'momentoo-events.firebaseapp.com',
+projectId:'momentoo-events',
+storageBucket:'momentoo-events.firebasestorage.app',
+messagingSenderId:'111582575594',
+appId:'1:111582575594:web:682c651a0cb1e5cc3d9093',
+measurementId:'G-CV4DGR3T46'
+};
+
 try{
 firebase.initializeApp(firebaseConfig);
-
 window.momentooAuth=firebase.auth();
 window.momentooDB=firebase.firestore();
 
 try{
-window.momentooDB.settings({
-experimentalForceLongPolling:true
+window.momentooDB.settings({experimentalForceLongPolling:true});
+}catch(e){}
+}catch(e){
+console.error('Firebase init error',e);
+}
+
+function mergeByName(localList,cloudList,prefix){
+const map=new Map();
+
+[...(localList||[]),...(cloudList||[])].forEach(x=>{
+if(!x)return;
+
+const key=prefix+String(x.name||x.id||'').trim().toLowerCase();
+
+if(!map.has(key)){
+map.set(key,clone(x));
+}else{
+const old=map.get(key);
+const oldStaff=Array.isArray(old.staff)?old.staff.length:0;
+const newStaff=Array.isArray(x.staff)?x.staff.length:0;
+
+/* Never replace a richer saved package with an empty one. */
+if(newStaff>oldStaff)map.set(key,clone(x));
+else if(newStaff===oldStaff){
+const oldTotal=num(old.total);
+const newTotal=num(x.total);
+if(newTotal>oldTotal)map.set(key,clone(x));
+}
+}
 });
-}catch(e){
-console.warn('Firestore settings:',e);
+
+return [...map.values()];
 }
 
-}catch(e){
-console.error('Firebase initialization error:',e);
-}
-
-function cloudSnapshot(){
-return{
-pros:clone(pros),
-packs:clone(packs),
-cats:clone(cats),
-budgetPacks:clone(budgetPacks),
-current:clone(current),
-budgetDraft:clone(budgetDraft),
-budgetEdits:clone(budgetEdits)
-};
+function mergeCats(localList,cloudList){
+const out=[];
+[...(localList||[]),...(cloudList||[])].forEach(x=>{
+if(x&&!out.includes(x))out.push(x);
+});
+return out.length?out:DEFAULT_CATS.slice();
 }
 
 function scheduleCloudSave(){
@@ -1234,123 +717,19 @@ saveCloud();
 },700);
 }
 
-function richer(a,b){
-const as=Array.isArray(a?.staff)?a.staff.length:0;
-const bs=Array.isArray(b?.staff)?b.staff.length:0;
-
-if(bs!==as)return bs>as?b:a;
-
-const at=num(a?.total);
-const bt=num(b?.total);
-
-if(bt!==at)return bt>at?b:a;
-
-const ae=Object.keys(a?.edits||{}).length;
-const be=Object.keys(b?.edits||{}).length;
-
-if(be!==ae)return be>ae?b:a;
-
-return a||b;
-}
-
-function mergePros(localList,cloudList){
-const out=[];
-const map=new Map();
-
-[...(localList||[]),...(cloudList||[])].forEach(x=>{
-if(!x)return;
-
-const key='pro:'+String(x.name||x.id||'').trim().toLowerCase();
-
-if(!key)return;
-
-if(!map.has(key)){
-map.set(key,clone(x));
-}else{
-map.set(key,richer(map.get(key),x));
-}
-});
-
-map.forEach(v=>out.push(v));
-return out;
-}
-
-function mergePacks(localList,cloudList){
-const out=[];
-const map=new Map();
-
-[...(localList||[]),...(cloudList||[])].forEach(x=>{
-if(!x)return;
-
-const key='pack:'+String(x.name||x.id||'').trim().toLowerCase();
-
-if(!key)return;
-
-if(!map.has(key)){
-map.set(key,clone(x));
-}else{
-map.set(key,richer(map.get(key),x));
-}
-});
-
-map.forEach(v=>out.push(v));
-return out;
-}
-
-function mergeCats(localList,cloudList){
-const out=[];
-
-[...(localList||[]),...(cloudList||[])].forEach(c=>{
-if(c&&!out.includes(c))out.push(c);
-});
-
-return out.length?out:DEFAULT_CATS.slice();
-}
-
-function mergeBudgetPacks(localList,cloudList){
-const out=[];
-const map=new Map();
-
-[...(localList||[]),...(cloudList||[])].forEach(x=>{
-if(!x)return;
-
-const key='budget:'+String(x.name||x.id||'').trim().toLowerCase();
-
-if(!key)return;
-
-if(!map.has(key)){
-map.set(key,clone(x));
-}else{
-map.set(key,richer(map.get(key),x));
-}
-});
-
-map.forEach(v=>out.push(v));
-return out;
-}
-
 async function saveCloud(){
-if(!cloudReady||cloudApplying||!window.momentooDB)return false;
 
-for(let attempt=1;attempt<=5;attempt++){
+if(!window.momentooDB||!window.momentooAuth)return false;
 
 try{
 
-const user=momentooAuth.currentUser;
-
-if(!user){
+if(!momentooAuth.currentUser){
 await momentooAuth.signInAnonymously();
 }
 
 const root=momentooDB.collection('momentoo');
 
-const [
-pd,
-pk,
-cd,
-bd,
-wd
-]=await Promise.all([
+const [pd,pk,cd,bd,wd]=await Promise.all([
 root.doc('pros').get(),
 root.doc('packs').get(),
 root.doc('cats').get(),
@@ -1358,153 +737,89 @@ root.doc('budgetPacks').get(),
 root.doc('work').get()
 ]);
 
-const cp=pd.exists&&Array.isArray(pd.data().data)?pd.data().data:[];
-const ck=pk.exists&&Array.isArray(pk.data().data)?pk.data().data:[];
-const cc=cd.exists&&Array.isArray(cd.data().data)?cd.data().data:[];
-const cb=bd.exists&&Array.isArray(bd.data().data)?bd.data().data:[];
+const cloudPros=pd.exists&&Array.isArray(pd.data().data)?pd.data().data:[];
+const cloudPacks=pk.exists&&Array.isArray(pk.data().data)?pk.data().data:[];
+const cloudCats=cd.exists&&Array.isArray(cd.data().data)?cd.data().data:[];
+const cloudBudgets=bd.exists&&Array.isArray(bd.data().data)?bd.data().data:[];
 
-const local=cloudSnapshot();
-
-const merged={
-pros:mergePros(local.pros,cp),
-packs:mergePacks(local.packs,ck),
-cats:mergeCats(local.cats,cc),
-budgetPacks:mergeBudgetPacks(local.budgetPacks,cb),
-current:clone(local.current),
-budgetDraft:clone(local.budgetDraft),
-budgetEdits:clone(local.budgetEdits)
-};
+const mergedPros=mergeByName(pros,cloudPros,'pro:');
+const mergedPacks=mergeByName(packs,cloudPacks,'pack:');
+const mergedCats=mergeCats(cats,cloudCats);
+const mergedBudgets=mergeByName(budgetPacks,cloudBudgets,'budget:');
 
 const batch=momentooDB.batch();
 const ts=firebase.firestore.FieldValue.serverTimestamp();
 
 batch.set(root.doc('pros'),{
-data:merged.pros,
+data:mergedPros,
 updatedAt:ts
 });
 
 batch.set(root.doc('packs'),{
-data:merged.packs,
+data:mergedPacks,
 updatedAt:ts
 });
 
 batch.set(root.doc('cats'),{
-data:merged.cats,
+data:mergedCats,
 updatedAt:ts
 });
 
 batch.set(root.doc('budgetPacks'),{
-data:merged.budgetPacks,
+data:mergedBudgets,
 updatedAt:ts
 });
 
 batch.set(root.doc('work'),{
-current:merged.current,
-budgetDraft:merged.budgetDraft,
-budgetEdits:merged.budgetEdits,
+current:current||{},
+budgetDraft:budgetDraft||{},
+budgetEdits:budgetEdits||{},
 updatedAt:ts
 });
 
 batch.set(root.doc('meta'),{
 ready:true,
-version:10,
+version:20,
 updatedAt:ts
 },{merge:true});
 
 await batch.commit();
 
-pros=merged.pros;
-packs=merged.packs;
-cats=merged.cats;
-budgetPacks=merged.budgetPacks;
+pros=mergedPros;
+packs=mergedPacks;
+cats=mergedCats;
+budgetPacks=mergedBudgets;
 
 localStorage.setItem(PRO_KEY,JSON.stringify(pros));
 localStorage.setItem(PACK_KEY,JSON.stringify(packs));
 localStorage.setItem(CAT_KEY,JSON.stringify(cats));
 localStorage.setItem(BUDGET_KEY,JSON.stringify(budgetPacks));
 
-renderAll();
-
 return true;
 
 }catch(e){
 
-console.error('Firebase save error attempt '+attempt,e);
-
-if(attempt<5){
-await new Promise(resolve=>setTimeout(resolve,1000*attempt));
-}else{
-toast('☁️ Firebase-ի պահպանումը չստացվեց');
-}
-
-}
-
-}
+console.error('Firebase save error:',e.code,e.message);
 
 return false;
-}
-
-async function cloudExists(){
-
-try{
-
-const root=momentooDB.collection('momentoo');
-
-const [
-m,
-p,
-k,
-b
-]=await Promise.all([
-root.doc('meta').get(),
-root.doc('pros').get(),
-root.doc('packs').get(),
-root.doc('budgetPacks').get()
-]);
-
-if(m.exists&&m.data()?.ready===true)return true;
-
-const pd=p.exists&&Array.isArray(p.data().data)?p.data().data:[];
-const pk=k.exists&&Array.isArray(k.data().data)?k.data().data:[];
-const bd=b.exists&&Array.isArray(b.data().data)?b.data().data:[];
-
-return pd.length>0||
-bd.length>0||
-pk.some(x=>Array.isArray(x.staff)&&x.staff.length>0);
-
-}catch(e){
-
-console.error('Firebase existence check:',e);
-return false;
-
 }
 }
 
 async function loadCloud(){
 
+if(!window.momentooDB||!window.momentooAuth)return;
+
 try{
 
 cloudApplying=true;
 
-const local={
-pros:clone(pros),
-packs:clone(packs),
-cats:clone(cats),
-budgetPacks:clone(budgetPacks),
-current:clone(current),
-budgetDraft:clone(budgetDraft),
-budgetEdits:clone(budgetEdits)
-};
+if(!momentooAuth.currentUser){
+await momentooAuth.signInAnonymously();
+}
 
 const root=momentooDB.collection('momentoo');
 
-const [
-pd,
-pk,
-cd,
-bd,
-wd
-]=await Promise.all([
+const [pd,pk,cd,bd,wd]=await Promise.all([
 root.doc('pros').get(),
 root.doc('packs').get(),
 root.doc('cats').get(),
@@ -1512,40 +827,30 @@ root.doc('budgetPacks').get(),
 root.doc('work').get()
 ]);
 
-const cp=pd.exists&&Array.isArray(pd.data().data)?pd.data().data:[];
-const ck=pk.exists&&Array.isArray(pk.data().data)?pk.data().data:[];
-const cc=cd.exists&&Array.isArray(cd.data().data)?cd.data().data:[];
-const cb=bd.exists&&Array.isArray(bd.data().data)?bd.data().data:[];
+const cloudPros=pd.exists&&Array.isArray(pd.data().data)?pd.data().data:[];
+const cloudPacks=pk.exists&&Array.isArray(pk.data().data)?pk.data().data:[];
+const cloudCats=cd.exists&&Array.isArray(cd.data().data)?cd.data().data:[];
+const cloudBudgets=bd.exists&&Array.isArray(bd.data().data)?bd.data().data:[];
 
-pros=mergePros(local.pros,cp);
-packs=mergePacks(local.packs,ck);
-cats=mergeCats(local.cats,cc);
-budgetPacks=mergeBudgetPacks(local.budgetPacks,cb);
+pros=mergeByName(pros,cloudPros,'pro:');
+packs=mergeByName(packs,cloudPacks,'pack:');
+cats=mergeCats(cats,cloudCats);
+budgetPacks=mergeByName(budgetPacks,cloudBudgets,'budget:');
 
 if(wd.exists){
 
 const w=wd.data();
 
-if(
-w.current&&
-((w.current.staff||[]).length>(local.current.staff||[]).length)
-){
+if(w.current&&((w.current.staff||[]).length>=(current.staff||[]).length)){
 current=clone(w.current);
 }
 
-if(
-w.budgetDraft&&
-((w.budgetDraft.staff||[]).length>(local.budgetDraft.staff||[]).length)
-){
+if(w.budgetDraft&&((w.budgetDraft.staff||[]).length>=(budgetDraft.staff||[]).length)){
 budgetDraft=clone(w.budgetDraft);
 }
 
-if(
-w.budgetEdits&&
-Object.keys(w.budgetEdits||{}).length>
-Object.keys(local.budgetEdits||{}).length
-){
-budgetEdits=clone(w.budgetEdits);
+if(w.budgetEdits){
+budgetEdits=Object.assign({},budgetEdits||{},w.budgetEdits||{});
 }
 
 }
@@ -1559,49 +864,32 @@ await saveCloud();
 
 }catch(e){
 
-console.error('Firebase load error:',e);
 cloudApplying=false;
+console.error('Firebase load error:',e.code,e.message);
 
 }
-
 }
 
 async function initCloud(){
 
-if(!window.momentooAuth||!window.momentooDB){
-console.error('Firebase SDK unavailable');
-return;
-}
+if(!window.momentooAuth||!window.momentooDB)return;
 
 try{
 
-const credential=await momentooAuth.signInAnonymously();
-
-if(!credential||!credential.user){
-throw new Error('Anonymous sign-in failed');
-}
+await momentooAuth.signInAnonymously();
 
 cloudReady=true;
 
-console.log('Firebase anonymous user:',credential.user.uid);
+const root=momentooDB.collection('momentoo');
+const meta=await root.doc('meta').get();
 
-const exists=await cloudExists();
-
-if(exists){
+if(meta.exists&&meta.data()?.ready===true){
 
 await loadCloud();
-return;
 
-}
+}else{
 
-if(
-pros.length||
-packs.length||
-cats.length||
-budgetPacks.length||
-hasMeaningfulLocalData()
-){
-
+/* First time: preserve and upload ALL existing local data. */
 await saveCloud();
 
 }
@@ -1609,29 +897,12 @@ await saveCloud();
 }catch(e){
 
 cloudReady=false;
-
-console.error('Firebase auth/sync error:',e);
-toast('☁️ Firebase կապի սխալ');
+console.error('Firebase auth/sync error:',e.code,e.message);
 
 }
-
 }
 
-function hasMeaningfulLocalData(){
-
-return(
-pros.length>0||
-budgetPacks.length>0||
-packs.some(p=>Array.isArray(p.staff)&&p.staff.length>0)||
-(current.staff||[]).length>0||
-(budgetDraft.staff||[]).length>0
-);
-
-}
-
-/* HOME SCREEN / PWA FORCE SYNC */
-
-async function forceHomeScreenCloudSync(){
+async function forceHomeCloudSync(){
 
 if(!window.momentooAuth||!window.momentooDB)return;
 
@@ -1641,89 +912,28 @@ if(!momentooAuth.currentUser){
 await momentooAuth.signInAnonymously();
 }
 
+cloudReady=true;
+
 const root=momentooDB.collection('momentoo');
-
 const meta=await root.doc('meta').get();
-
-const localData={
-pros:readLocal(PRO_KEY,[]),
-packs:readLocal(PACK_KEY,[]),
-cats:readLocal(CAT_KEY,DEFAULT_CATS),
-budgetPacks:readLocal(BUDGET_KEY,[]),
-work:readLocal(
-WORK_KEY,
-{
-current:{name:'',staff:[],editingId:null},
-budgetDraft:{name:'',budget:0,staff:[],editingId:null},
-budgetEdits:{}
-}
-)
-};
 
 if(meta.exists&&meta.data()?.ready===true){
 
 await loadCloud();
 
-return;
+}else{
+
+/* Home Screen first sync: no new category and no zero-data overwrite. */
+await saveCloud();
 
 }
-
-const batch=momentooDB.batch();
-const ts=firebase.firestore.FieldValue.serverTimestamp();
-
-batch.set(root.doc('pros'),{
-data:Array.isArray(localData.pros)?localData.pros:[],
-updatedAt:ts
-});
-
-batch.set(root.doc('packs'),{
-data:Array.isArray(localData.packs)?localData.packs:[],
-updatedAt:ts
-});
-
-batch.set(root.doc('cats'),{
-data:Array.isArray(localData.cats)&&localData.cats.length
-?localData.cats
-:DEFAULT_CATS.slice(),
-updatedAt:ts
-});
-
-batch.set(root.doc('budgetPacks'),{
-data:Array.isArray(localData.budgetPacks)
-?localData.budgetPacks
-:[],
-updatedAt:ts
-});
-
-batch.set(root.doc('work'),{
-current:localData.work.current||{},
-budgetDraft:localData.work.budgetDraft||{},
-budgetEdits:localData.work.budgetEdits||{},
-updatedAt:ts
-});
-
-batch.set(root.doc('meta'),{
-ready:true,
-version:11,
-updatedAt:ts
-},{merge:true});
-
-await batch.commit();
-
-cloudReady=true;
-
-toast('☁️ Firebase sync-ը պատրաստ է');
 
 }catch(e){
 
-console.error('Home Screen Firebase sync error:',e);
-toast('☁️ Sync error: '+(e.code||e.message||'unknown'));
+console.error('Home Screen sync error:',e.code,e.message);
 
 }
-
 }
-
-/* EVENTS */
 
 document.getElementById('pMax').addEventListener('input',updateDerived);
 document.getElementById('pMin').addEventListener('input',updateDerived);
@@ -1745,10 +955,10 @@ renderBudget();
 });
 
 window.addEventListener('online',()=>{
-if(cloudReady)scheduleCloudSave();
+if(cloudReady)saveCloud();
 });
 
-document.addEventListener('visibilitychange',()=>{
+window.addEventListener('visibilitychange',()=>{
 if(document.visibilityState==='visible'&&cloudReady){
 setTimeout(()=>saveCloud(),500);
 }
@@ -1763,32 +973,24 @@ if('serviceWorker' in navigator){
 window.addEventListener('load',()=>{
 
 navigator.serviceWorker.register('./service-worker.js')
-.then(registration=>{
-console.log('Service Worker registered',registration.scope);
-
-if(registration.waiting){
-registration.waiting.postMessage({type:'SKIP_WAITING'});
+.then(reg=>{
+reg.update();
+if(reg.waiting){
+reg.waiting.postMessage({type:'SKIP_WAITING'});
 }
-
-registration.update();
 })
-.catch(error=>{
-console.error('Service Worker error:',error);
-});
+.catch(e=>console.error('Service Worker:',e));
 
 });
 
 }
 
 load();
-
 initCloud();
 
-setTimeout(forceHomeScreenCloudSync,2500);
-
 setTimeout(()=>{
-if(cloudReady)saveCloud();
-},7000);
+forceHomeCloudSync();
+},2500);
 
 </script>
 </body>
